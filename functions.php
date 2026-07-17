@@ -265,16 +265,36 @@ add_action('init', function() {
     remove_action('admin_print_styles', 'print_emoji_styles');
 });
 
-add_action('wp_enqueue_scripts', function() {
+function tcc_remove_gutenberg_bloat() {
     if (!is_admin_bar_showing()) {
         wp_deregister_style('dashicons');
     }
-    wp_dequeue_style( 'wp-block-library' );
-    wp_dequeue_style( 'wp-block-library-theme' );
-    wp_dequeue_style( 'wc-blocks-style' );
-    wp_dequeue_style( 'global-styles' );
-    wp_dequeue_style( 'classic-theme-styles' );
-}, 100);
+    
+    $styles = [
+        'wp-block-library',
+        'wp-block-library-theme',
+        'wc-blocks-style',
+        'global-styles',
+        'classic-theme-styles'
+    ];
+    
+    foreach ($styles as $style) {
+        wp_dequeue_style($style);
+        wp_deregister_style($style);
+    }
+}
+// Hook into both enqueue and print at priority 9999 to catch late enqueues
+add_action('wp_enqueue_scripts', 'tcc_remove_gutenberg_bloat', 9999);
+add_action('wp_print_styles', 'tcc_remove_gutenberg_bloat', 9999);
+
+// Remove Global Styles completely
+remove_action('wp_enqueue_scripts', 'wp_enqueue_global_styles');
+remove_action('wp_footer', 'wp_enqueue_global_styles', 1);
+remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
+
+// Disable separate block styles (prevents wp-block-heading-inline-css etc.)
+add_filter('should_load_separate_core_block_assets', '__return_false');
+remove_action('wp_enqueue_scripts', 'wp_common_block_scripts_and_styles');
 
 add_filter('script_loader_tag', function($tag, $handle, $src) {
     if (strpos($handle, 'google-site-kit') !== false || strpos($src, 'googletagmanager.com') !== false || strpos($src, 'grow.me') !== false) {

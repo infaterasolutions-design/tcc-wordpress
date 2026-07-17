@@ -1,0 +1,34 @@
+/* Figma Trending Section Refactor */
+.figma-trending-container { width: 1200px; max-width: 100%; margin: 40px auto; position: relative; padding: 0; }
+.figma-trending-title-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 30px; position: relative; z-index: 10; }
+.figma-trending-title { font-family: 'Great Vibes', cursive; font-size: 144px; line-height: 0; text-transform: lowercase; color: #000; margin-left: 60px; margin-top: 30px; }
+.figma-trending-nav { display: flex; align-items: center; gap: 15px; }
+.figma-trending-nav span { font-family: 'Courier Prime', monospace; font-size: 11px; line-height: 13px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; padding: 10.5px 20px; }
+.figma-trending-nav-active { background: #000; color: #fff; }
+.figma-trending-nav-item { background: transparent; color: #000; }
+.figma-trending-grid { display: flex; flex-direction: row; align-items: flex-start; width: 100%; height: 546px; }
+.figma-trending-featured { display: flex; flex-direction: row; width: 840px; padding-right: 30px; height: 100%; }
+.figma-trending-featured-img { width: 402px; height: 100%; background-size: cover; background-position: center; flex-shrink: 0; }
+.figma-trending-featured-content { width: 409px; height: 100%; background: #fff; display: flex; flex-direction: column; justify-content: center; padding: 35px 40px; box-sizing: border-box; }
+.figma-trending-featured-title { font-family: 'Playfair Display', serif; font-size: 36px; line-height: 1; letter-spacing: 0.3px; color: #000; margin-bottom: 15px; text-decoration: none; }
+.figma-trending-featured-excerpt { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.69; letter-spacing: 1px; color: #000; margin-bottom: 30px; }
+.figma-trending-featured-btn { background: #F4F1EC; padding: 8.5px 20px; font-family: 'Inter', sans-serif; font-size: 9px; line-height: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #000; text-decoration: none; display: inline-block; align-self: flex-start; }
+.figma-trending-list { width: 360px; height: 100%; border-left: 2.4px solid #000; padding-left: 30px; display: flex; flex-direction: column; justify-content: flex-start; }
+.figma-trending-list-item { display: flex; align-items: center; padding: 15px 0; text-decoration: none; height: 125.91px; box-sizing: border-box; cursor: pointer; }
+.figma-trending-list-num { font-family: 'Playfair Display', serif; font-size: 96px; line-height: 96px; letter-spacing: 1px; width: 75px; text-align: center; color: #DFD7C9; margin-right: 15px; transition: color 0.3s ease; }
+.figma-trending-list-num.active-num { color: #000; }
+.figma-trending-list-title { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.25; letter-spacing: 0.17px; text-transform: uppercase; color: #DFD7C9; flex: 1; transition: color 0.3s ease; }
+.figma-trending-list-title.active-title { color: #000; }
+.figma-trending-list-item:hover .figma-trending-list-num,
+.figma-trending-list-item:hover .figma-trending-list-title { color: #000; }
+.figma-trending-list-btn { background: #000; color: #F4F1EC; font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1; letter-spacing: 1.5px; text-transform: uppercase; text-align: center; padding: 15px 30px; text-decoration: none; display: block; margin-top: auto; }
+@media (max-width: 1200px) {
+    .figma-trending-container, .figma-trending-title-wrapper, .figma-trending-grid { width: 100%; }
+    .figma-trending-grid { flex-direction: column; height: auto; }
+    .figma-trending-featured { width: 100%; padding-right: 0; height: auto; flex-direction: column; }
+    .figma-trending-featured-img { width: 100%; height: 400px; }
+    .figma-trending-featured-content { width: 100%; }
+    .figma-trending-list { width: 100%; border-left: none; border-top: 2.4px solid #000; padding-left: 0; padding-top: 30px; margin-top: 30px; height: auto; }
+    .figma-trending-title { font-size: 80px; margin-left: 0; margin-top: 0; }
+    .figma-trending-title-wrapper { flex-direction: column; align-items: flex-start; gap: 20px; }
+}

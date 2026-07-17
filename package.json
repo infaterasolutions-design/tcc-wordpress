@@ -1,0 +1,15 @@
+{
+  "name": "the-combo-closet",
+  "version": "1.0.0",
+  "description": "WordPress theme for The Combo Closet",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./input.css -o ./style.css --watch",
+    "build": "npx @tailwindcss/cli -i ./input.css -o ./style.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.2",
+    "@tailwindcss/typography": "^0.5.20",
+    "tailwindcss": "^4.3.2"
+  }
+}

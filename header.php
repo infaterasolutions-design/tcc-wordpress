@@ -55,7 +55,6 @@ body, html {
 }
 img, figure, video, iframe, .wp-block-image {
     max-width: 100% !important;
-    height: auto !important;
 }
 </style>
 <?php wp_head(); ?>

@@ -325,6 +325,13 @@ add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, 
     
     $avif_src = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $src);
     
+    // Check if the AVIF file actually exists on disk
+    $upload_dir = wp_get_upload_dir();
+    $avif_path = str_replace( $upload_dir['baseurl'], $upload_dir['basedir'], $avif_src );
+    if ( ! file_exists( $avif_path ) ) {
+        return $html;
+    }
+    
     $picture = '<picture class="tcc-picture-wrapper" style="display: block; width: 100%; height: 100%;">';
     $picture .= '<source srcset="' . esc_url($avif_src) . '" type="image/avif">';
     $picture .= $html;

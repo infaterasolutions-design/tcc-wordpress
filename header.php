@@ -157,6 +157,15 @@ body, html {
 		</div>
 	</header>
 
+	<!-- Search Overlay -->
+	<div id="search-overlay" style="display: none; position: fixed; inset: 0; background-color: rgba(255,255,255,0.98); z-index: 105; flex-direction: column; align-items: center; justify-content: center;">
+		<span id="close-search" style="position: absolute; top: 20px; right: 30px; font-size: 2rem; cursor: pointer; color: #000;">✕</span>
+		<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" style="width: 80%; max-width: 600px; display: flex; border-bottom: 2px solid #000;">
+			<input type="search" placeholder="Search..." value="<?php echo get_search_query(); ?>" name="s" style="flex: 1; padding: 1rem 0; font-size: 2rem; border: none; outline: none; background: transparent; font-family: 'Playfair Display', serif;" />
+			<button type="submit" style="padding: 1rem; background: transparent; border: none; font-size: 1.5rem; cursor: pointer;">🔍</button>
+		</form>
+	</div>
+
 	<!-- Mobile Drawer Overlay -->
 	<div id="mobile-drawer-overlay" class="mobile-drawer-overlay" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 98;"></div>
 

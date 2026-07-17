@@ -50,4 +50,52 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // Hamburger Menu
+    const hamburgerBtn = document.getElementById('hamburger-icon');
+    const closeBtn = document.getElementById('close-drawer');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerOverlay = document.getElementById('mobile-drawer-overlay');
+
+    if (hamburgerBtn && closeBtn && mobileDrawer && drawerOverlay) {
+        function openDrawer() {
+            mobileDrawer.style.transform = 'translateX(0)';
+            drawerOverlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeDrawer() {
+            mobileDrawer.style.transform = 'translateX(-100%)';
+            drawerOverlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        hamburgerBtn.addEventListener('click', openDrawer);
+        closeBtn.addEventListener('click', closeDrawer);
+        drawerOverlay.addEventListener('click', closeDrawer);
+    }
+
+    // Search Overlay
+    const searchBtn = document.querySelector('.mobile-search-icon');
+    const searchOverlay = document.getElementById('search-overlay');
+    const closeSearch = document.getElementById('close-search');
+
+    if (searchBtn && searchOverlay && closeSearch) {
+        searchBtn.addEventListener('click', () => {
+            searchOverlay.style.display = 'flex';
+            setTimeout(() => {
+                const searchInput = searchOverlay.querySelector('input[type="search"]');
+                if (searchInput) searchInput.focus();
+            }, 100);
+        });
+        closeSearch.addEventListener('click', () => {
+            searchOverlay.style.display = 'none';
+        });
+    }
+
+    // Back to top
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 });

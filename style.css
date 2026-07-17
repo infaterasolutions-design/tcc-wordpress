@@ -1440,8 +1440,19 @@ img {
     gap: 10px !important;
   }
   .figma-trending-nav {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 15px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 5px;
+  }
+  .figma-trending-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .figma-trending-nav-item, .figma-trending-nav-active {
+    font-size: 14px !important;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .shop-videos-row {
     flex-wrap: nowrap !important;

@@ -720,7 +720,9 @@ img {
   .subscribe-form-container { max-width: 100% !important; margin-top: 0 !important; width: 100%; }
   .figma-trending-title { font-size: 48px !important; margin-bottom: 10px; }
   .figma-trending-title-wrapper { gap: 10px !important; }
-  .figma-trending-nav { flex-wrap: wrap; gap: 15px; }
+  .figma-trending-nav { flex-wrap: nowrap; gap: 15px; overflow-x: auto; scrollbar-width: none; padding-bottom: 5px; }
+  .figma-trending-nav::-webkit-scrollbar { display: none; }
+  .figma-trending-nav-item, .figma-trending-nav-active { font-size: 14px !important; white-space: nowrap; flex-shrink: 0; }
   .shop-videos-row { flex-wrap: nowrap !important; overflow-x: auto; scroll-snap-type: x mandatory; justify-content: flex-start !important; scrollbar-width: none; }
   .shop-videos-row::-webkit-scrollbar { display: none; }
   .shop-videos-item { min-width: 65% !important; scroll-snap-align: center; margin-bottom: 0 !important; flex-shrink: 0; }

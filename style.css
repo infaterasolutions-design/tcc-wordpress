@@ -835,12 +835,13 @@ img {
 .article-container {
   width: 100%;
   max-width: 837px;
-  flex-shrink: 0;
+  flex-shrink: 1;
   position: relative;
   overflow-x: hidden;
 }
 .sidebar-container {
   flex: 1;
+  min-width: 280px;
 }
 @media (max-width: 1024px) {
   .sidebar-page-container {

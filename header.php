@@ -4,7 +4,52 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<?php wp_head(); ?>
+	<style>
+/* CRITICAL SIDEBAR LAYOUT OVERRIDES (Cache Busting) */
+.sidebar-page-container {
+    max-width: 1240px !important;
+    margin: 0 auto !important;
+    padding: 3rem 1rem !important;
+    display: flex !important;
+    gap: 60px !important;
+    align-items: flex-start !important;
+}
+.sidebar-page-container .article-container {
+    flex: 1 !important;
+    width: 100% !important;
+    max-width: 837px !important;
+    position: relative !important;
+    overflow-x: hidden !important;
+    min-width: 0 !important; /* Prevents flex blowout */
+}
+.sidebar-page-container .sidebar-container {
+    width: 100% !important;
+    max-width: 340px !important;
+    flex-shrink: 0 !important;
+}
+/* Fix for full-width sliders/images in sidebar layout */
+.sidebar-page-container .alignfull,
+.sidebar-page-container .alignwide,
+.sidebar-page-container .elementor-section-stretched {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    transform: none !important;
+}
+@media (max-width: 1024px) {
+    .sidebar-page-container {
+        flex-direction: column !important;
+        padding: 2rem 1rem !important;
+        gap: 40px !important;
+    }
+    .sidebar-page-container .sidebar-container {
+        max-width: 100% !important;
+    }
+}
+</style>
+<?php wp_head(); ?>
 	<style>
 		@media (max-width: 1200px) {
 			.desktop-nav { display: none !important; }

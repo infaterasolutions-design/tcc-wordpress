@@ -59,6 +59,10 @@ body, html {
     display: block !important;
     max-width: 100% !important;
 }
+.article-body img {
+    max-width: 100% !important;
+    height: auto !important;
+}
 </style>
 <?php wp_head(); ?>
 	<style>

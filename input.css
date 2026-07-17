@@ -200,11 +200,9 @@ img {
 .recent-card .category { font-size: 0.65rem; font-weight: bold; color: #888; letter-spacing: 0.1em; margin-bottom: 0.4rem; display: block; }
 
 /* Subscribe Section */
-.subscribe-section { background-color: var(--color-accent); padding: 1.5rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
-.subscribe-section h3 { font-size: 1.5rem; }
-.subscribe-section p { font-size: 0.8rem; color: var(--color-gray); }
-.subscribe-input-group input { padding: 0.5rem 1rem; border: 1px solid var(--color-border); outline: none; width: 100%; max-width: 250px; }
-.subscribe-input-group button { background-color: #cc8e8e; color: white; border: none; padding: 0.5rem 1.5rem; cursor: pointer; font-size: 0.8rem; }
+.subscribe-section { display: flex; align-items: center; justify-content: space-between; background-color: #FAF6EE; padding: 2rem 3rem; margin: 4rem auto; width: 100%; border: 1px solid #EAE3D5; border-radius: 8px; }
+.subscribe-text-container { flex: 1; min-width: 300px; margin-right: 2rem; }
+.subscribe-form-container { flex: 1; min-width: 300px; max-width: 500px; }
 
 /* Shop Videos Row */
 .shop-videos-title { flex: 0.8; display: flex; align-items: center; justify-content: center; position: -webkit-sticky; left: 0; z-index: 0; background-color: var(--color-accent); }
@@ -717,8 +715,12 @@ img {
   .trending-list { border-left: none !important; padding-left: 0 !important; margin-top: 2rem !important; }
   .trending-nav, .recent-nav { display: none !important; }
   .recent-grid { grid-template-columns: 1fr !important; }
-  .subscribe-section { flex-direction: column !important; text-align: center; gap: 1.5rem !important; }
-  .subscribe-input-group { width: 100%; justify-content: center; }
+  .subscribe-section { flex-direction: column !important; text-align: center; gap: 1.5rem !important; padding: 2rem 1.5rem !important; }
+  .subscribe-text-container { margin-right: 0 !important; margin-bottom: 1rem; }
+  .subscribe-form-container { max-width: 100% !important; margin-top: 0 !important; width: 100%; }
+  .figma-trending-title { font-size: 48px !important; margin-bottom: 10px; }
+  .figma-trending-title-wrapper { gap: 10px !important; }
+  .figma-trending-nav { flex-wrap: wrap; gap: 15px; }
   .shop-videos-row { flex-wrap: nowrap !important; overflow-x: auto; scroll-snap-type: x mandatory; justify-content: flex-start !important; scrollbar-width: none; }
   .shop-videos-row::-webkit-scrollbar { display: none; }
   .shop-videos-item { min-width: 65% !important; scroll-snap-align: center; margin-bottom: 0 !important; flex-shrink: 0; }

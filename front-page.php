@@ -259,13 +259,13 @@ get_header(); ?>
 	</section>
 
 	<!-- Subscribe -->
-	<section class="subscribe-section" style="display: flex !important; flex-wrap: wrap; align-items: center; justify-content: space-between; background-color: #FAF6EE; padding: 2rem 3rem; margin: 4rem auto; width: 100%; border: 1px solid #EAE3D5; border-radius: 8px;">
-		<div style="flex: 1; min-width: 300px; margin-right: 2rem;">
+	<section class="subscribe-section" style="background-color: #FAF6EE; margin: 4rem auto; border: 1px solid #EAE3D5; border-radius: 8px;">
+		<div class="subscribe-text-container">
 			<h3 class="text-serif" style="font-size: 2rem; color: #2C2C2C; margin-bottom: 0.5rem; line-height: 1.2;">Join the Newsletter</h3>
 			<p class="text-sans" style="font-size: 1rem; color: #666; margin: 0;">Sign up for weekly style inspiration straight to your inbox.</p>
 		</div>
 		
-		<div style="flex: 1; min-width: 300px; max-width: 500px; margin-top: 1rem;">
+		<div class="subscribe-form-container">
 			<form id="tcc-newsletter-form" class="subscribe-form" style="display: flex; gap: 0; width: 100%; border: 1px solid #D5D5D5; border-radius: 4px; overflow: hidden; background: #FFF;" onsubmit="event.preventDefault(); this.parentElement.innerHTML = '<div style=\'padding: 0.8rem; width: 100%; text-align: left;\'><span style=\'color: #4CAF50; font-weight: 600; font-size: 1.1rem;\'>✓ You\'re on the list!</span></div>';">
 				<input type="email" placeholder="Email Address" required style="flex: 1; padding: 0.8rem 1rem; border: none; outline: none; font-size: 1rem; width: 100%; color: #2C2C2C;" />
 				<button type="submit" class="uppercase text-sans" style="background-color: #C5DAD4; color: #1F2937; border: none; padding: 0.8rem 1.5rem; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#B3CBC4'" onmouseout="this.style.backgroundColor='#C5DAD4'">SUBSCRIBE</button>

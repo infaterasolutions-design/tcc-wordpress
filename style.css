@@ -836,6 +836,8 @@ img {
   width: 100%;
   max-width: 837px;
   flex-shrink: 0;
+  position: relative;
+  overflow-x: hidden;
 }
 .sidebar-container {
   flex: 1;

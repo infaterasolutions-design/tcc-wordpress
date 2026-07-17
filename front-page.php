@@ -259,17 +259,17 @@ get_header(); ?>
 	</section>
 
 	<!-- Subscribe -->
-	<section class="subscribe-section" style="display: block !important; background-color: #FAF6EE; padding: 5rem 2rem; margin: 4rem auto; max-width: 1240px; border: 1px solid #EAE3D5; border-radius: 12px; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);">
-		<div style="max-width: 600px; margin: 0 auto; text-align: center;">
-			<h3 class="text-serif" style="font-size: 2.8rem; color: #2C2C2C; margin-bottom: 1rem; line-height: 1.2;">Join the Newsletter</h3>
-			<p class="text-sans" style="font-size: 1.1rem; color: #666; margin-bottom: 2.5rem; line-height: 1.6;">Sign up for weekly style inspiration, exclusive tips, and handpicked recommendations delivered straight to your inbox.</p>
-			
-			<form id="tcc-newsletter-form" class="subscribe-form" style="display: flex; gap: 0; max-width: 500px; margin: 0 auto; border: 1px solid #D5D5D5; border-radius: 6px; overflow: hidden; background: #FFF; box-shadow: 0 4px 6px rgba(0,0,0,0.02);" onsubmit="event.preventDefault(); this.innerHTML = '<div style=\'padding: 1.5rem; width: 100%; text-align: center;\'><span style=\'color: #4CAF50; font-weight: 600; font-size: 1.2rem; display: block; margin-bottom: 0.5rem;\'>✓ You\'re on the list!</span><span style=\'color: #666; font-size: 0.9rem;\'>Keep an eye on your inbox for our next issue.</span></div>';">
-				<input type="email" placeholder="Enter your email address" required style="flex: 1; padding: 1.2rem 1.5rem; border: none; outline: none; font-size: 1.05rem; width: 100%; color: #2C2C2C;" />
-				<button type="submit" class="uppercase text-sans" style="background-color: #C5DAD4; color: #1F2937; border: none; padding: 1.2rem 2.5rem; font-weight: 600; font-size: 0.95rem; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#B3CBC4'" onmouseout="this.style.backgroundColor='#C5DAD4'">SUBSCRIBE</button>
+	<section class="subscribe-section" style="display: flex !important; flex-wrap: wrap; align-items: center; justify-content: space-between; background-color: #FAF6EE; padding: 2rem 3rem; margin: 4rem auto; width: 100%; border: 1px solid #EAE3D5; border-radius: 8px;">
+		<div style="flex: 1; min-width: 300px; margin-right: 2rem;">
+			<h3 class="text-serif" style="font-size: 2rem; color: #2C2C2C; margin-bottom: 0.5rem; line-height: 1.2;">Join the Newsletter</h3>
+			<p class="text-sans" style="font-size: 1rem; color: #666; margin: 0;">Sign up for weekly style inspiration straight to your inbox.</p>
+		</div>
+		
+		<div style="flex: 1; min-width: 300px; max-width: 500px; margin-top: 1rem;">
+			<form id="tcc-newsletter-form" class="subscribe-form" style="display: flex; gap: 0; width: 100%; border: 1px solid #D5D5D5; border-radius: 4px; overflow: hidden; background: #FFF;" onsubmit="event.preventDefault(); this.parentElement.innerHTML = '<div style=\'padding: 0.8rem; width: 100%; text-align: left;\'><span style=\'color: #4CAF50; font-weight: 600; font-size: 1.1rem;\'>✓ You\'re on the list!</span></div>';">
+				<input type="email" placeholder="Email Address" required style="flex: 1; padding: 0.8rem 1rem; border: none; outline: none; font-size: 1rem; width: 100%; color: #2C2C2C;" />
+				<button type="submit" class="uppercase text-sans" style="background-color: #C5DAD4; color: #1F2937; border: none; padding: 0.8rem 1.5rem; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#B3CBC4'" onmouseout="this.style.backgroundColor='#C5DAD4'">SUBSCRIBE</button>
 			</form>
-			
-			<p style="font-size: 0.85rem; color: #9CA3AF; margin-top: 1.5rem; font-style: italic;">No spam. Unsubscribe at any time.</p>
 		</div>
 	</section>
 

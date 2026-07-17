@@ -843,6 +843,17 @@ img {
   flex: 1;
   min-width: 280px;
 }
+.sidebar-page-container .alignfull,	.sidebar-page-container .alignwide,	.sidebar-page-container .elementor-section-stretched {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  left: 0 !important;
+  transform: none !important;
+}
+#grow-wp-data,	.grow-recommended-content,	#grow-recommended-content,	.grow-inline-recommended {
+  display: none !important;
+}
 @media (max-width: 1024px) {
   .sidebar-page-container {
     flex-direction: column;

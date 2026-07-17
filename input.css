@@ -314,6 +314,26 @@ img {
 			min-width: 280px;
 		}
 
+		/* Fix for full-width sliders/images in sidebar layout */
+		.sidebar-page-container .alignfull,
+		.sidebar-page-container .alignwide,
+		.sidebar-page-container .elementor-section-stretched {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+			width: 100% !important;
+			max-width: 100% !important;
+			left: 0 !important;
+			transform: none !important;
+		}
+
+		/* Hide Mediavine Grow Recommended Section */
+		#grow-wp-data, 
+		.grow-recommended-content,
+		#grow-recommended-content,
+		.grow-inline-recommended {
+			display: none !important;
+		}
+
 		@media (max-width: 1024px) {
 			.sidebar-page-container {
 				flex-direction: column;

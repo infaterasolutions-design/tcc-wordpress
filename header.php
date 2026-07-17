@@ -53,7 +53,10 @@ body, html {
     overflow-x: hidden !important;
     max-width: 100vw !important;
 }
-img, figure, video, iframe, .wp-block-image {
+.article-hero-image {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
     max-width: 100% !important;
 }
 </style>

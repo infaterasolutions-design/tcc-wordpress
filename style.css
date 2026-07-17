@@ -1438,21 +1438,30 @@ img {
   }
   .figma-trending-title-wrapper {
     gap: 10px !important;
+    width: 100%;
+    max-width: 100vw;
+    min-width: 0;
+    overflow: hidden;
   }
   .figma-trending-nav {
+    width: 100%;
+    display: flex;
     flex-wrap: nowrap;
-    gap: 15px;
+    gap: 10px;
     overflow-x: auto;
     scrollbar-width: none;
     padding-bottom: 5px;
+    -webkit-overflow-scrolling: touch;
   }
   .figma-trending-nav::-webkit-scrollbar {
     display: none;
   }
   .figma-trending-nav-item, .figma-trending-nav-active {
-    font-size: 14px !important;
+    font-size: 11px !important;
+    letter-spacing: 0;
     white-space: nowrap;
     flex-shrink: 0;
+    padding: 2px 0;
   }
   .shop-videos-row {
     flex-wrap: nowrap !important;

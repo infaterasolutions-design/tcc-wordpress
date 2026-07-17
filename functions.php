@@ -4,7 +4,7 @@
  */
 
 if ( ! defined( 'TCC_VERSION' ) ) {
-	define( 'TCC_VERSION', '1.0.6' );
+	define( 'TCC_VERSION', '1.0.7' );
 }
 
 /**
@@ -70,8 +70,8 @@ function tcc_scripts() {
     
 	// Tailwind CSS v4 via compiled style.css
 
-	// Main JS for AJAX
-	wp_enqueue_script( 'tcc-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true );
+	// Main JS for AJAX and interactivity
+	wp_enqueue_script( 'tcc-main', get_template_directory_uri() . '/assets/js/main.js', array(), TCC_VERSION, true );
 	wp_localize_script( 'tcc-main', 'tcc_ajax', array(
 		'url'   => admin_url( 'admin-ajax.php' ),
 		'nonce' => wp_create_nonce( 'tcc_load_more_nonce' )

@@ -6,14 +6,14 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 	<style>
-		@media (max-width: 900px) {
+		@media (max-width: 1200px) {
 			.desktop-nav { display: none !important; }
 			.desktop-shop-btn { display: none !important; }
 			.desktop-socials { display: none !important; }
 			.mobile-search-icon { display: block !important; }
 			.hamburger-icon { display: block !important; }
 		}
-		@media (min-width: 901px) {
+		@media (min-width: 1201px) {
 			.hamburger-icon { display: none !important; }
 		}
 		.desktop-nav ul {

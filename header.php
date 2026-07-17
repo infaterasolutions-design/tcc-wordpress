@@ -48,6 +48,15 @@
         max-width: 100% !important;
     }
 }
+/* Prevent Horizontal Scroll & Image Blowout */
+body, html {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+}
+img, figure, video, iframe, .wp-block-image {
+    max-width: 100% !important;
+    height: auto !important;
+}
 </style>
 <?php wp_head(); ?>
 	<style>

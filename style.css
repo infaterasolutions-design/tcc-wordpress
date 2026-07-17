@@ -1969,6 +1969,11 @@ img {
     align-items: flex-start;
     gap: 20px;
   }
+  .figma-trending-list-num {
+    font-size: 42px;
+    font-weight: 800;
+    width: 45px;
+  }
 }
 @property --tw-rotate-x {
   syntax: "*";

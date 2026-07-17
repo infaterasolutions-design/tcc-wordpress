@@ -62,8 +62,8 @@ add_action( 'widgets_init', 'tcc_widgets_init' );
  * Enqueue scripts and styles.
  */
 function tcc_scripts() {
-	// Google Fonts
-	wp_enqueue_style( 'tcc-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Great+Vibes&display=swap', array(), null );
+	// Google Fonts (Optimized Payload)
+	wp_enqueue_style( 'tcc-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap', array(), null );
 	
 	// Theme stylesheet
 	wp_enqueue_style( 'tcc-style', get_stylesheet_uri(), array(), TCC_VERSION );
@@ -269,7 +269,21 @@ add_action('wp_enqueue_scripts', function() {
     if (!is_admin_bar_showing()) {
         wp_deregister_style('dashicons');
     }
-}, 20);
+    wp_dequeue_style( 'wp-block-library' );
+    wp_dequeue_style( 'wp-block-library-theme' );
+    wp_dequeue_style( 'wc-blocks-style' );
+    wp_dequeue_style( 'global-styles' );
+    wp_dequeue_style( 'classic-theme-styles' );
+}, 100);
+
+add_filter('script_loader_tag', function($tag, $handle, $src) {
+    if (strpos($handle, 'google-site-kit') !== false || strpos($src, 'googletagmanager.com') !== false || strpos($src, 'grow.me') !== false) {
+        if (strpos($tag, ' defer') === false && strpos($tag, ' async') === false) {
+            $tag = str_replace(' src', ' defer="defer" src', $tag);
+        }
+    }
+    return $tag;
+}, 10, 3);
 
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'rsd_link');
@@ -339,3 +353,84 @@ add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, 
     
     return $picture;
 }, 10, 5);
+
+add_filter('the_content', function($content) {
+    if (empty($content)) return $content;
+    
+    $upload_dir = wp_get_upload_dir();
+    
+    return preg_replace_callback('/<img[^>]+src=[\'"]([^\'"]+\.(?:jpg|jpeg|png|webp))[\'"][^>]*>/i', function($matches) use ($upload_dir) {
+        $img_tag = $matches[0];
+        $src = $matches[1];
+        
+        $avif_src = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $src);
+        $avif_path = str_replace( $upload_dir['baseurl'], $upload_dir['basedir'], $avif_src );
+        
+        if ( file_exists( $avif_path ) ) {
+            $picture = '<picture class="tcc-picture-wrapper" style="display: block; width: 100%; height: 100%;">';
+            $picture .= '<source srcset="' . esc_attr($avif_src) . '" type="image/avif">';
+            $picture .= $img_tag;
+            $picture .= '</picture>';
+            return $picture;
+        }
+        
+        return $img_tag;
+    }, $content);
+}, 99);
+
+/**
+ * REST API for Trending Tabs
+ */
+add_action('rest_api_init', function() {
+    register_rest_route('tcc/v1', '/trending/(?P<tab>[a-zA-Z0-9-]+)', array(
+        'methods' => 'GET',
+        'callback' => 'tcc_get_trending_tab',
+        'permission_callback' => '__return_true',
+    ));
+});
+
+function tcc_get_trending_tab($request) {
+    $tab_id = $request['tab'];
+    $tabs_config = [
+        'popular' => ['post_type' => 'post', 'posts_per_page' => 4, 'orderby' => 'comment_count'],
+        'travel-tips' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'travel-tips'],
+        'outfit-guides' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'outfit-guides'],
+        'reviews' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'reviews'],
+    ];
+
+    $btn_texts = [
+        'popular' => 'READ MORE POPULAR POSTS',
+        'travel-tips' => 'READ MORE TRAVEL TIPS',
+        'outfit-guides' => 'READ MORE OUTFIT GUIDES',
+        'reviews' => 'READ MORE REVIEWS'
+    ];
+
+    if (!isset($tabs_config[$tab_id])) {
+        return new WP_Error('invalid_tab', 'Invalid tab ID', array('status' => 404));
+    }
+
+    $q = new WP_Query($tabs_config[$tab_id]);
+    $posts = [];
+    if ($q->have_posts()) {
+        while ($q->have_posts()) {
+            $q->the_post();
+            $cat = get_the_category();
+            $dummy_img = get_post_meta(get_the_ID(), '_tcc_dummy_image', true) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400';
+            $img_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : $dummy_img;
+            
+            $posts[] = [
+                'title' => get_the_title(),
+                'permalink' => get_permalink(),
+                'excerpt' => wp_trim_words(get_the_excerpt(), 15, '&hellip;'),
+                'category' => $cat ? esc_html($cat[0]->name) : '',
+                'image' => $img_url
+            ];
+        }
+    }
+    wp_reset_postdata();
+
+    return rest_ensure_response([
+        'btn_text' => $btn_texts[$tab_id],
+        'posts' => $posts
+    ]);
+}

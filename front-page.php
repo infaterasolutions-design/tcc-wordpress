@@ -41,31 +41,31 @@ get_header(); ?>
 		];
 		
 		$tabs_data = [];
-		foreach ($tabs_config as $tab) {
-			$q = new WP_Query($tab['query']);
-			$posts = [];
-			if ($q->have_posts()) {
-				while ($q->have_posts()) {
-					$q->the_post();
-					$cat = get_the_category();
-					$dummy_img = get_post_meta(get_the_ID(), '_tcc_dummy_image', true) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400';
-					$img_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : $dummy_img;
-					
-					$posts[] = [
-						'title' => get_the_title(),
-						'permalink' => get_permalink(),
-						'excerpt' => wp_trim_words(get_the_excerpt(), 15, '&hellip;'),
-						'category' => $cat ? esc_html($cat[0]->name) : '',
-						'image' => $img_url
-					];
-				}
+		// Only pre-load the first tab to save query time!
+		$first_tab = $tabs_config[0];
+		$q = new WP_Query($first_tab['query']);
+		$posts = [];
+		if ($q->have_posts()) {
+			while ($q->have_posts()) {
+				$q->the_post();
+				$cat = get_the_category();
+				$dummy_img = get_post_meta(get_the_ID(), '_tcc_dummy_image', true) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400';
+				$img_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : $dummy_img;
+				
+				$posts[] = [
+					'title' => get_the_title(),
+					'permalink' => get_permalink(),
+					'excerpt' => wp_trim_words(get_the_excerpt(), 15, '&hellip;'),
+					'category' => $cat ? esc_html($cat[0]->name) : '',
+					'image' => $img_url
+				];
 			}
-			wp_reset_postdata();
-			$tabs_data[$tab['id']] = [
-				'btn_text' => $tab['btn_text'],
-				'posts' => $posts
-			];
 		}
+		wp_reset_postdata();
+		$tabs_data[$first_tab['id']] = [
+			'btn_text' => $first_tab['btn_text'],
+			'posts' => $posts
+		];
 		?>
 		
 		<div class="figma-trending-title-wrapper">
@@ -99,7 +99,7 @@ get_header(); ?>
 
 		<script>
 		document.addEventListener('DOMContentLoaded', function() {
-			const tabsData = <?php echo json_encode($tabs_data); ?>;
+			let tabsData = <?php echo json_encode($tabs_data); ?>;
 			const navItems = document.querySelectorAll('#figma-tabs-nav span');
 			
 			// DOM Elements
@@ -119,6 +119,24 @@ get_header(); ?>
 			}
 			
 			function renderTab(tabId) {
+				if (tabsData[tabId]) {
+					_render(tabId);
+				} else {
+					listBtn.textContent = 'LOADING...';
+					fetch('/wp-json/tcc/v1/trending/' + tabId)
+						.then(res => res.json())
+						.then(data => {
+							tabsData[tabId] = data;
+							_render(tabId);
+						})
+						.catch(err => {
+							console.error(err);
+							listBtn.textContent = 'ERROR LOADING POSTS';
+						});
+				}
+			}
+
+			function _render(tabId) {
 				const data = tabsData[tabId];
 				if (!data || !data.posts || data.posts.length === 0) return;
 				

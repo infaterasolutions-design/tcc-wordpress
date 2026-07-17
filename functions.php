@@ -4,7 +4,7 @@
  */
 
 if ( ! defined( 'TCC_VERSION' ) ) {
-	define( 'TCC_VERSION', '1.0.8' );
+	define( 'TCC_VERSION', '1.0.9' );
 }
 
 /**

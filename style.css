@@ -1891,42 +1891,50 @@ img {
   align-items: flex-start;
   padding-bottom: 25px;
   margin-bottom: 25px;
-  border-bottom: 1px solid #EBEBEB;
   text-decoration: none;
   cursor: pointer;
 }
 .figma-trending-list-num {
   font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  color: #B3B3B3;
-  margin-right: 15px;
-  width: 25px;
+  font-size: 80px;
+  line-height: 0.8;
+  font-weight: 400;
+  color: #DCD3C6;
+  margin-right: 20px;
+  width: 60px;
+  text-align: center;
 }
 .figma-trending-list-title {
   font-family: 'Inter', sans-serif;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 800;
   line-height: 1.4;
-  color: #7B7B7B;
-  text-transform: capitalize;
+  color: #DCD3C6;
+  text-transform: uppercase;
+  margin-top: 5px;
 }
 .active-num {
   color: #000;
-  font-style: italic;
+  font-weight: 700;
+  font-style: normal;
 }
 .active-title {
   color: #000;
-  font-weight: 700;
 }
 .figma-trending-list-btn {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  padding: 15px;
   font-family: 'Inter', sans-serif;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #000;
-  text-decoration: underline;
+  text-decoration: none;
   margin-top: auto;
+  box-sizing: border-box;
 }
 @media (max-width: 1024px) {
   .figma-trending-grid {
@@ -1968,11 +1976,6 @@ img {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-  }
-  .figma-trending-list-num {
-    font-size: 42px;
-    font-weight: 800;
-    width: 45px;
   }
 }
 @property --tw-rotate-x {

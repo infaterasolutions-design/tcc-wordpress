@@ -804,12 +804,12 @@ img {
 		.figma-trending-featured-excerpt { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.69; letter-spacing: 1px; color: #000; margin-bottom: 30px; }
 		.figma-trending-featured-btn { background: #F4F1EC; padding: 10px 20px; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #000; text-decoration: none; display: inline-block; align-self: flex-start; }
 		.figma-trending-list { flex: 3; height: 100%; border-left: 2.4px solid #000; padding-left: 3%; display: flex; flex-direction: column; justify-content: flex-start; }
-		.figma-trending-list-item { display: flex; align-items: flex-start; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #EBEBEB; text-decoration: none; cursor: pointer; }
-		.figma-trending-list-num { font-family: 'Playfair Display', serif; font-size: 24px; color: #B3B3B3; margin-right: 15px; width: 25px; }
-		.figma-trending-list-title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 500; line-height: 1.4; color: #7B7B7B; text-transform: capitalize; }
-		.active-num { color: #000; font-style: italic; }
-		.active-title { color: #000; font-weight: 700; }
-		.figma-trending-list-btn { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #000; text-decoration: underline; margin-top: auto; }
+		.figma-trending-list-item { display: flex; align-items: flex-start; padding-bottom: 25px; margin-bottom: 25px; text-decoration: none; cursor: pointer; }
+		.figma-trending-list-num { font-family: 'Playfair Display', serif; font-size: 80px; line-height: 0.8; font-weight: 400; color: #DCD3C6; margin-right: 20px; width: 60px; text-align: center; }
+		.figma-trending-list-title { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; line-height: 1.4; color: #DCD3C6; text-transform: uppercase; margin-top: 5px; }
+		.active-num { color: #000; font-weight: 700; font-style: normal; }
+		.active-title { color: #000; }
+		.figma-trending-list-btn { background: #000; color: #fff; text-align: center; width: 100%; padding: 15px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; margin-top: auto; box-sizing: border-box; }
 
 		@media (max-width: 1024px) {
 			.figma-trending-grid { flex-direction: column; height: auto; }
@@ -819,5 +819,4 @@ img {
 			.figma-trending-list { width: 100%; border-left: none; border-top: 2.4px solid #000; padding-left: 0; padding-top: 30px; margin-top: 30px; height: auto; flex: auto; }
 			.figma-trending-title { font-size: 80px; margin-left: 0; margin-top: 0; }
 			.figma-trending-title-wrapper { flex-direction: column; align-items: flex-start; gap: 20px; }
-			.figma-trending-list-num { font-size: 42px; font-weight: 800; width: 45px; }
 		}

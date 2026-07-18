@@ -2024,3 +2024,20 @@ img {
     }
   }
 }
+/* AVIF PICTURE WRAPPER SAFARI FIX */
+picture.tcc-picture-wrapper {
+  display: block;
+  width: 100%;
+}
+.top-card-image, .bottom-card-image, .post-card-img-container {
+  display: flex !important;
+}
+.top-card-image picture.tcc-picture-wrapper,
+.bottom-card-image picture.tcc-picture-wrapper,
+.post-card-img-container picture.tcc-picture-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

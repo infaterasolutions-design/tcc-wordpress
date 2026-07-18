@@ -360,12 +360,16 @@ add_filter('wp_handle_upload', function($upload) {
         $has_gd = function_exists('imageavif');
         
         if ($has_imagick || $has_gd) {
+            $ext = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
+            
+            // Skip PNGs completely to preserve absolute sharpness on text/logos
+            if ($ext === 'png') {
+                return $metadata;
+            }
+            
             $avif_path = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $file_path);
             $success = false;
-            
-            // Determine quality based on extension (PNG = 100 lossless, JPG/WEBP = 90)
-            $ext = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
-            $quality = ($ext === 'png') ? 100 : 90;
+            $quality = 90;
             
             if ($has_imagick) {
                 try {

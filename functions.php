@@ -345,6 +345,65 @@ add_filter( 'upload_mimes', function( $mimes ) {
     return $mimes;
 } );
 
+// 4. Convert master file to AVIF immediately upon upload
+add_filter('wp_handle_upload', function($upload) {
+    if (isset($upload['error']) && $upload['error']) {
+        return $upload;
+    }
+    
+    $file_path = $upload['file'];
+    $mime_type = $upload['type'];
+    
+    // Only convert JPEG, PNG, WEBP
+    if (in_array($mime_type, ['image/jpeg', 'image/png', 'image/webp'])) {
+        $has_imagick = class_exists('Imagick');
+        $has_gd = function_exists('imageavif');
+        
+        if ($has_imagick || $has_gd) {
+            $avif_path = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $file_path);
+            $success = false;
+            
+            if ($has_imagick) {
+                try {
+                    $image = new Imagick($file_path);
+                    $image->setImageFormat('avif');
+                    $image->setImageCompressionQuality(80);
+                    $image->writeImage($avif_path);
+                    $image->clear();
+                    $image->destroy();
+                    $success = true;
+                } catch (Exception $e) {}
+            } else if ($has_gd) {
+                if ($mime_type === 'image/jpeg') {
+                    $image = @imagecreatefromjpeg($file_path);
+                } else if ($mime_type === 'image/png') {
+                    $image = @imagecreatefrompng($file_path);
+                } else if ($mime_type === 'image/webp') {
+                    $image = @imagecreatefromwebp($file_path);
+                }
+                if (isset($image) && $image !== false) {
+                    if (imageavif($image, $avif_path, 80)) {
+                        $success = true;
+                    }
+                    imagedestroy($image);
+                }
+            }
+            
+            if ($success && file_exists($avif_path)) {
+                // Delete original file
+                @unlink($file_path);
+                
+                // Update upload array to point to new AVIF file
+                $upload['file'] = $avif_path;
+                $upload['url'] = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $upload['url']);
+                $upload['type'] = 'image/avif';
+            }
+        }
+    }
+    
+    return $upload;
+});
+
 // 7. Detect AVIF Support and Report to Admin
 add_action('admin_notices', function() {
     $has_imagick = class_exists('Imagick') && count(Imagick::queryFormats('AVIF')) > 0;

@@ -34,26 +34,20 @@ foreach ($years as $year) {
                     try {
                         $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
                         
-                        // IF PNG: Delete any existing AVIF and skip conversion to preserve sharpness
-                        if ($ext === 'png') {
-                            if (file_exists($avif_path)) {
-                                @unlink($avif_path);
-                                echo "Deleted bad AVIF for PNG: $path\n";
-                            }
-                            continue;
-                        }
-                        
                         echo "Converting: $path\n";
                         
                         if ($force && file_exists($avif_path)) {
                             @unlink($avif_path);
                         }
                         
-                        $quality = 90;
+                        $quality = ($ext === 'png') ? 100 : 90;
                         
                         if ($has_imagick) {
                             $image = new Imagick($path);
                             $image->setImageFormat('avif');
+                            if ($ext === 'png') {
+                                $image->setOption('heic:lossless', 'true');
+                            }
                             $image->setImageCompressionQuality($quality);
                             $image->writeImage($avif_path);
                             $image->clear();
@@ -61,6 +55,8 @@ foreach ($years as $year) {
                         } else if ($has_gd) {
                             if ($ext === 'jpg' || $ext === 'jpeg') {
                                 $image = @imagecreatefromjpeg($path);
+                            } else if ($ext === 'png') {
+                                $image = @imagecreatefrompng($path);
                             } else if ($ext === 'webp') {
                                 $image = @imagecreatefromwebp($path);
                             }

@@ -324,22 +324,41 @@ remove_action('wp_head', 'wp_shortlink_wp_head');
  * 4. AVIF Upload Hook & Picture Tag Filter
  */
 add_filter('wp_generate_attachment_metadata', function($metadata, $attachment_id) {
-    if ( ! class_exists( 'Imagick' ) ) return $metadata;
+    $has_imagick = class_exists('Imagick');
+    $has_gd = function_exists('imagecreatefromjpeg') && function_exists('imageavif');
+    
+    if ( ! $has_imagick && ! $has_gd ) return $metadata;
+    
     $file = get_attached_file($attachment_id);
     if ( ! $file || ! file_exists( $file ) ) return $metadata;
     $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
     if ( ! in_array( $ext, ['jpg', 'jpeg', 'png', 'webp'] ) ) return $metadata;
 
-    $generate_avif = function($source_file) {
+    $generate_avif = function($source_file) use ($has_imagick, $has_gd) {
         $avif_file = preg_replace('/\.[a-zA-Z0-9]+$/', '.avif', $source_file);
         if ( ! file_exists( $avif_file ) ) {
             try {
-                $image = new Imagick($source_file);
-                $image->setImageFormat('avif');
-                $image->setImageCompressionQuality(80);
-                $image->writeImage($avif_file);
-                $image->clear();
-                $image->destroy();
+                $ext = strtolower(pathinfo($source_file, PATHINFO_EXTENSION));
+                if ($has_imagick) {
+                    $image = new Imagick($source_file);
+                    $image->setImageFormat('avif');
+                    $image->setImageCompressionQuality(80);
+                    $image->writeImage($avif_file);
+                    $image->clear();
+                    $image->destroy();
+                } else if ($has_gd) {
+                    if ($ext === 'jpg' || $ext === 'jpeg') {
+                        $image = @imagecreatefromjpeg($source_file);
+                    } else if ($ext === 'png') {
+                        $image = @imagecreatefrompng($source_file);
+                    } else if ($ext === 'webp') {
+                        $image = @imagecreatefromwebp($source_file);
+                    }
+                    if (isset($image) && $image !== false) {
+                        imageavif($image, $avif_file, 80);
+                        imagedestroy($image);
+                    }
+                }
             } catch ( Exception $e ) {
                 error_log('AVIF generation failed: ' . $e->getMessage());
             }

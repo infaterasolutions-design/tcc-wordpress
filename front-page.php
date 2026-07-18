@@ -24,7 +24,7 @@ get_header(); ?>
 		<div class="w-full flex items-center justify-center hero-right">
 			<picture>
 				<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', get_theme_mod( 'tcc_hero_image', 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600' ))); ?>" type="image/avif">
-				<img src="<?php echo esc_url( get_theme_mod( 'tcc_hero_image', 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600' ) ); ?>" alt="Hero image" class="object-cover" />
+				<img src="<?php echo esc_url( get_theme_mod( 'tcc_hero_image', 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600' ) ); ?>" alt="Hero image" class="object-cover" fetchpriority="high" loading="eager" />
 			</picture>
 		</div>
 	</section>
@@ -304,7 +304,7 @@ get_header(); ?>
 				<?php $video_img = "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?auto=format&fit=crop&q=80&w=200&h=300&sig=" . $i; ?>
 				<picture>
 					<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $video_img)); ?>" type="image/avif">
-					<img src="<?php echo esc_url($video_img); ?>" alt="Video" class="w-full object-cover h-[250px]" />
+					<img src="<?php echo esc_url($video_img); ?>" alt="Video" class="w-full object-cover h-[250px]" loading="lazy" />
 				</picture>
 				<button>SHOP NOW</button>
 			</div>
@@ -323,20 +323,20 @@ get_header(); ?>
 			<?php $img1 = "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&q=80&w=400"; ?>
 			<picture class="fp-elsewhere-img1">
 				<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img1)); ?>" type="image/avif">
-				<img src="<?php echo esc_url($img1); ?>" alt="Clothes rack" class="w-full object-cover aspect-[3/4]" />
+				<img src="<?php echo esc_url($img1); ?>" alt="Clothes rack" class="w-full object-cover aspect-[3/4]" loading="lazy" />
 			</picture>
 			<!-- Image 2: Striped sweater -->
 			<?php $img2 = "https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?auto=format&fit=crop&q=80&w=400"; ?>
 			<picture class="fp-elsewhere-img2">
 				<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img2)); ?>" type="image/avif">
-				<img src="<?php echo esc_url($img2); ?>" alt="Striped sweater" class="w-full object-cover aspect-[3/4]" />
+				<img src="<?php echo esc_url($img2); ?>" alt="Striped sweater" class="w-full object-cover aspect-[3/4]" loading="lazy" />
 			</picture>
 			<!-- Image 3: Bag and drink -->
 			<div class="fp-elsewhere-img3-wrapper">
 				<?php $img3 = "https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&q=80&w=400"; ?>
 				<picture class="w-full">
 					<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img3)); ?>" type="image/avif">
-					<img src="<?php echo esc_url($img3); ?>" alt="Bag and drink" class="w-full object-cover aspect-square" />
+					<img src="<?php echo esc_url($img3); ?>" alt="Bag and drink" class="w-full object-cover aspect-square" loading="lazy" />
 				</picture>
 				<div class="fp-elsewhere-handle">@THECOMBOCLOSET</div>
 			</div>
@@ -344,7 +344,7 @@ get_header(); ?>
 			<?php $img4 = "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400"; ?>
 			<picture class="fp-elsewhere-img4">
 				<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img4)); ?>" type="image/avif">
-				<img src="<?php echo esc_url($img4); ?>" alt="Woman walking" class="w-full object-cover aspect-[3/4]" />
+				<img src="<?php echo esc_url($img4); ?>" alt="Woman walking" class="w-full object-cover aspect-[3/4]" loading="lazy" />
 			</picture>
 		</div>
 	</section>

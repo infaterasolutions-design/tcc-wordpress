@@ -22,9 +22,17 @@ get_header(); ?>
 		</div>
 		<!-- Right Half (Image) -->
 		<div class="w-full flex items-center justify-center hero-right">
+			<?php
+			$hero_raw = get_theme_mod( 'tcc_hero_image', 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600' );
+			if (strpos($hero_raw, 'unsplash.com') !== false) {
+				$hero_avif = str_replace('auto=format', 'fm=avif', $hero_raw);
+			} else {
+				$hero_avif = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $hero_raw);
+			}
+			?>
 			<picture>
-				<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', get_theme_mod( 'tcc_hero_image', 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600' ))); ?>" type="image/avif">
-				<img src="<?php echo esc_url( get_theme_mod( 'tcc_hero_image', 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600' ) ); ?>" alt="Hero image" class="object-cover" fetchpriority="high" loading="eager" />
+				<source srcset="<?php echo esc_url($hero_avif); ?>" type="image/avif">
+				<img src="<?php echo esc_url($hero_raw); ?>" alt="Hero image" class="object-cover" fetchpriority="high" loading="eager" />
 			</picture>
 		</div>
 	</section>

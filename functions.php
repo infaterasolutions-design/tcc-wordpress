@@ -334,7 +334,7 @@ add_filter( 'image_editor_output_format', function( $formats ) {
 // 2. Set AVIF quality explicitly
 add_filter( 'wp_editor_set_quality', function( $quality, $mime_type ) {
     if ( 'image/avif' === $mime_type ) {
-        return 80; // Optimal balance of quality and size
+        return 90; // Premium quality baseline
     }
     return $quality;
 }, 10, 2 );
@@ -363,11 +363,15 @@ add_filter('wp_handle_upload', function($upload) {
             $avif_path = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $file_path);
             $success = false;
             
+            // Determine quality based on extension (PNG = 100 lossless, JPG/WEBP = 90)
+            $ext = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
+            $quality = ($ext === 'png') ? 100 : 90;
+            
             if ($has_imagick) {
                 try {
                     $image = new Imagick($file_path);
                     $image->setImageFormat('avif');
-                    $image->setImageCompressionQuality(80);
+                    $image->setImageCompressionQuality($quality);
                     $image->writeImage($avif_path);
                     $image->clear();
                     $image->destroy();
@@ -382,7 +386,7 @@ add_filter('wp_handle_upload', function($upload) {
                     $image = @imagecreatefromwebp($file_path);
                 }
                 if (isset($image) && $image !== false) {
-                    if (imageavif($image, $avif_path, 80)) {
+                    if (imageavif($image, $avif_path, $quality)) {
                         $success = true;
                     }
                     imagedestroy($image);

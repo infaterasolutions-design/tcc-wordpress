@@ -30,10 +30,14 @@ foreach ($years as $year) {
                 if (!file_exists($avif_path)) {
                     try {
                         echo "Converting: $path\n";
+                        
+                        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+                        $quality = ($ext === 'png') ? 100 : 90;
+                        
                         if ($has_imagick) {
                             $image = new Imagick($path);
                             $image->setImageFormat('avif');
-                            $image->setImageCompressionQuality(80);
+                            $image->setImageCompressionQuality($quality);
                             $image->writeImage($avif_path);
                             $image->clear();
                             $image->destroy();
@@ -46,7 +50,7 @@ foreach ($years as $year) {
                                 $image = @imagecreatefromwebp($path);
                             }
                             if ($image !== false) {
-                                imageavif($image, $avif_path, 80);
+                                imageavif($image, $avif_path, $quality);
                                 imagedestroy($image);
                             }
                         }

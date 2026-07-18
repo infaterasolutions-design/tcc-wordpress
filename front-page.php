@@ -60,6 +60,13 @@ get_header(); ?>
 				$dummy_img = get_post_meta(get_the_ID(), '_tcc_dummy_image', true) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400';
 				$img_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : $dummy_img;
 				
+				// Force AVIF for the preloaded background image
+				if (strpos($img_url, 'unsplash.com') !== false) {
+					$img_url = str_replace('auto=format', 'fm=avif', $img_url);
+				} else {
+					$img_url = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $img_url);
+				}
+				
 				$posts[] = [
 					'title' => get_the_title(),
 					'permalink' => get_permalink(),

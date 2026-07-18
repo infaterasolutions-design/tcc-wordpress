@@ -321,81 +321,76 @@ remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'wp_shortlink_wp_head');
 
 /**
- * 4. AVIF Upload Hook & Picture Tag Filter
+ * 4. Native AVIF Support & Picture Tag Filters
  */
-add_filter('wp_generate_attachment_metadata', function($metadata, $attachment_id) {
-    $has_imagick = class_exists('Imagick');
-    $has_gd = function_exists('imagecreatefromjpeg') && function_exists('imageavif');
-    
-    if ( ! $has_imagick && ! $has_gd ) return $metadata;
-    
-    $file = get_attached_file($attachment_id);
-    if ( ! $file || ! file_exists( $file ) ) return $metadata;
-    $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-    if ( ! in_array( $ext, ['jpg', 'jpeg', 'png', 'webp'] ) ) return $metadata;
+// 1. Force WordPress-generated image outputs to AVIF
+add_filter( 'image_editor_output_format', function( $formats ) {
+    $formats['image/jpeg'] = 'image/avif';
+    $formats['image/png']  = 'image/avif';
+    $formats['image/webp'] = 'image/avif';
+    return $formats;
+} );
 
-    $generate_avif = function($source_file) use ($has_imagick, $has_gd) {
-        $avif_file = preg_replace('/\.[a-zA-Z0-9]+$/', '.avif', $source_file);
-        if ( ! file_exists( $avif_file ) ) {
-            try {
-                $ext = strtolower(pathinfo($source_file, PATHINFO_EXTENSION));
-                if ($has_imagick) {
-                    $image = new Imagick($source_file);
-                    $image->setImageFormat('avif');
-                    $image->setImageCompressionQuality(80);
-                    $image->writeImage($avif_file);
-                    $image->clear();
-                    $image->destroy();
-                } else if ($has_gd) {
-                    if ($ext === 'jpg' || $ext === 'jpeg') {
-                        $image = @imagecreatefromjpeg($source_file);
-                    } else if ($ext === 'png') {
-                        $image = @imagecreatefrompng($source_file);
-                    } else if ($ext === 'webp') {
-                        $image = @imagecreatefromwebp($source_file);
-                    }
-                    if (isset($image) && $image !== false) {
-                        imageavif($image, $avif_file, 80);
-                        imagedestroy($image);
-                    }
-                }
-            } catch ( Exception $e ) {
-                error_log('AVIF generation failed: ' . $e->getMessage());
-            }
-        }
-    };
-
-    $generate_avif($file);
-    
-    if ( isset($metadata['sizes']) && is_array($metadata['sizes']) ) {
-        $base_dir = dirname($file);
-        foreach ( $metadata['sizes'] as $size => $size_info ) {
-            $size_file = $base_dir . '/' . $size_info['file'];
-            if ( file_exists($size_file) ) {
-                $generate_avif($size_file);
-            }
-        }
+// 2. Set AVIF quality explicitly
+add_filter( 'wp_editor_set_quality', function( $quality, $mime_type ) {
+    if ( 'image/avif' === $mime_type ) {
+        return 80; // Optimal balance of quality and size
     }
-    
-    return $metadata;
-}, 10, 2);
+    return $quality;
+}, 10, 2 );
 
+// 3. Ensure AVIF uploads are allowed
+add_filter( 'upload_mimes', function( $mimes ) {
+    $mimes['avif'] = 'image/avif';
+    return $mimes;
+} );
+
+// 7. Detect AVIF Support and Report to Admin
+add_action('admin_notices', function() {
+    $has_imagick = class_exists('Imagick') && count(Imagick::queryFormats('AVIF')) > 0;
+    $has_gd = function_exists('imageavif');
+    
+    if ( ! $has_imagick && ! $has_gd ) {
+        echo '<div class="notice notice-error"><p><strong>CRITICAL:</strong> Your server does not support AVIF generation. Both Imagick (with AVIF) and GD (with libavif) are missing. Images will NOT be converted to AVIF automatically.</p></div>';
+    }
+});
 add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, $size, $attr) {
     if ( empty($html) ) return $html;
     
+    $original_url = wp_get_attachment_url($post_thumbnail_id);
+    if (!$original_url) return $html;
+
+    $picture = '<picture class="tcc-picture-wrapper" style="display: block; width: 100%; height: 100%;">';
+
+    if ( strpos($html, '.avif') !== false ) {
+        // Native WP AVIF generation caught! Extract srcset/src for the <source> tag.
+        preg_match('/srcset=[\'"]([^\'"]+)[\'"]/', $html, $srcset_matches);
+        $srcset = !empty($srcset_matches[1]) ? $srcset_matches[1] : '';
+        preg_match('/src=[\'"]([^\'"]+)[\'"]/', $html, $src_matches);
+        $src = !empty($src_matches[1]) ? $src_matches[1] : '';
+        
+        $picture .= '<source srcset="' . esc_attr($srcset ?: $src) . '" type="image/avif">';
+        
+        // Rewrite the <img> fallback to point to the original non-AVIF file
+        $fallback_html = preg_replace('/src=[\'"][^\'"]+[\'"]/', 'src="' . esc_url($original_url) . '"', $html);
+        $fallback_html = preg_replace('/srcset=[\'"][^\'"]+[\'"]/', '', $fallback_html); // remove srcset
+        
+        $picture .= $fallback_html;
+        $picture .= '</picture>';
+        return $picture;
+    }
+    
+    // Legacy support: if WP outputted JPG/WebP, check if our retroactive script generated an AVIF on disk.
     $src = wp_get_attachment_image_url($post_thumbnail_id, $size);
     if ( ! $src ) return $html;
-    
     $avif_src = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $src);
     
-    // Check if the AVIF file actually exists on disk
     $upload_dir = wp_get_upload_dir();
     $avif_path = str_replace( $upload_dir['baseurl'], $upload_dir['basedir'], $avif_src );
     if ( ! file_exists( $avif_path ) ) {
         return $html;
     }
     
-    $picture = '<picture class="tcc-picture-wrapper" style="display: block; width: 100%; height: 100%;">';
     $picture .= '<source srcset="' . esc_url($avif_src) . '" type="image/avif">';
     $picture .= $html;
     $picture .= '</picture>';
@@ -403,24 +398,68 @@ add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, 
     return $picture;
 }, 10, 5);
 
+function tcc_get_picture_tag($src, $alt = '', $classes = '', $styles = '') {
+    $picture = '<picture class="tcc-picture-wrapper" style="display: block; width: 100%; height: 100%;">';
+    
+    if (strpos($src, 'unsplash.com') !== false) {
+        $avif_src = str_replace('auto=format', 'fm=avif', $src);
+        $picture .= '<source srcset="' . esc_url($avif_src) . '" type="image/avif">';
+    } else {
+        $avif_src = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $src);
+        $upload_dir = wp_get_upload_dir();
+        $avif_path = str_replace( $upload_dir['baseurl'], $upload_dir['basedir'], $avif_src );
+        if ( file_exists( $avif_path ) ) {
+            $picture .= '<source srcset="' . esc_url($avif_src) . '" type="image/avif">';
+        }
+    }
+    
+    $picture .= '<img src="' . esc_url($src) . '" alt="' . esc_attr($alt) . '" class="' . esc_attr($classes) . '" style="' . esc_attr($styles) . '" />';
+    $picture .= '</picture>';
+    return $picture;
+}
+
 add_filter('the_content', function($content) {
     if (empty($content)) return $content;
     
     $upload_dir = wp_get_upload_dir();
     
-    return preg_replace_callback('/<img[^>]+src=[\'"]([^\'"]+\.(?:jpg|jpeg|png|webp))[\'"][^>]*>/i', function($matches) use ($upload_dir) {
+    return preg_replace_callback('/<img[^>]+src=[\'"]([^\'"]+)[\'"][^>]*>/i', function($matches) use ($upload_dir) {
         $img_tag = $matches[0];
         $src = $matches[1];
         
-        $avif_src = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $src);
-        $avif_path = str_replace( $upload_dir['baseurl'], $upload_dir['basedir'], $avif_src );
-        
-        if ( file_exists( $avif_path ) ) {
-            $picture = '<picture class="tcc-picture-wrapper" style="display: block; width: 100%; height: 100%;">';
-            $picture .= '<source srcset="' . esc_attr($avif_src) . '" type="image/avif">';
-            $picture .= $img_tag;
+        $picture = '<picture class="tcc-picture-wrapper" style="display: block; width: 100%; height: 100%;">';
+
+        // If the tag is already AVIF natively
+        if (strpos($src, '.avif') !== false) {
+            // Find fallback by assuming the original file has the same base name but .jpg/.png
+            // This is tricky inside content without post_id, so we fallback to a simple replace for common extensions
+            preg_match('/srcset=[\'"]([^\'"]+)[\'"]/', $img_tag, $srcset_matches);
+            $srcset = !empty($srcset_matches[1]) ? $srcset_matches[1] : '';
+            $picture .= '<source srcset="' . esc_attr($srcset ?: $src) . '" type="image/avif">';
+            
+            // Try to find original by stripping WP image sizing e.g., -300x300.avif -> .jpg
+            $fallback_src = preg_replace('/-\d+x\d+\.avif$/i', '.jpg', $src);
+            $fallback_src = str_replace('.avif', '.jpg', $fallback_src);
+            
+            $fallback_html = preg_replace('/src=[\'"][^\'"]+[\'"]/', 'src="' . esc_url($fallback_src) . '"', $img_tag);
+            $fallback_html = preg_replace('/srcset=[\'"][^\'"]+[\'"]/', '', $fallback_html);
+            
+            $picture .= $fallback_html;
             $picture .= '</picture>';
             return $picture;
+        }
+
+        // Legacy / Retroactive AVIF handling
+        if (preg_match('/\.(jpg|jpeg|png|webp)$/i', $src)) {
+            $avif_src = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $src);
+            $avif_path = str_replace( $upload_dir['baseurl'], $upload_dir['basedir'], $avif_src );
+            
+            if ( file_exists( $avif_path ) ) {
+                $picture .= '<source srcset="' . esc_attr($avif_src) . '" type="image/avif">';
+                $picture .= $img_tag;
+                $picture .= '</picture>';
+                return $picture;
+            }
         }
         
         return $img_tag;

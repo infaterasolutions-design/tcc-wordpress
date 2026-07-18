@@ -34,8 +34,7 @@ global $wp_query;
 								<?php if ( has_post_thumbnail() ) : ?>
 									<?php the_post_thumbnail( 'large', array( 'style' => 'width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;', 'class' => 'hover-scale' ) ); ?>
 								<?php else : ?>
-									<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=600'; ?>
-									<img src="<?php echo esc_url($dummy_img); ?>" alt="Placeholder" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="hover-scale" />
+									<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=600'; echo tcc_get_picture_tag($dummy_img, 'Placeholder', 'hover-scale', 'width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;'); ?>
 								<?php endif; ?>
 								<style>
 									.top-card:hover .hover-scale { transform: scale(1.05); }
@@ -80,8 +79,7 @@ global $wp_query;
 									<?php if ( has_post_thumbnail() ) : ?>
 										<?php the_post_thumbnail( 'large', array( 'style' => 'width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;', 'class' => 'hover-scale' ) ); ?>
 									<?php else : ?>
-										<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=600'; ?>
-										<img src="<?php echo esc_url($dummy_img); ?>" alt="Placeholder" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="hover-scale" />
+										<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=600'; echo tcc_get_picture_tag($dummy_img, 'Placeholder', 'hover-scale', 'width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;'); ?>
 									<?php endif; ?>
 									<style>
 										.bottom-card:hover .hover-scale { transform: scale(1.05); }
@@ -125,16 +123,16 @@ global $wp_query;
 					<span class="text-script" style="font-size: 12vw; color: #000; line-height: 1; font-weight: 300;">elsewhere</span>
 				</div>
 				<!-- Image 1: Clothes rack -->
-				<img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&q=80&w=400" alt="Clothes rack" style="position: absolute; top: 15%; left: 0%; width: 28%; aspect-ratio: 3/4; object-fit: cover; z-index: 1;" />
+				<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&q=80&w=400', 'Clothes rack', '', 'position: absolute; top: 15%; left: 0%; width: 28%; aspect-ratio: 3/4; object-fit: cover; z-index: 1;'); ?>
 				<!-- Image 2: Striped sweater -->
-				<img src="https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?auto=format&fit=crop&q=80&w=400" alt="Striped sweater" style="position: absolute; top: 20%; left: 21%; width: 29%; aspect-ratio: 3/4; object-fit: cover; z-index: 10; border: 15px solid #fff;" />
+				<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?auto=format&fit=crop&q=80&w=400', 'Striped sweater', '', 'position: absolute; top: 20%; left: 21%; width: 29%; aspect-ratio: 3/4; object-fit: cover; z-index: 10; border: 15px solid #fff;'); ?>
 				<!-- Image 3: Bag and drink -->
 				<div style="position: absolute; top: 5%; left: 44%; width: 27%; z-index: 1; display: flex; flex-direction: column; align-items: flex-end;">
-					<img src="https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&q=80&w=400" alt="Bag and drink" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;" />
+					<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&q=80&w=400', 'Bag and drink', '', 'width: 100%; aspect-ratio: 1/1; object-fit: cover;'); ?>
 					<div style="margin-top: 1rem; background-color: #000; color: #fff; padding: 0.4rem 1rem; font-size: 0.65rem; font-weight: bold; letter-spacing: 0.15em;">@THECOMBOCLOSET</div>
 				</div>
 				<!-- Image 4: Woman walking -->
-				<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400" alt="Woman walking" style="position: absolute; top: 25%; left: 74%; width: 26%; aspect-ratio: 3/4; object-fit: cover; z-index: 1;" />
+				<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400', 'Woman walking', '', 'position: absolute; top: 25%; left: 74%; width: 26%; aspect-ratio: 3/4; object-fit: cover; z-index: 1;'); ?>
 			</div>
 		</section>
 
@@ -142,3 +140,4 @@ global $wp_query;
 </main>
 
 <?php get_footer(); ?>
+

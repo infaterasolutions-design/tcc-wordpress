@@ -44,8 +44,10 @@ get_header();
 			<?php else: ?>
 				<!-- Fallback dummy image for wardrobe -->
 				<div style="margin-bottom: 48px;">
-					<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1200'; ?>
-					<img src="<?php echo esc_url($dummy_img); ?>" alt="Featured" class="article-hero-image" style="margin-bottom: 0;" />
+					<?php 
+						$dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1200'; 
+						echo tcc_get_picture_tag($dummy_img, 'Featured', 'article-hero-image', 'margin-bottom: 0;');
+					?>
 				</div>
 			<?php endif; ?>
 
@@ -58,7 +60,7 @@ get_header();
 		<!-- Sidebar -->
 		<aside class="sidebar-container">
 			<div style="background-color: #FAF6EE; padding: 24px; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center;">
-				<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300" alt="Elle Penner" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 20px;" />
+				<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300', 'Elle Penner', '', 'width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 20px;'); ?>
 				<h3 style="font-family: 'Playfair Display', serif; font-size: 30px; margin: 0 0 16px 0; text-align: center; font-weight: 400; color: #2C2C2C;">Hey there, I’m Elle.</h3>
 				<p style="font-family: 'Inter', sans-serif; font-size: 20px; line-height: 32px; color: #2C2C2C; text-align: center; margin: 0 0 24px 0;">
 					Simplifying and organizing expert, dietitian, and mom of two. I'm here to help you declutter your home so you have more time and energy for the things that truly matter.
@@ -93,8 +95,10 @@ get_header();
 						<?php if ( has_post_thumbnail() ) : ?>
 							<?php the_post_thumbnail( 'medium', array( 'style' => 'width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 10px;' ) ); ?>
 						<?php else : ?>
-							<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400'; ?>
-							<img src="<?php echo esc_url($dummy_img); ?>" alt="Featured" style="width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 10px;" />
+							<?php 
+								$dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400'; 
+								echo tcc_get_picture_tag($dummy_img, 'Featured', '', 'width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 10px;');
+							?>
 						<?php endif; ?>
 						<h4 class="text-sans" style="font-size: 18px; font-weight: 500; color: #2C2C2C; line-height: 24px; margin: 0; text-align: center; text-transform: capitalize;">
 							<?php echo wp_trim_words( get_the_title(), 5 ); ?>

@@ -42,8 +42,10 @@ get_header(); ?>
 					</p>
 				<?php endif; ?>
 			<?php else : ?>
-				<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=1200'; ?>
-				<img src="<?php echo esc_url($dummy_img); ?>" alt="Featured" style="width: 100%; height: auto; display: block;" />
+					<?php 
+						$dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1200'; 
+						echo tcc_get_picture_tag($dummy_img, 'Featured', '', 'width: 100%; height: auto; display: block;');
+					?>
 			<?php endif; ?>
 		</div>
 
@@ -98,7 +100,7 @@ get_header(); ?>
 									<?php if ( has_post_thumbnail() ) : ?>
 										<?php the_post_thumbnail( 'large', array( 'class' => 'post-card-img', 'style' => 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;' ) ); ?>
 									<?php else : ?>
-										<img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400" alt="Placeholder" class="post-card-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+										<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400', 'Placeholder', 'post-card-img', 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;'); ?>
 									<?php endif; ?>
 								</div>
 								<span style="font-family: 'Inter', sans-serif; text-transform: uppercase; font-size: 0.65rem; font-weight: bold; color: #888; letter-spacing: 0.1em; margin-bottom: 0.4rem; display: block;">

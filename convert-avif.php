@@ -16,6 +16,8 @@ if (!$has_imagick && !$has_gd) {
 }
 
 $count = 0;
+$force = isset($_GET['force']) && $_GET['force'] === 'yes';
+
 foreach ($years as $year) {
     $dir = $uploads_dir . '/' . $year;
     if (!is_dir($dir)) continue;
@@ -26,12 +28,16 @@ foreach ($years as $year) {
             $ext = strtolower($file->getExtension());
             if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) {
                 $path = $file->getPathname();
-                $avif_path = preg_replace('/\.[a-zA-Z0-9]+$/', '.avif', $path);
-                if (!file_exists($avif_path)) {
+                $avif_path = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $path);
+                
+                if (!file_exists($avif_path) || $force) {
                     try {
                         echo "Converting: $path\n";
                         
-                        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+                        if ($force && file_exists($avif_path)) {
+                            @unlink($avif_path);
+                        }
+                        
                         $quality = ($ext === 'png') ? 100 : 90;
                         
                         if ($has_imagick) {

@@ -355,15 +355,10 @@ add_action('admin_notices', function() {
     }
 });
 function tcc_avif_exists_locally($avif_url) {
-    $parsed = parse_url($avif_url);
-    if (empty($parsed['path'])) return false;
-    
-    $wp_content_pos = strpos($parsed['path'], '/wp-content/');
-    if ($wp_content_pos !== false) {
-        $local_file = ABSPATH . substr($parsed['path'], $wp_content_pos + 1);
-        return file_exists($local_file);
-    }
-    return false;
+    // For debugging the user's issue: forcefully return true so the <picture> tags 
+    // are ALWAYS generated. This will prove the filter is running. 
+    // If the browser 404s the .avif file, it means the conversion script failed on their server.
+    return true;
 }
 
 add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, $size, $attr) {
@@ -374,6 +369,7 @@ add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, 
 
     $picture = '<picture class="tcc-picture-wrapper" style="display: block; width: 100%; height: 100%;">';
 
+    $picture .= '<!-- AVIF HELPER ACTIVE -->';
     if ( strpos($html, '.avif') !== false ) {
         // Native WP AVIF generation caught! Extract srcset/src for the <source> tag.
         preg_match('/srcset=[\'"]([^\'"]+)[\'"]/', $html, $srcset_matches);
@@ -512,6 +508,13 @@ function tcc_get_trending_tab($request) {
             $cat = get_the_category();
             $dummy_img = get_post_meta(get_the_ID(), '_tcc_dummy_image', true) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400';
             $img_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : $dummy_img;
+            
+            // Force AVIF for the REST API background image
+            if (strpos($img_url, 'unsplash.com') !== false) {
+                $img_url = str_replace('auto=format', 'fm=avif', $img_url);
+            } else {
+                $img_url = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $img_url);
+            }
             
             $posts[] = [
                 'title' => get_the_title(),

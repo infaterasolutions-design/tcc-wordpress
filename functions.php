@@ -232,7 +232,7 @@ function tcc_shop_the_post_shortcode( $atts ) {
                 <div class="shop-post-track" style="display: flex; gap: 20px; height: 100%; align-items: center; overflow-x: auto; scrollbar-width: none; scroll-behavior: smooth; scroll-snap-type: x mandatory; padding: 10px 0; width: calc(100% - 80px);">
                     <?php foreach( array_merge($images, $images, $images) as $img ) : ?>
                     <a href="#" class="shop-post-item" style="scroll-snap-align: start; display: block; flex-shrink: 0; width: 100px; height: 100px; background-color: #f5f5f5; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); border-radius: 4px; overflow: hidden; text-decoration: none;">
-                        <picture class="tcc-picture-wrapper" style="display: block; width: 100%; height: 100%;">
+                        <picture class="tcc-picture-wrapper" style="display: contents;">
                             <source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img)); ?>" type="image/avif">
                             <img src="<?php echo esc_url($img); ?>" alt="Shop Item" style="width: 100% !important; height: 100% !important; min-height: 100%; max-height: 100%; object-fit: cover; display: block; margin: 0 !important; padding: 0 !important;" />
                         </picture>
@@ -431,7 +431,7 @@ add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, 
     $original_url = wp_get_attachment_url($post_thumbnail_id);
     if (!$original_url) return $html;
 
-    $picture = '<picture class="tcc-picture-wrapper" style="display: block; width: 100%; height: 100%;">';
+    $picture = '<picture class="tcc-picture-wrapper" style="display: contents;">';
 
     $picture .= '<!-- AVIF HELPER ACTIVE -->';
     if ( strpos($html, '.avif') !== false ) {
@@ -469,7 +469,7 @@ add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, 
 }, 10, 5);
 
 function tcc_get_picture_tag($src, $alt = '', $classes = '', $styles = '') {
-    $picture = '<picture class="tcc-picture-wrapper" style="display: block; width: 100%; height: 100%;">';
+    $picture = '<picture class="tcc-picture-wrapper" style="display: contents;">';
     
     if (strpos($src, 'unsplash.com') !== false) {
         $avif_src = str_replace('auto=format', 'fm=avif', $src);
@@ -495,7 +495,7 @@ add_filter('the_content', function($content) {
         $img_tag = $matches[0];
         $src = $matches[1];
         
-        $picture = '<picture class="tcc-picture-wrapper" style="display: block; width: 100%; height: 100%;">';
+        $picture = '<picture class="tcc-picture-wrapper" style="display: contents;">';
 
         // If the tag is already AVIF natively
         if (strpos($src, '.avif') !== false) {

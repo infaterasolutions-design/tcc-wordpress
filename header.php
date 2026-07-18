@@ -29,8 +29,7 @@
 }
 /* Fix for full-width sliders/images in sidebar layout */
 .sidebar-page-container .alignfull,
-.sidebar-page-container .alignwide,
-.sidebar-page-container .elementor-section-stretched {
+.sidebar-page-container .alignwide {
     margin-left: 0 !important;
     margin-right: 0 !important;
     width: 100% !important;

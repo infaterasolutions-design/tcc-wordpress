@@ -1,6 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
     const loadMoreBtn = document.getElementById('tcc-load-more');
     if (loadMoreBtn) {
+        // Restore state if navigating back
+        if (performance.navigation && performance.navigation.type === 2) {
+            const savedHtml = sessionStorage.getItem('tcc_blog_html');
+            const savedPage = sessionStorage.getItem('tcc_blog_page');
+            const maxPage = parseInt(loadMoreBtn.getAttribute('data-max'));
+            
+            if (savedHtml && savedPage) {
+                const grid = document.querySelector('.bottom-grid');
+                if (grid) {
+                    grid.innerHTML = savedHtml;
+                    loadMoreBtn.setAttribute('data-page', savedPage);
+                    if (parseInt(savedPage) >= maxPage) {
+                        loadMoreBtn.style.display = 'none';
+                    }
+                }
+            }
+        } else {
+            // Clear state on fresh visit
+            sessionStorage.removeItem('tcc_blog_html');
+            sessionStorage.removeItem('tcc_blog_page');
+        }
+
         loadMoreBtn.addEventListener('click', function() {
             const button = this;
             const originalText = button.innerHTML;
@@ -32,6 +54,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     currentPage++;
                     button.setAttribute('data-page', currentPage);
+                    
+                    // Save to sessionStorage
+                    sessionStorage.setItem('tcc_blog_html', grid.innerHTML);
+                    sessionStorage.setItem('tcc_blog_page', currentPage);
                     
                     if (currentPage >= maxPage) {
                         button.style.display = 'none';

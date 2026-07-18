@@ -296,6 +296,16 @@ remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
 add_filter('should_load_separate_core_block_assets', '__return_false');
 remove_action('wp_enqueue_scripts', 'wp_common_block_scripts_and_styles');
 
+// Bulletproof body class cleanup: Forcefully strip any remaining elementor template classes
+add_filter('body_class', function($classes) {
+    foreach ($classes as $key => $value) {
+        if (strpos($value, 'elementor') !== false) {
+            unset($classes[$key]);
+        }
+    }
+    return $classes;
+}, 9999);
+
 add_filter('script_loader_tag', function($tag, $handle, $src) {
     if (strpos($handle, 'google-site-kit') !== false || strpos($src, 'googletagmanager.com') !== false || strpos($src, 'grow.me') !== false) {
         if (strpos($tag, ' defer') === false && strpos($tag, ' async') === false) {

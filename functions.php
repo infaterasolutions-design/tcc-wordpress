@@ -354,6 +354,18 @@ add_action('admin_notices', function() {
         echo '<div class="notice notice-error"><p><strong>CRITICAL:</strong> Your server does not support AVIF generation. Both Imagick (with AVIF) and GD (with libavif) are missing. Images will NOT be converted to AVIF automatically.</p></div>';
     }
 });
+function tcc_avif_exists_locally($avif_url) {
+    $parsed = parse_url($avif_url);
+    if (empty($parsed['path'])) return false;
+    
+    $wp_content_pos = strpos($parsed['path'], '/wp-content/');
+    if ($wp_content_pos !== false) {
+        $local_file = ABSPATH . substr($parsed['path'], $wp_content_pos + 1);
+        return file_exists($local_file);
+    }
+    return false;
+}
+
 add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, $size, $attr) {
     if ( empty($html) ) return $html;
     
@@ -385,9 +397,7 @@ add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, 
     if ( ! $src ) return $html;
     $avif_src = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $src);
     
-    $upload_dir = wp_get_upload_dir();
-    $avif_path = str_replace( $upload_dir['baseurl'], $upload_dir['basedir'], $avif_src );
-    if ( ! file_exists( $avif_path ) ) {
+    if ( ! tcc_avif_exists_locally($avif_src) ) {
         return $html;
     }
     
@@ -406,9 +416,7 @@ function tcc_get_picture_tag($src, $alt = '', $classes = '', $styles = '') {
         $picture .= '<source srcset="' . esc_url($avif_src) . '" type="image/avif">';
     } else {
         $avif_src = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $src);
-        $upload_dir = wp_get_upload_dir();
-        $avif_path = str_replace( $upload_dir['baseurl'], $upload_dir['basedir'], $avif_src );
-        if ( file_exists( $avif_path ) ) {
+        if ( tcc_avif_exists_locally($avif_src) ) {
             $picture .= '<source srcset="' . esc_url($avif_src) . '" type="image/avif">';
         }
     }
@@ -452,9 +460,8 @@ add_filter('the_content', function($content) {
         // Legacy / Retroactive AVIF handling
         if (preg_match('/\.(jpg|jpeg|png|webp)$/i', $src)) {
             $avif_src = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $src);
-            $avif_path = str_replace( $upload_dir['baseurl'], $upload_dir['basedir'], $avif_src );
             
-            if ( file_exists( $avif_path ) ) {
+            if ( tcc_avif_exists_locally($avif_src) ) {
                 $picture .= '<source srcset="' . esc_attr($avif_src) . '" type="image/avif">';
                 $picture .= $img_tag;
                 $picture .= '</picture>';

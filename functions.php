@@ -355,10 +355,15 @@ add_action('admin_notices', function() {
     }
 });
 function tcc_avif_exists_locally($avif_url) {
-    // For debugging the user's issue: forcefully return true so the <picture> tags 
-    // are ALWAYS generated. This will prove the filter is running. 
-    // If the browser 404s the .avif file, it means the conversion script failed on their server.
-    return true;
+    $parsed = parse_url($avif_url);
+    if (empty($parsed['path'])) return false;
+    
+    $wp_content_pos = strpos($parsed['path'], '/wp-content/');
+    if ($wp_content_pos !== false) {
+        $local_file = ABSPATH . substr($parsed['path'], $wp_content_pos + 1);
+        return file_exists($local_file);
+    }
+    return false;
 }
 
 add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, $size, $attr) {

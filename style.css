@@ -1796,8 +1796,8 @@ img {
     font-family: "Georgia Script", serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 144px;
-    line-height: 0px; /* Exact match to WhatFont */
+    font-size: 96px; /* Reduced from 144px to a more reasonable size */
+    line-height: 0px; 
     color: rgb(0, 0, 0);
     margin: 0;
     text-transform: lowercase;

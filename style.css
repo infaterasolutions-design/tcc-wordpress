@@ -1345,7 +1345,11 @@ img {
   pointer-events: none;
 }
 .fp-elsewhere-text {
-  font-size: 12vw;
+  font-family: 'Sacramento', cursive;
+  font-style: normal;
+  font-weight: normal; 
+  font-size: clamp(80px, 12vw, 150px);
+  text-transform: lowercase;
   color: #000;
   line-height: 1;
   font-weight: 300;
@@ -1707,7 +1711,11 @@ img {
   pointer-events: none;
 }
 .fp-elsewhere-text {
-  font-size: 12vw;
+  font-family: 'Sacramento', cursive;
+  font-style: normal;
+  font-weight: normal; 
+  font-size: clamp(80px, 12vw, 150px);
+  text-transform: lowercase;
   color: #000;
   line-height: 1;
   font-weight: 300;

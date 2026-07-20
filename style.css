@@ -2081,7 +2081,7 @@ picture.tcc-picture-wrapper {
     justify-content: center;
 }
 
-.tcc-hero-text .hero-heading {
+.tcc-hero-text h1 {
     font-size: 48px;
     line-height: 1.1;
     letter-spacing: 0.3px;
@@ -2091,7 +2091,7 @@ picture.tcc-picture-wrapper {
     font-weight: 700;
 }
 
-.tcc-hero-text .hero-subtext {
+.tcc-hero-text p {
     font-size: 15px;
     line-height: 1.6;
     letter-spacing: 1px;
@@ -2155,7 +2155,7 @@ picture.tcc-picture-wrapper {
         margin-bottom: 0;
     }
     
-    .tcc-hero-text .hero-heading {
+    .tcc-hero-text h1 {
         font-size: 38px;
     }
 }

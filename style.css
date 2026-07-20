@@ -1785,11 +1785,12 @@ img {
   margin-bottom: 30px;
 }
 .figma-trending-title {
-    font-family: 'Great Vibes', cursive; /* Using Great Vibes since it is loaded in functions.php and looks like the script font requested */
+    font-family: "Georgia Script", serif;
+    font-style: normal;
     font-weight: 400;
     font-size: 144px;
-    line-height: 1;
-    color: #000;
+    line-height: 0px; /* Exact match to WhatFont */
+    color: rgb(0, 0, 0);
     margin: 0;
     text-transform: lowercase;
 }

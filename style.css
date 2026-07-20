@@ -2051,27 +2051,27 @@ picture.tcc-picture-wrapper {
     /* overflow-x: hidden removed to ensure no clipping bugs, parent pseudo-element is inherently safe */
 }
 
-/* Safe, scroll-proof left background block */
+/* Safe, scroll-proof left background block (sits vertically in the middle of the right block) */
 .tcc-hero-section::before {
     content: '';
     position: absolute;
-    top: 40px; /* Staggered down */
-    bottom: 0;
+    top: 0; /* Aligned exactly with the text content */
+    bottom: 0; 
     left: 0;
-    width: 50%; /* Exactly 50% of the screen width, absolutely zero horizontal scrolling */
+    width: 50%;
     background-color: #F4F1EC;
     z-index: 0;
 }
 
-/* Safe, scroll-proof right background block */
+/* Safe, scroll-proof right background block (extends taller on top and bottom) */
 .tcc-hero-section::after {
     content: '';
     position: absolute;
-    top: -20px; /* Staggered up to create the "taller" effect */
-    bottom: 40px; /* Ends earlier than left side */
+    top: -30px; /* Extends higher than the left side */
+    bottom: -30px; /* Extends lower than the left side */
     right: 0;
-    width: 50%; /* Exactly 50% of the screen width, absolutely zero horizontal scrolling */
-    background-color: #F4F1EC; /* Same color, just a separate block */
+    width: 50%; 
+    background-color: #F4F1EC; 
     z-index: 0;
 }
 
@@ -2141,6 +2141,10 @@ picture.tcc-picture-wrapper {
     .tcc-hero-section::before {
         width: 100%; /* Spans the entire screen on mobile */
         top: 0; /* No staggered offset on mobile */
+    }
+    
+    .tcc-hero-section::after {
+        display: none; /* Hide the right block on mobile, before covers 100% */
     }
     
     .tcc-hero-container {

@@ -4,7 +4,7 @@
  */
 
 if ( ! defined( 'TCC_VERSION' ) ) {
-	define( 'TCC_VERSION', '1.1.2' );
+	define( 'TCC_VERSION', filemtime(get_stylesheet_directory() . '/style.css') );
 }
 
 /**

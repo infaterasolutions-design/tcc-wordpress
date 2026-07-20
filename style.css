@@ -1250,7 +1250,7 @@ img {
   cursor: pointer;
   margin-top: 1.5rem;
 }
-.fp-recent-section { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+.fp-recent-section { margin-top: 2rem; margin-bottom: 2rem; }
 .fp-recent-header {
   margin-bottom: 2rem;
 }
@@ -1586,7 +1586,7 @@ img {
   cursor: pointer;
   margin-top: 1.5rem;
 }
-.fp-recent-section { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+.fp-recent-section { margin-top: 2rem; margin-bottom: 2rem; }
 .fp-recent-header {
   margin-bottom: 2rem;
 }
@@ -2025,8 +2025,8 @@ picture.tcc-picture-wrapper {
 .tcc-hero-section {
     width: 100%;
     margin-top: 60px; /* White gap below header */
-    margin-bottom: 60px;
-    position: relative;
+    margin-bottom: 0px;
+      position: relative;
     /* overflow-x: hidden removed to ensure no clipping bugs, parent pseudo-element is inherently safe */
 }
 

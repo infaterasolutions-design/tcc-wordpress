@@ -2113,7 +2113,7 @@ picture.tcc-picture-wrapper {
 
 /* Mobile Layout */
 @media (max-width: 900px) {
-    .tcc-hero-section { padding-top: 20px; margin-bottom: 0px; }
+    .tcc-hero-section { padding-top: 0px; margin-top: 0px; margin-bottom: 0px; }
     
     .tcc-hero-section::before {
         width: 100%; /* Spans the entire screen on mobile */
@@ -2131,7 +2131,7 @@ picture.tcc-picture-wrapper {
     .tcc-hero-text {
         width: 100%;
         order: 2;
-        padding: 40px 20px 60px 20px;
+        padding: 30px 20px 20px 20px;
         text-align: center;
         background-color: transparent;
         box-shadow: none;

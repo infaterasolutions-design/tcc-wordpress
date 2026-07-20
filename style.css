@@ -1793,11 +1793,11 @@ img {
   margin-bottom: 30px;
 }
 .figma-trending-title {
-    font-family: "Georgia Script", serif;
+    font-family: 'Sacramento', cursive;
     font-style: normal;
-    font-weight: normal; /* Explicitly normal */
-    font-size: 96px; 
-    line-height: normal; /* Fixed from 0px to prevent the bottom-border from cutting through the middle of the text */
+    font-weight: normal; 
+    font-size: 110px; /* Adjusted size for the new thin signature font */
+    line-height: normal; 
     color: rgb(0, 0, 0);
     margin: 0;
     text-transform: lowercase;

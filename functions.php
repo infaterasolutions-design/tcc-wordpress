@@ -62,8 +62,8 @@ add_action( 'widgets_init', 'tcc_widgets_init' );
  * Enqueue scripts and styles.
  */
 function tcc_scripts() {
-	// Google Fonts (Optimized Payload)
-	wp_enqueue_style( 'tcc-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap', array(), null );
+	// Google Fonts (Optimized Payload with Elegant Scripts)
+	wp_enqueue_style( 'tcc-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Qwigley&display=swap', array(), null );
 	
 	// Theme stylesheet
 	wp_enqueue_style( 'tcc-style', get_stylesheet_uri(), array(), TCC_VERSION );

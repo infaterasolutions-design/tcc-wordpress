@@ -98,6 +98,7 @@ body, html {
 			color: #000;
 		}
 	</style>
+	<script type="text/javascript" async="async" data-noptimize="1" data-cfasync="false" src="//scripts.scriptwrapper.com/tags/22c48288-1c6e-4819-a0a0-fe576c7a2566.js"></script>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>

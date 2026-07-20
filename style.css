@@ -2041,3 +2041,89 @@ picture.tcc-picture-wrapper {
   width: 100%;
   height: 100%;
 }
+
+/* TCC Hero Redesign */
+.tcc-hero-section {
+    background-color: #F4F1EC;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.tcc-hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding: 4rem 1.5rem;
+}
+
+.tcc-hero-text {
+    flex: 1;
+    padding: 60px 60px 60px 0;
+    max-width: 580px;
+}
+
+.tcc-hero-text .hero-heading {
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: 0.3px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.tcc-hero-text .hero-subtext {
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    color: #000000;
+    margin: 0;
+}
+
+.tcc-hero-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.tcc-hero-img {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Mobile Layout */
+@media (max-width: 900px) {
+    .tcc-hero-container {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+    }
+    
+    .tcc-hero-image-wrapper {
+        width: 100%;
+        order: 1;
+        justify-content: center;
+    }
+    
+    .tcc-hero-img {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .tcc-hero-text {
+        order: 2;
+        padding: 40px 0 20px 0;
+        text-align: center;
+        max-width: 100%;
+    }
+    
+    .tcc-hero-text .hero-heading {
+        font-size: 38px;
+        line-height: 1.1;
+    }
+}
+

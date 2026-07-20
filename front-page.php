@@ -5,13 +5,13 @@
 
 get_header(); ?>
 
-<main class="fp-hero-main container">
+<main class="fp-hero-main">
 
 	<!-- Hero Section -->
-	<section class="flex hero-section">
-		<!-- Left Half (Text) -->
-		<div class="w-full flex items-center justify-center hero-left">
-			<div class="fp-hero-left">
+	<section class="tcc-hero-section">
+		<div class="tcc-hero-container">
+			<!-- Text -->
+			<div class="tcc-hero-text">
 				<h1 class="text-serif">
 					<?php echo wp_kses_post( get_theme_mod( 'tcc_hero_heading', "Welcome to<br/>Minimalist<br/>Sophistication with<br/>Maximum Style" ) ); ?>
 				</h1>
@@ -19,21 +19,21 @@ get_header(); ?>
 					<?php echo wp_kses_post( get_theme_mod( 'tcc_hero_text', 'The Combo Closet is an inspired style, home, and beauty destination for those who prefer quality over quantity, subtle over obvious, and ease over complexity.' ) ); ?>
 				</p>
 			</div>
-		</div>
-		<!-- Right Half (Image) -->
-		<div class="w-full flex items-center justify-center hero-right">
-			<?php
-			$hero_raw = get_theme_mod( 'tcc_hero_image', 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600' );
-			if (strpos($hero_raw, 'unsplash.com') !== false) {
-				$hero_avif = str_replace('auto=format', 'fm=avif', $hero_raw);
-			} else {
-				$hero_avif = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $hero_raw);
-			}
-			?>
-			<picture>
-				<source srcset="<?php echo esc_url($hero_avif); ?>" type="image/avif">
-				<img src="<?php echo esc_url($hero_raw); ?>" alt="Hero image" class="object-cover" fetchpriority="high" loading="eager" />
-			</picture>
+			<!-- Image -->
+			<div class="tcc-hero-image-wrapper">
+				<?php
+				$hero_raw = get_theme_mod( 'tcc_hero_image', 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600' );
+				if (strpos($hero_raw, 'unsplash.com') !== false) {
+					$hero_avif = str_replace('auto=format', 'fm=avif', $hero_raw);
+				} else {
+					$hero_avif = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $hero_raw);
+				}
+				?>
+				<picture>
+					<source srcset="<?php echo esc_url($hero_avif); ?>" type="image/avif">
+					<img src="<?php echo esc_url($hero_raw); ?>" alt="Hero image" class="tcc-hero-img" fetchpriority="high" loading="eager" />
+				</picture>
+			</div>
 		</div>
 	</section>
 

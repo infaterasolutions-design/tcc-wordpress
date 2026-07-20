@@ -1424,10 +1424,7 @@ img {
     margin-top: 0 !important;
     width: 100%;
   }
-  .figma-trending-title {
-    font-size: 48px !important;
-    margin-bottom: 10px;
-  }
+  .figma-trending-title { font-size: 110px !important; margin-bottom: 0px !important; transform: translateY(30px); z-index: 5; }
   .figma-trending-title-wrapper {
     gap: 10px !important;
     width: 100%;

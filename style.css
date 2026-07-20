@@ -1795,9 +1795,9 @@ img {
 .figma-trending-title {
     font-family: "Georgia Script", serif;
     font-style: normal;
-    font-weight: 400;
-    font-size: 96px; /* Reduced from 144px to a more reasonable size */
-    line-height: 0px; 
+    font-weight: normal; /* Explicitly normal */
+    font-size: 96px; 
+    line-height: normal; /* Fixed from 0px to prevent the bottom-border from cutting through the middle of the text */
     color: rgb(0, 0, 0);
     margin: 0;
     text-transform: lowercase;

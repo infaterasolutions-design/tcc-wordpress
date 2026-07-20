@@ -1339,7 +1339,7 @@ img {
 }
 .fp-elsewhere-text-wrapper {
   position: absolute;
-  top: 0%;
+  top: 8%;
   left: 33%;
   z-index: 5;
   pointer-events: none;
@@ -1348,7 +1348,7 @@ img {
   font-family: 'Sacramento', cursive;
   font-style: normal;
   font-weight: normal; 
-  font-size: clamp(80px, 12vw, 150px);
+  font-size: clamp(100px, 18vw, 220px);
   text-transform: lowercase;
   color: #000;
   line-height: 1;
@@ -1705,7 +1705,7 @@ img {
 }
 .fp-elsewhere-text-wrapper {
   position: absolute;
-  top: 0%;
+  top: 8%;
   left: 33%;
   z-index: 5;
   pointer-events: none;
@@ -1714,7 +1714,7 @@ img {
   font-family: 'Sacramento', cursive;
   font-style: normal;
   font-weight: normal; 
-  font-size: clamp(80px, 12vw, 150px);
+  font-size: clamp(100px, 18vw, 220px);
   text-transform: lowercase;
   color: #000;
   line-height: 1;

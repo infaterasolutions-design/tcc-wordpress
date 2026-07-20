@@ -2049,7 +2049,7 @@ picture.tcc-picture-wrapper {
     margin-bottom: 60px;
     overflow-x: hidden;
     position: relative;
-    /* Removed solid background here so the right side is transparent */
+    background-color: #F4F1EC; /* Solid background for the entire section */
 }
 
 .tcc-hero-container {
@@ -2061,16 +2061,11 @@ picture.tcc-picture-wrapper {
 }
 
 .tcc-hero-text {
-    width: 48%; /* Keeps the left area shorter than the right side */
+    width: 48%;
     padding: 100px 60px 100px 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-    /* Apply background only to left text area and bleed it infinitely left */
-    background-color: #F4F1EC;
-    box-shadow: -50vw 0 0 #F4F1EC;
-    
     position: relative;
     z-index: 1;
 }
@@ -2117,7 +2112,6 @@ picture.tcc-picture-wrapper {
     .tcc-hero-section {
         padding-top: 20px;
         margin-bottom: 20px;
-        background-color: #F4F1EC; /* Restore full background for mobile */
     }
     
     .tcc-hero-container {
@@ -2129,8 +2123,6 @@ picture.tcc-picture-wrapper {
         order: 2;
         padding: 40px 20px 60px 20px;
         text-align: center;
-        background-color: transparent;
-        box-shadow: none;
     }
     
     .tcc-hero-image-wrapper {

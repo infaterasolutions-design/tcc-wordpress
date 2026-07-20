@@ -39,7 +39,7 @@ get_header(); ?>
 
 	<!-- Trending Section -->
 	<!-- Trending Section -->
-	<section class="figma-trending-container">
+	<section class="figma-trending-container container">
 		<?php
 		$tabs_config = [
 			['id' => 'popular', 'label' => 'POPULAR', 'query' => ['post_type' => 'post', 'posts_per_page' => 4, 'orderby' => 'comment_count'], 'btn_text' => 'READ MORE POPULAR POSTS'],
@@ -229,7 +229,7 @@ get_header(); ?>
 	</section>
 
 	<!-- Recent Posts Section -->
-	<section class="fp-recent-section">
+	<section class="fp-recent-section container">
 		<!-- Header -->
 		<div class="flex items-center justify-between fp-recent-header">
 			<div class="flex items-center fp-recent-header-left">
@@ -292,7 +292,7 @@ get_header(); ?>
 	</section>
 
 	<!-- Subscribe -->
-	<section class="subscribe-section" style="background-color: #FAF6EE; margin: 4rem auto; border: 1px solid #EAE3D5; border-radius: 8px;">
+	<section class="subscribe-section container" style="background-color: #FAF6EE; margin: 4rem auto; border: 1px solid #EAE3D5; border-radius: 8px;">
 		<div class="subscribe-text-container">
 			<h3 class="text-serif" style="font-size: 2rem; color: #2C2C2C; margin-bottom: 0.5rem; line-height: 1.2;">Join the Newsletter</h3>
 			<p class="text-sans" style="font-size: 1rem; color: #666; margin: 0;">Sign up for weekly style inspiration straight to your inbox.</p>
@@ -307,7 +307,7 @@ get_header(); ?>
 	</section>
 
 	<!-- Shop by Trending Videos -->
-	<section>
+	<section class="container">
 		<div class="flex gap-sm shop-videos-row fp-shop-videos-container">
 			<div class="shop-videos-title">
 				<div class="sticky-container">
@@ -328,7 +328,7 @@ get_header(); ?>
 	</section>
 
 	<!-- Elsewhere Section -->
-	<section class="fp-elsewhere-section">
+	<section class="fp-elsewhere-section container">
 		<div class="fp-elsewhere-container">
 			<!-- Script Text -->
 			<div class="fp-elsewhere-text-wrapper">

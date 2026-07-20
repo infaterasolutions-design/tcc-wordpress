@@ -2048,7 +2048,19 @@ picture.tcc-picture-wrapper {
     margin-top: 60px; /* White gap below header */
     margin-bottom: 60px;
     position: relative;
-    overflow-x: hidden;
+    /* overflow-x: hidden removed to ensure no clipping bugs, parent pseudo-element is inherently safe */
+}
+
+/* Safe, scroll-proof left background block */
+.tcc-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 40px; /* Staggered down */
+    bottom: 0;
+    left: 0;
+    width: 50%; /* Exactly 50% of the screen width, absolutely zero horizontal scrolling */
+    background-color: #F4F1EC;
+    z-index: 0;
 }
 
 .tcc-hero-container {
@@ -2057,24 +2069,16 @@ picture.tcc-picture-wrapper {
     display: flex;
     flex-direction: row;
     align-items: stretch;
+    position: relative;
+    z-index: 1; /* Sit above the background */
 }
 
 .tcc-hero-text {
-    width: 48%; /* Left side is shorter (narrower) */
+    width: 50%; /* Restored 50/50 width */
     padding: 100px 60px 100px 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
-    z-index: 1;
-    
-    /* Solid color matching requested CSS */
-    background-color: #F4F1EC;
-    /* Box shadow bleeds infinitely left WITHOUT causing scrollbars */
-    box-shadow: -50vw 0 0 #F4F1EC;
-    
-    /* Shifted down to create a larger gap above text side */
-    margin-top: 40px;
 }
 
 .tcc-hero-text .hero-heading {
@@ -2097,20 +2101,12 @@ picture.tcc-picture-wrapper {
 }
 
 .tcc-hero-image-wrapper {
-    width: 52%; /* Right side is longer (wider) */
+    width: 50%; /* Restored 50/50 width */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 80px 15px;
-    position: relative;
-    z-index: 1;
-    
-    /* Same color as the left side! */
-    background-color: #F4F1EC;
-    /* Box shadow bleeds infinitely right WITHOUT causing scrollbars */
-    box-shadow: 50vw 0 0 #F4F1EC;
-    
-    /* Starts higher and ends lower than the text side */
+    /* Transparent background, no pseudo elements */
     margin-top: 0;
     margin-bottom: -40px;
 }
@@ -2128,7 +2124,11 @@ picture.tcc-picture-wrapper {
     .tcc-hero-section {
         padding-top: 20px;
         margin-bottom: 20px;
-        background-color: #F4F1EC; /* Solid background for mobile */
+    }
+    
+    .tcc-hero-section::before {
+        width: 100%; /* Spans the entire screen on mobile */
+        top: 0; /* No staggered offset on mobile */
     }
     
     .tcc-hero-container {

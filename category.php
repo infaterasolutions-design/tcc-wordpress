@@ -16,7 +16,7 @@ global $wp_query;
 // But we should do this within the standard loop if possible, or just use a counter.
 ?>
 
-<main style="background-color: #fff; min-height: 100vh; display: flex; flex-direction: column; align-items: center;">
+<main style="background-color: #fff; min-height: 100vh; display: flex; flex-direction: column; align-items: center;; width: 100%; max-width: 100vw; overflow-x: hidden;">
 	<div class="archive-container">
 		
 		<?php if ( have_posts() ) : ?>

@@ -92,7 +92,7 @@
 
 			<!-- Right Link -->
 			<div class="text-sans uppercase footer-bottom-link">
-				Site by Antigravity
+				
 			</div>
 
 		</div>

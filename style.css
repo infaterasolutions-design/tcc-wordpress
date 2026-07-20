@@ -2138,7 +2138,7 @@ picture.tcc-picture-wrapper {
     .tcc-hero-image-wrapper {
         width: 100%;
         order: 1;
-        padding: 40px 15px 20px 15px;
+        padding: 40px 50px 10px 50px;
         background-color: transparent;
         box-shadow: none;
         margin-top: 0;

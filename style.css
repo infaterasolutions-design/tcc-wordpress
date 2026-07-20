@@ -1,4 +1,12 @@
 /*! tailwindcss v4.3.2 | MIT License | https://tailwindcss.com */
+
+@font-face {
+    font-family: "Georgia Script";
+    src: url('./assets/fonts/Georgia Script.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {

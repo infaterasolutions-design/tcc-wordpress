@@ -10,7 +10,7 @@ get_header(); ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 
 		<!-- ARTICLE HEADER -->
-		<header style="max-width: 1240px; margin: 0 auto; padding: 4rem 2rem 2rem;">
+		<header class="centered-post-header">
 			<!-- Breadcrumb -->
 			<div style="font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 1.5rem; text-align: center;">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="color: #888; text-decoration: none;">HOME</a> / POST / <?php echo esc_html( strtoupper( get_the_title() ) ); ?>
@@ -32,7 +32,7 @@ get_header(); ?>
 		</header>
 
 		<!-- FEATURED IMAGE -->
-		<div style="max-width: 1240px; margin: 0 auto 4rem; padding: 0 2rem;">
+		<div class="centered-post-image">
 			<?php if ( has_post_thumbnail() ) : ?>
 				<?php the_post_thumbnail( 'full', array( 'style' => 'width: 100%; height: auto; display: block;' ) ); ?>
 				<?php $caption = get_the_post_thumbnail_caption(); ?>
@@ -50,7 +50,7 @@ get_header(); ?>
 		</div>
 
 		<!-- ARTICLE BODY -->
-		<article class="article-content" style="max-width: 1240px; margin: 0 auto; padding: 0 2rem;">
+		<article class="article-content centered-post-content">
 			<?php the_content(); ?>
 
 			<!-- Tags & Share -->

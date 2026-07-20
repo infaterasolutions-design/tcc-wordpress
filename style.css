@@ -2063,6 +2063,18 @@ picture.tcc-picture-wrapper {
     z-index: 0;
 }
 
+/* Safe, scroll-proof right background block */
+.tcc-hero-section::after {
+    content: '';
+    position: absolute;
+    top: -20px; /* Staggered up to create the "taller" effect */
+    bottom: 40px; /* Ends earlier than left side */
+    right: 0;
+    width: 50%; /* Exactly 50% of the screen width, absolutely zero horizontal scrolling */
+    background-color: #F4F1EC; /* Same color, just a separate block */
+    z-index: 0;
+}
+
 .tcc-hero-container {
     max-width: 1200px;
     margin: 0 auto;

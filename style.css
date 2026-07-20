@@ -2113,10 +2113,7 @@ picture.tcc-picture-wrapper {
 
 /* Mobile Layout */
 @media (max-width: 900px) {
-    .tcc-hero-section {
-        padding-top: 20px;
-        margin-bottom: 20px;
-    }
+    .tcc-hero-section { padding-top: 20px; margin-bottom: 0px; }
     
     .tcc-hero-section::before {
         width: 100%; /* Spans the entire screen on mobile */
@@ -2236,3 +2233,5 @@ html, body { max-width: 100vw; overflow-x: hidden; position: relative; }
     padding: 0 2rem;
   }
 }
+
+@media (max-width: 768px) { .figma-trending-container { margin-top: 0px !important; } }

@@ -489,7 +489,19 @@ add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, 
         return $html;
     }
     
-    $picture .= '<source srcset="' . esc_url($optimized_src) . '" type="' . esc_attr($type) . '">';
+    preg_match('/srcset=[\'"]([^\'"]+)[\'"]/', $html, $srcset_matches);
+    $original_srcset = !empty($srcset_matches[1]) ? $srcset_matches[1] : '';
+    preg_match('/sizes=[\'"]([^\'"]+)[\'"]/', $html, $sizes_matches);
+    $sizes_attr = !empty($sizes_matches[1]) ? ' sizes="' . esc_attr($sizes_matches[1]) . '"' : '';
+    
+    $optimized_srcset = '';
+    if ($original_srcset) {
+        $optimized_srcset = $is_png ? preg_replace('/\.png/i', '.webp', $original_srcset) : preg_replace('/\.(jpg|jpeg|webp)/i', '.avif', $original_srcset);
+    } else {
+        $optimized_srcset = $optimized_src;
+    }
+    
+    $picture .= '<source srcset="' . esc_attr($optimized_srcset) . '"' . $sizes_attr . ' type="' . esc_attr($type) . '">';
     $picture .= $html;
     $picture .= '</picture>';
     
@@ -554,7 +566,19 @@ add_filter('the_content', function($content) {
             $type = $is_png ? 'image/webp' : 'image/avif';
             
             if ( tcc_avif_exists_locally($optimized_src) ) {
-                $picture .= '<source srcset="' . esc_attr($optimized_src) . '" type="' . esc_attr($type) . '">';
+                preg_match('/srcset=[\'"]([^\'"]+)[\'"]/', $img_tag, $srcset_matches);
+                $original_srcset = !empty($srcset_matches[1]) ? $srcset_matches[1] : '';
+                preg_match('/sizes=[\'"]([^\'"]+)[\'"]/', $img_tag, $sizes_matches);
+                $sizes_attr = !empty($sizes_matches[1]) ? ' sizes="' . esc_attr($sizes_matches[1]) . '"' : '';
+                
+                $optimized_srcset = '';
+                if ($original_srcset) {
+                    $optimized_srcset = $is_png ? preg_replace('/\.png/i', '.webp', $original_srcset) : preg_replace('/\.(jpg|jpeg|webp)/i', '.avif', $original_srcset);
+                } else {
+                    $optimized_srcset = $optimized_src;
+                }
+                
+                $picture .= '<source srcset="' . esc_attr($optimized_srcset) . '"' . $sizes_attr . ' type="' . esc_attr($type) . '">';
                 $picture .= $img_tag;
                 $picture .= '</picture>';
                 return $picture;

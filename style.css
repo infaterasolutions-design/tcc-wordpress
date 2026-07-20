@@ -1777,12 +1777,23 @@ img {
   object-fit: cover;
 }
 .figma-trending-container {
-  width: 1200px;
-  max-width: 100%;
-  margin: 40px auto;
-  position: relative;
-  padding: 0;
-  overflow: hidden;
+    width: 1200px;
+    max-width: 100%;
+    margin: 40px auto;
+    position: relative;
+    padding: 0;
+    /* overflow: hidden; Removed so the background can bleed full width */
+}
+.figma-trending-container::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw; /* Translates to the 1536px full bleed from Figma */
+    height: 625.65px; /* Exact height from Figma */
+    background: #F4F1EC; /* Exact color from Figma */
+    z-index: -1;
 }
 .figma-trending-title-wrapper {
     display: flex;
@@ -2186,4 +2197,7 @@ picture.tcc-picture-wrapper {
         font-size: 38px;
     }
 }
+
+
+body { overflow-x: hidden; }
 

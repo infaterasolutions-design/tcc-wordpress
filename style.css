@@ -2123,10 +2123,11 @@ picture.tcc-picture-wrapper {
 }
 
 .tcc-hero-img {
-    width: 100%;
-    max-width: 450px;
+    width: auto;
+    max-width: 100%;
     height: auto;
-    object-fit: cover;
+    max-height: 60vh; /* Ensures the whole image fits on screen without scrolling */
+    object-fit: contain;
 }
 
 /* Mobile Layout */

@@ -2193,3 +2193,6 @@ body { overflow-x: hidden; }
   color: #fff;
   filter: drop-shadow(0 2px 10px rgba(0,0,0,0.3));
 }
+
+/* Custom Logo */
+.site-logo img.custom-logo { max-height: 45px; width: auto; display: block; }

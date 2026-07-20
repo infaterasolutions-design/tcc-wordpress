@@ -109,10 +109,16 @@ body, html {
 			<span id="hamburger-icon" class="hamburger-icon" style="font-size: 1.8rem; cursor: pointer; user-select: none; width: 30px; text-align: center;">
 				≡
 			</span>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center header-logo-link" style="gap: 0.5rem; text-decoration: none;">
+			<?php if ( has_custom_logo() ) : ?>
+				<div class="site-logo flex items-center">
+					<?php the_custom_logo(); ?>
+				</div>
+			<?php else : ?>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center header-logo-link" style="gap: 0.5rem; text-decoration: none;">
 				<span class="text-script header-logo-tcc" style="font-size: 2.5rem; color: #b0afa9; line-height: 1;">tcc</span>
 				<span class="text-serif header-logo-text" style="font-size: 1.5rem; font-weight: bold; letter-spacing: -0.5px; color: #000;">the combo closet</span>
 			</a>
+			<?php endif; ?>
 		</div>
 		
 		<!-- Desktop Nav -->

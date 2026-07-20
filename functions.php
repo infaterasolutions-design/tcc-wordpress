@@ -13,6 +13,7 @@ if ( ! defined( 'TCC_VERSION' ) ) {
 function tcc_theme_setup() {
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );
+	add_theme_support( 'custom-logo', array( 'height' => 100, 'width' => 400, 'flex-height' => true, 'flex-width' => true ) );
 	add_theme_support( 'post-thumbnails' );
 
 	register_nav_menus(

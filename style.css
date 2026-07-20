@@ -1785,16 +1785,14 @@ img {
   margin-bottom: 30px;
 }
 .figma-trending-title {
-    font-family: "Georgia Script", serif;
-    font-style: normal;
+    font-family: 'Great Vibes', cursive; /* Using Great Vibes since it is loaded in functions.php and looks like the script font requested */
     font-weight: 400;
     font-size: 144px;
-    line-height: 1; /* Keeping this 1 instead of 0px to prevent the text from breaking layout */
-    letter-spacing: -3.33px;
-    color: rgb(0, 0, 0);
+    line-height: 1;
+    color: #000;
     margin: 0;
     text-transform: lowercase;
-  }
+}
 .figma-trending-nav {
   display: flex;
   gap: 30px;

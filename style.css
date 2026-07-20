@@ -2045,11 +2045,10 @@ picture.tcc-picture-wrapper {
 /* TCC Hero Redesign */
 .tcc-hero-section {
     width: 100%;
-    margin-top: 60px; /* Creates the white gap below the header */
+    margin-top: 60px; /* White gap below header */
     margin-bottom: 60px;
-    overflow-x: hidden;
     position: relative;
-    background-color: #F4F1EC; /* Solid background for the entire section */
+    overflow-x: hidden;
 }
 
 .tcc-hero-container {
@@ -2061,13 +2060,21 @@ picture.tcc-picture-wrapper {
 }
 
 .tcc-hero-text {
-    width: 48%;
+    width: 48%; /* Left side is shorter (narrower) */
     padding: 100px 60px 100px 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
     z-index: 1;
+    
+    /* Solid color matching requested CSS */
+    background-color: #F4F1EC;
+    /* Box shadow bleeds infinitely left WITHOUT causing scrollbars */
+    box-shadow: -50vw 0 0 #F4F1EC;
+    
+    /* Shifted down to create a larger gap above text side */
+    margin-top: 40px;
 }
 
 .tcc-hero-text .hero-heading {
@@ -2090,13 +2097,22 @@ picture.tcc-picture-wrapper {
 }
 
 .tcc-hero-image-wrapper {
-    width: 52%;
+    width: 52%; /* Right side is longer (wider) */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 80px 15px;
     position: relative;
     z-index: 1;
+    
+    /* Same color as the left side! */
+    background-color: #F4F1EC;
+    /* Box shadow bleeds infinitely right WITHOUT causing scrollbars */
+    box-shadow: 50vw 0 0 #F4F1EC;
+    
+    /* Starts higher and ends lower than the text side */
+    margin-top: 0;
+    margin-bottom: -40px;
 }
 
 .tcc-hero-img {
@@ -2112,6 +2128,7 @@ picture.tcc-picture-wrapper {
     .tcc-hero-section {
         padding-top: 20px;
         margin-bottom: 20px;
+        background-color: #F4F1EC; /* Solid background for mobile */
     }
     
     .tcc-hero-container {
@@ -2123,12 +2140,19 @@ picture.tcc-picture-wrapper {
         order: 2;
         padding: 40px 20px 60px 20px;
         text-align: center;
+        background-color: transparent;
+        box-shadow: none;
+        margin-top: 0;
     }
     
     .tcc-hero-image-wrapper {
         width: 100%;
         order: 1;
         padding: 40px 15px 20px 15px;
+        background-color: transparent;
+        box-shadow: none;
+        margin-top: 0;
+        margin-bottom: 0;
     }
     
     .tcc-hero-text .hero-heading {

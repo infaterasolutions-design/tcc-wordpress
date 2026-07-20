@@ -36,7 +36,14 @@ global $wp_query;
 								<?php else : ?>
 									<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=600'; echo tcc_get_picture_tag($dummy_img, 'Placeholder', 'hover-scale', 'width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;'); ?>
 								<?php endif; ?>
-								<style>
+								
+<div class="recent-hover-overlay">
+	<span class="recent-hover-text">VIEW THE POST</span>
+	<svg class="recent-hover-arrow" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M5 12 Q 30 9 60 14 T 95 12 M 95 12 L 80 4 M 95 12 L 82 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+	</svg>
+</div>
+<style>
 									.top-card:hover .hover-scale { transform: scale(1.05); }
 								</style>
 							</div>
@@ -81,7 +88,14 @@ global $wp_query;
 									<?php else : ?>
 										<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=600'; echo tcc_get_picture_tag($dummy_img, 'Placeholder', 'hover-scale', 'width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;'); ?>
 									<?php endif; ?>
-									<style>
+									
+<div class="recent-hover-overlay">
+	<span class="recent-hover-text">VIEW THE POST</span>
+	<svg class="recent-hover-arrow" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M5 12 Q 30 9 60 14 T 95 12 M 95 12 L 80 4 M 95 12 L 82 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+	</svg>
+</div>
+<style>
 										.bottom-card:hover .hover-scale { transform: scale(1.05); }
 									</style>
 								</div>

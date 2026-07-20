@@ -2173,7 +2173,9 @@ body { overflow-x: hidden; }
   text-decoration: none !important;
   color: #fff !important;
 }
-.recent-card .img-container:hover .recent-hover-overlay {
+.recent-card .img-container:hover .recent-hover-overlay,
+.top-card:hover .recent-hover-overlay,
+.bottom-card:hover .recent-hover-overlay {
   opacity: 1;
 }
 .recent-hover-text {

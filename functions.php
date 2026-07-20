@@ -362,9 +362,26 @@ add_filter('wp_handle_upload', function($upload) {
         if ($has_imagick || $has_gd) {
             $ext = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
             
-            // Skip PNGs completely to preserve absolute sharpness on text/logos
             if ($ext === 'png') {
-                return $metadata;
+                // Convert to lossless WebP
+                $webp_path = preg_replace('/\.png$/i', '.webp', $file_path);
+                if ($has_imagick) {
+                    try {
+                        $image = new Imagick($file_path);
+                        $image->setImageFormat('webp');
+                        $image->setOption('webp:lossless', 'true');
+                        $image->writeImage($webp_path);
+                        $image->clear();
+                        $image->destroy();
+                    } catch (Exception $e) {}
+                } else if (function_exists('imagewebp')) {
+                    $image = @imagecreatefrompng($file_path);
+                    if ($image !== false) {
+                        imagewebp($image, $webp_path, 100);
+                        imagedestroy($image);
+                    }
+                }
+                return $upload;
             }
             
             $avif_path = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $file_path);
@@ -460,16 +477,19 @@ add_filter('post_thumbnail_html', function($html, $post_id, $post_thumbnail_id, 
         return $picture;
     }
     
-    // Legacy support: if WP outputted JPG/WebP, check if our retroactive script generated an AVIF on disk.
+    // Legacy support: check if our retroactive script generated an AVIF/WebP on disk.
     $src = wp_get_attachment_image_url($post_thumbnail_id, $size);
     if ( ! $src ) return $html;
-    $avif_src = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $src);
     
-    if ( ! tcc_avif_exists_locally($avif_src) ) {
+    $is_png = preg_match('/\.png$/i', $src);
+    $optimized_src = $is_png ? preg_replace('/\.png$/i', '.webp', $src) : preg_replace('/\.(jpg|jpeg|webp)$/i', '.avif', $src);
+    $type = $is_png ? 'image/webp' : 'image/avif';
+    
+    if ( ! tcc_avif_exists_locally($optimized_src) ) {
         return $html;
     }
     
-    $picture .= '<source srcset="' . esc_url($avif_src) . '" type="image/avif">';
+    $picture .= '<source srcset="' . esc_url($optimized_src) . '" type="' . esc_attr($type) . '">';
     $picture .= $html;
     $picture .= '</picture>';
     
@@ -483,9 +503,11 @@ function tcc_get_picture_tag($src, $alt = '', $classes = '', $styles = '') {
         $avif_src = str_replace('auto=format', 'fm=avif', $src);
         $picture .= '<source srcset="' . esc_url($avif_src) . '" type="image/avif">';
     } else {
-        $avif_src = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $src);
-        if ( tcc_avif_exists_locally($avif_src) ) {
-            $picture .= '<source srcset="' . esc_url($avif_src) . '" type="image/avif">';
+        $is_png = preg_match('/\.png$/i', $src);
+        $optimized_src = $is_png ? preg_replace('/\.png$/i', '.webp', $src) : preg_replace('/\.(jpg|jpeg|webp)$/i', '.avif', $src);
+        $type = $is_png ? 'image/webp' : 'image/avif';
+        if ( tcc_avif_exists_locally($optimized_src) ) {
+            $picture .= '<source srcset="' . esc_url($optimized_src) . '" type="' . esc_attr($type) . '">';
         }
     }
     
@@ -525,12 +547,14 @@ add_filter('the_content', function($content) {
             return $picture;
         }
 
-        // Legacy / Retroactive AVIF handling
+        // Legacy / Retroactive handling
         if (preg_match('/\.(jpg|jpeg|png|webp)$/i', $src)) {
-            $avif_src = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $src);
+            $is_png = preg_match('/\.png$/i', $src);
+            $optimized_src = $is_png ? preg_replace('/\.png$/i', '.webp', $src) : preg_replace('/\.(jpg|jpeg|webp)$/i', '.avif', $src);
+            $type = $is_png ? 'image/webp' : 'image/avif';
             
-            if ( tcc_avif_exists_locally($avif_src) ) {
-                $picture .= '<source srcset="' . esc_attr($avif_src) . '" type="image/avif">';
+            if ( tcc_avif_exists_locally($optimized_src) ) {
+                $picture .= '<source srcset="' . esc_attr($optimized_src) . '" type="' . esc_attr($type) . '">';
                 $picture .= $img_tag;
                 $picture .= '</picture>';
                 return $picture;
@@ -585,7 +609,8 @@ function tcc_get_trending_tab($request) {
             if (strpos($img_url, 'unsplash.com') !== false) {
                 $img_url = str_replace('auto=format', 'fm=avif', $img_url);
             } else {
-                $img_url = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $img_url);
+                $is_png = preg_match('/\.png$/i', $img_url);
+                $img_url = $is_png ? preg_replace('/\.png$/i', '.webp', $img_url) : preg_replace('/\.(jpg|jpeg|webp)$/i', '.avif', $img_url);
             }
             
             $posts[] = [

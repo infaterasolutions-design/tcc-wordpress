@@ -34,12 +34,35 @@ foreach ($years as $year) {
                     try {
                         $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
                         
-                        // IF PNG: Delete any existing AVIF and skip conversion to preserve sharpness
+                        // IF PNG: Convert to lossless WebP
                         if ($ext === 'png') {
+                            $webp_path = preg_replace('/\.png$/i', '.webp', $path);
+                            if (!file_exists($webp_path) || $force) {
+                                echo "Converting PNG to WebP: $path\n";
+                                if ($force && file_exists($webp_path)) @unlink($webp_path);
+                                
+                                if ($has_imagick) {
+                                    $image = new Imagick($path);
+                                    $image->setImageFormat('webp');
+                                    $image->setOption('webp:lossless', 'true');
+                                    $image->writeImage($webp_path);
+                                    $image->clear();
+                                    $image->destroy();
+                                } else if (function_exists('imagewebp')) {
+                                    $image = @imagecreatefrompng($path);
+                                    if ($image !== false) {
+                                        imagewebp($image, $webp_path, 100);
+                                        imagedestroy($image);
+                                    }
+                                }
+                                $count++;
+                            }
+                            
+                            // Delete any accidental bad AVIF for PNG
                             if (file_exists($avif_path)) {
                                 @unlink($avif_path);
-                                echo "Deleted bad AVIF for PNG: $path\n";
                             }
+                            
                             continue;
                         }
                         

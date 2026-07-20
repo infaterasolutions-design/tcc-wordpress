@@ -1167,10 +1167,7 @@ img {
 .fp-hero-left {
   max-width: 480px;
 }
-.fp-trending-section {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
+.fp-trending-section { margin-top: 0; margin-bottom: 0; }
 .fp-trending-header {
   margin-bottom: 1rem;
   position: relative;
@@ -1253,10 +1250,7 @@ img {
   cursor: pointer;
   margin-top: 1.5rem;
 }
-.fp-recent-section {
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-}
+.fp-recent-section { margin-top: 0.5rem; margin-bottom: 0.5rem; }
 .fp-recent-header {
   margin-bottom: 2rem;
 }
@@ -1509,10 +1503,7 @@ img {
 .fp-hero-left {
   max-width: 480px;
 }
-.fp-trending-section {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
+.fp-trending-section { margin-top: 0; margin-bottom: 0; }
 .fp-trending-header {
   margin-bottom: 1rem;
   position: relative;
@@ -1595,10 +1586,7 @@ img {
   cursor: pointer;
   margin-top: 1.5rem;
 }
-.fp-recent-section {
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-}
+.fp-recent-section { margin-top: 0.5rem; margin-bottom: 0.5rem; }
 .fp-recent-header {
   margin-bottom: 2rem;
 }
@@ -1748,7 +1736,7 @@ img {
 .figma-trending-container {
     width: 1200px;
     max-width: 100%;
-    margin: 40px auto;
+    margin: 20px auto;
     position: relative;
     padding: 0;
 }

@@ -84,7 +84,10 @@ get_header(); ?>
 		?>
 		
 		<div class="figma-trending-title-wrapper">
-			<h2 class="figma-trending-title">trending</h2>
+			<div class="figma-trending-title-left">
+				<span class="text-serif trending-fj">tcc</span>
+				<h2 class="figma-trending-title">trending</h2>
+			</div>
 			<nav class="figma-trending-nav" id="figma-tabs-nav">
 				<?php foreach($tabs_config as $index => $tab): ?>
 					<span class="<?php echo $index === 0 ? 'figma-trending-nav-active' : 'figma-trending-nav-item'; ?>" data-tab="<?php echo esc_attr($tab['id']); ?>">

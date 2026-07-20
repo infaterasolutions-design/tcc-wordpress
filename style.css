@@ -1793,7 +1793,7 @@ img {
 .figma-trending-grid::before {
     content: '';
     position: absolute;
-    top: -40px; /* Shifted upside by 40px so the boundary aligns perfectly with the bottom of the sub menu */
+    top: -47px; /* Shifted to align with the bottom of the sub menu */
     left: 50%;
     transform: translateX(-50%);
     width: 100vw; 

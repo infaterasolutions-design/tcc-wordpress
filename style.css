@@ -2196,3 +2196,6 @@ body { overflow-x: hidden; }
 
 /* Custom Logo */
 .site-logo img.custom-logo { max-height: 45px; width: auto; display: block; }
+
+/* Navigation Menu Colors */
+.desktop-nav a, #mobile-menu nav a, .header-main nav a { color: #000 !important; }

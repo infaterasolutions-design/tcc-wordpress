@@ -1787,7 +1787,7 @@ img {
 .figma-trending-container::before {
     content: '';
     position: absolute;
-    bottom: 0px; /* Shifted down by anchoring it to the bottom of the section */
+    top: 60px; /* Shifted down from the top to perfectly align with the text baseline */
     left: 50%;
     transform: translateX(-50%);
     width: 100vw; /* Translates to the 1536px full bleed from Figma */

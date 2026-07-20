@@ -1791,7 +1791,7 @@ img {
     left: 50%;
     transform: translateX(-50%);
     width: 100vw; /* Translates to the 1536px full bleed from Figma */
-    height: 625.65px; /* Exact height from Figma */
+    height: 100%; /* Changed from 625px to 100% so it covers the ENTIRE section dynamically */
     background: #F4F1EC; /* Exact color from Figma */
     z-index: -1;
 }

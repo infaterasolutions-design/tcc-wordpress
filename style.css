@@ -2044,11 +2044,11 @@ picture.tcc-picture-wrapper {
 
 /* TCC Hero Redesign */
 .tcc-hero-section {
-    /* 50/50 split background color spanning full screen width */
-    background: linear-gradient(to right, #F4F1EC 50%, #FAF6EE 50%);
     width: 100%;
-    padding: 0;
-    margin: 0;
+    padding-top: 50px;
+    margin-bottom: 60px;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .tcc-hero-container {
@@ -2060,11 +2060,25 @@ picture.tcc-picture-wrapper {
 }
 
 .tcc-hero-text {
-    width: 50%;
+    width: 48%;
     padding: 100px 60px 100px 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Left Background */
+.tcc-hero-text::before {
+    content: '';
+    position: absolute;
+    top: 40px; /* Offset down */
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    background-color: #F4F1EC;
+    z-index: -1;
 }
 
 .tcc-hero-text .hero-heading {
@@ -2087,11 +2101,25 @@ picture.tcc-picture-wrapper {
 }
 
 .tcc-hero-image-wrapper {
-    width: 50%;
+    width: 52%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 80px 15px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Right Background */
+.tcc-hero-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; /* Starts higher up than left background */
+    bottom: -40px; /* Extends lower than left background */
+    left: 0;
+    width: 100vw;
+    background-color: #F8F7F4; /* Slightly lighter color */
+    z-index: -1;
 }
 
 .tcc-hero-img {
@@ -2104,12 +2132,26 @@ picture.tcc-picture-wrapper {
 /* Mobile Layout */
 @media (max-width: 900px) {
     .tcc-hero-section {
-        /* Solid background for mobile */
-        background: #F4F1EC;
+        padding-top: 20px;
+        margin-bottom: 20px;
     }
     
     .tcc-hero-container {
         flex-direction: column;
+    }
+    
+    .tcc-hero-text {
+        width: 100%;
+        order: 2;
+        padding: 40px 20px 60px 20px;
+        text-align: center;
+    }
+    
+    .tcc-hero-text::before {
+        top: 0;
+        left: -50vw;
+        right: -50vw;
+        width: 200vw;
     }
     
     .tcc-hero-image-wrapper {
@@ -2118,11 +2160,13 @@ picture.tcc-picture-wrapper {
         padding: 40px 15px 20px 15px;
     }
     
-    .tcc-hero-text {
-        width: 100%;
-        order: 2;
-        padding: 20px 20px 60px 20px;
-        text-align: center;
+    .tcc-hero-image-wrapper::before {
+        top: 0;
+        bottom: 0;
+        left: -50vw;
+        right: -50vw;
+        width: 200vw;
+        background-color: #F4F1EC;
     }
     
     .tcc-hero-text .hero-heading {

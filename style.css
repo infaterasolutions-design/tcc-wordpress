@@ -1784,51 +1784,19 @@ img {
   padding: 0;
   overflow: hidden;
 }
-body {
-    overflow-x: hidden; /* Prevent horizontal scroll from full-width background elements */
-}
-
 .figma-trending-title-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
-    margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2.4px solid #000;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
 }
-
-.figma-trending-title-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100vw;
-    height: 70px; /* The beige background band height */
-    background-color: #F4F1EC;
-    z-index: -1;
-}
-
-.figma-trending-title-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.trending-fj {
-    font-size: 55px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -3px;
-    color: #000;
-    margin-bottom: 10px; /* Align slightly with the script text */
-}
-
 .figma-trending-title {
     font-family: 'Sacramento', cursive;
     font-style: normal;
     font-weight: normal; 
-    font-size: 110px; 
+    font-size: 110px; /* Adjusted size for the new thin signature font */
     line-height: normal; 
     color: rgb(0, 0, 0);
     margin: 0;

@@ -2076,7 +2076,7 @@ picture.tcc-picture-wrapper {
     top: 40px; /* Offset down */
     bottom: 0;
     right: 0;
-    width: 100vw;
+    left: -50vw; /* Stretch left without causing horizontal overflow */
     background-color: #F4F1EC;
     z-index: -1;
 }
@@ -2117,16 +2117,16 @@ picture.tcc-picture-wrapper {
     top: 0; /* Starts higher up than left background */
     bottom: -40px; /* Extends lower than left background */
     left: 0;
-    width: 100vw;
+    right: -50vw; /* Stretch right without causing horizontal overflow */
     background-color: #F8F7F4; /* Slightly lighter color */
     z-index: -1;
 }
 
 .tcc-hero-img {
     width: auto;
-    max-width: 100%;
+    max-width: 500px;
     height: auto;
-    max-height: 60vh; /* Ensures the whole image fits on screen without scrolling */
+    max-height: 75vh;
     object-fit: contain;
 }
 

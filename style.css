@@ -2045,10 +2045,11 @@ picture.tcc-picture-wrapper {
 /* TCC Hero Redesign */
 .tcc-hero-section {
     width: 100%;
-    padding-top: 50px;
+    margin-top: 60px; /* Creates the white gap below the header */
     margin-bottom: 60px;
     overflow-x: hidden;
     position: relative;
+    background-color: #F4F1EC; /* Solid background for the entire section */
 }
 
 .tcc-hero-container {
@@ -2067,18 +2068,6 @@ picture.tcc-picture-wrapper {
     justify-content: center;
     position: relative;
     z-index: 1;
-}
-
-/* Left Background */
-.tcc-hero-text::before {
-    content: '';
-    position: absolute;
-    top: 40px; /* Offset down */
-    bottom: 0;
-    right: 0;
-    left: -50vw; /* Stretch left without causing horizontal overflow */
-    background-color: #F4F1EC;
-    z-index: -1;
 }
 
 .tcc-hero-text .hero-heading {
@@ -2110,18 +2099,6 @@ picture.tcc-picture-wrapper {
     z-index: 1;
 }
 
-/* Right Background */
-.tcc-hero-image-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0; /* Starts higher up than left background */
-    bottom: -40px; /* Extends lower than left background */
-    left: 0;
-    right: -50vw; /* Stretch right without causing horizontal overflow */
-    background-color: #F8F7F4; /* Slightly lighter color */
-    z-index: -1;
-}
-
 .tcc-hero-img {
     width: auto;
     max-width: 500px;
@@ -2148,26 +2125,10 @@ picture.tcc-picture-wrapper {
         text-align: center;
     }
     
-    .tcc-hero-text::before {
-        top: 0;
-        left: -50vw;
-        right: -50vw;
-        width: 200vw;
-    }
-    
     .tcc-hero-image-wrapper {
         width: 100%;
         order: 1;
         padding: 40px 15px 20px 15px;
-    }
-    
-    .tcc-hero-image-wrapper::before {
-        top: 0;
-        bottom: 0;
-        left: -50vw;
-        right: -50vw;
-        width: 200vw;
-        background-color: #F4F1EC;
     }
     
     .tcc-hero-text .hero-heading {

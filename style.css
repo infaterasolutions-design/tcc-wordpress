@@ -2087,7 +2087,7 @@ picture.tcc-picture-wrapper {
 
 .tcc-hero-text {
     width: 50%; /* Restored 50/50 width */
-    padding: 100px 60px 100px 15px;
+    padding: 60px 60px 60px 15px; /* Reduced vertical padding from 100px to 60px */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2117,7 +2117,7 @@ picture.tcc-picture-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 80px 15px;
+    padding: 40px 15px; /* Reduced vertical padding from 80px to 40px */
     /* Transparent background, no pseudo elements */
     margin-top: 0;
     margin-bottom: -40px;

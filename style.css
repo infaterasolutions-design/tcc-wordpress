@@ -1787,11 +1787,11 @@ img {
 .figma-trending-container::before {
     content: '';
     position: absolute;
-    top: 0px;
+    bottom: 0px; /* Shifted down by anchoring it to the bottom of the section */
     left: 50%;
     transform: translateX(-50%);
     width: 100vw; /* Translates to the 1536px full bleed from Figma */
-    height: 100%; /* Changed from 625px to 100% so it covers the ENTIRE section dynamically */
+    height: 625.65px; /* Restored exactly to the Figma size */
     background: #F4F1EC; /* Exact color from Figma */
     z-index: -1;
 }

@@ -2044,7 +2044,8 @@ picture.tcc-picture-wrapper {
 
 /* TCC Hero Redesign */
 .tcc-hero-section {
-    background-color: #F4F1EC;
+    /* 50/50 split background color spanning full screen width */
+    background: linear-gradient(to right, #F4F1EC 50%, #FAF6EE 50%);
     width: 100%;
     padding: 0;
     margin: 0;
@@ -2055,75 +2056,77 @@ picture.tcc-picture-wrapper {
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    position: relative;
-    padding: 4rem 1.5rem;
+    align-items: stretch;
 }
 
 .tcc-hero-text {
-    flex: 1;
-    padding: 60px 60px 60px 0;
-    max-width: 580px;
+    width: 50%;
+    padding: 100px 60px 100px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .tcc-hero-text .hero-heading {
     font-size: 48px;
-    line-height: 48px;
+    line-height: 1.1;
     letter-spacing: 0.3px;
     color: #000000;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
 }
 
 .tcc-hero-text .hero-subtext {
     font-size: 15px;
-    line-height: 24px;
+    line-height: 1.6;
     letter-spacing: 1px;
     color: #000000;
     margin: 0;
+    font-family: 'Inter', sans-serif;
 }
 
 .tcc-hero-image-wrapper {
-    flex: 1;
+    width: 50%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+    padding: 80px 15px;
 }
 
 .tcc-hero-img {
     width: 100%;
-    max-width: 550px;
+    max-width: 450px;
     height: auto;
     object-fit: cover;
 }
 
 /* Mobile Layout */
 @media (max-width: 900px) {
+    .tcc-hero-section {
+        /* Solid background for mobile */
+        background: #F4F1EC;
+    }
+    
     .tcc-hero-container {
         flex-direction: column;
-        padding: 2rem 1.5rem;
     }
     
     .tcc-hero-image-wrapper {
         width: 100%;
         order: 1;
-        justify-content: center;
-    }
-    
-    .tcc-hero-img {
-        max-width: 100%;
-        width: 100%;
+        padding: 40px 15px 20px 15px;
     }
     
     .tcc-hero-text {
+        width: 100%;
         order: 2;
-        padding: 40px 0 20px 0;
+        padding: 20px 20px 60px 20px;
         text-align: center;
-        max-width: 100%;
     }
     
     .tcc-hero-text .hero-heading {
         font-size: 38px;
-        line-height: 1.1;
     }
 }
 

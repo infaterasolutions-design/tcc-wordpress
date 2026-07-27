@@ -316,6 +316,15 @@ add_filter('script_loader_tag', function($tag, $handle, $src) {
     return $tag;
 }, 10, 3);
 
+// Explicitly tell LiteSpeed Cache to NEVER touch Mediavine or Grow scripts
+add_filter( 'litespeed_optimize_js_excludes', function( $excludes ) {
+    $excludes[] = 'scriptwrapper.com';
+    $excludes[] = 'grow.me';
+    $excludes[] = 'mediavine';
+    $excludes[] = 'nutrimatic';
+    return $excludes;
+} );
+
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');

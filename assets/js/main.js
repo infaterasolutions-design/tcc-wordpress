@@ -191,4 +191,4 @@ document.addEventListener('DOMContentLoaded', function() {
             toggle.setAttribute('aria-expanded', 'false');
         });
     });
-\n});
+});

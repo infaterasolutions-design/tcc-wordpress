@@ -53,7 +53,7 @@ get_header();
 
 			<!-- Article Body -->
 			<article id="post-<?php the_ID(); ?>" <?php post_class("article-body tiptap-content"); ?>>
-				<div class="entry-content">
+				<div id="content" class="entry-content post-content content">
 					<?php the_content(); ?>
 				</div>
 			</article>

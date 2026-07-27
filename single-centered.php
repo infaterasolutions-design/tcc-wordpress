@@ -51,7 +51,7 @@ get_header(); ?>
 
 		<!-- ARTICLE BODY -->
 		<article id="post-<?php the_ID(); ?>" <?php post_class("article-content centered-post-content"); ?>>
-			<div class="entry-content">
+			<div id="content" class="entry-content post-content content">
 				<?php the_content(); ?>
 			</div>
 

@@ -5,7 +5,7 @@
 
 get_header(); ?>
 
-<main style="background-color: #faf9f6; min-height: 100vh; padding-bottom: 4rem;">
+<main id="main" class="site-main" style="background-color: #faf9f6; min-height: 100vh; padding-bottom: 4rem;">
 
 	<?php while ( have_posts() ) : the_post(); ?>
 

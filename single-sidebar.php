@@ -11,7 +11,7 @@ get_header();
 	<?php while ( have_posts() ) : the_post(); ?>
 
 	<div class="sidebar-page-container">
-		<div class="article-container">
+		<main id="main" class="site-main article-container">
 			<article id="post-<?php the_ID(); ?>" <?php post_class("tiptap-content"); ?>>
 				<!-- Breadcrumb -->
 				<div class="article-breadcrumb">
@@ -57,7 +57,7 @@ get_header();
 					<?php the_content(); ?>
 				</div>
 			</article>
-		</div>
+		</main>
 
 		<!-- Sidebar -->
 		<aside id="sidebar" class="sidebar sidebar-container" role="complementary">

@@ -2247,6 +2247,15 @@ html, body { max-width: 100vw; overflow-x: hidden; position: relative; }
 .desktop-nav-container ul li {
     position: static;
 }
+.tcc-mega-panel::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: transparent;
+}
 .tcc-mega-panel {
     display: none;
     position: absolute;

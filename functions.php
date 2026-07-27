@@ -308,7 +308,7 @@ add_filter('body_class', function($classes) {
 }, 9999);
 
 add_filter('script_loader_tag', function($tag, $handle, $src) {
-    if (strpos($handle, 'google-site-kit') !== false || strpos($src, 'googletagmanager.com') !== false || strpos($src, 'grow.me') !== false) {
+    if (strpos($handle, 'google-site-kit') !== false || strpos($src, 'googletagmanager.com') !== false) {
         if (strpos($tag, ' defer') === false && strpos($tag, ' async') === false) {
             $tag = str_replace(' src', ' defer="defer" src', $tag);
         }

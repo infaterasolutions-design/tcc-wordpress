@@ -52,13 +52,15 @@ get_header();
 			<?php endif; ?>
 
 			<!-- Article Body -->
-			<article class="article-body tiptap-content entry-content">
-				<?php the_content(); ?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class("article-body tiptap-content"); ?>>
+				<div class="entry-content">
+					<?php the_content(); ?>
+				</div>
 			</article>
 		</div>
 
 		<!-- Sidebar -->
-		<aside class="sidebar-container">
+		<aside id="sidebar" class="sidebar sidebar-container" role="complementary">
 			<div style="background-color: #FAF6EE; padding: 24px; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center;">
 				<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300', 'Elle Penner', '', 'width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 20px;'); ?>
 				<h3 style="font-family: 'Playfair Display', serif; font-size: 30px; margin: 0 0 16px 0; text-align: center; font-weight: 400; color: #2C2C2C;">Hey there, I’m Elle.</h3>

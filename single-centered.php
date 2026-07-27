@@ -50,8 +50,10 @@ get_header(); ?>
 		</div>
 
 		<!-- ARTICLE BODY -->
-		<article class="article-content centered-post-content entry-content">
-			<?php the_content(); ?>
+		<article id="post-<?php the_ID(); ?>" <?php post_class("article-content centered-post-content"); ?>>
+			<div class="entry-content">
+				<?php the_content(); ?>
+			</div>
 
 			<!-- Tags & Share -->
 			<div style="margin-top: 4rem; padding-bottom: 2rem; border-bottom: 1px solid #d4cfc3; display: flex; justify-content: space-between; align-items: center;">

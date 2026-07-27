@@ -52,7 +52,7 @@ get_header();
 			<?php endif; ?>
 
 			<!-- Article Body -->
-			<article class="article-body tiptap-content">
+			<article class="article-body tiptap-content entry-content">
 				<?php the_content(); ?>
 			</article>
 		</div>

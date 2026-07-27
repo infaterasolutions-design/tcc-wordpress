@@ -50,7 +50,7 @@ get_header(); ?>
 		</div>
 
 		<!-- ARTICLE BODY -->
-		<article class="article-content centered-post-content">
+		<article class="article-content centered-post-content entry-content">
 			<?php the_content(); ?>
 
 			<!-- Tags & Share -->

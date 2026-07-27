@@ -2383,5 +2383,5 @@ html, body { max-width: 100vw; overflow-x: hidden; position: relative; }
     to { opacity: 1; transform: translateY(0); }
 }
 
-.desktop-nav a:hover { color: #6b7280 !important; }
+.desktop-nav a:hover { text-decoration: underline !important; color: #000 !important; }
 

@@ -2353,8 +2353,8 @@ html, body { max-width: 100vw; overflow-x: hidden; position: relative; }
 }
 .tcc-mega-post-title {
     margin: 0;
-    font-size: 1.1rem;
-    line-height: 1.3;
+    font-size: 0.85rem;
+    line-height: 1.2;
     font-weight: 400;
 }
 .tcc-mega-label {

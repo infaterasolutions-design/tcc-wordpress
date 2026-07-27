@@ -2373,7 +2373,11 @@ html, body { max-width: 100vw; overflow-x: hidden; position: relative; }
 @media (max-width: 1200px) {
     .tcc-mega-panel { display: none !important; }
 }
-@keyframes megaFadeIn {
+@keyframes megaPanelFadeIn {
+    from { opacity: 0; transform: translate(-50%, -5px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+@keyframes megaGroupFadeIn {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
 }

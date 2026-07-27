@@ -2251,8 +2251,9 @@ html, body { max-width: 100vw; overflow-x: hidden; position: relative; }
     content: '';
     position: absolute;
     top: -40px;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
     height: 40px;
     background: transparent;
 }
@@ -2381,3 +2382,6 @@ html, body { max-width: 100vw; overflow-x: hidden; position: relative; }
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+.desktop-nav a:hover { color: #6b7280 !important; }
+

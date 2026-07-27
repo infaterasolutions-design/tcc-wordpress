@@ -124,4 +124,71 @@ document.addEventListener('DOMContentLoaded', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-});
+
+    // Mega Menu Interactions
+    const megaMenuParents = document.querySelectorAll('.tcc-mega-menu-parent');
+    
+    megaMenuParents.forEach(parent => {
+        const toggle = parent.querySelector('.tcc-mega-toggle');
+        const panel = parent.querySelector('.tcc-mega-panel');
+        if (!toggle || !panel) return;
+        
+        const subcatLinks = panel.querySelectorAll('.tcc-mega-subcat-link');
+        const postGroups = panel.querySelectorAll('.tcc-mega-posts-group');
+        
+        // Handle subcategory hover
+        subcatLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                const targetId = this.getAttribute('data-target');
+                
+                // Update active link
+                subcatLinks.forEach(l => l.classList.remove('tcc-mega-active'));
+                this.classList.add('tcc-mega-active');
+                
+                // Update active posts group
+                postGroups.forEach(group => {
+                    if (group.id === targetId) {
+                        group.classList.add('tcc-mega-active');
+                    } else {
+                        group.classList.remove('tcc-mega-active');
+                    }
+                });
+            });
+            
+            // Keyboard focus support for subcats
+            link.addEventListener('focus', function() {
+                this.dispatchEvent(new Event('mouseenter'));
+            });
+        });
+        
+        // Accessibility and keyboard nav
+        parent.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                toggle.setAttribute('aria-expanded', 'false');
+                panel.classList.remove('is-open');
+                toggle.focus();
+            }
+        });
+        
+        toggle.addEventListener('focus', function() {
+            toggle.setAttribute('aria-expanded', 'true');
+            panel.classList.add('is-open');
+        });
+        
+        parent.addEventListener('focusout', function(e) {
+            // Close if focus moves outside the parent
+            if (!parent.contains(e.relatedTarget)) {
+                toggle.setAttribute('aria-expanded', 'false');
+                panel.classList.remove('is-open');
+            }
+        });
+        
+        parent.addEventListener('mouseenter', function() {
+            toggle.setAttribute('aria-expanded', 'true');
+        });
+        
+        parent.addEventListener('mouseleave', function() {
+            toggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+\n});

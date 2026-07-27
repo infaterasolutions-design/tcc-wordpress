@@ -129,6 +129,7 @@ body, html {
 			'container'       => 'nav',
 			'container_class' => 'desktop-nav-container',
 			'fallback_cb'     => false,
+			'walker'          => new TCC_Mega_Menu_Walker(),
 		) );
 		?>
 		

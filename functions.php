@@ -654,3 +654,4 @@ function tcc_get_trending_tab($request) {
         'posts' => $posts
     ]);
 }
+\n\n/**\n * Mega Menu Walker\n */\nrequire_once get_template_directory() . '/tcc_mega_menu_walker.php';\n

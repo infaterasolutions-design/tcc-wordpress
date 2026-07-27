@@ -9,8 +9,9 @@ get_header(); ?>
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
-		<!-- ARTICLE HEADER -->
-		<header class="centered-post-header">
+		<article id="post-<?php the_ID(); ?>" <?php post_class("centered-post-content"); ?>>
+			<!-- ARTICLE HEADER -->
+			<header class="centered-post-header">
 			<!-- Breadcrumb -->
 			<div style="font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 1.5rem; text-align: center;">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="color: #888; text-decoration: none;">HOME</a> / POST / <?php echo esc_html( strtoupper( get_the_title() ) ); ?>
@@ -50,8 +51,7 @@ get_header(); ?>
 		</div>
 
 		<!-- ARTICLE BODY -->
-		<article id="post-<?php the_ID(); ?>" <?php post_class("article-content centered-post-content"); ?>>
-			<div id="content" class="entry-content post-content content">
+		<div id="content" class="entry-content post-content content article-content">
 				<?php the_content(); ?>
 			</div>
 
@@ -72,6 +72,7 @@ get_header(); ?>
 					<span style="cursor: pointer;">SHARE</span>
 					<span style="cursor: pointer;">PIN IT</span>
 				</div>
+			</div>
 			</div>
 		</article>
 

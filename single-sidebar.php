@@ -12,10 +12,11 @@ get_header();
 
 	<div class="sidebar-page-container">
 		<div class="article-container">
-			<!-- Breadcrumb -->
-			<div class="article-breadcrumb">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a> &raquo; <?php echo get_the_category_list( ', ' ); ?>
-			</div>
+			<article id="post-<?php the_ID(); ?>" <?php post_class("tiptap-content"); ?>>
+				<!-- Breadcrumb -->
+				<div class="article-breadcrumb">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a> &raquo; <?php echo get_the_category_list( ', ' ); ?>
+				</div>
 
 			<!-- Title -->
 			<h1 class="article-title"><?php the_title(); ?></h1>
@@ -51,9 +52,8 @@ get_header();
 				</div>
 			<?php endif; ?>
 
-			<!-- Article Body -->
-			<article id="post-<?php the_ID(); ?>" <?php post_class("article-body tiptap-content"); ?>>
-				<div id="content" class="entry-content post-content content">
+				<!-- Article Body -->
+				<div id="content" class="entry-content post-content content article-body">
 					<?php the_content(); ?>
 				</div>
 			</article>

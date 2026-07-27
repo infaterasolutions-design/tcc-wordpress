@@ -2383,5 +2383,12 @@ html, body { max-width: 100vw; overflow-x: hidden; position: relative; }
     to { opacity: 1; transform: translateY(0); }
 }
 
-.desktop-nav a:hover { text-decoration: underline !important; color: #000 !important; }
+.desktop-nav a:hover,
+.desktop-nav li.tcc-mega-menu-parent:hover > a,
+.desktop-nav li.tcc-mega-menu-parent:focus-within > a {
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 4px !important;
+    color: #000 !important;
+}
 

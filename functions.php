@@ -56,6 +56,19 @@ function tcc_widgets_init() {
 			)
 		);
 	}
+
+	// Register Main Sidebar for Ads
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Main Sidebar', 'tcc' ),
+			'id'            => 'sidebar-1',
+			'description'   => esc_html__( 'Add ad widgets and other sidebar items here.', 'tcc' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s" style="margin-bottom: 2rem;">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h3 class="widget-title" style="font-family: \'Playfair Display\', serif; font-size: 24px; margin-bottom: 1.5rem; text-align: center; font-weight: 400;">',
+			'after_title'   => '</h3>',
+		)
+	);
 }
 add_action( 'widgets_init', 'tcc_widgets_init' );
 

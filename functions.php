@@ -71,6 +71,9 @@ function tcc_scripts() {
     
 	// Tailwind CSS v4 via compiled style.css
 
+	// Ensure jQuery is loaded (required by many third-party ad networks like SheMedia)
+	wp_enqueue_script( 'jquery' );
+
 	// Main JS for AJAX and interactivity
 	wp_enqueue_script( 'tcc-main', get_template_directory_uri() . '/assets/js/main.js', array(), TCC_VERSION, true );
 	wp_localize_script( 'tcc-main', 'tcc_ajax', array(

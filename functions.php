@@ -538,66 +538,9 @@ function tcc_get_picture_tag($src, $alt = '', $classes = '', $styles = '') {
     return $picture;
 }
 
-add_filter('the_content', function($content) {
-    if (empty($content)) return $content;
-    
-    $upload_dir = wp_get_upload_dir();
-    
-    return preg_replace_callback('/<img[^>]+src=[\'"]([^\'"]+)[\'"][^>]*>/i', function($matches) use ($upload_dir) {
-        $img_tag = $matches[0];
-        $src = $matches[1];
-        
-        $picture = '<picture class="tcc-picture-wrapper">';
-
-        // If the tag is already AVIF natively
-        if (strpos($src, '.avif') !== false) {
-            // Find fallback by assuming the original file has the same base name but .jpg/.png
-            // This is tricky inside content without post_id, so we fallback to a simple replace for common extensions
-            preg_match('/srcset=[\'"]([^\'"]+)[\'"]/', $img_tag, $srcset_matches);
-            $srcset = !empty($srcset_matches[1]) ? $srcset_matches[1] : '';
-            $picture .= '<source srcset="' . esc_attr($srcset ?: $src) . '" type="image/avif">';
-            
-            // Try to find original by stripping WP image sizing e.g., -300x300.avif -> .jpg
-            $fallback_src = preg_replace('/-\d+x\d+\.avif$/i', '.jpg', $src);
-            $fallback_src = str_replace('.avif', '.jpg', $fallback_src);
-            
-            $fallback_html = preg_replace('/src=[\'"][^\'"]+[\'"]/', 'src="' . esc_url($fallback_src) . '"', $img_tag);
-            $fallback_html = preg_replace('/srcset=[\'"][^\'"]+[\'"]/', '', $fallback_html);
-            
-            $picture .= $fallback_html;
-            $picture .= '</picture>';
-            return $picture;
-        }
-
-        // Legacy / Retroactive handling
-        if (preg_match('/\.(jpg|jpeg|png|webp)$/i', $src)) {
-            $is_png = preg_match('/\.png$/i', $src);
-            $optimized_src = $is_png ? preg_replace('/\.png$/i', '.webp', $src) : preg_replace('/\.(jpg|jpeg|webp)$/i', '.avif', $src);
-            $type = $is_png ? 'image/webp' : 'image/avif';
-            
-            if ( tcc_avif_exists_locally($optimized_src) ) {
-                preg_match('/srcset=[\'"]([^\'"]+)[\'"]/', $img_tag, $srcset_matches);
-                $original_srcset = !empty($srcset_matches[1]) ? $srcset_matches[1] : '';
-                preg_match('/sizes=[\'"]([^\'"]+)[\'"]/', $img_tag, $sizes_matches);
-                $sizes_attr = !empty($sizes_matches[1]) ? ' sizes="' . esc_attr($sizes_matches[1]) . '"' : '';
-                
-                $optimized_srcset = '';
-                if ($original_srcset) {
-                    $optimized_srcset = $is_png ? preg_replace('/\.png/i', '.webp', $original_srcset) : preg_replace('/\.(jpg|jpeg|webp)/i', '.avif', $original_srcset);
-                } else {
-                    $optimized_srcset = $optimized_src;
-                }
-                
-                $picture .= '<source srcset="' . esc_attr($optimized_srcset) . '"' . $sizes_attr . ' type="' . esc_attr($type) . '">';
-                $picture .= $img_tag;
-                $picture .= '</picture>';
-                return $picture;
-            }
-        }
-        
-        return $img_tag;
-    }, $content);
-}, 99);
+// add_filter('the_content', function($content) {
+//    return $content; // Temporarily disabled for ad testing
+// }, 99);
 
 /**
  * REST API for Trending Tabs

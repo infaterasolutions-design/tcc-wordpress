@@ -12,7 +12,7 @@ get_header();
 
 	<div class="sidebar-page-container">
 		<main id="main" class="site-main article-container">
-			<article id="post-<?php the_ID(); ?>" <?php post_class("tiptap-content"); ?>>
+			<article id="post-<?php the_ID(); ?>" class="tiptap-content">
 				<!-- Breadcrumb -->
 				<div class="article-breadcrumb">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a> &raquo; <?php echo get_the_category_list( ', ' ); ?>

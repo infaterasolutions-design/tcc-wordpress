@@ -9,7 +9,7 @@ get_header(); ?>
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class("centered-post-content"); ?>>
+		<article id="post-<?php the_ID(); ?>" class="centered-post-content">
 			<!-- ARTICLE HEADER -->
 			<header class="centered-post-header">
 			<!-- Breadcrumb -->

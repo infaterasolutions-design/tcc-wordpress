@@ -21,7 +21,6 @@
     width: 100% !important;
     max-width: 837px !important;
     position: relative !important;
-    overflow-x: hidden !important;
     min-width: 0 !important; /* Prevents flex blowout */
 }
 .sidebar-page-container .sidebar-container {
@@ -51,7 +50,6 @@
 }
 /* Prevent Horizontal Scroll & Image Blowout */
 body, html {
-    overflow-x: hidden !important;
     max-width: 100vw !important;
 }
 .article-hero-image {

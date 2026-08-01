@@ -1794,7 +1794,7 @@ img {
     top: -40px; /* Shifted upside by 40px so the boundary aligns perfectly with the bottom of the sub menu */
     left: 50%;
     transform: translateX(-50%);
-    width: 100%; 
+    width: 100vw; 
     height: 625.65px;
     background: #F4F1EC; 
     z-index: -1;
@@ -2253,7 +2253,7 @@ html, body { max-width: 100%; position: relative; }
     top: -40px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: 100vw;
     height: 40px;
     background: transparent;
 }
@@ -2398,4 +2398,11 @@ html, body { max-width: 100%; position: relative; }
 .desktop-nav > li.tcc-mega-menu-parent:focus-within > a {
     text-decoration-color: #000 !important;
     color: #000 !important;
+}
+
+/* Site Wrapper to clamp 100vw backgrounds without triggering scrollbars or breaking ad scripts */
+.site-wrapper {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }

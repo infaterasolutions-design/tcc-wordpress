@@ -64,7 +64,11 @@ get_header(); ?>
 				if (strpos($img_url, 'unsplash.com') !== false) {
 					$img_url = str_replace('auto=format', 'fm=avif', $img_url);
 				} else {
-					$img_url = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $img_url);
+					$is_png = preg_match('/\.png$/i', $img_url);
+					$optimized_url = $is_png ? preg_replace('/\.png$/i', '.webp', $img_url) : preg_replace('/\.(jpg|jpeg|webp)$/i', '.avif', $img_url);
+					if ( function_exists('tcc_avif_exists_locally') && tcc_avif_exists_locally($optimized_url) ) {
+						$img_url = $optimized_url;
+					}
 				}
 				
 				$posts[] = [

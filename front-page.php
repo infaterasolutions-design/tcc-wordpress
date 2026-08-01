@@ -333,6 +333,46 @@ get_header(); ?>
 		</div>
 	</section>
 
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const slider = document.querySelector('.shop-videos-row');
+		let isDown = false;
+		let startX;
+		let scrollLeft;
+
+		if(slider) {
+			// Make cursor indicate grab ability on desktop
+			slider.style.cursor = 'grab';
+			
+			slider.addEventListener('mousedown', (e) => {
+				isDown = true;
+				slider.style.cursor = 'grabbing';
+				startX = e.pageX - slider.offsetLeft;
+				scrollLeft = slider.scrollLeft;
+				// Temporarily disable snap scrolling while dragging for smooth movement
+				slider.style.scrollSnapType = 'none';
+			});
+			slider.addEventListener('mouseleave', () => {
+				isDown = false;
+				slider.style.cursor = 'grab';
+				slider.style.scrollSnapType = 'x mandatory';
+			});
+			slider.addEventListener('mouseup', () => {
+				isDown = false;
+				slider.style.cursor = 'grab';
+				slider.style.scrollSnapType = 'x mandatory';
+			});
+			slider.addEventListener('mousemove', (e) => {
+				if (!isDown) return;
+				e.preventDefault();
+				const x = e.pageX - slider.offsetLeft;
+				const walk = (x - startX) * 2; // Scroll speed multiplier
+				slider.scrollLeft = scrollLeft - walk;
+			});
+		}
+	});
+	</script>
+
 	<!-- Elsewhere Section -->
 	<section class="fp-elsewhere-section container">
 		<div class="fp-elsewhere-container">

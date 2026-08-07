@@ -630,3 +630,50 @@ function tcc_get_trending_tab($request) {
  * Mega Menu Walker
  */
 require_once get_template_directory() . '/tcc_mega_menu_walker.php';
+
+/* ==========================================================================
+   CUSTOM AJAX CONTACT FORM ENDPOINT
+   ========================================================================== */
+add_action('rest_api_init', function () {
+    register_rest_route('tcc/v1', '/contact', array(
+        'methods' => 'POST',
+        'callback' => 'tcc_handle_contact_form',
+        'permission_callback' => '__return_true',
+    ));
+});
+
+function tcc_handle_contact_form($request) {
+    $params = $request->get_json_params();
+    if (empty($params['name']) || empty($params['email']) || empty($params['message'])) {
+        return new WP_Error('missing_fields', 'Please fill in all required fields.', array('status' => 400));
+    }
+    
+    $name = sanitize_text_field($params['name']);
+    $email = sanitize_email($params['email']);
+    $subject = !empty($params['subject']) ? sanitize_text_field($params['subject']) : 'New Contact Form Submission';
+    $message = sanitize_textarea_field($params['message']);
+    
+    if (!is_email($email)) {
+        return new WP_Error('invalid_email', 'Please provide a valid email address.', array('status' => 400));
+    }
+    
+    $to = get_option('admin_email');
+    $headers = array(
+        'Content-Type: text/html; charset=UTF-8',
+        'From: ' . $name . ' <' . $to . '>',
+        'Reply-To: ' . $email
+    );
+    
+    $body = '<h3>New Contact Message from ' . $name . '</h3>';
+    $body .= '<p><strong>Email:</strong> ' . $email . '</p>';
+    $body .= '<p><strong>Subject:</strong> ' . $subject . '</p>';
+    $body .= '<p><strong>Message:</strong><br/>' . nl2br($message) . '</p>';
+    
+    $sent = wp_mail($to, 'Contact Form: ' . $subject, $body, $headers);
+    
+    if ($sent) {
+        return rest_ensure_response(array('success' => true, 'message' => 'Message sent successfully.'));
+    } else {
+        return new WP_Error('send_failed', 'Sorry, the message could not be sent. Please try again later.', array('status' => 500));
+    }
+}

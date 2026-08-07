@@ -774,7 +774,8 @@ img {
   font-size: 1.05rem;
   line-height: 1.8;
   color: #444;
-  margin-bottom: 2rem;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
 }
 .article-content h2, .article-content h3 {
   font-family: 'Inter', sans-serif;
@@ -960,7 +961,8 @@ img {
   font-size: 18px;
   line-height: 1.7;
   color: var(--text-color);
-  margin-bottom: 32px;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 .article-body a {
   color: var(--text-color);

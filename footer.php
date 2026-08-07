@@ -33,7 +33,7 @@
 					<a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">About Us</a>
 					<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a>
 					<a href="<?php echo esc_url( home_url( '/disclaimer/' ) ); ?>">Disclaimer</a>
-					<a href="<?php echo esc_url( home_url( '/privacy-policy-affiliate-disclosure-the-combo-closet/' ) ); ?>">Privacy Policy & Affiliate Disclosure</a>
+					<a href="<?php echo esc_url( home_url( '/privacy-policy-affiliate-disclosure/' ) ); ?>">Privacy Policy & Affiliate Disclosure</a>
 					<a href="<?php echo esc_url( home_url( '/terms-and-conditions/' ) ); ?>">Terms and Conditions</a>
 				</div>
 				<!-- Column 2 -->
@@ -87,7 +87,7 @@
 			<!-- Left Links -->
 			<div class="footer-bottom-links">
 				<a href="<?php echo esc_url( home_url( '/terms-and-conditions/' ) ); ?>" class="text-sans uppercase footer-bottom-link">Terms of Use</a>
-				<a href="<?php echo esc_url( home_url( '/privacy-policy-affiliate-disclosure-the-combo-closet/' ) ); ?>" class="text-sans uppercase footer-bottom-link">Privacy Policy</a>
+				<a href="<?php echo esc_url( home_url( '/privacy-policy-affiliate-disclosure/' ) ); ?>" class="text-sans uppercase footer-bottom-link">Privacy Policy</a>
 				<span class="text-sans uppercase footer-bottom-link">&copy; <?php echo date('Y'); ?> All Rights Reserved</span>
 			</div>
 

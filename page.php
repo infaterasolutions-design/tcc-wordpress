@@ -27,7 +27,7 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<!-- PAGE BODY -->
-			<div id="content" class="entry-content post-content content article-content" style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+			<div id="content" class="entry-content post-content content article-content" style="max-width: 1240px; margin: 0 auto; padding: 0 20px;">
 				<?php the_content(); ?>
 			</div>
 

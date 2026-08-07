@@ -657,7 +657,7 @@ function tcc_handle_contact_form($request) {
         return new WP_Error('invalid_email', 'Please provide a valid email address.', array('status' => 400));
     }
     
-    $to = get_option('admin_email');
+    $to = 'thecombocloset111@gmail.com';
     $headers = array(
         'Content-Type: text/html; charset=UTF-8',
         'From: ' . $name . ' <' . $to . '>',

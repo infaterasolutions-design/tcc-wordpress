@@ -152,8 +152,8 @@ get_header(); ?>
 			
 			<div style="margin-bottom: 2rem;">
 				<h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: #000; margin-bottom: 0.5rem; font-weight: bold;">Email</h4>
-				<a href="mailto:<?php echo get_option('admin_email'); ?>" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #EC9277; text-decoration: none;">
-					<?php echo get_option('admin_email'); ?>
+				<a href="mailto:thecombocloset111@gmail.com" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #EC9277; text-decoration: none;">
+					thecombocloset111@gmail.com
 				</a>
 			</div>
 			

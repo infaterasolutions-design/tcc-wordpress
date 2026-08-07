@@ -781,7 +781,7 @@ img {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   color: #000;
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 1.5rem;
 }
 .article-content h2 {
@@ -889,11 +889,11 @@ img {
   }
   .article-body h2 {
     font-size: 24px;
-    margin-top: 40px;
+    margin-top: 24px;
   }
   .article-body h3 {
     font-size: 20px;
-    margin-top: 32px;
+    margin-top: 24px;
   }
   .article-body p,	.article-body ul li {
     font-size: 16px;
@@ -944,7 +944,7 @@ img {
   font-size: 24px;
   line-height: 1.4;
   color: var(--text-color);
-  margin-top: 56px;
+  margin-top: 32px;
   margin-bottom: 24px;
 }
 .article-body h3 {
@@ -953,7 +953,7 @@ img {
   font-weight: 700;
   line-height: 1.4;
   color: var(--text-color);
-  margin-top: 40px;
+  margin-top: 32px;
   margin-bottom: 20px;
 }
 .article-body p {

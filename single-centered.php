@@ -18,7 +18,7 @@ get_header(); ?>
 			</div>
 
 			<!-- Title -->
-			<h1 class="centered-post-title" style="font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.1; color: #000; margin-bottom: 1.5rem;">
+			<h1 class="centered-post-title article-title" style="margin-top: 0; margin-bottom: 1.5rem;">
 				<?php the_title(); ?>
 			</h1>
 

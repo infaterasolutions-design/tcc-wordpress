@@ -18,7 +18,7 @@ get_header(); ?>
 			</div>
 
 			<!-- Title -->
-			<h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; color: #000; text-align: center; margin-bottom: 1.5rem;">
+			<h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; color: #000; text-align: center; margin-bottom: 1.5rem;">
 				<?php the_title(); ?>
 			</h1>
 

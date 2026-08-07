@@ -777,7 +777,8 @@ img {
   margin-bottom: 2rem;
 }
 .article-content h2, .article-content h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
   color: #000;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
@@ -937,7 +938,8 @@ img {
   margin-bottom: 48px;
 }
 .article-body h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
   font-size: 28px;
   line-height: 1.4;
   color: var(--text-color);
@@ -950,7 +952,7 @@ img {
   font-weight: 700;
   line-height: 1.4;
   color: var(--text-color);
-  margin-top: 48px;
+  margin-top: 40px;
   margin-bottom: 20px;
 }
 .article-body p {

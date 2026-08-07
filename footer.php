@@ -30,10 +30,11 @@
 				<!-- Column 1 -->
 				<div class="footer-column">
 					<h4>Blog</h4>
-					<a href="#">About</a>
-					<a href="#">Contact</a>
-					<a href="#">Subscribe</a>
-					<a href="#">Partner</a>
+					<a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">About Us</a>
+					<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a>
+					<a href="<?php echo esc_url( home_url( '/disclaimer/' ) ); ?>">Disclaimer</a>
+					<a href="<?php echo esc_url( home_url( '/privacy-policy-affiliate-disclosure-the-combo-closet/' ) ); ?>">Privacy Policy & Affiliate Disclosure</a>
+					<a href="<?php echo esc_url( home_url( '/terms-and-conditions/' ) ); ?>">Terms and Conditions</a>
 				</div>
 				<!-- Column 2 -->
 				<div class="footer-column">
@@ -85,8 +86,8 @@
 			
 			<!-- Left Links -->
 			<div class="footer-bottom-links">
-				<a href="#" class="text-sans uppercase footer-bottom-link">Terms of Use</a>
-				<a href="#" class="text-sans uppercase footer-bottom-link">Privacy Policy</a>
+				<a href="<?php echo esc_url( home_url( '/terms-and-conditions/' ) ); ?>" class="text-sans uppercase footer-bottom-link">Terms of Use</a>
+				<a href="<?php echo esc_url( home_url( '/privacy-policy-affiliate-disclosure-the-combo-closet/' ) ); ?>" class="text-sans uppercase footer-bottom-link">Privacy Policy</a>
 				<span class="text-sans uppercase footer-bottom-link">&copy; <?php echo date('Y'); ?> All Rights Reserved</span>
 			</div>
 

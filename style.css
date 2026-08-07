@@ -785,7 +785,7 @@ img {
   margin-bottom: 1.5rem;
 }
 .article-content h2 {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 .article-content h3 {
   font-size: 1.6rem;
@@ -941,10 +941,10 @@ img {
 .article-body h2 {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 24px !important;
   line-height: 1.4;
   color: var(--text-color);
-  margin-top: 32px;
+  margin-top: 32px !important;
   margin-bottom: 24px;
 }
 .article-body h3 {

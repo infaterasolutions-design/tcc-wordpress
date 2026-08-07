@@ -31,7 +31,7 @@
 				<div class="footer-column">
 					<h4>Blog</h4>
 					<a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">About Us</a>
-					<a href="<?php echo esc_url( home_url( '/contact-2/' ) ); ?>">Contact</a>
+					<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a>
 					<a href="<?php echo esc_url( home_url( '/disclaimer/' ) ); ?>">Disclaimer</a>
 					<a href="<?php echo esc_url( home_url( '/privacy-policy-affiliate-disclosure/' ) ); ?>">Privacy Policy & Affiliate Disclosure</a>
 					<a href="<?php echo esc_url( home_url( '/terms-and-conditions/' ) ); ?>">Terms and Conditions</a>

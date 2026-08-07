@@ -13,17 +13,17 @@ get_header(); ?>
 			<!-- ARTICLE HEADER -->
 			<header class="centered-post-header">
 			<!-- Breadcrumb -->
-			<div style="font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 1.5rem; text-align: center;">
+			<div class="centered-post-breadcrumb" style="font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 1.5rem;">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="color: #888; text-decoration: none;">HOME</a> / POST / <?php echo esc_html( strtoupper( get_the_title() ) ); ?>
 			</div>
 
 			<!-- Title -->
-			<h1 style="font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.1; color: #000; text-align: center; margin-bottom: 1.5rem;">
+			<h1 class="centered-post-title" style="font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.1; color: #000; margin-bottom: 1.5rem;">
 				<?php the_title(); ?>
 			</h1>
 
 			<!-- Meta Info -->
-			<div style="font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center; gap: 1rem; font-size: 0.75rem; color: #666; letter-spacing: 0.05em; text-transform: uppercase;">
+			<div class="centered-post-meta" style="font-family: 'Inter', sans-serif; display: flex; align-items: center; gap: 1rem; font-size: 0.75rem; color: #666; letter-spacing: 0.05em; text-transform: uppercase; flex-wrap: wrap;">
 				<span>By <?php the_author(); ?></span>
 				<span>&middot;</span>
 				<span><?php echo get_the_date(); ?></span>

@@ -2410,3 +2410,25 @@ html, body { max-width: 100%; position: relative; }
     width: 100%;
     position: relative;
 }
+
+
+/* ==========================================================================
+   CENTERED POST LAYOUT RESPONSIVE TYPOGRAPHY
+   ========================================================================== */
+@media (min-width: 768px) {
+  .centered-post-title, .centered-post-breadcrumb {
+    text-align: center;
+  }
+  .centered-post-meta {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .centered-post-title, .centered-post-breadcrumb {
+    text-align: left;
+  }
+  .centered-post-meta {
+    justify-content: flex-start;
+  }
+}

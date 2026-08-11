@@ -2770,6 +2770,7 @@ html, body { max-width: 100%; position: relative; }
   text-transform: uppercase;
   color: #3C3C3C;
   text-decoration: none;
+  text-align: center;
   transition: opacity 0.3s ease;
 }
 .figma-footer-nav a:hover {

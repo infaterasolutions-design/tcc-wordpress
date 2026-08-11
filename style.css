@@ -2945,11 +2945,6 @@ html, body { max-width: 100%; position: relative; }
   .figma-footer-divider {
     display: none;
   }
-  .figma-back-to-top {
-    position: static;
-    transform: none;
-    margin-top: 30px;
-  }
 }
 /* ==========================================================================
    MOBILE OPTIMIZATION (ALL NEW SECTIONS)

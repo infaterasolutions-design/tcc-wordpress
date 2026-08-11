@@ -2949,3 +2949,58 @@ html, body { max-width: 100%; position: relative; }
     margin-top: 30px;
   }
 }
+/* ==========================================================================
+   MOBILE OPTIMIZATION (ALL NEW SECTIONS)
+   ========================================================================== */
+@media (max-width: 900px) {
+    /* Trending Section */
+    .figma-trending-top {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 15px !important;
+    }
+    .figma-trending-nav {
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+    }
+    .figma-trending-featured-title {
+        font-size: 26px !important;
+    }
+    .figma-trending-featured-img {
+        height: 300px !important;
+    }
+
+    /* Shop My Videos */
+    .figma-smv-section {
+        height: auto !important;
+        padding-bottom: 50px !important;
+    }
+    .figma-smv-container {
+        height: auto !important;
+    }
+    .figma-smv-heading {
+        font-size: 32px !important;
+    }
+
+    /* Instagram */
+    .figma-ig-header {
+        padding: 40px 20px !important;
+    }
+    .figma-ig-title {
+        font-size: 36px !important;
+    }
+
+    /* Footer */
+    .branding-logo {
+        font-size: 70px !important;
+    }
+    .figma-back-to-top {
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 20px 0 !important;
+    }
+}

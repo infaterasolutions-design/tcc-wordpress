@@ -3010,13 +3010,13 @@ html, body { max-width: 100%; position: relative; }
     .branding-logo {
         font-size: 70px !important;
     }
-    .figma-footer-col-middle {
+    .figma-footer-col-right {
         order: 1;
     }
-    .figma-footer-col-left {
+    .figma-footer-col-middle {
         order: 2;
     }
-    .figma-footer-col-right {
+    .figma-footer-col-left {
         order: 3;
     }
     .figma-back-to-top {

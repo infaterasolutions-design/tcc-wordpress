@@ -2897,9 +2897,10 @@ html, body { max-width: 100%; position: relative; }
 /* Back to top */
 .figma-back-to-top {
   position: absolute;
-  right: 20px;
-  top: 50%;
+  right: 15px;
+  top: 45%;
   transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center;
   background: transparent;
   border: none;
   font-family: 'Inter', sans-serif;

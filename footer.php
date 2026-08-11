@@ -43,13 +43,13 @@
 				<button type="submit">SUBSCRIBE</button>
 			</form>
 		</div>
-
-		<!-- Back to Top Button -->
-		<button id="back-to-top" class="figma-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
-			<span>back to top</span>
-			&rarr;
-		</button>
 	</div>
+
+	<!-- Back to Top Button (Stuck to right edge of footer) -->
+	<button id="back-to-top" class="figma-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+		<span>back to top</span>
+		&rarr;
+	</button>
 
 	<!-- Bottom Bar -->
 	<div class="figma-footer-bottom">

@@ -316,30 +316,66 @@ get_header(); ?>
 		</div>
 	</section>
 
-	<!-- Shop by Trending Videos -->
-	<section class="container">
-		<div class="flex gap-sm shop-videos-row fp-shop-videos-container">
-			<div class="shop-videos-title">
-				<div class="sticky-container">
-					<h2 class="text-serif text-center">SHOP<br/>MY<br/>VIDEOS<br/><span class="fp-shop-videos-arrow">→</span></h2>
+	<!-- Shop by Trending Videos (Figma Redesign) -->
+	<section class="figma-smv-section">
+		<div class="figma-smv-container">
+			
+			<!-- Left: Title -->
+			<div class="figma-smv-left">
+				<h2 class="figma-smv-heading text-serif">SHOP<br/>MY<br/>VIDEOS</h2>
+			</div>
+
+			<!-- Right: Slider -->
+			<div class="figma-smv-right">
+				<div class="figma-smv-slider" id="figma-smv-slider">
+					
+					<?php 
+					$products = [
+						"Play Room Book Display" => "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&q=80&w=400",
+						"Self-Tan Face Drops" => "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=400",
+						"Diamond Hoops" => "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=400",
+						"Flat Hair Clip" => "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&q=80&w=400",
+						"Dress too low cut?" => "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400"
+					];
+					
+					foreach($products as $title => $img): 
+					?>
+					<div class="figma-smv-slide">
+						<!-- Video Thumbnail -->
+						<div class="figma-smv-thumb">
+							<picture>
+								<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img)); ?>" type="image/avif">
+								<img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>" loading="lazy" />
+							</picture>
+							<div class="figma-smv-play">
+								<div class="figma-smv-play-circle"></div>
+								<svg class="figma-smv-play-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M8 5V19L19 12L8 5Z" fill="#000000"/>
+								</svg>
+							</div>
+						</div>
+						
+						<!-- Product Title -->
+						<div class="figma-smv-product-title text-sans">
+							<?php echo esc_html($title); ?>
+						</div>
+						
+						<!-- Shop Now Button -->
+						<a href="#" class="figma-smv-shop-btn text-sans">
+							SHOP NOW
+						</a>
+					</div>
+					<?php endforeach; ?>
+					
 				</div>
 			</div>
-			<?php for($i=1; $i<=4; $i++): ?>
-			<div class="shop-videos-item">
-				<?php $video_img = "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?auto=format&fit=crop&q=80&w=200&h=300&sig=" . $i; ?>
-				<picture>
-					<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $video_img)); ?>" type="image/avif">
-					<img src="<?php echo esc_url($video_img); ?>" alt="Video" class="w-full object-cover h-[250px]" loading="lazy" />
-				</picture>
-				<button>SHOP NOW</button>
-			</div>
-			<?php endfor; ?>
+
 		</div>
 	</section>
 
 	<script>
 	document.addEventListener('DOMContentLoaded', function() {
-		const slider = document.querySelector('.shop-videos-row');
+		const slider = document.getElementById('figma-smv-slider');
 		let isDown = false;
 		let startX;
 		let scrollLeft;

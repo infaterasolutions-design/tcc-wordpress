@@ -2432,3 +2432,162 @@ html, body { max-width: 100%; position: relative; }
     justify-content: flex-start;
   }
 }
+
+
+/* ==========================================================================
+   FIGMA REDESIGN - SHOP MY VIDEOS
+   ========================================================================== */
+.figma-smv-section {
+  background: #F3F0EB;
+  padding: 65px 0px;
+  border-bottom: 0.8px solid #000000;
+  overflow: hidden;
+}
+.figma-smv-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 0 auto;
+  max-width: 1536px;
+  padding: 0 40px;
+}
+.figma-smv-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 300px;
+  flex-shrink: 0;
+  padding-right: 40px;
+}
+.figma-smv-heading {
+  font-size: 40px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: #000;
+  margin: 0;
+  text-align: right;
+}
+.figma-smv-right {
+  flex: 1;
+  min-width: 0;
+  padding-left: 20px;
+}
+.figma-smv-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 20px;
+  scrollbar-width: none; /* Firefox */
+}
+.figma-smv-slider::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.figma-smv-slide {
+  width: 205px;
+  flex: 0 0 205px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.figma-smv-thumb {
+  width: 184px;
+  height: 327px;
+  border: 0.8px solid #333333;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 18px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.figma-smv-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.figma-smv-thumb:hover img {
+  transform: scale(1.05);
+}
+.figma-smv-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 38px;
+  height: 38px;
+  z-index: 10;
+}
+.figma-smv-play-circle {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 50%;
+  box-shadow: 1px 0px 12px rgba(0,0,0,0.3);
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+}
+.figma-smv-thumb:hover .figma-smv-play-circle {
+  transform: scale(1.1);
+}
+.figma-smv-play-icon {
+  position: absolute;
+  inset: 0;
+  width: 12px;
+  height: 12px;
+  margin: auto;
+  z-index: 2;
+  transform: translateX(1px); /* optical alignment */
+}
+.figma-smv-product-title {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 8px;
+  margin-left: 10px;
+  font-weight: 600;
+}
+.figma-smv-shop-btn {
+  width: 167px;
+  height: 38px;
+  border: 0.8px solid #000;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+.figma-smv-shop-btn:hover {
+  background: #000;
+  color: #fff;
+}
+@media(max-width: 900px) {
+  .figma-smv-container {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  .figma-smv-left {
+    width: 100%;
+    align-items: flex-start;
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+  .figma-smv-heading {
+    text-align: left;
+  }
+  .figma-smv-right {
+    padding-left: 0;
+    width: 100%;
+  }
+}

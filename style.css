@@ -1761,6 +1761,7 @@ img {
     position: relative;
     transform: translateY(35px); 
     z-index: 10;
+    pointer-events: none;
 }
 .figma-trending-nav {
   display: flex;
@@ -2954,14 +2955,29 @@ html, body { max-width: 100%; position: relative; }
    ========================================================================== */
 @media (max-width: 900px) {
     /* Trending Section */
-    .figma-trending-top {
+    .figma-trending-title-wrapper {
         flex-direction: column !important;
         align-items: flex-start !important;
-        gap: 15px !important;
+        gap: 0px !important;
+    }
+    .figma-trending-title {
+        transform: translateY(10px) !important;
     }
     .figma-trending-nav {
-        flex-wrap: wrap !important;
-        gap: 15px !important;
+        flex-wrap: nowrap !important;
+        gap: 12px !important;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        width: 100%;
+        scrollbar-width: none;
+    }
+    .figma-trending-nav::-webkit-scrollbar {
+        display: none;
+    }
+    .figma-trending-nav span {
+        font-size: 11px !important;
+        letter-spacing: 0.5px !important;
+        white-space: nowrap;
     }
     .figma-trending-featured-title {
         font-size: 26px !important;

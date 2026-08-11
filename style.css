@@ -2993,9 +2993,48 @@ html, body { max-width: 100%; position: relative; }
     }
     .figma-smv-container {
         height: auto !important;
+        display: flex;
+        flex-direction: column;
+    }
+    .figma-smv-left, .figma-smv-title-wrapper {
+        display: contents !important;
     }
     .figma-smv-heading {
-        font-size: 32px !important;
+        font-size: 40px !important;
+        order: 1;
+        width: 100%;
+        text-align: center !important;
+        margin-bottom: 25px !important;
+    }
+    .figma-smv-right {
+        order: 2;
+        width: 100%;
+        padding-left: 0 !important;
+    }
+    .figma-smv-nav-arrows {
+        order: 3;
+        width: 100%;
+        justify-content: center !important;
+        margin-top: 30px !important;
+    }
+    .figma-smv-slider {
+        display: flex !important;
+        gap: 15px;
+    }
+    .figma-smv-slide {
+        width: calc(50% - 7.5px) !important;
+        flex: 0 0 calc(50% - 7.5px) !important;
+    }
+    .figma-smv-thumb {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 9/16;
+        margin-left: 0 !important;
+        margin-bottom: 15px !important;
+    }
+    .figma-smv-product-title, .figma-smv-shop-btn {
+        margin-left: 0 !important;
+        width: 100% !important;
     }
 
     /* Instagram */

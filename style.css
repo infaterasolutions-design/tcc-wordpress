@@ -2446,7 +2446,7 @@ html, body { max-width: 100%; position: relative; }
 .figma-smv-container {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   margin: 0 auto;
   max-width: 1536px;
   padding: 0 40px;
@@ -2454,19 +2454,40 @@ html, body { max-width: 100%; position: relative; }
 .figma-smv-left {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: flex-start;
   width: 300px;
   flex-shrink: 0;
   padding-right: 40px;
 }
 .figma-smv-heading {
-  font-size: 40px;
-  line-height: 1.5;
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1.2;
   text-transform: uppercase;
   color: #000;
   margin: 0;
-  text-align: right;
+  text-align: left;
+}
+.figma-smv-nav-arrows {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.figma-smv-nav-arrow {
+  width: 32px;
+  height: 32px;
+  border: 0.8px solid #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.figma-smv-nav-arrow:hover {
+  background: rgba(0,0,0,0.05);
 }
 .figma-smv-right {
   flex: 1;

@@ -2804,6 +2804,9 @@ html, body { max-width: 100%; position: relative; }
   line-height: 1;
   margin: 5px 0;
 }
+.figma-footer-branding img {
+  mix-blend-mode: multiply;
+}
 .branding-bottom {
   font-family: 'Inter', sans-serif;
   font-size: 12px;

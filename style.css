@@ -2722,3 +2722,226 @@ html, body { max-width: 100%; position: relative; }
     font-size: 48px;
   }
 }
+/* ==========================================================================
+   FIGMA REDESIGN - FOOTER
+   ========================================================================== */
+.figma-footer {
+  background: #F8F5EE;
+  position: relative;
+  width: 100%;
+}
+.figma-footer-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 20px;
+  position: relative;
+}
+.figma-footer-divider {
+  width: 1px;
+  height: 220px;
+  background-color: #3C3C3C;
+  flex-shrink: 0;
+}
+.figma-footer-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+/* Left Column */
+.figma-footer-col-left {
+  align-items: center;
+}
+.figma-footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.figma-footer-nav a {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  color: #3C3C3C;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.figma-footer-nav a:hover {
+  opacity: 0.7;
+}
+.figma-footer-shop-btn {
+  border: 0.8px solid #3C3C3C;
+  padding: 8px 30px;
+  margin-top: 10px;
+}
+/* Middle Column */
+.figma-footer-col-middle {
+  align-items: center;
+}
+.figma-footer-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.branding-top {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.4px;
+  color: #3C3C3C;
+  text-transform: uppercase;
+}
+.branding-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 100px;
+  font-weight: 400;
+  color: #3C3C3C;
+  line-height: 1;
+  margin: 5px 0;
+}
+.branding-bottom {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.4px;
+  color: #3C3C3C;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.branding-bottom .line {
+  width: 40px;
+  height: 1px;
+  background-color: #3C3C3C;
+}
+.figma-footer-social {
+  display: flex;
+  gap: 20px;
+}
+.figma-footer-social a {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: #3C3C3C;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.figma-footer-social a:hover {
+  opacity: 0.7;
+}
+/* Right Column */
+.figma-footer-col-right {
+  align-items: center;
+}
+.newsletter-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #3C3C3C;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+.newsletter-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.9px;
+  color: #3C3C3C;
+  text-align: center;
+  margin-bottom: 25px;
+  max-width: 280px;
+}
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 250px;
+}
+.newsletter-form input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 0.8px solid #3C3C3C;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.newsletter-form input::placeholder {
+  color: #3C3C3C;
+  text-align: center;
+}
+.newsletter-form button {
+  width: 100%;
+  padding: 12px 14px;
+  background: #3C3C3C;
+  border: 0.8px solid #3C3C3C;
+  color: #F8F5EE;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  margin-top: 5px;
+}
+.newsletter-form button:hover {
+  opacity: 0.8;
+}
+/* Back to top */
+.figma-back-to-top {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  background: transparent;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  color: #3C3C3C;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* Bottom bar */
+.figma-footer-bottom {
+  background: #ECE8E4;
+  padding: 12px 0;
+  text-align: center;
+}
+.figma-footer-bottom p {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.7px;
+  color: #3C3C3C;
+  margin: 0;
+  text-transform: uppercase;
+}
+.figma-footer-bottom a {
+  color: #3C3C3C;
+  text-decoration: none;
+}
+/* Responsive */
+@media(max-width: 900px) {
+  .figma-footer-main {
+    flex-direction: column;
+    gap: 50px;
+  }
+  .figma-footer-divider {
+    display: none;
+  }
+  .figma-back-to-top {
+    position: static;
+    transform: none;
+    margin-top: 30px;
+  }
+}

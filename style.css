@@ -2623,3 +2623,102 @@ html, body { max-width: 100%; position: relative; }
     width: 100%;
   }
 }
+
+
+/* ==========================================================================
+   FIGMA REDESIGN - SOCIAL / INSTAGRAM SECTION
+   ========================================================================== */
+.figma-ig-section {
+  width: 100%;
+  position: relative;
+}
+.figma-ig-header {
+  background: #E5E1DE;
+  padding: 80px 20px 60px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.figma-ig-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 10px;
+}
+.figma-ig-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 60px;
+  font-weight: 400;
+  color: #000;
+  margin-bottom: 15px;
+  line-height: 1;
+}
+.figma-ig-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 30px;
+}
+.figma-ig-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+.figma-ig-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 230px;
+  height: 38px;
+  background: #020202;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.figma-ig-btn:hover {
+  opacity: 0.8;
+  color: #FFF;
+}
+.figma-ig-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  width: 100%;
+  border-top: 1px solid #000;
+}
+.figma-ig-grid a {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+.figma-ig-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.figma-ig-grid a:hover img {
+  transform: scale(1.05);
+}
+@media(max-width: 1024px) {
+  .figma-ig-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media(max-width: 600px) {
+  .figma-ig-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .figma-ig-title {
+    font-size: 48px;
+  }
+}

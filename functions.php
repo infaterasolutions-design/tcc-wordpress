@@ -572,16 +572,16 @@ add_action('rest_api_init', function() {
 function tcc_get_trending_tab($request) {
     $tab_id = $request['tab'];
     $tabs_config = [
-        'popular' => ['post_type' => 'post', 'posts_per_page' => 4, 'orderby' => 'comment_count'],
-        'travel-tips' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'travel-tips'],
-        'outfit-guides' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'outfit-guides'],
+        'decluttering' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'decluttering'],
+        'living-minimally' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'living-minimally'],
+        'travel-guide' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'travel-guide'],
         'reviews' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'reviews'],
     ];
 
     $btn_texts = [
-        'popular' => 'READ MORE POPULAR POSTS',
-        'travel-tips' => 'READ MORE TRAVEL TIPS',
-        'outfit-guides' => 'READ MORE OUTFIT GUIDES',
+        'decluttering' => 'READ MORE DECLUTTERING POSTS',
+        'living-minimally' => 'READ MORE LIVING MINIMALLY POSTS',
+        'travel-guide' => 'READ MORE TRAVEL GUIDES',
         'reviews' => 'READ MORE REVIEWS'
     ];
 

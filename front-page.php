@@ -42,9 +42,9 @@ get_header(); ?>
 	<section class="figma-trending-container container">
 		<?php
 		$tabs_config = [
-			['id' => 'popular', 'label' => 'POPULAR', 'query' => ['post_type' => 'post', 'posts_per_page' => 4, 'orderby' => 'comment_count'], 'btn_text' => 'READ MORE POPULAR POSTS'],
-			['id' => 'travel-tips', 'label' => 'TRAVEL TIPS', 'query' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'travel-tips'], 'btn_text' => 'READ MORE TRAVEL TIPS'],
-			['id' => 'outfit-guides', 'label' => 'OUTFIT GUIDES', 'query' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'outfit-guides'], 'btn_text' => 'READ MORE OUTFIT GUIDES'],
+			['id' => 'decluttering', 'label' => 'DECLUTTERING', 'query' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'decluttering'], 'btn_text' => 'READ MORE DECLUTTERING POSTS'],
+			['id' => 'living-minimally', 'label' => 'LIVING MINIMALLY', 'query' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'living-minimally'], 'btn_text' => 'READ MORE LIVING MINIMALLY POSTS'],
+			['id' => 'travel-guide', 'label' => 'TRAVEL GUIDE', 'query' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'travel-guide'], 'btn_text' => 'READ MORE TRAVEL GUIDES'],
 			['id' => 'reviews', 'label' => 'REVIEWS', 'query' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'reviews'], 'btn_text' => 'READ MORE REVIEWS'],
 		];
 		

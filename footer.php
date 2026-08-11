@@ -6,11 +6,11 @@
 		<!-- Left Column: Links -->
 		<div class="figma-footer-col figma-footer-col-left">
 			<nav class="figma-footer-nav">
-				<a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">ABOUT</a>
-				<a href="#">FAQS</a>
-				<a href="#">WORK WITH ME</a>
+				<a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">ABOUT US</a>
 				<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">CONTACT</a>
-				<a href="#" class="figma-footer-shop-btn">SHOP</a>
+				<a href="<?php echo esc_url( home_url( '/disclaimer/' ) ); ?>">DISCLAIMER</a>
+				<a href="<?php echo esc_url( home_url( '/privacy-policy-affiliate-disclosure/' ) ); ?>">PRIVACY POLICY & AFFILIATE DISCLOSURE</a>
+				<a href="<?php echo esc_url( home_url( '/terms-and-conditions/' ) ); ?>">TERMS AND CONDITIONS</a>
 			</nav>
 		</div>
 

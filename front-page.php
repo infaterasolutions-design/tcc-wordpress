@@ -322,17 +322,19 @@ get_header(); ?>
 			
 			<!-- Left: Title -->
 			<div class="figma-smv-left">
-				<h2 class="figma-smv-heading">SHOP<br/>MY<br/>VIDEOS</h2>
-				<div class="figma-smv-nav-arrows">
-					<div class="figma-smv-nav-arrow" id="smv-prev">
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-						</svg>
-					</div>
-					<div class="figma-smv-nav-arrow" id="smv-next">
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-						</svg>
+				<div class="figma-smv-title-wrapper">
+					<h2 class="figma-smv-heading">SHOP<br/>MY<br/>VIDEOS</h2>
+					<div class="figma-smv-nav-arrows">
+						<div class="figma-smv-nav-arrow" id="smv-prev">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</div>
+						<div class="figma-smv-nav-arrow" id="smv-next">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</div>
 					</div>
 				</div>
 			</div>

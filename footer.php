@@ -20,7 +20,16 @@
 		<!-- Middle Column: Branding -->
 		<div class="figma-footer-col figma-footer-col-middle">
 			<div class="figma-footer-branding">
-				<h2 class="branding-logo">tcc</h2>
+				<?php if ( has_custom_logo() ) : ?>
+					<div class="site-logo flex items-center" style="margin-bottom: 15px;">
+						<?php the_custom_logo(); ?>
+					</div>
+				<?php else : ?>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center header-logo-link" style="gap: 0.5rem; text-decoration: none; margin-bottom: 15px;">
+						<span class="text-script header-logo-tcc" style="font-size: 2.5rem; color: #b0afa9; line-height: 1;">tcc</span>
+						<span class="text-serif header-logo-text" style="font-size: 1.5rem; font-weight: bold; letter-spacing: -0.5px; color: #000;">the combo closet</span>
+					</a>
+				<?php endif; ?>
 			</div>
 			<div class="figma-footer-social">
 				<a href="#">INSTAGRAM</a>

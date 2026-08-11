@@ -3050,6 +3050,9 @@ html, body { max-width: 100%; position: relative; }
     .branding-logo {
         font-size: 70px !important;
     }
+    .figma-footer-branding {
+        margin-bottom: 0px !important;
+    }
     .figma-footer-col-middle {
         order: 1;
     }

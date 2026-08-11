@@ -2500,7 +2500,7 @@ html, body { max-width: 100%; position: relative; }
 }
 .figma-smv-slider {
   display: flex;
-  gap: 20px;
+  gap: 0px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding-bottom: 0px;

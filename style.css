@@ -2902,21 +2902,21 @@ html, body { max-width: 100%; position: relative; }
 /* Back to top */
 .figma-back-to-top {
   position: absolute;
-  right: 15px;
-  top: 45%;
+  right: 5px;
+  top: 50%;
   transform: translateY(-50%) rotate(-90deg);
   transform-origin: center;
   background: transparent;
   border: none;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-size: 12px;
-  letter-spacing: 1.2px;
+  font-size: 14px;
+  letter-spacing: 2px;
   color: #3C3C3C;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 /* Bottom bar */
 .figma-footer-bottom {

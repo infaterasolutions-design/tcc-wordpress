@@ -2471,11 +2471,30 @@ html, body { max-width: 100%; position: relative; }
 }
 
 @media (max-width: 767px) {
+  html, body {
+    -webkit-text-size-adjust: 100% !important;
+  }
   .centered-post-title, .centered-post-breadcrumb {
     text-align: center;
   }
   .centered-post-meta {
     justify-content: center;
+  }
+  .centered-post-content .article-content h1,
+  .centered-post-title {
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+  .centered-post-content .article-content h2 {
+    font-size: 22px !important;
+    line-height: 32px !important;
+  }
+  .centered-post-content .article-content h3,
+  .centered-post-content .article-content h4,
+  .centered-post-content .article-content h5,
+  .centered-post-content .article-content h6 {
+    font-size: 20px !important;
+    line-height: 28px !important;
   }
 }
 

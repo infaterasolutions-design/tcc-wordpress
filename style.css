@@ -2237,15 +2237,27 @@ html, body { max-width: 100%; position: relative; }
   color: #000000 !important;
 }
 .centered-post-content .article-content h1,
-.centered-post-content .article-content h2,
-.centered-post-content .article-content h3,
-.centered-post-content .article-content h4,
-.centered-post-content .article-content h5,
-.centered-post-content .article-content h6,
 .centered-post-title {
   font-family: 'Adamina', serif !important;
   font-weight: 400 !important;
   font-size: 38px !important;
+  line-height: 46px !important;
+  color: #000000 !important;
+}
+.centered-post-content .article-content h2 {
+  font-family: 'Adamina', serif !important;
+  font-weight: 400 !important;
+  font-size: 26px !important;
+  line-height: 46px !important;
+  color: #000000 !important;
+}
+.centered-post-content .article-content h3,
+.centered-post-content .article-content h4,
+.centered-post-content .article-content h5,
+.centered-post-content .article-content h6 {
+  font-family: 'Adamina', serif !important;
+  font-weight: 400 !important;
+  font-size: 24px !important;
   line-height: 46px !important;
   color: #000000 !important;
 }

@@ -2484,21 +2484,8 @@ html, body { max-width: 100%; position: relative; }
   .centered-post-title {
     font-family: 'Marcellus', serif !important;
     font-weight: 400 !important;
-    font-size: 32px !important;
-    line-height: 40px !important;
     -webkit-font-smoothing: auto !important;
     -moz-osx-font-smoothing: auto !important;
-  }
-  .centered-post-content .article-content h2 {
-    font-size: 22px !important;
-    line-height: 32px !important;
-  }
-  .centered-post-content .article-content h3,
-  .centered-post-content .article-content h4,
-  .centered-post-content .article-content h5,
-  .centered-post-content .article-content h6 {
-    font-size: 20px !important;
-    line-height: 28px !important;
   }
 }
 

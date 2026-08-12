@@ -2460,17 +2460,22 @@ html, body { max-width: 100%; position: relative; }
   .centered-post-title, .centered-post-breadcrumb {
     text-align: center;
   }
-  .centered-post-meta {
+.centered-post-meta {
     justify-content: center;
   }
 }
 
+.centered-post-meta span:not(:last-child)::after {
+  content: "·";
+  margin-left: 1rem;
+}
+
 @media (max-width: 767px) {
   .centered-post-title, .centered-post-breadcrumb {
-    text-align: left;
+    text-align: center;
   }
   .centered-post-meta {
-    justify-content: flex-start;
+    justify-content: center;
   }
 }
 

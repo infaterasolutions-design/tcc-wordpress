@@ -2239,10 +2239,12 @@ html, body { max-width: 100%; position: relative; }
 .centered-post-content .article-content h1,
 .centered-post-title {
   font-family: 'minerva-modern', 'Playfair Display', serif !important;
-  font-weight: 400 !important;
+  font-weight: 300 !important;
   font-size: 50px !important;
   line-height: 60px !important;
   color: #222222 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 .centered-post-content .article-content h2 {
   font-family: 'Adamina', serif !important;

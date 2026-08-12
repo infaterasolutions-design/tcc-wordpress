@@ -3117,3 +3117,150 @@ html, body { max-width: 100%; position: relative; }
         order: 3;
     }
 }
+/* 
+==========================================================================
+   THE LATEST SECTION (HOMEPAGE REDESIGN)
+========================================================================== */
+.fp-the-latest-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 80px auto;
+    position: relative;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.fp-latest-header {
+    width: 168px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.fp-latest-title {
+    font-family: 'NT Valentino', 'Marcellus', serif;
+    font-size: 83px;
+    line-height: 100px;
+    color: #000000;
+    margin: 0;
+    white-space: nowrap;
+    transform: rotate(-90deg) translateX(-100%);
+    transform-origin: top left;
+    position: absolute;
+    top: 509px;
+    left: 80px;
+}
+
+.fp-latest-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.fp-latest-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 100px;
+    row-gap: 100px;
+    margin-bottom: 80px;
+}
+
+.fp-latest-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 405px;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+.fp-latest-card-img-wrapper {
+    width: 100%;
+    aspect-ratio: 405 / 509;
+    background-color: #f4f4f4;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.fp-latest-card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.fp-latest-card:hover .fp-latest-card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.fp-latest-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.fp-latest-category {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: #000000;
+    margin-right: 12px;
+}
+
+.fp-latest-date {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.fp-latest-post-title {
+    font-family: 'NT Valentino', 'Marcellus', serif;
+    font-size: 43px;
+    line-height: 43px;
+    color: #000000;
+    margin: 0;
+}
+
+.fp-latest-view-more {
+    font-family: 'Editors Note Light Italic', 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 25px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+    align-self: center;
+}
+
+@media (max-width: 900px) {
+    .fp-the-latest-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .fp-latest-header {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    .fp-latest-title {
+        transform: none;
+        position: static;
+        text-align: center;
+        font-size: 50px;
+        line-height: 1.2;
+    }
+    .fp-latest-grid {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: 60px;
+    }
+}

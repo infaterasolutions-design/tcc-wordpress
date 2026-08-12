@@ -37,199 +37,48 @@ get_header(); ?>
 		</div>
 	</section>
 
-	<!-- Trending Section -->
-	<!-- Trending Section -->
-	<section class="figma-trending-container container">
-		<?php
-		$tabs_config = [
-			['id' => 'decluttering', 'label' => 'DECLUTTERING', 'query' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'decluttering'], 'btn_text' => 'READ MORE DECLUTTERING POSTS'],
-			['id' => 'living-minimally', 'label' => 'LIVING MINIMALLY', 'query' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'living-minimally'], 'btn_text' => 'READ MORE LIVING MINIMALLY POSTS'],
-			['id' => 'travel-guide', 'label' => 'TRAVEL GUIDE', 'query' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'travel-guide'], 'btn_text' => 'READ MORE TRAVEL GUIDES'],
-			['id' => 'reviews', 'label' => 'REVIEWS', 'query' => ['post_type' => 'post', 'posts_per_page' => 4, 'category_name' => 'reviews'], 'btn_text' => 'READ MORE REVIEWS'],
-		];
-		
-		$tabs_data = [];
-		// Only pre-load the first tab to save query time!
-		$first_tab = $tabs_config[0];
-		$q = new WP_Query($first_tab['query']);
-		$posts = [];
-		if ($q->have_posts()) {
-			while ($q->have_posts()) {
-				$q->the_post();
-				$cat = get_the_category();
-				$dummy_img = get_post_meta(get_the_ID(), '_tcc_dummy_image', true) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400';
-				$img_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : $dummy_img;
-				
-				// Force AVIF for the preloaded background image
-				if (strpos($img_url, 'unsplash.com') !== false) {
-					$img_url = str_replace('auto=format', 'fm=avif', $img_url);
-				} else {
-					$is_png = preg_match('/\.png$/i', $img_url);
-					$optimized_url = $is_png ? preg_replace('/\.png$/i', '.webp', $img_url) : preg_replace('/\.(jpg|jpeg|webp)$/i', '.avif', $img_url);
-					if ( function_exists('tcc_avif_exists_locally') && tcc_avif_exists_locally($optimized_url) ) {
-						$img_url = $optimized_url;
-					}
-				}
-				
-				$posts[] = [
-					'title' => get_the_title(),
-					'permalink' => get_permalink(),
-					'excerpt' => wp_trim_words(get_the_excerpt(), 15, '&hellip;'),
-					'category' => $cat ? esc_html($cat[0]->name) : '',
-					'image' => $img_url
-				];
-			}
-		}
-		wp_reset_postdata();
-		$tabs_data[$first_tab['id']] = [
-			'btn_text' => $first_tab['btn_text'],
-			'posts' => $posts
-		];
-		?>
-		
-		<div class="figma-trending-title-wrapper">
-			<h2 class="figma-trending-title">trending</h2>
-			<nav class="figma-trending-nav" id="figma-tabs-nav">
-				<?php foreach($tabs_config as $index => $tab): ?>
-					<span class="<?php echo $index === 0 ? 'figma-trending-nav-active' : 'figma-trending-nav-item'; ?>" data-tab="<?php echo esc_attr($tab['id']); ?>">
-						<?php echo esc_html($tab['label']); ?>
-					</span>
-				<?php endforeach; ?>
-			</nav>
+		<!-- The Latest Section -->
+	<section class="fp-the-latest-section">
+		<div class="fp-latest-header">
+			<h2 class="fp-latest-title">THE LATEST</h2>
 		</div>
-
-		<div class="figma-trending-grid" id="figma-trending-grid">
-			<!-- Featured (Left) -->
-			<div class="figma-trending-featured">
-				<div class="figma-trending-featured-img" id="ft-feat-img" style="background-image: url('');"></div>
-				<div class="figma-trending-featured-content">
-					<a href="#" class="figma-trending-featured-title" id="ft-feat-title"></a>
-					<div class="figma-trending-featured-excerpt" id="ft-feat-excerpt"></div>
-					<a href="#" class="figma-trending-featured-btn" id="ft-feat-link">VIEW THE POST</a>
-				</div>
+		<div class="fp-latest-content">
+			<div class="fp-latest-grid">
+				<?php
+				$latest_args = array(
+					'post_type'      => 'post',
+					'posts_per_page' => 4,
+				);
+				$latest_query = new WP_Query( $latest_args );
+				if ( $latest_query->have_posts() ) :
+					while ( $latest_query->have_posts() ) : $latest_query->the_post();
+				?>
+					<a href="<?php the_permalink(); ?>" class="fp-latest-card">
+						<div class="fp-latest-card-img-wrapper">
+							<?php if ( has_post_thumbnail() ) : ?>
+								<?php the_post_thumbnail( 'large' ); ?>
+							<?php else : ?>
+								<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400'; ?>
+								<picture>
+									<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $dummy_img)); ?>" type="image/avif">
+									<img src="<?php echo esc_url($dummy_img); ?>" alt="Placeholder" />
+								</picture>
+							<?php endif; ?>
+						</div>
+						<div class="fp-latest-meta">
+							<span class="fp-latest-category"><?php $category = get_the_category(); if($category) echo esc_html($category[0]->name); ?></span>
+							<span class="fp-latest-date"><?php echo get_the_date('F j, Y'); ?></span>
+						</div>
+						<h3 class="fp-latest-post-title"><?php the_title(); ?></h3>
+					</a>
+				<?php
+					endwhile;
+					wp_reset_postdata();
+				endif;
+				?>
 			</div>
-			
-			<!-- List (Right) -->
-			<div class="figma-trending-list" id="ft-list-container">
-				<!-- Dynamically generated list items will go here -->
-				<a href="#" class="figma-trending-list-btn" id="ft-list-btn"></a>
-			</div>
+			<a href="<?php echo esc_url( home_url( '/blog' ) ); ?>" class="fp-latest-view-more">VIEW MORE POSTS &rarr;</a>
 		</div>
-
-		<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			let tabsData = <?php echo json_encode($tabs_data); ?>;
-			const navItems = document.querySelectorAll('#figma-tabs-nav span');
-			
-			// DOM Elements
-			const featImg = document.getElementById('ft-feat-img');
-			const featTitle = document.getElementById('ft-feat-title');
-			const featExcerpt = document.getElementById('ft-feat-excerpt');
-			const featLink = document.getElementById('ft-feat-link');
-			const listContainer = document.getElementById('ft-list-container');
-			const listBtn = document.getElementById('ft-list-btn');
-			
-			function renderFeatured(post) {
-				featImg.style.backgroundImage = `url(${post.image})`;
-				featTitle.textContent = post.title;
-				featTitle.href = post.permalink;
-				featExcerpt.innerHTML = post.excerpt;
-				featLink.href = post.permalink;
-			}
-			
-			function renderTab(tabId) {
-				if (tabsData[tabId]) {
-					_render(tabId);
-				} else {
-					listBtn.textContent = 'LOADING...';
-					fetch('/wp-json/tcc/v1/trending/' + tabId)
-						.then(res => res.json())
-						.then(data => {
-							tabsData[tabId] = data;
-							_render(tabId);
-						})
-						.catch(err => {
-							console.error(err);
-							listBtn.textContent = 'ERROR LOADING POSTS';
-						});
-				}
-			}
-
-			function _render(tabId) {
-				const data = tabsData[tabId];
-				if (!data || !data.posts || data.posts.length === 0) return;
-				
-				// Render Featured initial
-				renderFeatured(data.posts[0]);
-				
-				// Render List
-				// First remove old items
-				const oldItems = listContainer.querySelectorAll('.figma-trending-list-item');
-				oldItems.forEach(item => item.remove());
-				
-				// Create new items
-				const fragment = document.createDocumentFragment();
-				for (let i = 0; i < data.posts.length; i++) {
-					const post = data.posts[i];
-					const a = document.createElement('a');
-					a.className = 'figma-trending-list-item';
-					a.href = '#';
-					a.setAttribute('data-index', i);
-					
-					const num = document.createElement('span');
-					num.className = 'figma-trending-list-num ' + (i === 0 ? 'active-num' : '');
-					num.textContent = i + 1;
-					
-					const title = document.createElement('span');
-					title.className = 'figma-trending-list-title ' + (i === 0 ? 'active-title' : '');
-					title.textContent = post.title;
-					
-					a.appendChild(num);
-					a.appendChild(title);
-					
-					// Click listener to update featured card instead of navigating
-					a.addEventListener('click', function(e) {
-						e.preventDefault();
-						
-						// Update active styling
-						const allItems = listContainer.querySelectorAll('.figma-trending-list-item');
-						allItems.forEach(item => {
-							item.querySelector('.figma-trending-list-num').classList.remove('active-num');
-							item.querySelector('.figma-trending-list-title').classList.remove('active-title');
-						});
-						num.classList.add('active-num');
-						title.classList.add('active-title');
-						
-						// Update featured left side
-						renderFeatured(data.posts[this.getAttribute('data-index')]);
-					});
-					
-					fragment.appendChild(a);
-				}
-				
-				listContainer.insertBefore(fragment, listBtn);
-				listBtn.textContent = data.btn_text;
-			}
-			
-			// Init
-			if (navItems.length > 0) {
-				renderTab(navItems[0].getAttribute('data-tab'));
-			}
-			
-			// Event Listeners
-			navItems.forEach(item => {
-				item.addEventListener('click', function() {
-					navItems.forEach(nav => {
-						nav.classList.remove('figma-trending-nav-active');
-						nav.classList.add('figma-trending-nav-item');
-					});
-					this.classList.add('figma-trending-nav-active');
-					this.classList.remove('figma-trending-nav-item');
-					renderTab(this.getAttribute('data-tab'));
-				});
-			});
-		});
-		</script>
 	</section>
 
 	<!-- Recent Posts Section -->

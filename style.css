@@ -3134,10 +3134,9 @@ html, body { max-width: 100%; position: relative; }
 
 .fp-latest-header {
     position: absolute;
-    /* Bring it much closer to the grid so the text touches the card */
-    left: -70px;
+    left: -90px;
     top: 0;
-    width: 70px;
+    width: 90px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -3145,17 +3144,16 @@ html, body { max-width: 100%; position: relative; }
 
 .fp-latest-title {
     font-family: 'NT Valentino', 'Marcellus', serif;
-    font-size: 60px;
-    line-height: 60px;
+    font-size: 70px;
+    line-height: 70px;
     color: #000000;
     margin: 0;
     white-space: nowrap;
     transform: rotate(-90deg) translateX(-100%);
     transform-origin: top left;
     position: absolute;
-    top: 509px;
-    /* Push the text to the right edge of its container to touch the card */
-    left: 70px;
+    top: 0px;
+    left: 0px;
 }
 
 .fp-latest-content {

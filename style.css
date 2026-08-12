@@ -3129,13 +3129,14 @@ html, body { max-width: 100%; position: relative; }
     padding: 0 20px;
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    justify-content: center;
 }
 
 .fp-latest-header {
+    position: absolute;
+    left: -100px;
+    top: 0;
     width: 168px;
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -3156,7 +3157,8 @@ html, body { max-width: 100%; position: relative; }
 }
 
 .fp-latest-content {
-    flex: 1;
+    width: 100%;
+    max-width: 900px;
     display: flex;
     flex-direction: column;
 }

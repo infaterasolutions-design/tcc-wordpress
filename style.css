@@ -2228,6 +2228,14 @@ html, body { max-width: 100%; position: relative; }
 .centered-post-content .article-content {
   text-align: center;
 }
+.centered-post-content .article-content p,
+.centered-post-content .article-content li {
+  font-family: 'Antic Didone', serif !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 29px !important;
+  color: #000000 !important;
+}
 @media (min-width: 768px) {
   .centered-post-header {
     padding: 4rem 2rem 2rem;

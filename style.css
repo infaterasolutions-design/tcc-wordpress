@@ -2240,8 +2240,8 @@ html, body { max-width: 100%; position: relative; }
 .centered-post-title {
   font-family: 'Marcellus', serif !important;
   font-weight: 400 !important;
-  font-size: 50px !important;
-  line-height: 60px !important;
+  font-size: 46px !important;
+  line-height: 54px !important;
   color: #222222 !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;

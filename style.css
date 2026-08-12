@@ -2219,8 +2219,17 @@ html, body { max-width: 100%; position: relative; }
   padding: 0;
 }
 .centered-post-content {
-  max-width: 1240px;
+  max-width: 1200px !important;
   margin: 0 auto;
+  padding: 0 !important;
+}
+.centered-post-header {
+  padding: 0 1rem;
+}
+.article-content > *:not(img):not(figure):not(.wp-block-image) {
+  padding: 0 1rem;
+}
+.related-grid, h3[style*="Related posts"] {
   padding: 0 1rem;
 }
 @media (min-width: 768px) {
@@ -2232,7 +2241,16 @@ html, body { max-width: 100%; position: relative; }
     padding: 0;
   }
   .centered-post-content {
-    padding: 0 2rem;
+    padding: 0 !important;
+  }
+  .centered-post-header {
+    padding: 0 12px;
+  }
+  .article-content > *:not(img):not(figure):not(.wp-block-image) {
+    padding: 0 12px;
+  }
+  .related-grid, h3[style*="Related posts"] {
+    padding: 0 12px;
   }
 }
 

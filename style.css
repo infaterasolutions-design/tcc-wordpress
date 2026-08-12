@@ -2988,6 +2988,10 @@ html, body { max-width: 100%; position: relative; }
    MOBILE OPTIMIZATION (ALL NEW SECTIONS)
    ========================================================================== */
 @media (max-width: 900px) {
+    /* Wardrobe Post */
+    .centered-post-title {
+        text-align: center !important;
+    }
     /* Trending Section */
     .figma-trending-title-wrapper {
         flex-direction: column !important;

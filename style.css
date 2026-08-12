@@ -2690,7 +2690,7 @@ html, body { max-width: 100%; position: relative; }
 }
 .figma-ig-header {
   background: #E5E1DE;
-  padding: 80px 20px 60px;
+  padding: 50px 20px 40px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -2793,7 +2793,7 @@ html, body { max-width: 100%; position: relative; }
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 60px 20px;
+  padding: 40px 20px;
   position: relative;
 }
 .figma-footer-divider {

@@ -3293,9 +3293,9 @@ html, body { max-width: 100%; position: relative; }
 
 .fp-trending-title {
     font-family: 'Bodoni Moda', 'Vidaloka', serif;
-    font-size: 32px;
+    font-size: 37px;
     font-weight: 400;
-    line-height: 32px;
+    line-height: 37px;
     letter-spacing: -1px;
     color: #000000;
     margin: 0;
@@ -3380,7 +3380,7 @@ html, body { max-width: 100%; position: relative; }
 
 .fp-trending-post-title {
     font-family: 'Bodoni Moda', 'Vidaloka', serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 1.1;
     color: #000000;

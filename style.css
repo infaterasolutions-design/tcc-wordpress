@@ -3262,13 +3262,15 @@ html, body { max-width: 100%; position: relative; }
     }
     .fp-latest-header {
         width: 100%;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
+        overflow: visible;
     }
     .fp-latest-title {
-        transform: none;
+        transform: scaleY(1.6);
+        transform-origin: center;
         position: static;
         text-align: center;
-        font-size: 50px;
+        font-size: 45px;
         line-height: 1.2;
     }
     .fp-latest-grid {

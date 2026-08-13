@@ -3527,7 +3527,7 @@ html, body { max-width: 100%; position: relative; }
     }
     
     .fp-latest-card {
-        max-width: 330px;
+        max-width: 300px;
         margin: 0 auto;
     }
 }

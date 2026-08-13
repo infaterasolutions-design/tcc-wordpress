@@ -3274,7 +3274,7 @@ html, body { max-width: 100%; position: relative; }
     padding: 0 20px 80px 20px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 

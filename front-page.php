@@ -83,14 +83,14 @@ get_header(); ?>
 
 	<!-- Trending Posts Section -->
 	<section class="fp-trending-section">
-		<div class="fp-trending-container">
-			<div class="fp-trending-header">
+		<div class="fp-trending-container relative">
+			<div class="fp-trending-header flex items-center">
 				<h2 class="fp-trending-title">TRENDING POSTS</h2>
+				<div class="fp-trending-divider"></div>
 			</div>
 			<div class="fp-trending-content">
 				<div class="fp-trending-grid">
 					<?php
-					// Fetch up to 3 posts that have the tag 'trending'
 					$trending_args = array(
 						'post_type'      => 'post',
 						'posts_per_page' => 3,
@@ -98,7 +98,6 @@ get_header(); ?>
 					);
 					$trending_query = new WP_Query( $trending_args );
 					
-					// Fallback: If no posts are tagged 'trending', just get 3 recent posts offset by 4
 					if ( ! $trending_query->have_posts() ) {
 						$trending_args = array(
 							'post_type'      => 'post',
@@ -121,16 +120,24 @@ get_header(); ?>
 								<?php endif; ?>
 							</div>
 							<div class="fp-trending-card-content">
-								<span class="fp-trending-category">
-									<?php 
-										$categories = get_the_category();
-										if ( ! empty( $categories ) ) {
-											echo esc_html( $categories[0]->name );
-										} else {
-											echo 'LIFESTYLE';
-										}
-									?>
-								</span>
+								<div class="fp-trending-meta-row flex items-center justify-between">
+									<span class="fp-trending-category">
+										<?php 
+											$categories = get_the_category();
+											if ( ! empty( $categories ) ) {
+												echo esc_html( $categories[0]->name );
+											} else {
+												echo 'LIFESTYLE';
+											}
+										?>
+									</span>
+									<div class="fp-trending-arrow">
+										<svg width="46" height="32" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<ellipse cx="23" cy="16" rx="22" ry="15" stroke="black" stroke-width="1"/>
+											<path d="M12 16H34M34 16L27 10M34 16L27 22" stroke="black" stroke-width="1" stroke-linecap="round"/>
+										</svg>
+									</div>
+								</div>
 								<h3 class="fp-trending-post-title"><?php the_title(); ?></h3>
 							</div>
 						</a>

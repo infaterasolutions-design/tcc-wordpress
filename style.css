@@ -3234,13 +3234,13 @@ html, body { max-width: 100%; position: relative; }
 
 .fp-latest-post-title {
     font-family: 'Bodoni Moda', 'Vidaloka', serif;
-    font-size: 32px;
+    font-size: 26px;
     line-height: 1.1;
     color: #000000;
-    margin: 0 0 20px 0;
-    transform: scaleY(1.4);
+    margin: 0 0 15px 0;
+    transform: scaleY(1.5) scaleX(0.95);
     transform-origin: left top;
-    letter-spacing: -0.5px;
+    letter-spacing: -1px;
 }
 
 .fp-latest-view-more {

@@ -77,7 +77,7 @@ add_action( 'widgets_init', 'tcc_widgets_init' );
  */
 function tcc_scripts() {
 	// Google Fonts (Optimized Payload with Elegant Scripts)
-	wp_enqueue_style( 'tcc-google-fonts-v2', 'https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Qwigley&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400', array(), null );
+	wp_enqueue_style( 'tcc-google-fonts-v3', 'https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Qwigley&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka', array(), null );
 	
 	// Theme stylesheet
 	wp_enqueue_style( 'tcc-style', get_stylesheet_uri(), array(), time() );

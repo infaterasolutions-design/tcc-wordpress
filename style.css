@@ -3525,4 +3525,9 @@ html, body { max-width: 100%; position: relative; }
         column-gap: 0;
         row-gap: 60px;
     }
+    
+    .fp-latest-card {
+        max-width: 300px;
+        margin: 0 auto;
+    }
 }

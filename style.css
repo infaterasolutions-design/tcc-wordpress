@@ -3134,11 +3134,11 @@ html, body { max-width: 100%; position: relative; }
     justify-content: center;
 }
 
-/* This dummy element counterbalances the header's exact 100px width (70px + 30px gap) 
+/* This dummy element counterbalances the header's exact 80px width (70px + 10px gap) 
    so the grid itself sits perfectly dead-center on the screen! */
 .fp-the-latest-section::after {
     content: '';
-    width: 100px;
+    width: 80px;
     flex-shrink: 0;
 }
 
@@ -3146,7 +3146,7 @@ html, body { max-width: 100%; position: relative; }
     position: relative;
     width: 70px;
     flex-shrink: 0;
-    margin-right: 30px;
+    margin-right: 10px;
 }
 
 .fp-latest-title {

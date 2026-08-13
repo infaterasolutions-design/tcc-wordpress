@@ -81,6 +81,65 @@ get_header(); ?>
 		</div>
 	</section>
 
+	<!-- Trending Posts Section -->
+	<section class="fp-trending-section">
+		<div class="fp-trending-container">
+			<div class="fp-trending-header">
+				<h2 class="fp-trending-title">TRENDING POSTS</h2>
+			</div>
+			<div class="fp-trending-content">
+				<div class="fp-trending-grid">
+					<?php
+					// Fetch up to 3 posts that have the tag 'trending'
+					$trending_args = array(
+						'post_type'      => 'post',
+						'posts_per_page' => 3,
+						'tag'            => 'trending',
+					);
+					$trending_query = new WP_Query( $trending_args );
+					
+					// Fallback: If no posts are tagged 'trending', just get 3 recent posts offset by 4
+					if ( ! $trending_query->have_posts() ) {
+						$trending_args = array(
+							'post_type'      => 'post',
+							'posts_per_page' => 3,
+							'offset'         => 4,
+						);
+						$trending_query = new WP_Query( $trending_args );
+					}
+
+					if ( $trending_query->have_posts() ) :
+						while ( $trending_query->have_posts() ) : $trending_query->the_post();
+					?>
+						<a href="<?php the_permalink(); ?>" class="fp-trending-card">
+							<div class="fp-trending-card-img-wrapper">
+								<?php if ( has_post_thumbnail() ) : ?>
+									<?php the_post_thumbnail( 'large' ); ?>
+								<?php else : ?>
+									<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400'; ?>
+									<img src="<?php echo esc_url( $dummy_img ); ?>" alt="Dummy Image" style="width:100%; height:100%; object-fit:cover;">
+								<?php endif; ?>
+							</div>
+							<div class="fp-trending-card-content">
+								<span class="fp-trending-category">
+									<?php 
+										$categories = get_the_category();
+										if ( ! empty( $categories ) ) {
+											echo esc_html( $categories[0]->name );
+										} else {
+											echo 'LIFESTYLE';
+										}
+									?>
+								</span>
+								<h3 class="fp-trending-post-title"><?php the_title(); ?></h3>
+							</div>
+						</a>
+					<?php endwhile; wp_reset_postdata(); endif; ?>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- Recent Posts Section -->
 	<section class="fp-recent-section container">
 		<!-- Header -->

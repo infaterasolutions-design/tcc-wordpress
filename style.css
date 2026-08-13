@@ -3257,6 +3257,145 @@ html, body { max-width: 100%; position: relative; }
     align-self: center;
 }
 
+/* ==========================================================================
+   Trending Posts Section (New)
+   ========================================================================== */
+.fp-trending-section {
+    background-color: #E9E7E1;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.fp-trending-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dummy element to counterbalance the header width for center alignment */
+.fp-trending-container::after {
+    content: '';
+    width: 90px;
+    flex-shrink: 0;
+}
+
+.fp-trending-header {
+    position: relative;
+    width: 80px;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.fp-trending-title {
+    font-family: 'Bodoni Moda', 'Vidaloka', serif;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: -1px;
+    color: #000000;
+    margin: 0;
+    white-space: nowrap;
+    transform: rotate(-90deg) translateX(-100%) scaleY(1.6);
+    transform-origin: top left;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.fp-trending-content {
+    flex-grow: 1;
+    max-width: 900px;
+}
+
+.fp-trending-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.fp-trending-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.fp-trending-card:hover .fp-trending-card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.fp-trending-card-img-wrapper {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.fp-trending-card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.fp-trending-card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.fp-trending-category {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.fp-trending-post-title {
+    font-family: 'Bodoni Moda', 'Vidaloka', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #000000;
+    margin: 0;
+    transform: scaleY(1.5) scaleX(0.95);
+    transform-origin: left top;
+    letter-spacing: -1px;
+}
+
+@media (max-width: 900px) {
+    .fp-trending-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 60px 20px;
+    }
+    .fp-trending-container::after {
+        display: none;
+    }
+    .fp-trending-header {
+        width: 100%;
+        margin-bottom: 50px;
+        overflow: visible;
+    }
+    .fp-trending-title {
+        transform: scaleY(1.6);
+        transform-origin: center;
+        position: static;
+        text-align: center;
+        font-size: 45px;
+        line-height: 1.2;
+    }
+    .fp-trending-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
 @media (max-width: 900px) {
     .fp-the-latest-section {
         flex-direction: column;

@@ -3287,10 +3287,10 @@ html, body { max-width: 100%; position: relative; }
 
 .fp-trending-header {
     position: relative;
-    width: 100px;
+    width: 70px;
     height: 372px;
     flex-shrink: 0;
-    margin-right: 30px;
+    margin-right: 60px;
 }
 
 .fp-trending-title {
@@ -3304,7 +3304,7 @@ html, body { max-width: 100%; position: relative; }
     white-space: nowrap;
     position: absolute;
     top: 50%;
-    left: 30%;
+    left: 50%;
     transform: translate(-50%, -50%) rotate(-90deg) scaleY(1.3) scaleX(0.9);
     transform-origin: center center;
     -webkit-font-smoothing: antialiased;

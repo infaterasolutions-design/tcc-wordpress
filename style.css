@@ -3134,25 +3134,25 @@ html, body { max-width: 100%; position: relative; }
     justify-content: center;
 }
 
-/* This dummy element counterbalances the header's exact 80px width (70px + 10px gap) 
+/* This dummy element counterbalances the header's exact 110px width (100px + 10px gap) 
    so the grid itself sits perfectly dead-center on the screen! */
 .fp-the-latest-section::after {
     content: '';
-    width: 80px;
+    width: 110px;
     flex-shrink: 0;
 }
 
 .fp-latest-header {
     position: relative;
-    width: 70px;
+    width: 100px;
     flex-shrink: 0;
     margin-right: 10px;
 }
 
 .fp-latest-title {
     font-family: 'NT Valentino', 'Marcellus', serif;
-    font-size: 70px;
-    line-height: 70px;
+    font-size: 83px;
+    line-height: 100px;
     color: #000000;
     margin: 0;
     white-space: nowrap;

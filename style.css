@@ -3152,6 +3152,7 @@ html, body { max-width: 100%; position: relative; }
 .fp-latest-title {
     font-family: 'Bodoni Moda', 'Vidaloka', serif;
     font-size: 50px;
+    font-weight: 400;
     line-height: 50px;
     letter-spacing: -1px;
     color: #000000;
@@ -3235,6 +3236,7 @@ html, body { max-width: 100%; position: relative; }
 .fp-latest-post-title {
     font-family: 'Bodoni Moda', 'Vidaloka', serif;
     font-size: 26px;
+    font-weight: 400;
     line-height: 1.1;
     color: #000000;
     margin: 0 0 15px 0;

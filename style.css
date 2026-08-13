@@ -3467,10 +3467,15 @@ html, body { max-width: 100%; position: relative; }
         right: 0;
     }
     
+    .fp-trending-mobile-nav svg {
+        width: 18px;
+        height: 30px;
+    }
+    
     .fp-trending-card-content {
         align-items: center;
         text-align: center;
-        padding-top: 10px;
+        padding-top: 0;
     }
     
     .fp-trending-post-title {

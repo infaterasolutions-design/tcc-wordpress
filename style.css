@@ -3449,7 +3449,7 @@ html, body { max-width: 100%; position: relative; }
     .fp-trending-mobile-nav {
         display: flex;
         position: absolute;
-        top: 300px;
+        top: 175px;
         transform: translateY(-50%);
         background: transparent;
         border: none;
@@ -3470,19 +3470,22 @@ html, body { max-width: 100%; position: relative; }
     .fp-trending-card-content {
         align-items: center;
         text-align: center;
+        padding-top: 25px;
     }
     
     .fp-trending-post-title {
         order: 1;
-        font-size: 24px;
-        line-height: 1.2;
+        font-size: 22px;
+        line-height: 1.4;
+        transform: none;
+        letter-spacing: normal;
     }
     
     .fp-trending-meta-row {
         order: 2;
         width: 100%;
         justify-content: center;
-        margin-top: 20px;
+        margin-top: 25px;
         margin-bottom: 0;
     }
     

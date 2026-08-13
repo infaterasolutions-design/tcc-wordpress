@@ -88,7 +88,7 @@ get_header(); ?>
 				<h2 class="fp-trending-title">TRENDING <i style="font-style: italic; font-weight: normal;">POSTS</i></h2>
 				<div class="fp-trending-divider"></div>
 			</div>
-			<div class="fp-trending-content">
+			<div class="fp-trending-content relative" style="position: relative;">
 				<div class="fp-trending-grid">
 					<?php
 					$trending_args = array(
@@ -143,6 +143,47 @@ get_header(); ?>
 						</a>
 					<?php endwhile; wp_reset_postdata(); endif; ?>
 				</div>
+                
+                <!-- Mobile Navigation Arrows -->
+                <button class="fp-trending-mobile-nav prev" onclick="tccTrendingPrev()">
+                    <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="black" stroke-width="1.5"><path d="M20 38L2 20L20 2"/></svg>
+                </button>
+                <button class="fp-trending-mobile-nav next" onclick="tccTrendingNext()">
+                    <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="black" stroke-width="1.5"><path d="M4 38L22 20L4 2"/></svg>
+                </button>
+
+                <script>
+                    let currentTrending = 0;
+                    function tccTrendingUpdate() {
+                        const trendingCards = document.querySelectorAll('.fp-trending-card');
+                        if (!trendingCards.length) return;
+                        if (window.innerWidth > 900) {
+                            trendingCards.forEach(c => { c.style.display = ''; c.classList.remove('active-mobile-card'); });
+                            return;
+                        }
+                        trendingCards.forEach((c, i) => {
+                            if (i === currentTrending) {
+                                c.style.display = 'flex';
+                                c.classList.add('active-mobile-card');
+                            } else {
+                                c.style.display = 'none';
+                                c.classList.remove('active-mobile-card');
+                            }
+                        });
+                    }
+                    function tccTrendingNext() {
+                        const cards = document.querySelectorAll('.fp-trending-card');
+                        currentTrending = (currentTrending + 1) % cards.length;
+                        tccTrendingUpdate();
+                    }
+                    function tccTrendingPrev() {
+                        const cards = document.querySelectorAll('.fp-trending-card');
+                        currentTrending = (currentTrending - 1 + cards.length) % cards.length;
+                        tccTrendingUpdate();
+                    }
+                    window.addEventListener('resize', tccTrendingUpdate);
+                    document.addEventListener('DOMContentLoaded', tccTrendingUpdate);
+                </script>
 			</div>
 		</div>
 	</section>

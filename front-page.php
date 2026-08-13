@@ -85,7 +85,7 @@ get_header(); ?>
 	<section class="fp-trending-section">
 		<div class="fp-trending-container relative">
 			<div class="fp-trending-header flex items-center">
-				<h2 class="fp-trending-title">TRENDING POSTS</h2>
+				<h2 class="fp-trending-title">TRENDING <i style="font-style: italic; font-weight: normal;">POSTS</i></h2>
 				<div class="fp-trending-divider"></div>
 			</div>
 			<div class="fp-trending-content">

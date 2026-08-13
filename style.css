@@ -3328,7 +3328,7 @@ html, body { max-width: 100%; position: relative; }
 .fp-trending-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 50px;
+    gap: 80px;
 }
 
 .fp-trending-card {

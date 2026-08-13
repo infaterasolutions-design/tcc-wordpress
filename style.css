@@ -3286,6 +3286,7 @@ html, body { max-width: 100%; position: relative; }
 .fp-trending-header {
     position: relative;
     width: 100px;
+    height: 372px;
     flex-shrink: 0;
     margin-right: 30px;
 }
@@ -3299,11 +3300,11 @@ html, body { max-width: 100%; position: relative; }
     color: #000000;
     margin: 0;
     white-space: nowrap;
-    transform: rotate(-90deg) translateX(-100%) scaleY(1.6);
-    transform-origin: top left;
     position: absolute;
-    top: 50px;
-    left: 0px;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(-90deg) scaleY(1.6);
+    transform-origin: center center;
 }
 
 .fp-trending-divider {

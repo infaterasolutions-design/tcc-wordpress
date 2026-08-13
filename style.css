@@ -3264,6 +3264,8 @@ html, body { max-width: 100%; position: relative; }
     background-color: #E9E7E1;
     width: 100%;
     margin-top: 60px;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
 }
 
 .fp-trending-container {

@@ -3665,16 +3665,22 @@ html, body { max-width: 100%; position: relative; }
 
 @media (max-width: 900px) {
     .fp-creator-hub-section {
-        padding: 40px 15px;
+        padding: 20px 15px;
     }
     .fp-creator-hub-header {
-        margin-bottom: 25px;
+        margin-bottom: 15px;
     }
     .fp-creator-hub-initial {
-        font-size: 70px;
+        font-size: 55px;
+        margin-right: 10px;
+        top: 0px;
     }
     .fp-creator-hub-title {
-        font-size: 26px;
+        font-size: 20px;
+    }
+    .fp-creator-hub-subtitle {
+        font-size: 12px;
+        margin-top: 10px;
     }
     .fp-creator-hub-label {
         display: none;
@@ -3685,24 +3691,28 @@ html, body { max-width: 100%; position: relative; }
     .fp-creator-hub-item {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
-        padding: 20px 0;
+        gap: 5px;
+        padding: 15px 0;
     }
     .fp-creator-hub-item-left {
         justify-content: center;
         text-align: center;
     }
     .fp-creator-hub-item-title {
-        font-size: 22px;
+        font-size: 18px;
         text-align: center;
     }
     .fp-creator-hub-read-more {
+        font-size: 12px;
         align-self: center;
         margin-left: 0;
         margin-top: 5px;
     }
     .fp-creator-hub-see-more-wrapper {
         justify-content: center;
-        margin-top: 20px;
+        margin-top: 15px;
+    }
+    .fp-creator-hub-see-more {
+        font-size: 12px;
     }
 }

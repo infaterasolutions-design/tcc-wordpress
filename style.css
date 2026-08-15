@@ -3564,9 +3564,9 @@ html, body { max-width: 100%; position: relative; }
     font-size: 110px;
     line-height: 1;
     color: #000;
-    margin-right: 15px;
+    margin-right: 20px;
     position: relative;
-    top: 40px;
+    top: 5px;
 }
 .fp-creator-hub-title {
     font-family: 'Bodoni Moda', 'Vidaloka', serif;

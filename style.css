@@ -3559,12 +3559,12 @@ html, body { max-width: 100%; position: relative; }
     margin-bottom: 20px;
 }
 .fp-creator-hub-initial {
-    font-family: 'Sacramento', cursive;
-    font-size: 130px;
-    font-weight: 400;
+    font-family: 'Herr Von Muellerhoff', 'Allura', cursive;
+    font-weight: 300;
+    font-size: 110px;
     line-height: 1;
     color: #000;
-    margin-right: 5px;
+    margin-right: 35px;
     position: relative;
     top: 25px;
 }
@@ -3665,7 +3665,7 @@ html, body { max-width: 100%; position: relative; }
 
 @media (max-width: 900px) {
     .fp-creator-hub-initial {
-        font-size: 90px;
+        font-size: 80px;
     }
     .fp-creator-hub-title {
         font-size: 30px;

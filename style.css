@@ -3559,14 +3559,14 @@ html, body { max-width: 100%; position: relative; }
     margin-bottom: 20px;
 }
 .fp-creator-hub-initial {
-    font-family: 'Herr Von Muellerhoff', 'Allura', cursive;
-    font-weight: 300;
-    font-size: 80px;
+    font-family: 'Georgia Script', cursive;
+    font-size: 110px;
     line-height: 1;
     color: #000;
-    margin-right: -5px;
+    -webkit-text-stroke: 1.5px #FBF6EF; /* Eats into the black to make the font appear very thin */
+    margin-right: 0;
     position: relative;
-    top: 5px;
+    top: 10px;
 }
 .fp-creator-hub-title {
     font-family: 'Bodoni Moda', 'Vidaloka', serif;
@@ -3665,7 +3665,7 @@ html, body { max-width: 100%; position: relative; }
 
 @media (max-width: 900px) {
     .fp-creator-hub-initial {
-        font-size: 50px;
+        font-size: 70px;
     }
     .fp-creator-hub-title {
         font-size: 30px;

@@ -81,6 +81,61 @@ get_header(); ?>
 		</div>
 	</section>
 
+	<!-- Creator Hub Section -->
+	<section class="fp-creator-hub-section">
+		<div class="fp-creator-hub-container relative">
+			<!-- Header -->
+			<div class="fp-creator-hub-header">
+				<div class="fp-creator-hub-title-wrapper">
+					<span class="fp-creator-hub-initial">C</span>
+					<span class="fp-creator-hub-title">REATOR HUB</span>
+				</div>
+				<p class="fp-creator-hub-subtitle">I'm leveraging my collective industry experience to help you grow your content creation into a successful brand.</p>
+			</div>
+
+			<!-- Top Resources -->
+			<div class="fp-creator-hub-resources-wrapper">
+				<h3 class="fp-creator-hub-label">TOP RESOURCES</h3>
+				
+				<div class="fp-creator-hub-list">
+					<a href="#" class="fp-creator-hub-item">
+						<div class="fp-creator-hub-item-left">
+							<svg class="fp-creator-hub-arrow-icon" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<ellipse cx="23" cy="16" rx="22" ry="15" stroke="black" stroke-width="1"/>
+								<path d="M12 16H34M34 16L27 10M34 16L27 22" stroke="black" stroke-width="1" stroke-linecap="round"/>
+							</svg>
+							<span class="fp-creator-hub-item-title">Best Practices for Pitching & Landing Paid Sponsorships</span>
+						</div>
+						<span class="fp-creator-hub-read-more">READ MORE &rarr;</span>
+					</a>
+					<a href="#" class="fp-creator-hub-item">
+						<div class="fp-creator-hub-item-left">
+							<svg class="fp-creator-hub-arrow-icon" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<ellipse cx="23" cy="16" rx="22" ry="15" stroke="black" stroke-width="1"/>
+								<path d="M12 16H34M34 16L27 10M34 16L27 22" stroke="black" stroke-width="1" stroke-linecap="round"/>
+							</svg>
+							<span class="fp-creator-hub-item-title">15 Questions to Ask an Influencer Management Agency Before Signing a Contract</span>
+						</div>
+						<span class="fp-creator-hub-read-more">READ MORE &rarr;</span>
+					</a>
+					<a href="#" class="fp-creator-hub-item">
+						<div class="fp-creator-hub-item-left">
+							<svg class="fp-creator-hub-arrow-icon" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<ellipse cx="23" cy="16" rx="22" ry="15" stroke="black" stroke-width="1"/>
+								<path d="M12 16H34M34 16L27 10M34 16L27 22" stroke="black" stroke-width="1" stroke-linecap="round"/>
+							</svg>
+							<span class="fp-creator-hub-item-title">I Quit My Teaching Job...Here's What Happened Next</span>
+						</div>
+						<span class="fp-creator-hub-read-more">READ MORE &rarr;</span>
+					</a>
+				</div>
+                <div class="fp-creator-hub-see-more-wrapper">
+				    <a href="#" class="fp-creator-hub-see-more">SEE MORE ON THE CREATOR HUB&rarr;</a>
+                </div>
+			</div>
+		</div>
+	</section>
+
 	<!-- Trending Posts Section -->
 	<section class="fp-trending-section">
 		<div class="fp-trending-container relative">

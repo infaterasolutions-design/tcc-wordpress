@@ -1729,54 +1729,20 @@ img {
 /* Mobile Layout - Stacked */
 @media (max-width: 900px) {
   .fp-elsewhere-section {
-    padding: 40px 20px;
+    padding: 40px 0;
+    overflow: hidden;
+    justify-content: flex-start;
   }
   .fp-elsewhere-container {
-    transform: none;
-    height: auto;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-  }
-  .fp-elsewhere-col1, .fp-elsewhere-col2, .fp-elsewhere-col3, .fp-elsewhere-col4 {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    position: static;
-    left: 0;
-    top: 0;
-    padding: 0;
-  }
-  .fp-elsewhere-col1 picture, .fp-elsewhere-col2-img-wrapper picture, .fp-elsewhere-col3-inner picture, .fp-elsewhere-col4 picture {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3/4;
-  }
-  .fp-elsewhere-col3-inner picture {
-    aspect-ratio: 1/1;
-  }
-  .fp-elsewhere-col2-img-wrapper, .fp-elsewhere-col3-inner {
-    width: 100%;
-    height: auto;
-    border-width: 10px; 
-  }
-  .fp-elsewhere-text {
-    font-size: 80px;
-    top: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    width: 100%;
-  }
-  .fp-elsewhere-handle {
-    position: static;
-    display: inline-block;
-    margin-top: 20px;
-    align-self: center;
-  }
-  .fp-elsewhere-col3 {
-    align-items: center;
-    height: auto;
+    transform-origin: top left;
+    transform: scale(calc(100vw / 1200));
+    width: 1200px;
+    max-width: none;
+    /* Adjust margin to prevent empty space below the scaled container (604px original height) */
+    margin-bottom: calc(-604px + (604vw / 12));
+    gap: 20px;
+    flex-direction: row;
+    align-items: flex-start;
   }
 }
 .figma-trending-container {

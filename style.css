@@ -1729,20 +1729,70 @@ img {
 /* Mobile Layout - Stacked */
 @media (max-width: 900px) {
   .fp-elsewhere-section {
-    padding: 40px 0;
+    padding: 10vw 0;
     overflow: hidden;
-    justify-content: flex-start;
+  }
+  .fp-elsewhere-section::-webkit-scrollbar {
+    display: none;
   }
   .fp-elsewhere-container {
-    transform-origin: top left;
-    transform: scale(calc(100vw / 1200));
-    width: 1200px;
+    transform: none;
+    width: 100vw;
+    min-width: auto;
     max-width: none;
-    /* Adjust margin to prevent empty space below the scaled container (604px original height) */
-    margin-bottom: calc(-604px + (604vw / 12));
-    gap: 20px;
+    margin-bottom: 0;
+    gap: 1.66vw;
     flex-direction: row;
     align-items: flex-start;
+  }
+  .fp-elsewhere-col1 { width: 31.66vw; left: 0; top: 0; height: auto; }
+  .fp-elsewhere-col2 { width: 24.16vw; left: -5.83vw; top: 5vw; height: auto; }
+  .fp-elsewhere-col3 { width: 26.66vw; left: -10.83vw; top: 10vw; height: auto; }
+  .fp-elsewhere-col4 { width: 32.08vw; left: -11.66vw; top: 6.66vw; height: auto; }
+  
+  .fp-elsewhere-col1 picture, .fp-elsewhere-col4 picture {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 380 / 473;
+  }
+  .fp-elsewhere-col2-img-wrapper {
+    width: 100%;
+    height: auto;
+    border-width: 1.66vw 0px 1.66vw 1.66vw;
+    display: block;
+    box-sizing: border-box;
+  }
+  .fp-elsewhere-col2-img-wrapper picture {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 270 / 368;
+  }
+  .fp-elsewhere-col3-inner {
+    width: 100%;
+    height: auto;
+    border-width: 1.66vw;
+    display: block;
+    box-sizing: border-box;
+  }
+  .fp-elsewhere-col3-inner picture {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  .fp-elsewhere-text {
+    font-size: 10vw;
+    top: -0.41vw;
+    left: 24.58vw;
+    transform: none;
+    width: auto;
+  }
+  .fp-elsewhere-handle {
+    font-size: 2vw;
+    padding: 1vw 1.5vw;
+    top: 26.66vw;
+    line-height: normal;
+    margin-top: 1vw;
+    left: 0;
   }
 }
 .figma-trending-container {

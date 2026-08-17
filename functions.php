@@ -833,8 +833,15 @@ add_filter( 'pre_handle_404', function( $preempt, $query ) {
 
 
 add_action( 'init', function() {
-    if ( ! get_option( 'tcc_flushed_rules_v2' ) ) {
+    add_rewrite_rule('^author/([^/]+)/?$', 'index.php?author_name=$matches[1]', 'top');
+    if ( ! get_option( 'tcc_flushed_rules_v3' ) ) {
         flush_rewrite_rules(false);
-        update_option( 'tcc_flushed_rules_v2', 1 );
+        update_option( 'tcc_flushed_rules_v3', 1 );
+    }
+});
+
+add_action( 'pre_get_posts', function( $query ) {
+    if ( ! is_admin() && $query->is_main_query() && $query->is_author() ) {
+        $query->set( 'post_type', 'any' );
     }
 });

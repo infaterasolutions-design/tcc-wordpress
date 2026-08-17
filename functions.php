@@ -876,14 +876,18 @@ add_action('init', function() {
             $user = get_user_by('slug', $slug);
             
             global $wp_query;
-            $wp_query = new WP_Query();
+            $args = array(
+                'author_name' => $slug,
+                'post_type' => 'any',
+                'posts_per_page' => get_option('posts_per_page'),
+            );
+            $wp_query = new WP_Query($args);
+            
             $wp_query->is_404 = false;
             $wp_query->is_author = true;
             $wp_query->is_archive = true;
-            $wp_query->set('author_name', $slug);
             
             if ($user) {
-                $wp_query->set('author', $user->ID);
                 $wp_query->queried_object = $user;
                 $wp_query->queried_object_id = $user->ID;
             }

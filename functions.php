@@ -716,3 +716,104 @@ function tcc_save_postdata( $post_id ) {
     }
 }
 add_action( 'save_post', 'tcc_save_postdata' );
+
+/**
+ * Automatically inject Table of Contents into Single Posts
+ */
+function tcc_auto_inject_toc( $content ) {
+    if ( ! is_single() || ! in_the_loop() || ! is_main_query() || get_post_type() !== 'post' ) {
+        return $content;
+    }
+
+    // Find all h2 and h3
+    $pattern = '/<h([2-3])([^>]*)>(.*?)<\/h\1>/is';
+    if ( ! preg_match_all( $pattern, $content, $matches, PREG_SET_ORDER ) ) {
+        return $content;
+    }
+
+    $toc_items = array();
+    foreach ( $matches as $match ) {
+        $full_match = $match[0];
+        $level      = $match[1];
+        $attributes = $match[2];
+        $text       = wp_strip_all_tags( $match[3] );
+        
+        // Extract or create ID
+        if ( preg_match( '/id=[\'"]([^\'"]+)[\'"]/', $attributes, $id_match ) ) {
+            $id = $id_match[1];
+        } else {
+            $id = sanitize_title( $text );
+            // Replace full match in content to inject ID
+            $new_heading = sprintf( '<h%1$s%2$s id="%3$s">%4$s</h%1$s>', $level, $attributes, esc_attr( $id ), $match[3] );
+            $content = str_replace( $full_match, $new_heading, $content );
+        }
+        
+        $toc_items[] = array(
+            'level' => $level,
+            'id'    => $id,
+            'text'  => $text,
+        );
+    }
+
+    if ( empty( $toc_items ) ) {
+        return $content;
+    }
+
+    $visible_limit = 4;
+    $has_hidden = count( $toc_items ) > $visible_limit;
+
+    ob_start();
+    ?>
+    <div class="tcc-toc-container">
+        <h2 class="tcc-toc-title">Table of Contents</h2>
+        <ul class="tcc-toc-list">
+            <?php foreach ( $toc_items as $index => $item ) : ?>
+                <?php 
+                    $class = 'tcc-toc-item';
+                    if ( $item['level'] == '3' ) {
+                        $class .= ' tcc-toc-item-h3';
+                    }
+                    if ( $index >= $visible_limit ) {
+                        $class .= ' tcc-toc-hidden-item';
+                    }
+                ?>
+                <li class="<?php echo esc_attr( $class ); ?>">
+                    <a href="#<?php echo esc_attr( $item['id'] ); ?>"><?php echo esc_html( $item['text'] ); ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <?php if ( $has_hidden ) : ?>
+            <div class="tcc-toc-expand">
+                <button type="button" class="tcc-toc-expand-btn">
+                    <span class="tcc-toc-expand-icon">+</span> <span class="tcc-toc-expand-text">VIEW MORE</span>
+                </button>
+            </div>
+        <?php endif; ?>
+    </div>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var expandBtns = document.querySelectorAll('.tcc-toc-expand-btn');
+        expandBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var container = this.closest('.tcc-toc-container');
+                container.classList.toggle('tcc-toc-is-expanded');
+                var textSpan = this.querySelector('.tcc-toc-expand-text');
+                var iconSpan = this.querySelector('.tcc-toc-expand-icon');
+                if (container.classList.contains('tcc-toc-is-expanded')) {
+                    textSpan.textContent = 'VIEW LESS';
+                    iconSpan.textContent = '-';
+                } else {
+                    textSpan.textContent = 'VIEW MORE';
+                    iconSpan.textContent = '+';
+                }
+            });
+        });
+    });
+    </script>
+    <?php
+    $toc_html = ob_get_clean();
+
+    return $toc_html . $content;
+}
+add_filter( 'the_content', 'tcc_auto_inject_toc', 20 );

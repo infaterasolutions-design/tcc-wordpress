@@ -1650,7 +1650,6 @@ img {
   display: flex;
   justify-content: center;
   padding: 60px 20px;
-  overflow: hidden; 
   box-sizing: border-box;
 }
 .fp-elsewhere-container {

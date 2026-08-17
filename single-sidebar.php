@@ -69,17 +69,7 @@ get_header();
 				</div>
 			<?php endif; ?>
 
-			<div style="background-color: #FAF6EE; padding: 24px; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center;">
-				<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300', 'Elle Penner', '', 'width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 20px;'); ?>
-				<h3 style="font-family: 'Playfair Display', serif; font-size: 30px; margin: 0 0 16px 0; text-align: center; font-weight: 400; color: #2C2C2C;">Hey there, I’m Elle.</h3>
-				<p style="font-family: 'Inter', sans-serif; font-size: 20px; line-height: 32px; color: #2C2C2C; text-align: center; margin: 0 0 24px 0;">
-					Simplifying and organizing expert, dietitian, and mom of two. I'm here to help you declutter your home so you have more time and energy for the things that truly matter.
-				</p>
-				<a href="#" style="display: inline-flex; justify-content: center; align-items: center; padding: 7px 18px; background-color: #FFFFFF; border: 1.6px solid #EC9277; text-decoration: none; color: #2C2C2C;">
-					<span class="text-sans" style="font-size: 18px; font-weight: 400; text-transform: uppercase;">About Me</span>
-				</a>
-			</div>
-			
+
 			<div style="background-color: #C5DAD4; padding: 2rem; text-align: center; margin-bottom: 2rem;">
 				<h3 class="text-sans" style="font-size: 1.2rem; text-transform: uppercase; margin-bottom: 1rem; margin-top: 0;">Join the Newsletter</h3>
 				<p class="text-sans" style="font-size: 0.9rem; margin-bottom: 1rem;">Get weekly decluttering tips straight to your inbox.</p>

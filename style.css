@@ -3705,4 +3705,12 @@ html, body { max-width: 100%; position: relative; }
     .fp-creator-hub-see-more-wrapper {
         justify-content: center;
     }
+    
+    /* Mobile Header Logo Resize */
+    .header-logo-tcc {
+        font-size: 1.8rem !important;
+    }
+    .header-logo-text {
+        font-size: 1.1rem !important;
+    }
 }

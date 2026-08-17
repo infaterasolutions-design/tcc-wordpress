@@ -6,10 +6,21 @@
 get_header();
 
 $author = get_queried_object();
-$author_id = $author->ID;
-$author_name = esc_html( $author->display_name );
-$author_bio = wp_kses_post( get_the_author_meta( 'description', $author_id ) );
-$author_avatar = get_avatar( $author_id, 150, '', $author_name, array( 'class' => 'author-page-avatar' ) );
+
+// Fallback if WordPress returns null (e.g. author has 0 posts)
+if ( ! $author || ! isset($author->ID) ) {
+    $author_name = get_query_var('author_name');
+    if ( $author_name ) {
+        $author = get_user_by( 'slug', $author_name );
+    } else {
+        $author = get_userdata( get_query_var('author') );
+    }
+}
+
+$author_id = $author ? $author->ID : 0;
+$author_name = $author ? esc_html( $author->display_name ) : 'Author';
+$author_bio = $author_id ? wp_kses_post( get_the_author_meta( 'description', $author_id ) ) : '';
+$author_avatar = $author_id ? get_avatar( $author_id, 150, '', $author_name, array( 'class' => 'author-page-avatar' ) ) : '';
 ?>
 
 <main style="background-color: #fff; min-height: 100vh; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 100vw; overflow-x: hidden;">

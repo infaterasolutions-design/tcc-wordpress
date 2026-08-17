@@ -817,3 +817,17 @@ function tcc_auto_inject_toc( $content ) {
     return $toc_html . $content;
 }
 add_filter( 'the_content', 'tcc_auto_inject_toc', 20 );
+
+/**
+ * Force author archives to load author.php even if they have 0 posts.
+ */
+add_filter( 'template_include', function( $template ) {
+    if ( get_query_var( 'author_name' ) || get_query_var( 'author' ) ) {
+        global $wp_query;
+        $wp_query->is_404 = false;
+        $wp_query->is_author = true;
+        status_header( 200 );
+        return get_stylesheet_directory() . '/author.php';
+    }
+    return $template;
+} );

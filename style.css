@@ -3514,7 +3514,7 @@ html, body { max-width: 100%; position: relative; }
     }
     .fp-latest-header {
         width: 100%;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
         overflow: visible;
     }
     .fp-latest-title {

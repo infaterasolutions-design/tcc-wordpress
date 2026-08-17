@@ -4,8 +4,12 @@
  */
 
 $author_id = get_the_author_meta( 'ID' );
-$author_url = esc_url( get_author_posts_url( $author_id ) );
 $author_name = esc_html( get_the_author() );
+$author_nicename = get_the_author_meta( 'user_nicename' );
+if ( empty( $author_nicename ) ) {
+    $author_nicename = sanitize_title( $author_name );
+}
+$author_url = home_url( '/author/' . $author_nicename . '/' );
 $author_bio = wp_kses_post( get_the_author_meta( 'description' ) );
 $author_avatar = get_avatar( $author_id, 64, '', $author_name, array( 'class' => 'tcc-author-card-avatar' ) );
 ?>

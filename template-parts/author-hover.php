@@ -9,7 +9,9 @@ $author_nicename = get_the_author_meta( 'user_nicename' );
 if ( empty( $author_nicename ) ) {
     $author_nicename = sanitize_title( $author_name );
 }
-$author_url = home_url( '/author/' . $author_nicename . '/' );
+// Use a relative URL to ensure it stays on the local testing environment 
+// instead of redirecting to the live production site
+$author_url = '/author/' . $author_nicename . '/';
 $author_bio = wp_kses_post( get_the_author_meta( 'description' ) );
 $author_avatar = get_avatar( $author_id, 64, '', $author_name, array( 'class' => 'tcc-author-card-avatar' ) );
 ?>

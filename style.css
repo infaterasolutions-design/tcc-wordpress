@@ -3507,7 +3507,7 @@ html, body { max-width: 100%; position: relative; }
     .fp-the-latest-section {
         flex-direction: column;
         align-items: center;
-        margin-top: 20px;
+        margin-top: 40px;
     }
     .fp-the-latest-section::after {
         display: none;

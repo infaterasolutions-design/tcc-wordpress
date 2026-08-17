@@ -74,7 +74,12 @@ body, html {
 			.header-logo-tcc { font-size: 1.5rem !important; }
 			.header-logo-text { font-size: 0.9rem !important; }
 			.site-logo img.custom-logo { max-height: 35px !important; width: auto !important; }
-			.header-main { padding: 0.8rem var(--spacing-sm) !important; }
+			.header-main { 
+				padding: 0.8rem var(--spacing-sm) !important; 
+				position: sticky !important;
+				top: 0 !important;
+				z-index: 999 !important;
+			}
 		}
 		@media (min-width: 1201px) {
 			.hamburger-icon { display: none !important; }

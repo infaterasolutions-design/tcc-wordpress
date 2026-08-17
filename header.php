@@ -103,9 +103,7 @@ body, html {
 <div class="site-wrapper">
 	<header class="container flex justify-between items-center header-main" style="padding: 1.5rem var(--spacing-sm); border-bottom: 1px solid var(--color-border); margin-bottom: 0; position: relative; z-index: 100; background-color: var(--color-bg);">
 		<div class="flex items-center gap-sm">
-			<span id="hamburger-icon" class="hamburger-icon" style="font-size: 1.8rem; cursor: pointer; user-select: none; width: 30px; text-align: center;">
-				≡
-			</span>
+
 			<?php if ( has_custom_logo() ) : ?>
 				<div class="site-logo flex items-center">
 					<?php the_custom_logo(); ?>
@@ -160,6 +158,9 @@ body, html {
 			<div class="mobile-search-icon" style="display: none; cursor: pointer; font-size: 1.2rem;">
 				🔍
 			</div>
+			<span id="hamburger-icon" class="hamburger-icon" style="font-size: 1.8rem; cursor: pointer; user-select: none; width: 30px; text-align: center;">
+				≡
+			</span>
 		</div>
 	</header>
 

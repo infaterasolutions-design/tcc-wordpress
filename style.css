@@ -2447,7 +2447,7 @@ html, body { max-width: 100%; position: relative; }
 
 /* Site Wrapper to clamp 100vw backgrounds without triggering scrollbars or breaking ad scripts */
 .site-wrapper {
-    overflow-x: hidden;
+    overflow-x: clip;
     width: 100%;
     position: relative;
 }

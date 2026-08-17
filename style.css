@@ -2766,15 +2766,8 @@ html, body { max-width: 100%; position: relative; }
 .figma-ig-grid a:hover img {
   transform: scale(1.05);
 }
-@media(max-width: 1024px) {
-  .figma-ig-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+
 @media(max-width: 600px) {
-  .figma-ig-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
   .figma-ig-title {
     font-size: 48px;
   }

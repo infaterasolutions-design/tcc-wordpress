@@ -3041,6 +3041,7 @@ html, body { max-width: 100%; position: relative; }
     /* Shop My Videos */
     .figma-smv-section {
         height: auto !important;
+        padding-top: 30px !important;
         padding-bottom: 50px !important;
     }
     .figma-smv-container {

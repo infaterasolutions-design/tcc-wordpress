@@ -821,13 +821,13 @@ add_filter( 'the_content', 'tcc_auto_inject_toc', 20 );
 /**
  * Force author archives to load author.php even if they have 0 posts.
  */
-add_filter( 'template_include', function( $template ) {
-    if ( get_query_var( 'author_name' ) || get_query_var( 'author' ) ) {
-        global $wp_query;
-        $wp_query->is_404 = false;
-        $wp_query->is_author = true;
-        status_header( 200 );
-        return get_stylesheet_directory() . '/author.php';
+add_filter( 'pre_handle_404', function( $preempt, $query ) {
+    if ( $query->is_main_query() && ( $query->get( 'author_name' ) || $query->get( 'author' ) ) ) {
+        $query->is_404 = false;
+        $query->is_author = true;
+        $query->is_archive = true;
+        return true; // Bypass default 404 handling
     }
-    return $template;
-} );
+    return $preempt;
+}, 10, 2 );
+

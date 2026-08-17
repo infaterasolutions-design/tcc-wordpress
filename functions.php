@@ -831,3 +831,10 @@ add_filter( 'pre_handle_404', function( $preempt, $query ) {
     return $preempt;
 }, 10, 2 );
 
+
+add_action( 'init', function() {
+    if ( ! get_option( 'tcc_flushed_rules_v2' ) ) {
+        flush_rewrite_rules(false);
+        update_option( 'tcc_flushed_rules_v2', 1 );
+    }
+});

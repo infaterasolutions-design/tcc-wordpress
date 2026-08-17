@@ -401,9 +401,10 @@ get_header(); ?>
 				</picture>
 			</a>
 
+			<div class="fp-elsewhere-text">elsewhere</div>
+			
 			<!-- Column 2 -->
 			<div class="fp-elsewhere-col2">
-				<div class="fp-elsewhere-text">elsewhere</div>
 				<a href="#" class="fp-elsewhere-col2-img-wrapper">
 					<?php $img2 = "https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?auto=format&fit=crop&q=80&w=400"; ?>
 					<picture class="w-full">

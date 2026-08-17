@@ -1638,8 +1638,8 @@ img {
   color: #000;
   white-space: nowrap;
   position: absolute;
-  top: -80px;
-  left: -20px;
+  top: -5px;
+  left: 232px;
   z-index: 10;
   pointer-events: none;
 }

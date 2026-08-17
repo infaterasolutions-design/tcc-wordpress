@@ -13,7 +13,7 @@ get_header(); ?>
 			<!-- ARTICLE HEADER -->
 			<header class="centered-post-header">
 			<!-- Breadcrumb -->
-			<div class="centered-post-breadcrumb" style="font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 1.5rem;">
+			<div class="centered-post-breadcrumb" style="font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem;">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="color: #888; text-decoration: none;">HOME</a> / POST / <?php echo esc_html( strtoupper( get_the_title() ) ); ?>
 			</div>
 

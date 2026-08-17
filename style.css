@@ -909,7 +909,7 @@ img {
   font-family: 'Inter', sans-serif;
   font-size: 20px;
   color: var(--text-color);
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 .article-breadcrumb a {
   color: var(--text-color);

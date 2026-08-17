@@ -721,7 +721,7 @@ add_action( 'save_post', 'tcc_save_postdata' );
  * Automatically inject Table of Contents into Single Posts
  */
 function tcc_auto_inject_toc( $content ) {
-    if ( ! is_single() || ! in_the_loop() || ! is_main_query() || get_post_type() !== 'post' ) {
+    if ( ! is_single() || ! in_the_loop() || ! is_main_query() || get_post_type() !== 'post' || in_category( 'wardrobe' ) ) {
         return $content;
     }
 

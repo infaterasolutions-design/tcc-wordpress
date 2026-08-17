@@ -1699,7 +1699,7 @@ img {
   font-family: 'Sacramento', cursive;
   font-style: normal;
   font-weight: 300; 
-  font-size: clamp(100px, 18vw, 220px);
+  font-size: clamp(80px, 12vw, 150px);
   text-transform: lowercase;
   line-height: 0.5;
   color: #000;

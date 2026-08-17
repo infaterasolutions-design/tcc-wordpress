@@ -845,3 +845,25 @@ add_action( 'pre_get_posts', function( $query ) {
         $query->set( 'post_type', 'any' );
     }
 });
+
+add_action('init', function() {
+    if (!file_exists(ABSPATH . 'debug-pages.txt')) {
+        global $wpdb;
+        $pages = $wpdb->get_results("SELECT post_title, post_name, post_type FROM wp_posts WHERE post_type='page' AND post_status='publish'");
+        $out = print_r($pages, true);
+        file_put_contents(ABSPATH . 'debug-pages.txt', $out);
+    }
+});
+
+add_action('template_redirect', function() {
+    global $wp_query, $template;
+    $log = date('Y-m-d H:i:s') . ' | URI: ' . $_SERVER['REQUEST_URI'] . ' | is_author: ' . ($wp_query->is_author ? 'yes' : 'no') . ' | author_name: ' . $wp_query->get('author_name') . ' | template: ' . $template . "\n";
+    file_put_contents(ABSPATH . 'debug-requests.txt', $log, FILE_APPEND);
+});
+
+add_filter('redirect_canonical', function($redirect_url, $requested_url) {
+    if ( is_author() || get_query_var( 'author_name' ) ) {
+        return false;
+    }
+    return $redirect_url;
+}, 10, 2);

@@ -867,3 +867,15 @@ add_filter('redirect_canonical', function($redirect_url, $requested_url) {
     }
     return $redirect_url;
 }, 10, 2);
+
+add_action('template_redirect', function() {
+    if (strpos($_SERVER['REQUEST_URI'], '/author/') !== false) {
+        remove_all_filters('redirect_canonical');
+        global $wp_query;
+        $wp_query->is_404 = false;
+        $wp_query->is_author = true;
+        status_header(200);
+        include( get_stylesheet_directory() . '/author.php' );
+        exit;
+    }
+}, 1);

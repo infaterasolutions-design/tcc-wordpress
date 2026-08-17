@@ -4,15 +4,15 @@
  */
 
 $author_id = get_the_author_meta( 'ID' );
-$author_name = esc_html( get_the_author() );
-$author_nicename = get_the_author_meta( 'user_nicename' );
+$author_name = esc_html( get_the_author_meta( 'display_name', $author_id ) );
+$author_nicename = get_the_author_meta( 'user_nicename', $author_id );
 if ( empty( $author_nicename ) ) {
     $author_nicename = sanitize_title( $author_name );
 }
 // Use a relative URL to ensure it stays on the local testing environment 
 // instead of redirecting to the live production site
 $author_url = '/author/' . $author_nicename . '/';
-$author_bio = wp_kses_post( get_the_author_meta( 'description' ) );
+$author_bio = wp_kses_post( get_the_author_meta( 'description', $author_id ) );
 $author_avatar = get_avatar( $author_id, 64, '', $author_name, array( 'class' => 'tcc-author-card-avatar' ) );
 ?>
 <span class="tcc-author-hover-wrapper">

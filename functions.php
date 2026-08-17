@@ -868,14 +868,29 @@ add_filter('redirect_canonical', function($redirect_url, $requested_url) {
     return $redirect_url;
 }, 10, 2);
 
-add_action('template_redirect', function() {
+add_action('init', function() {
     if (strpos($_SERVER['REQUEST_URI'], '/author/') !== false) {
-        remove_all_filters('redirect_canonical');
-        global $wp_query;
-        $wp_query->is_404 = false;
-        $wp_query->is_author = true;
-        status_header(200);
-        include( get_stylesheet_directory() . '/author.php' );
-        exit;
+        preg_match('#/author/([^/]+)#', $_SERVER['REQUEST_URI'], $matches);
+        if (!empty($matches[1])) {
+            $slug = sanitize_title($matches[1]);
+            $user = get_user_by('slug', $slug);
+            
+            global $wp_query;
+            $wp_query = new WP_Query();
+            $wp_query->is_404 = false;
+            $wp_query->is_author = true;
+            $wp_query->is_archive = true;
+            $wp_query->set('author_name', $slug);
+            
+            if ($user) {
+                $wp_query->set('author', $user->ID);
+                $wp_query->queried_object = $user;
+                $wp_query->queried_object_id = $user->ID;
+            }
+            
+            status_header(200);
+            include( get_stylesheet_directory() . '/author.php' );
+            exit;
+        }
     }
 }, 1);

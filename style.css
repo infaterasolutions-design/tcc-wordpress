@@ -917,7 +917,7 @@ img {
 }
 .article-title {
   font-family: 'Playfair Display', serif;
-  font-size: 28px;
+  font-size: 32px;
   line-height: 1.3;
   font-weight: bold;
   color: var(--text-color);
@@ -3009,6 +3009,9 @@ html, body { max-width: 100%; position: relative; }
     /* Wardrobe Post */
     .centered-post-title {
         text-align: center !important;
+    }
+    .article-title {
+        font-size: 28px;
     }
     /* Trending Section */
     .figma-trending-title-wrapper {

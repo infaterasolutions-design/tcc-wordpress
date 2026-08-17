@@ -71,6 +71,8 @@ body, html {
 			.desktop-socials { display: none !important; }
 			.mobile-search-icon { display: block !important; }
 			.hamburger-icon { display: block !important; }
+			.header-logo-tcc { font-size: 1.5rem !important; }
+			.header-logo-text { font-size: 0.9rem !important; }
 		}
 		@media (min-width: 1201px) {
 			.hamburger-icon { display: none !important; }

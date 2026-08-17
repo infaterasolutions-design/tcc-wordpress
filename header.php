@@ -73,6 +73,7 @@ body, html {
 			.hamburger-icon { display: block !important; }
 			.header-logo-tcc { font-size: 1.5rem !important; }
 			.header-logo-text { font-size: 0.9rem !important; }
+			.site-logo img.custom-logo { max-height: 25px !important; width: auto !important; }
 		}
 		@media (min-width: 1201px) {
 			.hamburger-icon { display: none !important; }

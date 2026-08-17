@@ -1696,8 +1696,11 @@ img {
   flex-shrink: 0;
 }
 .fp-elsewhere-text {
-  font-family: 'Georgia Script', 'Sacramento', cursive;
-  font-size: 144px;
+  font-family: 'Sacramento', cursive;
+  font-style: normal;
+  font-weight: 300; 
+  font-size: clamp(100px, 18vw, 220px);
+  text-transform: lowercase;
   line-height: 0.5;
   color: #000;
   white-space: nowrap;

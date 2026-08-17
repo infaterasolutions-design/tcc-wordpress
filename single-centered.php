@@ -24,7 +24,7 @@ get_header(); ?>
 
 			<!-- Meta Info -->
 			<div class="centered-post-meta" style="font-family: 'Inter', sans-serif; display: flex; align-items: center; gap: 1rem; font-size: 0.75rem; color: #666; letter-spacing: 0.05em; text-transform: uppercase; flex-wrap: wrap;">
-				<span>By <?php the_author(); ?></span>
+				<span><?php get_template_part( 'template-parts/author-hover' ); ?></span>
 				<span><?php echo get_the_date(); ?></span>
 				<span><?php echo strip_tags( get_the_category_list( ', ' ) ); ?></span>
 			</div>

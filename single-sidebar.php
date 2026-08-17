@@ -24,7 +24,7 @@ get_header();
 
 			<!-- Meta -->
 			<div class="article-meta">
-				By <?php the_author(); ?> | <?php echo get_the_date(); ?>
+				<?php get_template_part( 'template-parts/author-hover' ); ?> | <?php echo get_the_date(); ?>
 			</div>
 
 			<!-- Intro (Using Excerpt if it exists, otherwise omit) -->

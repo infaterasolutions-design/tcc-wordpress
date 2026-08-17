@@ -3723,7 +3723,7 @@ html, body { max-width: 100%; position: relative; }
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 30px 30px 0px 30px;
+    padding: 15px 30px 0px 30px;
     position: relative;
     width: 100%;
     max-width: 837px;

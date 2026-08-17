@@ -677,3 +677,42 @@ function tcc_handle_contact_form($request) {
         return new WP_Error('send_failed', 'Sorry, the message could not be sent. Please try again later.', array('status' => 500));
     }
 }
+
+/**
+ * Custom Meta Box for Homepage Card Title
+ */
+function tcc_add_custom_box() {
+    add_meta_box(
+        'tcc_homepage_card_title_id',           // Unique ID
+        'Homepage Card Short Title',  // Box title
+        'tcc_custom_box_html',  // Content callback
+        'post'                   // Post type
+    );
+}
+add_action( 'add_meta_boxes', 'tcc_add_custom_box' );
+
+function tcc_custom_box_html( $post ) {
+    $value = get_post_meta( $post->ID, '_tcc_homepage_card_title', true );
+    wp_nonce_field( 'tcc_save_meta_box_data', 'tcc_meta_box_nonce' );
+    ?>
+    <label for="tcc_homepage_card_title"><strong>Short Title (for The Latest section cards):</strong></label>
+    <input type="text" id="tcc_homepage_card_title" name="tcc_homepage_card_title" value="<?php echo esc_attr( $value ); ?>" style="width:100%; margin-top:10px; padding: 5px;" />
+    <p class="description">If left blank, the default long post title will be used.</p>
+    <?php
+}
+
+function tcc_save_postdata( $post_id ) {
+    if ( ! isset( $_POST['tcc_meta_box_nonce'] ) || ! wp_verify_nonce( $_POST['tcc_meta_box_nonce'], 'tcc_save_meta_box_data' ) ) {
+        return;
+    }
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+    if ( isset( $_POST['tcc_homepage_card_title'] ) ) {
+        update_post_meta( $post_id, '_tcc_homepage_card_title', sanitize_text_field( $_POST['tcc_homepage_card_title'] ) );
+    }
+}
+add_action( 'save_post', 'tcc_save_postdata' );

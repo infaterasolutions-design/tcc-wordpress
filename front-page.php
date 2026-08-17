@@ -69,7 +69,12 @@ get_header(); ?>
 							<span class="fp-latest-category"><?php $category = get_the_category(); if($category) echo esc_html($category[0]->name); ?></span>
 							<span class="fp-latest-date"><?php echo get_the_date('F j, Y'); ?></span>
 						</div>
-						<h3 class="fp-latest-post-title"><?php the_title(); ?></h3>
+						<h3 class="fp-latest-post-title">
+							<?php 
+								$short_title = get_post_meta( get_the_ID(), '_tcc_homepage_card_title', true );
+								echo $short_title ? esc_html( $short_title ) : get_the_title(); 
+							?>
+						</h3>
 					</a>
 				<?php
 					endwhile;

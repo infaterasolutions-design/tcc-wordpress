@@ -3507,6 +3507,7 @@ html, body { max-width: 100%; position: relative; }
     .fp-the-latest-section {
         flex-direction: column;
         align-items: center;
+        margin-top: 20px;
     }
     .fp-the-latest-section::after {
         display: none;
@@ -3521,7 +3522,7 @@ html, body { max-width: 100%; position: relative; }
         transform-origin: center;
         position: static;
         text-align: center;
-        font-size: 45px;
+        font-size: 36px;
         line-height: 1.2;
     }
     .fp-latest-grid {

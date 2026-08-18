@@ -92,39 +92,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    let initialScale = 1;
+
     // Custom Pinch-to-Zoom and Pan for Mobile
     overlay.addEventListener('touchstart', function(e) {
-        if (e.touches.length === 2) {
+        // Only prevent default if clicking on image, let clicks on close button pass through
+        if (e.target !== closeBtn) {
             e.preventDefault();
+        }
+        overlayImg.style.transition = 'none';
+        
+        if (e.touches.length === 2) {
             initialDistance = Math.hypot(
                 e.touches[0].clientX - e.touches[1].clientX,
                 e.touches[0].clientY - e.touches[1].clientY
             );
-            overlayImg.style.transition = 'none';
-        } else if (e.touches.length === 1 && scale > 1) {
-            e.preventDefault();
-            panning = true;
+            initialScale = scale;
+        } else if (e.touches.length === 1) {
             startX = e.touches[0].clientX - pointX;
             startY = e.touches[0].clientY - pointY;
-            overlayImg.style.transition = 'none';
         }
     }, {passive: false});
 
     overlay.addEventListener('touchmove', function(e) {
-        if (e.touches.length === 2) {
+        if (e.target !== closeBtn) {
             e.preventDefault();
+        }
+        
+        if (e.touches.length === 2) {
             const currentDistance = Math.hypot(
                 e.touches[0].clientX - e.touches[1].clientX,
                 e.touches[0].clientY - e.touches[1].clientY
             );
-            const delta = currentDistance - initialDistance;
-            scale += delta * 0.015;
+            scale = initialScale * (currentDistance / initialDistance);
             if (scale < 1) scale = 1;
             if (scale > 5) scale = 5;
-            initialDistance = currentDistance;
             setTransform();
-        } else if (e.touches.length === 1 && panning) {
-            e.preventDefault();
+        } else if (e.touches.length === 1 && scale > 1) {
             pointX = e.touches[0].clientX - startX;
             pointY = e.touches[0].clientY - startY;
             setTransform();
@@ -132,11 +136,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }, {passive: false});
 
     overlay.addEventListener('touchend', function(e) {
-        if (e.touches.length < 2) {
-            initialDistance = 0;
+        // If one finger remains after a pinch, reset startX/Y so it doesn't jump
+        if (e.touches.length === 1) {
+            startX = e.touches[0].clientX - pointX;
+            startY = e.touches[0].clientY - pointY;
         }
+        
         if (e.touches.length === 0) {
-            panning = false;
+            if (scale <= 1) {
+                scale = 1;
+                pointX = 0;
+                pointY = 0;
+                setTransform();
+            }
             overlayImg.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
         }
     });

@@ -130,23 +130,52 @@ global $wp_query;
 		<?php endif; ?>
 
 		<!-- Elsewhere Section -->
-		<section style="margin-top: 0; margin-bottom: 0; display: flex; justify-content: center; width: 100%;">
-			<div style="position: relative; width: 100%; padding-bottom: 60%;">
-				<!-- Script Text -->
-				<div style="position: absolute; top: 0%; left: 33%; z-index: 5; pointer-events: none;">
-					<span class="text-script" style="font-size: 12vw; color: #000; line-height: 1; font-weight: 300;">elsewhere</span>
+		<section class="fp-elsewhere-section" style="margin-top: 4rem; margin-bottom: 4rem;">
+			<div class="fp-elsewhere-container">
+				
+				<!-- Column 1 -->
+				<a href="#" class="fp-elsewhere-col1">
+					<?php $img1 = "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&q=80&w=400"; ?>
+					<picture class="w-full">
+						<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img1)); ?>" type="image/avif">
+						<img src="<?php echo esc_url($img1); ?>" alt="Clothes rack" loading="lazy" />
+					</picture>
+				</a>
+
+				<div class="fp-elsewhere-text">elsewhere</div>
+				
+				<!-- Column 2 -->
+				<div class="fp-elsewhere-col2">
+					<a href="#" class="fp-elsewhere-col2-img-wrapper">
+						<?php $img2 = "https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?auto=format&fit=crop&q=80&w=400"; ?>
+						<picture class="w-full">
+							<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img2)); ?>" type="image/avif">
+							<img src="<?php echo esc_url($img2); ?>" alt="Striped sweater" loading="lazy" />
+						</picture>
+					</a>
 				</div>
-				<!-- Image 1: Clothes rack -->
-				<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&q=80&w=400', 'Clothes rack', '', 'position: absolute; top: 15%; left: 0%; width: 28%; aspect-ratio: 3/4; object-fit: cover; z-index: 1;'); ?>
-				<!-- Image 2: Striped sweater -->
-				<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?auto=format&fit=crop&q=80&w=400', 'Striped sweater', '', 'position: absolute; top: 20%; left: 21%; width: 29%; aspect-ratio: 3/4; object-fit: cover; z-index: 10; border: 15px solid #fff;'); ?>
-				<!-- Image 3: Bag and drink -->
-				<div style="position: absolute; top: 5%; left: 44%; width: 27%; z-index: 1; display: flex; flex-direction: column; align-items: flex-end;">
-					<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&q=80&w=400', 'Bag and drink', '', 'width: 100%; aspect-ratio: 1/1; object-fit: cover;'); ?>
-					<div style="margin-top: 1rem; background-color: #000; color: #fff; padding: 0.4rem 1rem; font-size: 0.65rem; font-weight: bold; letter-spacing: 0.15em;">@THECOMBOCLOSET</div>
+
+				<!-- Column 3 -->
+				<div class="fp-elsewhere-col3">
+					<a href="#" class="fp-elsewhere-col3-inner">
+						<?php $img3 = "https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&q=80&w=400"; ?>
+						<picture class="w-full">
+							<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img3)); ?>" type="image/avif">
+							<img src="<?php echo esc_url($img3); ?>" alt="Bag and drink" loading="lazy" />
+						</picture>
+					</a>
+					<a href="https://instagram.com/THECOMBOCLOSET" class="fp-elsewhere-handle" target="_blank">@THECOMBOCLOSET</a>
 				</div>
-				<!-- Image 4: Woman walking -->
-				<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400', 'Woman walking', '', 'position: absolute; top: 25%; left: 74%; width: 26%; aspect-ratio: 3/4; object-fit: cover; z-index: 1;'); ?>
+
+				<!-- Column 4 -->
+				<a href="#" class="fp-elsewhere-col4">
+					<?php $img4 = "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400"; ?>
+					<picture class="w-full">
+						<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img4)); ?>" type="image/avif">
+						<img src="<?php echo esc_url($img4); ?>" alt="Woman walking" loading="lazy" />
+					</picture>
+				</a>
+
 			</div>
 		</section>
 

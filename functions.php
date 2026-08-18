@@ -898,3 +898,17 @@ add_action('init', function() {
         }
     }
 }, 1);
+
+/**
+ * Enqueue custom block editor scripts
+ */
+add_action( 'enqueue_block_editor_assets', 'tcc_enqueue_editor_featured_image_script' );
+function tcc_enqueue_editor_featured_image_script() {
+    wp_enqueue_script(
+        'tcc-editor-featured-image',
+        get_stylesheet_directory_uri() . '/assets/js/editor-featured-image.js',
+        array( 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-hooks', 'wp-compose', 'wp-data' ),
+        filemtime( get_stylesheet_directory() . '/assets/js/editor-featured-image.js' ),
+        true
+    );
+}

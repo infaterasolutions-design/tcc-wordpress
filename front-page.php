@@ -83,7 +83,7 @@ get_header(); ?>
 				endif;
 				?>
 			</div>
-			<a href="<?php echo esc_url( home_url( '/blog' ) ); ?>" class="fp-latest-view-more">VIEW MORE POSTS &rarr;</a>
+			<a href="<?php echo esc_url( home_url( '/category/wardrobe/' ) ); ?>" class="fp-latest-view-more">VIEW MORE POSTS &rarr;</a>
 		</div>
 	</section>
 

@@ -21,18 +21,37 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.appendChild(closeBtn);
     document.body.appendChild(overlay);
 
+    let scale = 1;
+    let panning = false;
+    let pointX = 0;
+    let pointY = 0;
+    let startX = 0;
+    let startY = 0;
+    let initialDistance = 0;
+
+    function setTransform() {
+        overlayImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+    }
+
     // Function to open lightbox
     function openLightbox(src) {
         overlayImg.src = src;
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent scrolling
+        scale = 1; pointX = 0; pointY = 0;
+        setTransform();
     }
 
     // Function to close lightbox
     function closeLightbox() {
         overlay.classList.remove('active');
         document.body.style.overflow = '';
-        setTimeout(() => { overlayImg.src = ''; }, 300); // clear after transition
+        setTimeout(() => { 
+            overlayImg.src = ''; 
+            scale = 1; pointX = 0; pointY = 0;
+            overlayImg.style.transform = '';
+            overlayImg.style.transition = '';
+        }, 300); // clear after transition
     }
 
     // Attach double click event to all images
@@ -73,8 +92,61 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Close on click
-    overlay.addEventListener('click', closeLightbox);
+    // Custom Pinch-to-Zoom and Pan for Mobile
+    overlay.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 2) {
+            e.preventDefault();
+            initialDistance = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            overlayImg.style.transition = 'none';
+        } else if (e.touches.length === 1 && scale > 1) {
+            e.preventDefault();
+            panning = true;
+            startX = e.touches[0].clientX - pointX;
+            startY = e.touches[0].clientY - pointY;
+            overlayImg.style.transition = 'none';
+        }
+    }, {passive: false});
+
+    overlay.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 2) {
+            e.preventDefault();
+            const currentDistance = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            const delta = currentDistance - initialDistance;
+            scale += delta * 0.015;
+            if (scale < 1) scale = 1;
+            if (scale > 5) scale = 5;
+            initialDistance = currentDistance;
+            setTransform();
+        } else if (e.touches.length === 1 && panning) {
+            e.preventDefault();
+            pointX = e.touches[0].clientX - startX;
+            pointY = e.touches[0].clientY - startY;
+            setTransform();
+        }
+    }, {passive: false});
+
+    overlay.addEventListener('touchend', function(e) {
+        if (e.touches.length < 2) {
+            initialDistance = 0;
+        }
+        if (e.touches.length === 0) {
+            panning = false;
+            overlayImg.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+        }
+    });
+
+    // Close on click (only if clicking the overlay background or close button)
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay || e.target === closeBtn) {
+            closeLightbox();
+        }
+    });
     
     // Close on ESC key
     document.addEventListener('keydown', function(e) {

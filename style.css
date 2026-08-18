@@ -3982,6 +3982,7 @@ html, body { max-width: 100%; position: relative; }
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     cursor: zoom-out;
+    touch-action: none;
 }
 .tcc-lightbox-overlay.active {
     opacity: 1;

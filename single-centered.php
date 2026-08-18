@@ -38,7 +38,8 @@ get_header(); ?>
 			// Check if the image block with this ID is present in the post content
 			$is_in_content = $thumbnail_id && strpos( $content, 'wp-image-' . $thumbnail_id ) !== false;
 			
-			if ( has_post_thumbnail() && ! $is_in_content ) : 
+			if ( has_post_thumbnail() ) : 
+				if ( ! $is_in_content ) :
 			?>
 				<?php the_post_thumbnail( 'full', array( 'style' => 'width: 100%; height: auto; display: block;' ) ); ?>
 				<?php $caption = get_the_post_thumbnail_caption(); ?>
@@ -47,6 +48,7 @@ get_header(); ?>
 						<?php echo esc_html( $caption ); ?>
 					</p>
 				<?php endif; ?>
+				<?php endif; // End check for is_in_content ?>
 			<?php else : ?>
 					<?php 
 						$dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1200'; 

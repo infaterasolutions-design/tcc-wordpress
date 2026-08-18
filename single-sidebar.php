@@ -39,7 +39,8 @@ get_header();
 			// Check if the image block with this ID is present in the post content
 			$is_in_content = $thumbnail_id && strpos( $content, 'wp-image-' . $thumbnail_id ) !== false;
 			
-			if ( has_post_thumbnail() && ! $is_in_content ) : 
+			if ( has_post_thumbnail() ) : 
+				if ( ! $is_in_content ) :
 			?>
 				<div style="margin-bottom: 48px;">
 					<?php the_post_thumbnail( 'full', array( 'class' => 'article-hero-image', 'style' => 'margin-bottom: 0;' ) ); ?>
@@ -50,6 +51,7 @@ get_header();
 						</p>
 					<?php endif; ?>
 				</div>
+				<?php endif; // End check for is_in_content ?>
 			<?php else: ?>
 				<!-- Fallback dummy image for wardrobe -->
 				<div style="margin-bottom: 48px;">

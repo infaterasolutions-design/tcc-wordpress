@@ -32,7 +32,14 @@ get_header(); ?>
 
 		<!-- FEATURED IMAGE -->
 		<div class="centered-post-image">
-			<?php if ( has_post_thumbnail() ) : ?>
+			<?php 
+			$thumbnail_id = get_post_thumbnail_id();
+			$content = get_the_content();
+			// Check if the image block with this ID is present in the post content
+			$is_in_content = $thumbnail_id && strpos( $content, 'wp-image-' . $thumbnail_id ) !== false;
+			
+			if ( has_post_thumbnail() && ! $is_in_content ) : 
+			?>
 				<?php the_post_thumbnail( 'full', array( 'style' => 'width: 100%; height: auto; display: block;' ) ); ?>
 				<?php $caption = get_the_post_thumbnail_caption(); ?>
 				<?php if ( $caption ) : ?>

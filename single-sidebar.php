@@ -33,7 +33,14 @@ get_header();
 			<?php endif; ?>
 
 			<!-- Hero Image -->
-			<?php if ( has_post_thumbnail() ) : ?>
+			<?php 
+			$thumbnail_id = get_post_thumbnail_id();
+			$content = get_the_content();
+			// Check if the image block with this ID is present in the post content
+			$is_in_content = $thumbnail_id && strpos( $content, 'wp-image-' . $thumbnail_id ) !== false;
+			
+			if ( has_post_thumbnail() && ! $is_in_content ) : 
+			?>
 				<div style="margin-bottom: 48px;">
 					<?php the_post_thumbnail( 'full', array( 'class' => 'article-hero-image', 'style' => 'margin-bottom: 0;' ) ); ?>
 					<?php $caption = get_the_post_thumbnail_caption(); ?>

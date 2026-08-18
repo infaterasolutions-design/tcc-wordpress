@@ -153,8 +153,84 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Custom Scroll-to-Zoom and Pan for Desktop
+    overlay.addEventListener('wheel', function(e) {
+        if (e.target !== closeBtn) {
+            e.preventDefault();
+        }
+        overlayImg.style.transition = 'none';
+        
+        const zoomIntensity = 0.1;
+        if (e.deltaY < 0) {
+            scale += zoomIntensity;
+        } else {
+            scale -= zoomIntensity;
+        }
+        
+        if (scale < 1) scale = 1;
+        if (scale > 5) scale = 5;
+        
+        if (scale === 1) {
+            pointX = 0;
+            pointY = 0;
+        }
+        setTransform();
+    }, {passive: false});
+
+    let isDragging = false;
+    let hasDragged = false;
+
+    overlay.addEventListener('mousedown', function(e) {
+        hasDragged = false;
+        if (e.target !== closeBtn && scale > 1) {
+            e.preventDefault();
+            isDragging = true;
+            startX = e.clientX - pointX;
+            startY = e.clientY - pointY;
+            overlayImg.style.transition = 'none';
+            overlayImg.style.cursor = 'grabbing';
+        }
+    });
+
+    overlay.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            e.preventDefault();
+            hasDragged = true;
+            pointX = e.clientX - startX;
+            pointY = e.clientY - startY;
+            setTransform();
+        }
+    });
+
+    overlay.addEventListener('mouseup', function(e) {
+        if (isDragging) {
+            isDragging = false;
+            overlayImg.style.cursor = 'zoom-out';
+            if (scale <= 1) {
+                scale = 1;
+                pointX = 0;
+                pointY = 0;
+                setTransform();
+            }
+            overlayImg.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+            
+            // Give time for click event to fire so it doesn't close
+            setTimeout(() => { hasDragged = false; }, 50);
+        }
+    });
+
+    overlay.addEventListener('mouseleave', function(e) {
+        if (isDragging) {
+            isDragging = false;
+            overlayImg.style.cursor = 'zoom-out';
+            overlayImg.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+        }
+    });
+
     // Close on click (only if clicking the overlay background or close button)
     overlay.addEventListener('click', function(e) {
+        if (hasDragged) return; // Prevent closing if we were just panning
+        
         if (e.target === overlay || e.target === closeBtn) {
             closeLightbox();
         }

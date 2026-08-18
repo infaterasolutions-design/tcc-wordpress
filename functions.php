@@ -438,17 +438,6 @@ function tcc_custom_comment_markup($comment, $args, $depth) {
     <?php
 }
 
-// Move comment field to top safely
-add_filter( 'comment_form_fields', 'tcc_move_comment_field_to_top' );
-function tcc_move_comment_field_to_top( $fields ) {
-    if ( isset( $fields['comment'] ) ) {
-        $comment_field = $fields['comment'];
-        unset( $fields['comment'] );
-        $fields = array_merge( array( 'comment' => $comment_field ), $fields );
-    }
-    return $fields;
-}
-
 /**
  * 1. Performance Bloat Cleanup
  */

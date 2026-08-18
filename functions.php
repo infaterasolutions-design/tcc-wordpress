@@ -401,6 +401,43 @@ function tcc_image_split_shortcode( $atts ) {
 }
 add_shortcode( 'image_split', 'tcc_image_split_shortcode' );
 
+// Custom Comment Markup
+function tcc_custom_comment_markup($comment, $args, $depth) {
+    ?>
+    <li <?php comment_class(empty($args['has_children']) ? '' : 'parent'); ?> id="comment-<?php comment_ID() ?>" style="margin-bottom: 2.5rem;">
+        <div class="tcc-comment-body" style="display: flex; gap: 1.5rem;">
+            <div class="tcc-comment-avatar">
+                <?php echo get_avatar($comment, 50, '', '', array('style' => 'border-radius: 50%; border: 1px solid #eee;')); ?>
+            </div>
+            <div class="tcc-comment-content" style="flex: 1; padding-bottom: 1.5rem; border-bottom: 1px solid #f5f5f5;">
+                <div class="tcc-comment-meta" style="margin-bottom: 0.8rem; display: flex; align-items: baseline; gap: 0.8rem;">
+                    <strong style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #000; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">
+                        <?php echo get_comment_author(); ?>
+                    </strong>
+                    <span style="font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #999; font-style: italic;">
+                        <?php printf('%1$s at %2$s', get_comment_date(), get_comment_time()); ?>
+                    </span>
+                </div>
+                <?php if ($comment->comment_approved == '0') : ?>
+                    <em style="font-size: 0.85rem; color: #999; display: block; margin-bottom: 0.5rem;">Your comment is awaiting moderation.</em>
+                <?php endif; ?>
+                <div class="tcc-comment-text" style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #444; line-height: 1.7;">
+                    <?php comment_text(); ?>
+                </div>
+                <div class="tcc-reply-link" style="margin-top: 1rem; font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">
+                    <?php 
+                    comment_reply_link(array_merge($args, array(
+                        'reply_text' => 'Reply &rarr;',
+                        'depth' => $depth,
+                        'max_depth' => $args['max_depth']
+                    ))); 
+                    ?>
+                </div>
+            </div>
+        </div>
+    <?php
+}
+
 /**
  * 1. Performance Bloat Cleanup
  */

@@ -68,6 +68,13 @@ get_header();
 					<?php the_content(); ?>
 				</div>
 			</article>
+			
+			<?php 
+			// Include the beautiful comments template
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+			?>
 		</main>
 
 		<!-- Sidebar -->

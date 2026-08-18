@@ -302,6 +302,55 @@ function tcc_shop_product_shortcode( $atts ) {
 }
 add_shortcode( 'shop_product', 'tcc_shop_product_shortcode' );
 
+// [affiliate_carousel]
+function tcc_affiliate_carousel_shortcode( $atts, $content = null ) {
+    ob_start();
+    ?>
+    <div class="tcc-affiliate-carousel-wrap" style="width: 100%; max-width: 1216px; height: 240px; margin: 4rem auto; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+        
+        <div class="tcc-affiliate-carousel" style="width: 100%; max-width: 600px; height: 240px; position: relative; display: flex; align-items: center; overflow: hidden; background: #fff;">
+            
+            <button class="tcc-affiliate-prev" onclick="this.nextElementSibling.scrollBy({left: -200, behavior: 'smooth'})" style="position: absolute; left: 0; top: 0; width: 25px; height: 240px; background: rgba(255,255,255,0.9); border: none; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; color: #333; outline: none; padding: 0; transition: all 0.3s ease;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
+            </button>
+            
+            <div class="tcc-affiliate-track" style="display: flex; gap: 30px; height: 240px; align-items: center; overflow-x: auto; scrollbar-width: none; scroll-behavior: smooth; padding: 0 35px; width: 100%; scroll-snap-type: x mandatory;">
+                <?php echo do_shortcode( $content ); ?>
+            </div>
+
+            <button class="tcc-affiliate-next" onclick="this.previousElementSibling.scrollBy({left: 200, behavior: 'smooth'})" style="position: absolute; right: 0; top: 0; width: 25px; height: 240px; background: rgba(255,255,255,0.9); border: none; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; color: #333; outline: none; padding: 0; transition: all 0.3s ease;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </button>
+            
+        </div>
+    </div>
+    <style>
+        .tcc-affiliate-track::-webkit-scrollbar { display: none; }
+        .tcc-affiliate-item { flex-shrink: 0; transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1); display: block; scroll-snap-align: center; }
+        .tcc-affiliate-item:hover { transform: translateY(-4px); }
+        .tcc-affiliate-prev:hover, .tcc-affiliate-next:hover { background: #fff; transform: scale(1.1); color: #000; }
+    </style>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'affiliate_carousel', 'tcc_affiliate_carousel_shortcode' );
+
+// [affiliate_product link="..." image="..."]
+function tcc_affiliate_product_shortcode( $atts ) {
+    $a = shortcode_atts( array(
+        'link' => '#',
+        'image' => ''
+    ), $atts );
+    
+    if ( empty($a['image']) ) return '';
+    
+    return '
+    <a href="' . esc_url($a['link']) . '" target="_blank" rel="nofollow noopener" class="tcc-affiliate-item" style="height: 240px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+        <img src="' . esc_url($a['image']) . '" alt="Affiliate Product" style="max-height: 230px; max-width: 200px; width: auto; height: auto; object-fit: contain; margin: 0; padding: 0;" />
+    </a>';
+}
+add_shortcode( 'affiliate_product', 'tcc_affiliate_product_shortcode' );
+
 /**
  * 1. Performance Bloat Cleanup
  */

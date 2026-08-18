@@ -351,6 +351,29 @@ function tcc_affiliate_product_shortcode( $atts ) {
 }
 add_shortcode( 'affiliate_product', 'tcc_affiliate_product_shortcode' );
 
+// [instagram_post url="https://instagram.com/p/..."]
+function tcc_instagram_post_shortcode( $atts ) {
+    $a = shortcode_atts( array(
+        'url' => ''
+    ), $atts );
+    
+    if ( empty($a['url']) ) return '';
+    
+    // Ensure URL is clean
+    $url = esc_url($a['url']);
+    
+    ob_start();
+    ?>
+    <div class="tcc-instagram-wrapper" style="display: flex; flex-direction: column; align-items: center; margin: 3rem 0; width: 100%;">
+        <blockquote class="instagram-media" data-instgrm-permalink="<?php echo $url; ?>" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+        </blockquote>
+        <script async src="//www.instagram.com/embed.js"></script>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'instagram_post', 'tcc_instagram_post_shortcode' );
+
 /**
  * 1. Performance Bloat Cleanup
  */

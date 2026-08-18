@@ -89,6 +89,10 @@ function tcc_scripts() {
 
 	// Main JS for AJAX and interactivity
 	wp_enqueue_script( 'tcc-main', get_template_directory_uri() . '/assets/js/main.js', array(), TCC_VERSION, true );
+	
+	// Lightbox JS for double tap image zooming
+	wp_enqueue_script( 'tcc-lightbox', get_template_directory_uri() . '/assets/js/lightbox.js', array(), time(), true );
+	
 	wp_localize_script( 'tcc-main', 'tcc_ajax', array(
 		'url'   => admin_url( 'admin-ajax.php' ),
 		'nonce' => wp_create_nonce( 'tcc_load_more_nonce' )

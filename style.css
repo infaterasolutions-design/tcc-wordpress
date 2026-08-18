@@ -4014,3 +4014,53 @@ html, body { max-width: 100%; position: relative; }
 .tcc-lightbox-close:hover {
     color: #ccc;
 }
+
+.tcc-image-zoom-wrapper {
+    position: relative;
+    display: block; /* Images are usually block or within figures */
+    width: fit-content;
+    margin: 0 auto;
+}
+.wp-block-image .tcc-image-zoom-wrapper {
+    width: 100%;
+}
+.tcc-image-zoom-hint {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none; /* Let clicks pass through to the image */
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+.tcc-image-zoom-wrapper:hover .tcc-image-zoom-hint {
+    opacity: 1;
+}
+@media (min-width: 769px) {
+    .tcc-image-zoom-hint {
+        opacity: 0; /* Hide on desktop until hovered */
+    }
+    .tcc-image-zoom-hint span {
+        display: none; /* Only show icon on desktop to keep it minimal, or we can just change text */
+    }
+    .tcc-image-zoom-hint::after {
+        content: 'Double click to zoom';
+    }
+}
+@media (max-width: 768px) {
+    .tcc-image-zoom-hint span {
+        display: inline;
+    }
+}

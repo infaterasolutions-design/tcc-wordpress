@@ -232,7 +232,7 @@ function tcc_accent_box_shortcode( $atts, $content = null ) {
 add_shortcode( 'accent_box', 'tcc_accent_box_shortcode' );
 
 // [shop_the_post]
-function tcc_shop_the_post_shortcode( $atts ) {
+function tcc_shop_the_post_shortcode( $atts, $content = null ) {
     $images = array(
         'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=100&q=80',
         'https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=100&q=80',
@@ -240,6 +240,8 @@ function tcc_shop_the_post_shortcode( $atts ) {
         'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=100&q=80',
         'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=100&q=80'
     );
+    
+    $has_custom_products = !empty(trim($content));
     
     ob_start();
     ?>
@@ -251,14 +253,22 @@ function tcc_shop_the_post_shortcode( $atts ) {
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
                 </button>
                 <div class="shop-post-track" style="display: flex; gap: 20px; height: 100%; align-items: center; overflow-x: auto; scrollbar-width: none; scroll-behavior: smooth; scroll-snap-type: x mandatory; padding: 10px 0; width: calc(100% - 80px);">
-                    <?php foreach( array_merge($images, $images, $images) as $img ) : ?>
+                    <?php 
+                    if ($has_custom_products) {
+                        echo do_shortcode( $content );
+                    } else {
+                        foreach( array_merge($images, $images, $images) as $img ) : 
+                    ?>
                     <a href="#" class="shop-post-item" style="scroll-snap-align: start; display: block; flex-shrink: 0; width: 100px; height: 100px; background-color: #f5f5f5; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); border-radius: 4px; overflow: hidden; text-decoration: none;">
                         <picture class="tcc-picture-wrapper">
                             <source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img)); ?>" type="image/avif">
                             <img src="<?php echo esc_url($img); ?>" alt="Shop Item" style="width: 100% !important; height: 100% !important; min-height: 100%; max-height: 100%; object-fit: cover; display: block; margin: 0 !important; padding: 0 !important;" />
                         </picture>
                     </a>
-                    <?php endforeach; ?>
+                    <?php 
+                        endforeach; 
+                    }
+                    ?>
                 </div>
                 <button class="shop-post-next" onclick="this.previousElementSibling.scrollBy({left: 240, behavior: 'smooth'})" style="width: 40px; height: 130px; background-color: transparent; border: none; cursor: pointer; color: #999; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; outline: none;">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
@@ -275,6 +285,22 @@ function tcc_shop_the_post_shortcode( $atts ) {
     return ob_get_clean();
 }
 add_shortcode( 'shop_the_post', 'tcc_shop_the_post_shortcode' );
+
+// [shop_product link="https..." image="https..."]
+function tcc_shop_product_shortcode( $atts ) {
+    $a = shortcode_atts( array(
+        'link' => '#',
+        'image' => ''
+    ), $atts );
+    
+    if ( empty($a['image']) ) return '';
+    
+    return '
+    <a href="' . esc_url($a['link']) . '" target="_blank" rel="nofollow noopener" class="shop-post-item" style="scroll-snap-align: start; display: block; flex-shrink: 0; width: 100px; height: 100px; background-color: #f5f5f5; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); border-radius: 4px; overflow: hidden; text-decoration: none;">
+        <img src="' . esc_url($a['image']) . '" alt="Shop Item" style="width: 100% !important; height: 100% !important; min-height: 100%; max-height: 100%; object-fit: cover; display: block; margin: 0 !important; padding: 0 !important;" />
+    </a>';
+}
+add_shortcode( 'shop_product', 'tcc_shop_product_shortcode' );
 
 /**
  * 1. Performance Bloat Cleanup

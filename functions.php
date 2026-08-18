@@ -374,6 +374,33 @@ function tcc_instagram_post_shortcode( $atts ) {
 }
 add_shortcode( 'instagram_post', 'tcc_instagram_post_shortcode' );
 
+// [image_split left="https://..." right="https://..."]
+function tcc_image_split_shortcode( $atts ) {
+    $a = shortcode_atts( array(
+        'left' => '',
+        'right' => ''
+    ), $atts );
+    
+    if ( empty($a['left']) || empty($a['right']) ) return '';
+    
+    return '
+    <div class="tcc-image-split" style="display: flex; gap: 20px; width: 100%; margin: 3rem 0;">
+        <div style="flex: 1; overflow: hidden; border-radius: 4px;">
+            <img src="' . esc_url($a['left']) . '" style="width: 100%; height: 100%; object-fit: cover; display: block; margin: 0;" alt="Left Image" />
+        </div>
+        <div style="flex: 1; overflow: hidden; border-radius: 4px;">
+            <img src="' . esc_url($a['right']) . '" style="width: 100%; height: 100%; object-fit: cover; display: block; margin: 0;" alt="Right Image" />
+        </div>
+    </div>
+    <style>
+        @media(max-width: 768px) {
+            .tcc-image-split { flex-direction: column !important; gap: 15px !important; }
+        }
+    </style>
+    ';
+}
+add_shortcode( 'image_split', 'tcc_image_split_shortcode' );
+
 /**
  * 1. Performance Bloat Cleanup
  */

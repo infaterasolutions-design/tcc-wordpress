@@ -50,14 +50,6 @@ if ( post_password_required() ) {
 	<?php
 	$commenter = wp_get_current_commenter();
 	$req       = get_option( 'require_name_email' );
-	
-	// Temporarily hook to reorder fields so comment textarea is first
-	add_filter('comment_form_fields', function($fields) {
-		$comment = $fields['comment'];
-		unset($fields['comment']);
-		$new_fields = array('comment' => $comment) + $fields;
-		return $new_fields;
-	});
 
 	comment_form( array(
 		'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title" style="font-family: \'Inter\', sans-serif; font-size: 1.4rem; font-weight: 700; color: #333; margin-bottom: 0.5rem; text-align: left; margin-top: 3rem;">',

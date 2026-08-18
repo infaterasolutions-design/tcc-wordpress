@@ -814,6 +814,12 @@ function tcc_auto_inject_toc( $content ) {
     <?php
     $toc_html = ob_get_clean();
 
+    // Insert TOC immediately before the first heading
+    if ( preg_match('/<h[23][^>]*>/i', $content, $match, PREG_OFFSET_CAPTURE) ) {
+        $first_heading_pos = $match[0][1];
+        return substr( $content, 0, $first_heading_pos ) . $toc_html . substr( $content, $first_heading_pos );
+    }
+
     return $toc_html . $content;
 }
 add_filter( 'the_content', 'tcc_auto_inject_toc', 20 );

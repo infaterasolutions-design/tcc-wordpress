@@ -138,7 +138,6 @@ body, html {
 		?>
 		
 		<div class="flex items-center gap-sm">
-			<button class="desktop-shop-btn uppercase text-sans" style="background-color: #e8e0d5; border: none; padding: 0.5rem 1.2rem; font-size: 0.7rem; font-weight: bold; letter-spacing: 0.05em; cursor: pointer;">Shop</button>
 			<div class="desktop-socials flex" style="position: relative; width: 152.48px; height: 22px; display: flex; justify-content: space-between; align-items: center; color: #000; cursor: pointer;">
 				<!-- Social SVG Icons -->
 				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -206,7 +205,6 @@ body, html {
 			<div style="height: 1px; background-color: var(--color-border); width: 100%;"></div>
 			
 			<div class="flex" style="flex-direction: column; gap: 1.5rem;">
-				<button class="uppercase text-sans w-full" style="background-color: #e8e0d5; border: none; padding: 1rem; font-size: 0.9rem; font-weight: bold; letter-spacing: 0.05em; cursor: pointer;">Shop Now</button>
 				
 				<div class="flex justify-center" style="gap: 1.5rem; color: #000; cursor: pointer; margin-top: 1rem;">
 					<!-- Social SVG Icons -->

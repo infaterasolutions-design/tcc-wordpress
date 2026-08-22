@@ -4107,8 +4107,18 @@ html, body { max-width: 100%; position: relative; }
     font-size: 35px;
     line-height: 1.3;
     color: #3C3C3C;
-    margin: 0 0 15px 0;
+    margin: 0 0 10px 0;
     text-align: center;
+}
+
+.figma-newsletter-subtitle {
+    font-family: 'Noto Serif Display', var(--font-serif);
+    font-size: 27px;
+    line-height: 1.3;
+    color: #3C3C3C;
+    margin: 0 0 25px 0;
+    text-align: center;
+    font-style: italic;
 }
 
 .figma-newsletter-desc {
@@ -4118,7 +4128,7 @@ html, body { max-width: 100%; position: relative; }
     letter-spacing: 1.05px;
     color: #3C3C3C;
     text-align: center;
-    max-width: 381px;
+    max-width: 480px;
     margin: 0 0 40px 0;
 }
 

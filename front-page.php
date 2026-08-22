@@ -255,7 +255,8 @@ get_header(); ?>
 		<div class="figma-newsletter-container">
 			<div class="figma-newsletter-label">NEWSLETTER</div>
 			<h2 class="figma-newsletter-title">Elevate your inbox</h2>
-			<p class="figma-newsletter-desc">Join the wit & whimsy newsletter community and you</p>
+			<div class="figma-newsletter-subtitle">subscribe to the newsletter</div>
+			<p class="figma-newsletter-desc">Join the wit & whimsy newsletter community and you'll instantly get Meghan's Guide to New York City plus even more exclusive content.</p>
 			
 			<form id="tcc-newsletter-form" class="figma-newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '<div style=\'padding: 1rem; text-align: center; color: #4CAF50; font-family: var(--font-sans); font-weight: 600; width: 100%;\'>✓ You\'re on the list!</div>';">
 				<div class="figma-input-wrapper">

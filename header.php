@@ -69,6 +69,7 @@ body, html {
 			.desktop-nav { display: none !important; }
 			.desktop-shop-btn { display: none !important; }
 			.desktop-socials { display: none !important; }
+			.desktop-header-search { display: none !important; }
 			.mobile-search-icon { display: block !important; }
 			.hamburger-icon { display: block !important; }
 			.header-logo-tcc { font-size: 1.5rem !important; }
@@ -138,7 +139,20 @@ body, html {
 		?>
 		
 		<div class="flex items-center gap-sm">
-			<div class="desktop-socials flex" style="position: relative; width: 152.48px; height: 22px; display: flex; justify-content: space-between; align-items: center; color: #000; cursor: pointer;">
+			<!-- Sleek Header Search Bar -->
+			<div class="desktop-header-search" style="margin-right: 1.5rem;">
+				<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" style="display: flex; align-items: center; border-bottom: 1px solid #ccc; padding-bottom: 4px; transition: border-color 0.3s ease;">
+					<input type="search" placeholder="Search..." value="<?php echo get_search_query(); ?>" name="s" style="border: none; outline: none; background: transparent; font-family: 'Inter', sans-serif; font-size: 0.8rem; width: 120px; color: #000;" />
+					<button type="submit" style="background: transparent; border: none; padding: 0; cursor: pointer; display: flex; align-items: center; margin-left: 5px; color: #000;">
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<circle cx="11" cy="11" r="8"></circle>
+							<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+						</svg>
+					</button>
+				</form>
+			</div>
+
+			<div class="desktop-socials flex" style="display: flex; gap: 1.25rem; align-items: center; color: #000; cursor: pointer;">
 				<!-- Social SVG Icons -->
 				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 					<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -154,10 +168,6 @@ body, html {
 				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 					<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
 					<polyline points="22,6 12,13 2,6"></polyline>
-				</svg>
-				<svg class="desktop-search-icon" style="cursor: pointer;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<circle cx="11" cy="11" r="8"></circle>
-					<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
 				</svg>
 			</div>
 			<!-- Mobile search icon -->

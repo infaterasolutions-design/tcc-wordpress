@@ -250,17 +250,23 @@ get_header(); ?>
 	</section>
 
 
-	<!-- Subscribe -->
-	<section class="subscribe-section container" style="background-color: #FAF6EE; margin: 4rem auto; border: 1px solid #EAE3D5; border-radius: 8px;">
-		<div class="subscribe-text-container">
-			<h3 class="text-serif" style="font-size: 2rem; color: #2C2C2C; margin-bottom: 0.5rem; line-height: 1.2;">Join the Newsletter</h3>
-			<p class="text-sans" style="font-size: 1rem; color: #666; margin: 0;">Sign up for weekly style inspiration straight to your inbox.</p>
-		</div>
-		
-		<div class="subscribe-form-container">
-			<form id="tcc-newsletter-form" class="subscribe-form" style="display: flex; gap: 0; width: 100%; border: 1px solid #D5D5D5; border-radius: 4px; overflow: hidden; background: #FFF;" onsubmit="event.preventDefault(); this.parentElement.innerHTML = '<div style=\'padding: 0.8rem; width: 100%; text-align: left;\'><span style=\'color: #4CAF50; font-weight: 600; font-size: 1.1rem;\'>✓ You\'re on the list!</span></div>';">
-				<input type="email" placeholder="Email Address" required style="flex: 1; padding: 0.8rem 1rem; border: none; outline: none; font-size: 1rem; width: 100%; color: #2C2C2C;" />
-				<button type="submit" class="uppercase text-sans" style="background-color: #C5DAD4; color: #1F2937; border: none; padding: 0.8rem 1.5rem; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#B3CBC4'" onmouseout="this.style.backgroundColor='#C5DAD4'">SUBSCRIBE</button>
+	<!-- Subscribe (Figma Redesign) -->
+	<section class="figma-newsletter-section">
+		<div class="figma-newsletter-container">
+			<div class="figma-newsletter-label">NEWSLETTER</div>
+			<h2 class="figma-newsletter-title">Elevate your inbox</h2>
+			<p class="figma-newsletter-desc">Join the wit & whimsy newsletter community and you</p>
+			
+			<form id="tcc-newsletter-form" class="figma-newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '<div style=\'padding: 1rem; text-align: center; color: #4CAF50; font-family: var(--font-sans); font-weight: 600; width: 100%;\'>✓ You\'re on the list!</div>';">
+				<div class="figma-input-wrapper">
+					<input type="text" placeholder="First name" required class="figma-newsletter-input" />
+				</div>
+				<div class="figma-input-wrapper">
+					<input type="email" placeholder="Email address" required class="figma-newsletter-input" />
+				</div>
+				<div class="figma-btn-wrapper">
+					<button type="submit" class="figma-newsletter-btn">SUBSCRIBE</button>
+				</div>
 			</form>
 		</div>
 	</section>

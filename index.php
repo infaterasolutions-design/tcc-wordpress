@@ -124,20 +124,8 @@ global $wp_query;
 			<?php endif; ?>
 
 		<?php else : ?>
-			<!-- TITLE FOR EMPTY STATE -->
-			<div class="middle-section" style="margin-top: 80px; margin-bottom: 20px; width: 100%; text-align: center;">
-				<h1 class="script-title" style="margin: 0;">
-					<?php 
-					if ( is_search() ) {
-						echo esc_html( strtolower( "results for '" . get_search_query() . "'" ) );
-					} else {
-						echo esc_html( strtolower( $cat_title ) ); 
-					}
-					?>
-				</h1>
-			</div>
-			<div style="text-align: center; padding: 20px 0 120px; color: #3C3C3C; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 300; letter-spacing: 1px;">
-				Sorry, we couldn't find any posts matching your criteria.
+			<div style="text-align: center; padding: 40px 0 80px; color: #888;">
+				No posts found.
 			</div>
 		<?php endif; ?>
 

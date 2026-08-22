@@ -140,16 +140,52 @@ body, html {
 		
 		<div class="flex items-center gap-sm">
 			<!-- Sleek Header Search Bar -->
-			<div class="desktop-header-search" style="margin-right: 1.5rem;">
-				<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" style="display: flex; align-items: center; border-bottom: 1px solid #ccc; padding-bottom: 4px; transition: border-color 0.3s ease;">
-					<input type="search" placeholder="Search..." value="<?php echo get_search_query(); ?>" name="s" style="border: none; outline: none; background: transparent; font-family: 'Inter', sans-serif; font-size: 0.8rem; width: 120px; color: #000;" />
-					<button type="submit" style="background: transparent; border: none; padding: 0; cursor: pointer; display: flex; align-items: center; margin-left: 5px; color: #000;">
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<div class="desktop-header-search" style="margin-right: 1.5rem; position: relative;">
+				<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" class="expandable-search-form" style="display: flex; align-items: center; border-bottom: 1px solid transparent; padding-bottom: 4px; transition: border-color 0.3s ease;">
+					<input type="search" class="expandable-search-input" placeholder="Search..." value="<?php echo get_search_query(); ?>" name="s" style="border: none; outline: none; background: transparent; font-family: 'Inter', sans-serif; font-size: 0.8rem; width: 0; padding: 0; opacity: 0; transition: all 0.3s ease; color: #000;" />
+					<button type="button" class="expandable-search-toggle" style="background: transparent; border: none; padding: 0; cursor: pointer; display: flex; align-items: center; margin-left: 5px; color: #000;">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<circle cx="11" cy="11" r="8"></circle>
 							<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
 						</svg>
 					</button>
 				</form>
+				<script>
+					document.addEventListener('DOMContentLoaded', function() {
+						const form = document.querySelector('.expandable-search-form');
+						const input = document.querySelector('.expandable-search-input');
+						const toggle = document.querySelector('.expandable-search-toggle');
+
+						toggle.addEventListener('click', function(e) {
+							if (input.style.width === '0px' || input.style.width === '') {
+								e.preventDefault();
+								input.style.width = '120px';
+								input.style.opacity = '1';
+								form.style.borderBottomColor = '#ccc';
+								input.focus();
+								toggle.type = 'submit';
+							} else {
+								if (input.value.trim() === '') {
+									e.preventDefault();
+									input.style.width = '0';
+									input.style.opacity = '0';
+									form.style.borderBottomColor = 'transparent';
+									toggle.type = 'button';
+								}
+							}
+						});
+
+						// Collapse when clicking outside
+						document.addEventListener('click', function(e) {
+							if (!form.contains(e.target) && input.value.trim() === '') {
+								input.style.width = '0';
+								input.style.opacity = '0';
+								form.style.borderBottomColor = 'transparent';
+								toggle.type = 'button';
+							}
+						});
+					});
+				</script>
 			</div>
 
 			<div class="desktop-socials flex" style="display: flex; gap: 1.25rem; align-items: center; color: #000; cursor: pointer;">

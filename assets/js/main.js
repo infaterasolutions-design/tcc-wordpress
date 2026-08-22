@@ -100,17 +100,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Search Overlay
-    const searchBtn = document.querySelector('.mobile-search-icon');
+    const searchBtns = document.querySelectorAll('.mobile-search-icon, .desktop-search-icon');
     const searchOverlay = document.getElementById('search-overlay');
     const closeSearch = document.getElementById('close-search');
-
-    if (searchBtn && searchOverlay && closeSearch) {
-        searchBtn.addEventListener('click', () => {
-            searchOverlay.style.display = 'flex';
-            setTimeout(() => {
-                const searchInput = searchOverlay.querySelector('input[type="search"]');
-                if (searchInput) searchInput.focus();
-            }, 100);
+  
+    if (searchBtns.length > 0 && searchOverlay && closeSearch) {
+        searchBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                searchOverlay.style.display = 'flex';
+                setTimeout(() => {
+                    const searchInput = searchOverlay.querySelector('input[type="search"]');
+                    if (searchInput) searchInput.focus();
+                }, 100);
+            });
         });
         closeSearch.addEventListener('click', () => {
             searchOverlay.style.display = 'none';

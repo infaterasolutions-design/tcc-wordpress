@@ -8,6 +8,7 @@ get_header(); ?>
 <?php
 $is_reduced_gap_page = is_page( array( 'about-us', 'disclaimer', 'privacy-policy-affiliate-disclosure', 'terms-and-conditions' ) );
 $padding_top = $is_reduced_gap_page ? '0' : '4rem';
+$title_margin_bottom = $is_reduced_gap_page ? '1rem' : '3rem';
 ?>
 
 <main id="main" class="site-main" style="background-color: #faf9f6; min-height: 100vh; padding-bottom: 4rem; padding-top: <?php echo $padding_top; ?>;">
@@ -19,7 +20,7 @@ $padding_top = $is_reduced_gap_page ? '0' : '4rem';
 			<!-- PAGE HEADER -->
 			<header class="centered-post-header">
 				<!-- Title -->
-				<h1 class="centered-post-title article-title" style="margin-top: 0; margin-bottom: 3rem;">
+				<h1 class="centered-post-title article-title" style="margin-top: 0; margin-bottom: <?php echo $title_margin_bottom; ?>;">
 					<?php the_title(); ?>
 				</h1>
 			</header>

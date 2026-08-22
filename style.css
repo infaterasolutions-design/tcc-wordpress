@@ -381,6 +381,10 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+
+body.home {
+  background-color: #F4F1EC !important;
+}
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   font-weight: 400;

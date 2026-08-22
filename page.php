@@ -7,7 +7,7 @@ get_header(); ?>
 
 <?php
 $is_reduced_gap_page = is_page( array( 'about-us', 'disclaimer', 'privacy-policy-affiliate-disclosure', 'terms-and-conditions' ) );
-$padding_top = $is_reduced_gap_page ? '1.5rem' : '4rem';
+$padding_top = $is_reduced_gap_page ? '0' : '4rem';
 ?>
 
 <main id="main" class="site-main" style="background-color: #faf9f6; min-height: 100vh; padding-bottom: 4rem; padding-top: <?php echo $padding_top; ?>;">

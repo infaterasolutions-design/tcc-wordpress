@@ -4081,6 +4081,7 @@ html, body { max-width: 100%; position: relative; }
     padding: 20px;
     box-sizing: border-box;
     margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .figma-newsletter-container {

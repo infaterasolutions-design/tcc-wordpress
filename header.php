@@ -69,8 +69,6 @@ body, html {
 			.desktop-nav { display: none !important; }
 			.desktop-shop-btn { display: none !important; }
 			.desktop-socials { display: none !important; }
-			.desktop-header-search { display: none !important; }
-			.mobile-search-icon { display: block !important; }
 			.hamburger-icon { display: block !important; }
 			.header-logo-tcc { font-size: 1.5rem !important; }
 			.header-logo-text { font-size: 0.9rem !important; }
@@ -206,24 +204,14 @@ body, html {
 					<path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5 2.8 12 3 12c.5.1 1.1.2 1.6.1C2 10 2 6 2 6c.6.3 1.2.5 1.9.5C2 5 3 2 4 1c2.6 3.1 6.5 5.1 10.7 5.3.1-2.4 1.9-4.3 4.3-4.3 1.2 0 2.3.5 3.1 1.3 1 .2 1.9-.2 2.9-.8-.3 1-1 1.8-1.9 2.5z"></path>
 				</svg>
 			</div>
-			<!-- Mobile search icon -->
-			<div class="mobile-search-icon" style="display: none; cursor: pointer; font-size: 1.2rem;">
-				🔍
-			</div>
+
 			<span id="hamburger-icon" class="hamburger-icon" style="font-size: 1.8rem; cursor: pointer; user-select: none; width: 30px; text-align: center;">
 				≡
 			</span>
 		</div>
 	</header>
 
-	<!-- Search Overlay -->
-	<div id="search-overlay" style="display: none; position: fixed; inset: 0; background-color: rgba(255,255,255,0.98); z-index: 105; flex-direction: column; align-items: center; justify-content: center;">
-		<span id="close-search" style="position: absolute; top: 20px; right: 30px; font-size: 2rem; cursor: pointer; color: #000;">✕</span>
-		<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" style="width: 80%; max-width: 600px; display: flex; border-bottom: 2px solid #000;">
-			<input type="search" placeholder="Search..." value="<?php echo get_search_query(); ?>" name="s" style="flex: 1; padding: 1rem 0; font-size: 2rem; border: none; outline: none; background: transparent; font-family: 'Playfair Display', serif;" />
-			<button type="submit" style="padding: 1rem; background: transparent; border: none; font-size: 1.5rem; cursor: pointer;">🔍</button>
-		</form>
-	</div>
+
 
 	<!-- Mobile Drawer Overlay -->
 	<div id="mobile-drawer-overlay" class="mobile-drawer-overlay" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 98;"></div>

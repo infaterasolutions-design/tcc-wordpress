@@ -7,32 +7,152 @@ get_header(); ?>
 
 <main class="fp-hero-main">
 
-	<!-- Hero Section -->
-	<section class="tcc-hero-section">
-		<div class="tcc-hero-container">
-			<!-- Text -->
-			<div class="tcc-hero-text">
-				<h1 class="text-serif">
-					<?php echo wp_kses_post( get_theme_mod( 'tcc_hero_heading', "Welcome to<br/>Minimalist<br/>Sophistication with<br/>Maximum Style" ) ); ?>
-				</h1>
-				<p class="text-sans">
-					<?php echo wp_kses_post( get_theme_mod( 'tcc_hero_text', 'The Combo Closet is an inspired style, home, and beauty destination for those who prefer quality over quantity, subtle over obvious, and ease over complexity.' ) ); ?>
-				</p>
+	<!-- Stitch Hero Section (Desktop & Mobile) -->
+	<section class="figma-hero-section">
+		<!-- Desktop Hero Layout -->
+		<div class="figma-hero-desktop hidden-mobile">
+			<!-- Header Row -->
+			<div class="figma-hero-header">
+				<div class="figma-hero-learn">
+					<svg class="figma-hero-circle-text" viewBox="0 0 100 100">
+						<path d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" id="circlePath"></path>
+						<text><textPath href="#circlePath" startOffset="0%">Learn about us through this video • </textPath></text>
+					</svg>
+					<button class="figma-hero-play-btn">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+					</button>
+				</div>
+				
+				<h1 class="figma-hero-title">Elevate Your Style With<br/>Bold Fashion</h1>
+				
+				<div class="figma-hero-avatars">
+					<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIeI-EV9B-4xqLmLRw95kbGlDMVUZthDXPv76_lsjH7CsYlSXrNumuGE2N_tH6AFJgQOLVPQT7ebfarLyqPYim2ji6oWMLpRPmhtE8reXtTmjZvszAWbwBJ3yKQT0g8JYYtDq5lsR1mDkyjU01v2aqnopBWblTTPuSy-ZRdpRmfR5Sk5ihVyriNy-1JWT2aVrPuvkBwA0Z58p1mGNFkE7WAKnVjFSldQdnN_GWQfSpj-U9TWQEkJPO" alt="Avatar 1">
+					<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmDY-phvVvk9ycBHRnK4yq4riNd1yV7i2IYOmLwibNKVpIR4dnv3BpCCy3COKLOmqIjsB0Jnu8CdE64yLd-XQmb0hvG9HvfMK60ltxAdKoS3ZA3322Spk9qAS1foRcErQsRQcNEizr_A-5foo5PQP5bqEi78b-hfflQLu8VopPMTkOcqb9BW09O9PQorznflJW0eLnM0DIDd5OHrQmsG_aaD1AzXepfPH_W14Gnk1pyeJ4rNHv4JMz" alt="Avatar 2">
+					<div class="figma-hero-avatar-more">+</div>
+				</div>
 			</div>
-			<!-- Image -->
-			<div class="tcc-hero-image-wrapper">
-				<?php
-				$hero_raw = get_theme_mod( 'tcc_hero_image', 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600' );
-				if (strpos($hero_raw, 'unsplash.com') !== false) {
-					$hero_avif = str_replace('auto=format', 'fm=avif', $hero_raw);
-				} else {
-					$hero_avif = preg_replace('/\.(jpg|jpeg|png|webp)$/i', '.avif', $hero_raw);
-				}
-				?>
-				<picture>
-					<source srcset="<?php echo esc_url($hero_avif); ?>" type="image/avif">
-					<img src="<?php echo esc_url($hero_raw); ?>" alt="Hero image" class="tcc-hero-img" fetchpriority="high" loading="eager" />
-				</picture>
+
+			<!-- Masonry Grid Row -->
+			<div class="figma-hero-grid">
+				<!-- Column 1 -->
+				<div class="figma-grid-col col-1">
+					<div class="figma-card card-orange">
+						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6s5KfAe0nX7GLW390NEUQUXIfbuNHiUDP1COiIdiVM7ltY3tUdAcMwUroEnFXRMEVcvO68fi0-mqiSVEp-pvoVYzRey8UhpDk-cet8fB0lUT4LD7MJ3RYzm5IfiWbVgCW56W9Vszdo9uupNS2vEen4Dl_tf-iQsdwflFrDWmRy0s0G1-AaWa9KzSuJTvmzmWjgQW-FQ7XL-OIEg_o2egtfz-llMCjGQqOgA73530IGjQz9WkTfHdE" alt="Orange Outfit">
+					</div>
+					<div class="figma-card card-teal">
+						<img src="https://images.unsplash.com/photo-1582299878229-87a1d1d808d2?auto=format&fit=crop&q=80&w=600" alt="Teal Outfit">
+					</div>
+				</div>
+				<!-- Column 2 -->
+				<div class="figma-grid-col col-2">
+					<div class="figma-card card-green notch-top-right">
+						<div class="notch-mask"></div>
+						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuATPiQSlXnS1L9FCdh4rkc3wUE3H8VQzLrMmFulLyzeylsjewYdOwog2IuyXC8_3T4UL68JlX008h5JpAM4F_2hSYObJCHcI9uAESJijgLH4-mHbH3yoOBZYENhCVBQlAD4ghbcPhk12EpOwg3y1umz-6ISVbpDiU5c92OyB-f3zMP27C5agAvuXsnil5w2Dp9EV-4Ael_6F4bksYF7Rji9_vvUKlRL1PGbVMADPg4jG_I9Cpnd4fRm" alt="Green Coat">
+					</div>
+				</div>
+				<!-- Column 3 -->
+				<div class="figma-grid-col col-3">
+					<div class="figma-hero-flower-icon">
+						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F4A261" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+					</div>
+					<div class="figma-card card-yellow">
+						<img src="https://images.unsplash.com/photo-1596207869389-9159048a60cd?auto=format&fit=crop&q=80&w=600" alt="Yellow Outfit">
+					</div>
+					<button class="figma-hero-explore-btn">
+						Explore Collections <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
+					</button>
+				</div>
+				<!-- Column 4 -->
+				<div class="figma-grid-col col-4">
+					<div class="figma-card card-blue notch-top-left">
+						<div class="notch-mask"></div>
+						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJpJL8qD9gDcjP7tAaIGpE_-5kTG2mVRNIZuI8B4e0J3YHq4zkcEETeWOqPJQ2INdpnFdj5r1OFyIBGRPi70JmG7GdbW1xhzqsZFpgwhlUPgbxbK-EariW04lvnkXkVVfqw8opdGZADOgNQSYWxYMvk2_XWdwvTbrL-TygplsTN70X8CGmkvWtUtEq2bMY8ojJ8NJeVqtaQRTJi91WWIF5s_wTjOPn_SRDHUSHZpcUF-h2T0xSSSx4" alt="Blue Outfit">
+					</div>
+				</div>
+				<!-- Column 5 -->
+				<div class="figma-grid-col col-5">
+					<div class="figma-card card-red-glasses">
+						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeOlBso1FzezaZJ1pQqLTO0S5DJv4face5L-IPMwhxx1wTHtJ6iF7_26tmLRLrWsqoR1hC_3Aw5VepjpN-PuNT1dCGCRMcXtrFGQtwkaEPM5ha-EhY70IJoM0JIhC7FifRZVCLIjsiz_AxD5vSzZW1U5Z3oGMaimOFGHiA2knYE1Q9RzThsY0jv4rc2CG9m-kAHMHp4lgbm2Wa3gVnvEKM9ZqulZBfhBVdq64MmV-wnusq2ZtyeMQh" alt="Red Glasses">
+					</div>
+					<div class="figma-card card-dark-green">
+						<img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=600" alt="Dark Green Suit">
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer Row -->
+			<div class="figma-hero-footer">
+				<div class="figma-hero-testimonial">
+					<div class="quote-icon">“</div>
+					<p>TrendZone's styles are fresh, bold, and exactly what I needed to upgrade my wardrobe. Loved the quality and vibe!</p>
+					<div class="author">
+						<span class="author-signature">Rafi H.</span>
+					</div>
+				</div>
+				<div class="figma-hero-article">
+					<div class="article-meta">
+						<span class="article-num">01</span>
+						<span class="article-cat">Lifestyle</span>
+						<svg class="article-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
+					</div>
+					<h3 class="article-title">Set Up Your Fashion With The Latest Trends</h3>
+				</div>
+			</div>
+		</div>
+
+		<!-- Mobile Hero Layout (Carousel) -->
+		<div class="figma-hero-mobile hidden-desktop">
+			<div class="figma-mobile-header">
+				<div class="figma-mobile-learn">
+					<svg class="figma-hero-circle-text" viewBox="0 0 100 100">
+						<path d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" id="circlePathMob"></path>
+						<text><textPath href="#circlePathMob" startOffset="0%">Learn about us through this video • </textPath></text>
+					</svg>
+					<button class="figma-hero-play-btn">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+					</button>
+				</div>
+				<h1 class="figma-mobile-title">Elevate Your Style With<br/>Bold Fashion</h1>
+				<div class="figma-mobile-avatars">
+					<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIeI-EV9B-4xqLmLRw95kbGlDMVUZthDXPv76_lsjH7CsYlSXrNumuGE2N_tH6AFJgQOLVPQT7ebfarLyqPYim2ji6oWMLpRPmhtE8reXtTmjZvszAWbwBJ3yKQT0g8JYYtDq5lsR1mDkyjU01v2aqnopBWblTTPuSy-ZRdpRmfR5Sk5ihVyriNy-1JWT2aVrPuvkBwA0Z58p1mGNFkE7WAKnVjFSldQdnN_GWQfSpj-U9TWQEkJPO" alt="Avatar 1">
+					<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmDY-phvVvk9ycBHRnK4yq4riNd1yV7i2IYOmLwibNKVpIR4dnv3BpCCy3COKLOmqIjsB0Jnu8CdE64yLd-XQmb0hvG9HvfMK60ltxAdKoS3ZA3322Spk9qAS1foRcErQsRQcNEizr_A-5foo5PQP5bqEi78b-hfflQLu8VopPMTkOcqb9BW09O9PQorznflJW0eLnM0DIDd5OHrQmsG_aaD1AzXepfPH_W14Gnk1pyeJ4rNHv4JMz" alt="Avatar 2">
+					<div class="figma-mobile-avatar-more">+</div>
+				</div>
+			</div>
+			
+			<div class="figma-mobile-carousel">
+				<div class="figma-carousel-card card-orange"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6s5KfAe0nX7GLW390NEUQUXIfbuNHiUDP1COiIdiVM7ltY3tUdAcMwUroEnFXRMEVcvO68fi0-mqiSVEp-pvoVYzRey8UhpDk-cet8fB0lUT4LD7MJ3RYzm5IfiWbVgCW56W9Vszdo9uupNS2vEen4Dl_tf-iQsdwflFrDWmRy0s0G1-AaWa9KzSuJTvmzmWjgQW-FQ7XL-OIEg_o2egtfz-llMCjGQqOgA73530IGjQz9WkTfHdE" alt="Orange Outfit"></div>
+				<div class="figma-carousel-card card-green"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuATPiQSlXnS1L9FCdh4rkc3wUE3H8VQzLrMmFulLyzeylsjewYdOwog2IuyXC8_3T4UL68JlX008h5JpAM4F_2hSYObJCHcI9uAESJijgLH4-mHbH3yoOBZYENhCVBQlAD4ghbcPhk12EpOwg3y1umz-6ISVbpDiU5c92OyB-f3zMP27C5agAvuXsnil5w2Dp9EV-4Ael_6F4bksYF7Rji9_vvUKlRL1PGbVMADPg4jG_I9Cpnd4fRm" alt="Green Coat"></div>
+				<div class="figma-carousel-card card-blue"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJpJL8qD9gDcjP7tAaIGpE_-5kTG2mVRNIZuI8B4e0J3YHq4zkcEETeWOqPJQ2INdpnFdj5r1OFyIBGRPi70JmG7GdbW1xhzqsZFpgwhlUPgbxbK-EariW04lvnkXkVVfqw8opdGZADOgNQSYWxYMvk2_XWdwvTbrL-TygplsTN70X8CGmkvWtUtEq2bMY8ojJ8NJeVqtaQRTJi91WWIF5s_wTjOPn_SRDHUSHZpcUF-h2T0xSSSx4" alt="Blue Outfit"></div>
+				<div class="figma-carousel-card card-red-glasses"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeOlBso1FzezaZJ1pQqLTO0S5DJv4face5L-IPMwhxx1wTHtJ6iF7_26tmLRLrWsqoR1hC_3Aw5VepjpN-PuNT1dCGCRMcXtrFGQtwkaEPM5ha-EhY70IJoM0JIhC7FifRZVCLIjsiz_AxD5vSzZW1U5Z3oGMaimOFGHiA2knYE1Q9RzThsY0jv4rc2CG9m-kAHMHp4lgbm2Wa3gVnvEKM9ZqulZBfhBVdq64MmV-wnusq2ZtyeMQh" alt="Red Glasses"></div>
+			</div>
+			
+			<div class="figma-mobile-cta">
+				<button class="figma-hero-explore-btn">
+					Explore Collections <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
+				</button>
+			</div>
+			
+			<div class="figma-mobile-footer">
+				<div class="figma-hero-testimonial">
+					<div class="quote-icon">“</div>
+					<p>TrendZone's styles are fresh, bold, and exactly what I needed to upgrade my wardrobe. Loved the quality and vibe!</p>
+					<div class="author">
+						<span class="author-signature">Rafi H.</span>
+					</div>
+				</div>
+				<div class="figma-hero-article">
+					<div class="article-meta">
+						<span class="article-num">01</span>
+						<span class="article-cat">Lifestyle</span>
+					</div>
+					<div class="article-title-row">
+						<h3 class="article-title">Set Up Your Fashion With The Latest Trends</h3>
+						<div class="article-arrow-circle">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>

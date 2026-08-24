@@ -4093,7 +4093,7 @@ html, body { max-width: 100%; position: relative; }
     border-top: 1px solid #000000;
     border-bottom: 1px solid #000000;
     margin-top: 0;
-    margin-bottom: 60px;
+    margin-bottom: 0;
 }
 
 .figma-newsletter-container {

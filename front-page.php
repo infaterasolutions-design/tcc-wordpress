@@ -36,7 +36,7 @@ get_header(); ?>
 			<div class="figma-hero-grid">
 				<!-- Column 1 -->
 				<div class="figma-grid-col col-1">
-					<div class="figma-card card-orange">
+					<div class="figma-card card-orange notch-top-right">
 						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6s5KfAe0nX7GLW390NEUQUXIfbuNHiUDP1COiIdiVM7ltY3tUdAcMwUroEnFXRMEVcvO68fi0-mqiSVEp-pvoVYzRey8UhpDk-cet8fB0lUT4LD7MJ3RYzm5IfiWbVgCW56W9Vszdo9uupNS2vEen4Dl_tf-iQsdwflFrDWmRy0s0G1-AaWa9KzSuJTvmzmWjgQW-FQ7XL-OIEg_o2egtfz-llMCjGQqOgA73530IGjQz9WkTfHdE" alt="Orange Outfit">
 					</div>
 					<div class="figma-card card-teal">
@@ -71,7 +71,7 @@ get_header(); ?>
 				</div>
 				<!-- Column 5 -->
 				<div class="figma-grid-col col-5">
-					<div class="figma-card card-red-glasses">
+					<div class="figma-card card-red-glasses notch-top-left">
 						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeOlBso1FzezaZJ1pQqLTO0S5DJv4face5L-IPMwhxx1wTHtJ6iF7_26tmLRLrWsqoR1hC_3Aw5VepjpN-PuNT1dCGCRMcXtrFGQtwkaEPM5ha-EhY70IJoM0JIhC7FifRZVCLIjsiz_AxD5vSzZW1U5Z3oGMaimOFGHiA2knYE1Q9RzThsY0jv4rc2CG9m-kAHMHp4lgbm2Wa3gVnvEKM9ZqulZBfhBVdq64MmV-wnusq2ZtyeMQh" alt="Red Glasses">
 					</div>
 					<div class="figma-card card-dark-green">

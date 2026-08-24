@@ -4482,8 +4482,12 @@ html, body { max-width: 100%; position: relative; }
 	.hidden-mobile { display: none !important; }
 	
 	.figma-hero-mobile {
-		padding: 32px 16px;
+		padding: 24px 16px;
 		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		height: calc(100svh - 90px);
+		min-height: 550px;
 	}
 
 	.figma-mobile-header {
@@ -4491,7 +4495,8 @@ html, body { max-width: 100%; position: relative; }
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		margin-bottom: 32px;
+		margin-bottom: 16px;
+		flex-shrink: 0;
 	}
 
 	.figma-mobile-learn {
@@ -4569,11 +4574,13 @@ html, body { max-width: 100%; position: relative; }
 		margin: 0 -16px 24px;
 		padding-left: 16px;
 		padding-right: 16px;
+		flex-grow: 1;
+		align-items: stretch;
 	}
 	.figma-mobile-carousel::-webkit-scrollbar { display: none; }
 	.figma-carousel-card {
 		min-width: 75%;
-		height: 380px;
+		height: 100%;
 		scroll-snap-align: center;
 		border-radius: 24px;
 		position: relative;
@@ -4594,7 +4601,8 @@ html, body { max-width: 100%; position: relative; }
 	.figma-mobile-cta {
 		display: flex;
 		justify-content: center;
-		margin-bottom: 32px;
+		margin-bottom: 16px;
+		flex-shrink: 0;
 	}
 	.figma-hero-explore-btn {
 		background: #000;

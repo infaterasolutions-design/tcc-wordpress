@@ -40,14 +40,14 @@ get_header(); ?>
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/Tcc.jpeg" alt="Orange Outfit">
 					</div>
 					<div class="figma-card card-teal">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc cloths.jpeg" alt="Teal Outfit">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-cloths.jpeg" alt="Teal Outfit">
 					</div>
 				</div>
 				<!-- Column 2 -->
 				<div class="figma-grid-col col-2">
 					<div class="figma-card card-green">
 						<div class="notch-mask"></div>
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/outfit tcc.jpeg" alt="Green Coat">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/outfit-tcc.jpeg" alt="Green Coat">
 					</div>
 				</div>
 				<!-- Column 3 -->
@@ -56,7 +56,7 @@ get_header(); ?>
 						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F4A261" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
 					</div>
 					<div class="figma-card card-yellow">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc outfit.jpeg" alt="Yellow Outfit">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-outfit.jpeg" alt="Yellow Outfit">
 					</div>
 					<button class="figma-hero-explore-btn">
 						Explore Collections <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
@@ -66,16 +66,16 @@ get_header(); ?>
 				<div class="figma-grid-col col-4">
 					<div class="figma-card card-blue">
 						<div class="notch-mask"></div>
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc fashionable.jpeg" alt="Blue Outfit">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-fashionable.jpeg" alt="Blue Outfit">
 					</div>
 				</div>
 				<!-- Column 5 -->
 				<div class="figma-grid-col col-5">
 					<div class="figma-card card-red-glasses">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc winter.jpeg" alt="Red Glasses">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-winter.jpeg" alt="Red Glasses">
 					</div>
 					<div class="figma-card card-dark-green">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc spring.jpeg" alt="Dark Green Suit">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-spring.jpeg" alt="Dark Green Suit">
 					</div>
 				</div>
 			</div>
@@ -103,9 +103,9 @@ get_header(); ?>
 			
 			<div class="figma-mobile-carousel">
 				<div class="figma-carousel-card card-orange"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/Tcc.jpeg" alt="Orange Outfit"></div>
-				<div class="figma-carousel-card card-green"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/outfit tcc.jpeg" alt="Green Coat"></div>
-				<div class="figma-carousel-card card-blue"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc fashionable.jpeg" alt="Blue Outfit"></div>
-				<div class="figma-carousel-card card-red-glasses"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc winter.jpeg" alt="Red Glasses"></div>
+				<div class="figma-carousel-card card-green"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/outfit-tcc.jpeg" alt="Green Coat"></div>
+				<div class="figma-carousel-card card-blue"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-fashionable.jpeg" alt="Blue Outfit"></div>
+				<div class="figma-carousel-card card-red-glasses"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-winter.jpeg" alt="Red Glasses"></div>
 			</div>
 			
 			<div class="figma-mobile-cta">

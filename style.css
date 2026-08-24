@@ -4257,7 +4257,7 @@ html, body { max-width: 100%; position: relative; }
 	.figma-hero-desktop {
 		max-width: 1280px;
 		margin: 0 auto;
-		padding: 40px 24px 80px;
+		padding: 40px 24px 32px;
 		display: flex;
 		flex-direction: column;
 		height: 100%;
@@ -4353,7 +4353,7 @@ html, body { max-width: 100%; position: relative; }
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 		gap: 24px;
 		height: 450px;
-		margin-bottom: 60px;
+		margin-bottom: 0;
 	}
 	.figma-grid-col {
 		display: flex;

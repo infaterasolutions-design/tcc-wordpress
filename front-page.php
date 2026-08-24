@@ -16,7 +16,7 @@ get_header(); ?>
 				<div class="figma-hero-learn">
 					<svg class="figma-hero-circle-text" viewBox="0 0 100 100">
 						<path d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" id="circlePath"></path>
-						<text><textPath href="#circlePath" startOffset="0%">Learn about us through this video • </textPath></text>
+						<text><textPath href="#circlePath" startOffset="0%">WATCH OUR VIDEO • </textPath></text>
 					</svg>
 					<button class="figma-hero-play-btn">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -51,34 +51,33 @@ get_header(); ?>
 					</div>
 				</div>
 				<!-- Column 3 -->
-				<div class="figma-grid-col col-3">
-					<div class="figma-hero-flower-icon">
-						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F4A261" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-					</div>
-					<div class="figma-card card-yellow">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-outfit.jpeg" alt="Yellow Outfit">
-					</div>
-					<button class="figma-hero-explore-btn">
-						Explore Collections <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
-					</button>
+				<div class="figma-hero-flower-icon">
+					<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F4A261" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
 				</div>
-				<!-- Column 4 -->
-				<div class="figma-grid-col col-4">
-					<div class="figma-card card-blue">
-						<div class="notch-mask"></div>
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-fashionable.jpeg" alt="Blue Outfit">
-					</div>
+				<div class="figma-card card-yellow">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-outfit.jpeg" alt="Yellow Outfit">
 				</div>
-				<!-- Column 5 -->
-				<div class="figma-grid-col col-5">
-					<div class="figma-card card-red-glasses">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-winter.jpeg" alt="Red Glasses">
-					</div>
-					<div class="figma-card card-dark-green">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-spring.jpeg" alt="Dark Green Suit">
-					</div>
+				<button class="figma-hero-explore-btn">
+					Explore Collections <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
+				</button>
+			</div>
+			<!-- Column 4 -->
+			<div class="figma-grid-col col-4">
+				<div class="figma-card card-blue">
+					<div class="notch-mask"></div>
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-fashionable.jpeg" alt="Blue Outfit">
 				</div>
 			</div>
+			<!-- Column 5 -->
+			<div class="figma-grid-col col-5">
+				<div class="figma-card card-red-glasses">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-winter.jpeg" alt="Red Glasses">
+				</div>
+				<div class="figma-card card-dark-green">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-spring.jpeg" alt="Dark Green Suit">
+				</div>
+			</div>
+		</div>
 		</div>
 
 		<!-- Mobile Hero Layout (Carousel) -->
@@ -87,7 +86,7 @@ get_header(); ?>
 				<div class="figma-mobile-learn">
 					<svg class="figma-hero-circle-text" viewBox="0 0 100 100">
 						<path d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" id="circlePathMob"></path>
-						<text><textPath href="#circlePathMob" startOffset="0%">Learn about us through this video • </textPath></text>
+						<text><textPath href="#circlePathMob" startOffset="0%">WATCH OUR VIDEO • </textPath></text>
 					</svg>
 					<button class="figma-hero-play-btn">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>

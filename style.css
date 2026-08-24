@@ -2818,7 +2818,23 @@ html, body { max-width: 100%; position: relative; }
   width: 100%;
   border-top: 1px solid #000;
 }
+.figma-ig-grid #sb_instagram {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+.figma-ig-grid #sbi_images {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
 .figma-ig-grid .sbi_item {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
@@ -2830,6 +2846,17 @@ html, body { max-width: 100%; position: relative; }
 }
 .figma-ig-grid .sbi_item:hover .sbi_photo {
   transform: scale(1.05);
+}
+.figma-ig-grid .sbi_header, 
+.figma-ig-grid .sbi_load_btn, 
+.figma-ig-grid .sbi_follow_btn {
+  display: none !important;
+}
+@media (max-width: 1024px) {
+  .figma-ig-grid #sbi_images { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  .figma-ig-grid #sbi_images { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
 @media(max-width: 600px) {

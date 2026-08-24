@@ -800,10 +800,11 @@ img {
 }
 .article-content img {
   width: 100%;
-  max-width: 100%;
+  max-width: 1000px;
   height: auto;
   border-radius: 8px;
   margin: 2rem auto;
+  display: block;
   object-fit: cover;
   display: block;
 }
@@ -2273,7 +2274,7 @@ html, body { max-width: 100%; position: relative; }
   padding: 2rem 1rem 1rem;
 }
 .centered-post-image {
-  max-width: 100%;
+  max-width: 1000px;
   width: 100%;
   margin: 0 auto 2rem;
   padding: 0;

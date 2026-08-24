@@ -2274,9 +2274,19 @@ html, body { max-width: 100%; position: relative; }
   padding: 2rem 1rem 1rem;
 }
 .centered-post-image {
-  max-width: 100%;
+  max-width: 1000px;
   margin: 0 auto 2rem;
   padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.centered-post-image img,
+.centered-post-image picture,
+.centered-post-image source {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 .centered-post-content {
   max-width: 1240px;

@@ -4368,50 +4368,7 @@ html, body { max-width: 100%; position: relative; }
 		width: 100%;
 	}
 	
-	/* Notch Cutout Effects */
-	.notch-top-left::before {
-		content: '';
-		position: absolute;
-		top: -1px;
-		left: -1px;
-		width: 45%;
-		height: 45px;
-		background: var(--stitch-background);
-		border-bottom-right-radius: 24px;
-		z-index: 2;
-	}
-	.notch-top-left::after {
-		content: '';
-		position: absolute;
-		top: -1px;
-		left: calc(45% - 1px);
-		width: 24px;
-		height: 24px;
-		background: radial-gradient(circle at bottom right, transparent 24px, var(--stitch-background) 24.5px);
-		z-index: 2;
-	}
 
-	.notch-top-right::before {
-		content: '';
-		position: absolute;
-		top: -1px;
-		right: -1px;
-		width: 45%;
-		height: 45px;
-		background: var(--stitch-background);
-		border-bottom-left-radius: 24px;
-		z-index: 2;
-	}
-	.notch-top-right::after {
-		content: '';
-		position: absolute;
-		top: -1px;
-		right: calc(45% - 1px);
-		width: 24px;
-		height: 24px;
-		background: radial-gradient(circle at bottom left, transparent 24px, var(--stitch-background) 24.5px);
-		z-index: 2;
-	}
 	.figma-card img {
 		width: 100%;
 		height: 100%;

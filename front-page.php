@@ -36,7 +36,7 @@ get_header(); ?>
 			<div class="figma-hero-grid">
 				<!-- Column 1 -->
 				<div class="figma-grid-col col-1">
-					<div class="figma-card card-orange notch-top-right">
+					<div class="figma-card card-orange">
 						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6s5KfAe0nX7GLW390NEUQUXIfbuNHiUDP1COiIdiVM7ltY3tUdAcMwUroEnFXRMEVcvO68fi0-mqiSVEp-pvoVYzRey8UhpDk-cet8fB0lUT4LD7MJ3RYzm5IfiWbVgCW56W9Vszdo9uupNS2vEen4Dl_tf-iQsdwflFrDWmRy0s0G1-AaWa9KzSuJTvmzmWjgQW-FQ7XL-OIEg_o2egtfz-llMCjGQqOgA73530IGjQz9WkTfHdE" alt="Orange Outfit">
 					</div>
 					<div class="figma-card card-teal">
@@ -45,7 +45,7 @@ get_header(); ?>
 				</div>
 				<!-- Column 2 -->
 				<div class="figma-grid-col col-2">
-					<div class="figma-card card-green notch-top-right">
+					<div class="figma-card card-green">
 						<div class="notch-mask"></div>
 						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuATPiQSlXnS1L9FCdh4rkc3wUE3H8VQzLrMmFulLyzeylsjewYdOwog2IuyXC8_3T4UL68JlX008h5JpAM4F_2hSYObJCHcI9uAESJijgLH4-mHbH3yoOBZYENhCVBQlAD4ghbcPhk12EpOwg3y1umz-6ISVbpDiU5c92OyB-f3zMP27C5agAvuXsnil5w2Dp9EV-4Ael_6F4bksYF7Rji9_vvUKlRL1PGbVMADPg4jG_I9Cpnd4fRm" alt="Green Coat">
 					</div>
@@ -64,14 +64,14 @@ get_header(); ?>
 				</div>
 				<!-- Column 4 -->
 				<div class="figma-grid-col col-4">
-					<div class="figma-card card-blue notch-top-left">
+					<div class="figma-card card-blue">
 						<div class="notch-mask"></div>
 						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJpJL8qD9gDcjP7tAaIGpE_-5kTG2mVRNIZuI8B4e0J3YHq4zkcEETeWOqPJQ2INdpnFdj5r1OFyIBGRPi70JmG7GdbW1xhzqsZFpgwhlUPgbxbK-EariW04lvnkXkVVfqw8opdGZADOgNQSYWxYMvk2_XWdwvTbrL-TygplsTN70X8CGmkvWtUtEq2bMY8ojJ8NJeVqtaQRTJi91WWIF5s_wTjOPn_SRDHUSHZpcUF-h2T0xSSSx4" alt="Blue Outfit">
 					</div>
 				</div>
 				<!-- Column 5 -->
 				<div class="figma-grid-col col-5">
-					<div class="figma-card card-red-glasses notch-top-left">
+					<div class="figma-card card-red-glasses">
 						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeOlBso1FzezaZJ1pQqLTO0S5DJv4face5L-IPMwhxx1wTHtJ6iF7_26tmLRLrWsqoR1hC_3Aw5VepjpN-PuNT1dCGCRMcXtrFGQtwkaEPM5ha-EhY70IJoM0JIhC7FifRZVCLIjsiz_AxD5vSzZW1U5Z3oGMaimOFGHiA2knYE1Q9RzThsY0jv4rc2CG9m-kAHMHp4lgbm2Wa3gVnvEKM9ZqulZBfhBVdq64MmV-wnusq2ZtyeMQh" alt="Red Glasses">
 					</div>
 					<div class="figma-card card-dark-green">

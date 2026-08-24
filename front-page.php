@@ -26,8 +26,8 @@ get_header(); ?>
 				<h1 class="figma-hero-title">Elevate Your Style With<br/>Bold Fashion</h1>
 				
 				<div class="figma-hero-avatars">
-					<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIeI-EV9B-4xqLmLRw95kbGlDMVUZthDXPv76_lsjH7CsYlSXrNumuGE2N_tH6AFJgQOLVPQT7ebfarLyqPYim2ji6oWMLpRPmhtE8reXtTmjZvszAWbwBJ3yKQT0g8JYYtDq5lsR1mDkyjU01v2aqnopBWblTTPuSy-ZRdpRmfR5Sk5ihVyriNy-1JWT2aVrPuvkBwA0Z58p1mGNFkE7WAKnVjFSldQdnN_GWQfSpj-U9TWQEkJPO" alt="Avatar 1">
-					<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmDY-phvVvk9ycBHRnK4yq4riNd1yV7i2IYOmLwibNKVpIR4dnv3BpCCy3COKLOmqIjsB0Jnu8CdE64yLd-XQmb0hvG9HvfMK60ltxAdKoS3ZA3322Spk9qAS1foRcErQsRQcNEizr_A-5foo5PQP5bqEi78b-hfflQLu8VopPMTkOcqb9BW09O9PQorznflJW0eLnM0DIDd5OHrQmsG_aaD1AzXepfPH_W14Gnk1pyeJ4rNHv4JMz" alt="Avatar 2">
+					<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Avatar 1">
+					<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" alt="Avatar 2">
 					<div class="figma-hero-avatar-more">+</div>
 				</div>
 			</div>
@@ -37,10 +37,10 @@ get_header(); ?>
 				<!-- Column 1 -->
 				<div class="figma-grid-col col-1">
 					<div class="figma-card card-orange">
-						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6s5KfAe0nX7GLW390NEUQUXIfbuNHiUDP1COiIdiVM7ltY3tUdAcMwUroEnFXRMEVcvO68fi0-mqiSVEp-pvoVYzRey8UhpDk-cet8fB0lUT4LD7MJ3RYzm5IfiWbVgCW56W9Vszdo9uupNS2vEen4Dl_tf-iQsdwflFrDWmRy0s0G1-AaWa9KzSuJTvmzmWjgQW-FQ7XL-OIEg_o2egtfz-llMCjGQqOgA73530IGjQz9WkTfHdE" alt="Orange Outfit">
+						<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=600" alt="Orange Outfit">
 					</div>
 					<div class="figma-card card-teal">
-						<img src="https://images.unsplash.com/photo-1582299878229-87a1d1d808d2?auto=format&fit=crop&q=80&w=600" alt="Teal Outfit">
+						<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600" alt="Teal Outfit">
 					</div>
 				</div>
 				<!-- Column 2 -->
@@ -56,7 +56,7 @@ get_header(); ?>
 						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F4A261" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
 					</div>
 					<div class="figma-card card-yellow">
-						<img src="https://images.unsplash.com/photo-1596207869389-9159048a60cd?auto=format&fit=crop&q=80&w=600" alt="Yellow Outfit">
+						<img src="https://images.unsplash.com/photo-1485230895920-ee9dc1f8ff2f?auto=format&fit=crop&q=80&w=600" alt="Yellow Outfit">
 					</div>
 					<button class="figma-hero-explore-btn">
 						Explore Collections <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
@@ -66,7 +66,7 @@ get_header(); ?>
 				<div class="figma-grid-col col-4">
 					<div class="figma-card card-blue">
 						<div class="notch-mask"></div>
-						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJpJL8qD9gDcjP7tAaIGpE_-5kTG2mVRNIZuI8B4e0J3YHq4zkcEETeWOqPJQ2INdpnFdj5r1OFyIBGRPi70JmG7GdbW1xhzqsZFpgwhlUPgbxbK-EariW04lvnkXkVVfqw8opdGZADOgNQSYWxYMvk2_XWdwvTbrL-TygplsTN70X8CGmkvWtUtEq2bMY8ojJ8NJeVqtaQRTJi91WWIF5s_wTjOPn_SRDHUSHZpcUF-h2T0xSSSx4" alt="Blue Outfit">
+						<img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&q=80&w=600" alt="Blue Outfit">
 					</div>
 				</div>
 				<!-- Column 5 -->
@@ -75,7 +75,7 @@ get_header(); ?>
 						<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeOlBso1FzezaZJ1pQqLTO0S5DJv4face5L-IPMwhxx1wTHtJ6iF7_26tmLRLrWsqoR1hC_3Aw5VepjpN-PuNT1dCGCRMcXtrFGQtwkaEPM5ha-EhY70IJoM0JIhC7FifRZVCLIjsiz_AxD5vSzZW1U5Z3oGMaimOFGHiA2knYE1Q9RzThsY0jv4rc2CG9m-kAHMHp4lgbm2Wa3gVnvEKM9ZqulZBfhBVdq64MmV-wnusq2ZtyeMQh" alt="Red Glasses">
 					</div>
 					<div class="figma-card card-dark-green">
-						<img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=600" alt="Dark Green Suit">
+						<img src="https://images.unsplash.com/photo-1492633423870-43d1cd2a4b07?auto=format&fit=crop&q=80&w=600" alt="Dark Green Suit">
 					</div>
 				</div>
 			</div>
@@ -95,16 +95,16 @@ get_header(); ?>
 				</div>
 				<h1 class="figma-mobile-title">Elevate Your Style With<br/>Bold Fashion</h1>
 				<div class="figma-mobile-avatars">
-					<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIeI-EV9B-4xqLmLRw95kbGlDMVUZthDXPv76_lsjH7CsYlSXrNumuGE2N_tH6AFJgQOLVPQT7ebfarLyqPYim2ji6oWMLpRPmhtE8reXtTmjZvszAWbwBJ3yKQT0g8JYYtDq5lsR1mDkyjU01v2aqnopBWblTTPuSy-ZRdpRmfR5Sk5ihVyriNy-1JWT2aVrPuvkBwA0Z58p1mGNFkE7WAKnVjFSldQdnN_GWQfSpj-U9TWQEkJPO" alt="Avatar 1">
-					<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmDY-phvVvk9ycBHRnK4yq4riNd1yV7i2IYOmLwibNKVpIR4dnv3BpCCy3COKLOmqIjsB0Jnu8CdE64yLd-XQmb0hvG9HvfMK60ltxAdKoS3ZA3322Spk9qAS1foRcErQsRQcNEizr_A-5foo5PQP5bqEi78b-hfflQLu8VopPMTkOcqb9BW09O9PQorznflJW0eLnM0DIDd5OHrQmsG_aaD1AzXepfPH_W14Gnk1pyeJ4rNHv4JMz" alt="Avatar 2">
+					<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Avatar 1">
+					<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" alt="Avatar 2">
 					<div class="figma-mobile-avatar-more">+</div>
 				</div>
 			</div>
 			
 			<div class="figma-mobile-carousel">
-				<div class="figma-carousel-card card-orange"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6s5KfAe0nX7GLW390NEUQUXIfbuNHiUDP1COiIdiVM7ltY3tUdAcMwUroEnFXRMEVcvO68fi0-mqiSVEp-pvoVYzRey8UhpDk-cet8fB0lUT4LD7MJ3RYzm5IfiWbVgCW56W9Vszdo9uupNS2vEen4Dl_tf-iQsdwflFrDWmRy0s0G1-AaWa9KzSuJTvmzmWjgQW-FQ7XL-OIEg_o2egtfz-llMCjGQqOgA73530IGjQz9WkTfHdE" alt="Orange Outfit"></div>
+				<div class="figma-carousel-card card-orange"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=600" alt="Orange Outfit"></div>
 				<div class="figma-carousel-card card-green"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuATPiQSlXnS1L9FCdh4rkc3wUE3H8VQzLrMmFulLyzeylsjewYdOwog2IuyXC8_3T4UL68JlX008h5JpAM4F_2hSYObJCHcI9uAESJijgLH4-mHbH3yoOBZYENhCVBQlAD4ghbcPhk12EpOwg3y1umz-6ISVbpDiU5c92OyB-f3zMP27C5agAvuXsnil5w2Dp9EV-4Ael_6F4bksYF7Rji9_vvUKlRL1PGbVMADPg4jG_I9Cpnd4fRm" alt="Green Coat"></div>
-				<div class="figma-carousel-card card-blue"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJpJL8qD9gDcjP7tAaIGpE_-5kTG2mVRNIZuI8B4e0J3YHq4zkcEETeWOqPJQ2INdpnFdj5r1OFyIBGRPi70JmG7GdbW1xhzqsZFpgwhlUPgbxbK-EariW04lvnkXkVVfqw8opdGZADOgNQSYWxYMvk2_XWdwvTbrL-TygplsTN70X8CGmkvWtUtEq2bMY8ojJ8NJeVqtaQRTJi91WWIF5s_wTjOPn_SRDHUSHZpcUF-h2T0xSSSx4" alt="Blue Outfit"></div>
+				<div class="figma-carousel-card card-blue"><img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&q=80&w=600" alt="Blue Outfit"></div>
 				<div class="figma-carousel-card card-red-glasses"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeOlBso1FzezaZJ1pQqLTO0S5DJv4face5L-IPMwhxx1wTHtJ6iF7_26tmLRLrWsqoR1hC_3Aw5VepjpN-PuNT1dCGCRMcXtrFGQtwkaEPM5ha-EhY70IJoM0JIhC7FifRZVCLIjsiz_AxD5vSzZW1U5Z3oGMaimOFGHiA2knYE1Q9RzThsY0jv4rc2CG9m-kAHMHp4lgbm2Wa3gVnvEKM9ZqulZBfhBVdq64MmV-wnusq2ZtyeMQh" alt="Red Glasses"></div>
 			</div>
 			

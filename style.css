@@ -2275,6 +2275,7 @@ html, body { max-width: 100%; position: relative; }
 }
 .centered-post-image {
   max-width: 1000px;
+  width: 100%;
   margin: 0 auto 2rem;
   padding: 0;
   border-radius: 8px;
@@ -2283,8 +2284,9 @@ html, body { max-width: 100%; position: relative; }
 .centered-post-image img,
 .centered-post-image picture,
 .centered-post-image source {
-  width: 100%;
-  height: auto;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
   display: block;
   object-fit: cover;
 }

@@ -88,13 +88,21 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileDrawer.style.transform = 'translateX(0)';
             drawerOverlay.style.display = 'block';
             document.body.style.overflow = 'hidden';
+            hamburgerBtn.innerHTML = '✕';
         }
         function closeDrawer() {
             mobileDrawer.style.transform = 'translateX(-100%)';
             drawerOverlay.style.display = 'none';
             document.body.style.overflow = '';
+            hamburgerBtn.innerHTML = '≡';
         }
-        hamburgerBtn.addEventListener('click', openDrawer);
+        hamburgerBtn.addEventListener('click', function() {
+            if (mobileDrawer.style.transform === 'translateX(0)' || mobileDrawer.style.transform === 'translateX(0px)') {
+                closeDrawer();
+            } else {
+                openDrawer();
+            }
+        });
         closeBtn.addEventListener('click', closeDrawer);
         drawerOverlay.addEventListener('click', closeDrawer);
     }

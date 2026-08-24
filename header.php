@@ -110,7 +110,7 @@ body, html {
 
 <div class="site-wrapper">
 	<header class="container flex justify-between items-center header-main" style="padding: 1.5rem var(--spacing-sm); border-bottom: 1px solid var(--color-border); margin-bottom: 0; position: relative; z-index: 100; background-color: var(--color-bg);">
-		<div class="flex items-center gap-sm">
+		<div id="header-left-col" class="flex items-center gap-sm">
 
 			<?php if ( has_custom_logo() ) : ?>
 				<div class="site-logo flex items-center">
@@ -154,10 +154,17 @@ body, html {
 						const input = document.querySelector('.expandable-search-input');
 						const toggle = document.querySelector('.expandable-search-toggle');
 
+						const leftCol = document.getElementById('header-left-col');
+
 						toggle.addEventListener('click', function(e) {
 							if (input.style.width === '0px' || input.style.width === '') {
 								e.preventDefault();
-								input.style.width = '120px';
+								if (window.innerWidth <= 1200) {
+									if(leftCol) leftCol.style.display = 'none';
+									input.style.width = 'calc(100vw - 120px)';
+								} else {
+									input.style.width = '120px';
+								}
 								input.style.opacity = '1';
 								form.style.borderBottomColor = '#ccc';
 								input.focus();
@@ -165,6 +172,9 @@ body, html {
 							} else {
 								if (input.value.trim() === '') {
 									e.preventDefault();
+									if (window.innerWidth <= 1200) {
+										if(leftCol) leftCol.style.display = 'flex';
+									}
 									input.style.width = '0';
 									input.style.opacity = '0';
 									form.style.borderBottomColor = 'transparent';
@@ -176,6 +186,9 @@ body, html {
 						// Collapse when clicking outside
 						document.addEventListener('click', function(e) {
 							if (!form.contains(e.target) && input.value.trim() === '') {
+								if (window.innerWidth <= 1200) {
+									if(leftCol) leftCol.style.display = 'flex';
+								}
 								input.style.width = '0';
 								input.style.opacity = '0';
 								form.style.borderBottomColor = 'transparent';
@@ -205,8 +218,8 @@ body, html {
 				</svg>
 			</div>
 
-			<span id="hamburger-icon" class="hamburger-icon" style="font-size: 1.8rem; cursor: pointer; user-select: none; width: 30px; text-align: center;">
-				≡
+			<span id="hamburger-icon" class="hamburger-icon" style="cursor: pointer; user-select: none; display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; color: #000;">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
 			</span>
 		</div>
 	</header>

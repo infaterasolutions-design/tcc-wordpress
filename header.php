@@ -138,7 +138,7 @@ body, html {
 		
 		<div class="flex items-center gap-sm">
 			<!-- Sleek Header Search Bar -->
-			<div class="desktop-header-search" style="margin-right: 1.5rem; position: relative;">
+			<div class="desktop-header-search" style="position: relative;">
 				<form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" class="expandable-search-form" style="display: flex; align-items: center; border-bottom: 1px solid transparent; padding-bottom: 4px; transition: border-color 0.3s ease;">
 					<input type="search" class="expandable-search-input" placeholder="Search..." value="<?php echo get_search_query(); ?>" name="s" style="border: none; outline: none; background: transparent; font-family: 'Inter', sans-serif; font-size: 0.8rem; width: 0; padding: 0; opacity: 0; transition: all 0.3s ease; color: #000;" />
 					<button type="button" class="expandable-search-toggle" style="background: transparent; border: none; padding: 0; cursor: pointer; display: flex; align-items: center; margin-left: 5px; color: #000;">

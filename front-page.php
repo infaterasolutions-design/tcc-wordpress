@@ -540,7 +540,7 @@ get_header(); ?>
 			</div>
 		</div>
 		<div class="figma-ig-grid plugin-container">
-			<?php echo do_shortcode('[instagram-feed]'); ?>
+			<?php echo do_shortcode('[instagram-feed num=6]'); ?>
 			<!-- Note: Once you install Smash Balloon Instagram Feed, configure it to display 6 posts, 6 columns, with 0 padding to match the design. -->
 		</div>
 	</section>

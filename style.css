@@ -2852,6 +2852,9 @@ html, body { max-width: 100%; position: relative; }
 .figma-ig-grid .sbi_follow_btn {
   display: none !important;
 }
+.figma-ig-grid .sbi_item:nth-child(n+7) {
+  display: none !important;
+}
 @media (max-width: 1024px) {
   .figma-ig-grid #sbi_images { grid-template-columns: repeat(3, 1fr) !important; }
 }

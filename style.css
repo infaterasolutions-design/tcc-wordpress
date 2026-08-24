@@ -2814,24 +2814,21 @@ html, body { max-width: 100%; position: relative; }
   color: #FFF;
 }
 .figma-ig-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: block;
   width: 100%;
   border-top: 1px solid #000;
 }
-.figma-ig-grid a {
-  display: block;
-  width: 100%;
+.figma-ig-grid .sbi_item {
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
-.figma-ig-grid img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.figma-ig-grid .sbi_photo {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
   transition: transform 0.5s ease;
 }
-.figma-ig-grid a:hover img {
+.figma-ig-grid .sbi_item:hover .sbi_photo {
   transform: scale(1.05);
 }
 

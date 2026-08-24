@@ -539,25 +539,9 @@ get_header(); ?>
 				<a href="#" class="figma-ig-btn">FOLLOW ON INSTAGRAM</a>
 			</div>
 		</div>
-		<div class="figma-ig-grid">
-			<?php 
-			$ig_images = [
-				"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400",
-				"https://images.unsplash.com/photo-1550614000-4b95d41b7146?auto=format&fit=crop&q=80&w=400",
-				"https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=400",
-				"https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&q=80&w=400",
-				"https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&q=80&w=400",
-				"https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400"
-			];
-			foreach($ig_images as $ig_img): 
-			?>
-			<a href="#">
-				<picture>
-					<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $ig_img)); ?>" type="image/avif">
-					<img src="<?php echo esc_url($ig_img); ?>" alt="Instagram post" loading="lazy" />
-				</picture>
-			</a>
-			<?php endforeach; ?>
+		<div class="figma-ig-grid plugin-container">
+			<?php echo do_shortcode('[instagram-feed]'); ?>
+			<!-- Note: Once you install Smash Balloon Instagram Feed, configure it to display 6 posts, 6 columns, with 0 padding to match the design. -->
 		</div>
 	</section>
 

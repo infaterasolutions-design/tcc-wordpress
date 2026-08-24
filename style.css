@@ -2836,9 +2836,13 @@ html, body { max-width: 100%; position: relative; }
   padding: 0 !important;
   margin: 0 !important;
   border: none !important;
+  border-right: 1px solid #000 !important;
   outline: none !important;
   aspect-ratio: 1 / 1;
   overflow: hidden;
+}
+.figma-ig-grid .sbi_item:nth-child(6n) {
+  border-right: none !important;
 }
 .figma-ig-grid .sbi_photo {
   width: 100% !important;

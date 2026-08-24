@@ -16,7 +16,7 @@ get_header(); ?>
 				<div class="figma-hero-learn">
 					<svg class="figma-hero-circle-text" viewBox="0 0 100 100">
 						<path d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" id="circlePath"></path>
-						<text><textPath href="#circlePath" startOffset="0%">Learn about us through this video • </textPath></text>
+						<text><textPath href="#circlePath" startOffset="0%">LEARN MORE ABOUT US • </textPath></text>
 					</svg>
 					<button class="figma-hero-play-btn">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -87,7 +87,7 @@ get_header(); ?>
 				<div class="figma-mobile-learn">
 					<svg class="figma-hero-circle-text" viewBox="0 0 100 100">
 						<path d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" id="circlePathMob"></path>
-						<text><textPath href="#circlePathMob" startOffset="0%">Learn about us through this video • </textPath></text>
+						<text><textPath href="#circlePathMob" startOffset="0%">LEARN MORE ABOUT US • </textPath></text>
 					</svg>
 					<button class="figma-hero-play-btn">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>

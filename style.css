@@ -4369,52 +4369,14 @@ html, body { max-width: 100%; position: relative; }
 	}
 	
 	/* Notch Cutout Effects */
-	.notch-top-left::before {
-		content: '';
-		position: absolute;
-		top: -2px;
-		left: -2px;
-		width: 40%;
-		height: 35px;
-		background: var(--stitch-background);
-		border-bottom-right-radius: 20px;
-		z-index: 2;
-	}
-	.notch-top-left::after {
-		content: '';
-		position: absolute;
-		top: -2px;
-		left: calc(40% - 2px);
-		width: 20px;
-		height: 20px;
-		background: transparent;
-		border-top-left-radius: 20px;
-		box-shadow: -8px -8px 0 8px var(--stitch-background);
-		z-index: 2;
+	.notch-top-left {
+		-webkit-mask-image: radial-gradient(circle at top left, transparent 75px, black 76px);
+		mask-image: radial-gradient(circle at top left, transparent 75px, black 76px);
 	}
 
-	.notch-top-right::before {
-		content: '';
-		position: absolute;
-		top: -2px;
-		right: -2px;
-		width: 40%;
-		height: 35px;
-		background: var(--stitch-background);
-		border-bottom-left-radius: 20px;
-		z-index: 2;
-	}
-	.notch-top-right::after {
-		content: '';
-		position: absolute;
-		top: -2px;
-		right: calc(40% - 2px);
-		width: 20px;
-		height: 20px;
-		background: transparent;
-		border-top-right-radius: 20px;
-		box-shadow: 8px -8px 0 8px var(--stitch-background);
-		z-index: 2;
+	.notch-top-right {
+		-webkit-mask-image: radial-gradient(circle at top right, transparent 75px, black 76px);
+		mask-image: radial-gradient(circle at top right, transparent 75px, black 76px);
 	}
 	.figma-card img {
 		width: 100%;

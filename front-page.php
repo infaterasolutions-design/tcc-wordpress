@@ -79,25 +79,6 @@ get_header(); ?>
 					</div>
 				</div>
 			</div>
-
-			<!-- Footer Row -->
-			<div class="figma-hero-footer">
-				<div class="figma-hero-testimonial">
-					<div class="quote-icon">“</div>
-					<p>TrendZone's styles are fresh, bold, and exactly what I needed to upgrade my wardrobe. Loved the quality and vibe!</p>
-					<div class="author">
-						<span class="author-signature">Rafi H.</span>
-					</div>
-				</div>
-				<div class="figma-hero-article">
-					<div class="article-meta">
-						<span class="article-num">01</span>
-						<span class="article-cat">Lifestyle</span>
-						<svg class="article-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
-					</div>
-					<h3 class="article-title">Set Up Your Fashion With The Latest Trends</h3>
-				</div>
-			</div>
 		</div>
 
 		<!-- Mobile Hero Layout (Carousel) -->
@@ -133,27 +114,6 @@ get_header(); ?>
 				</button>
 			</div>
 			
-			<div class="figma-mobile-footer">
-				<div class="figma-hero-testimonial">
-					<div class="quote-icon">“</div>
-					<p>TrendZone's styles are fresh, bold, and exactly what I needed to upgrade my wardrobe. Loved the quality and vibe!</p>
-					<div class="author">
-						<span class="author-signature">Rafi H.</span>
-					</div>
-				</div>
-				<div class="figma-hero-article">
-					<div class="article-meta">
-						<span class="article-num">01</span>
-						<span class="article-cat">Lifestyle</span>
-					</div>
-					<div class="article-title-row">
-						<h3 class="article-title">Set Up Your Fashion With The Latest Trends</h3>
-						<div class="article-arrow-circle">
-							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</section>
 

@@ -184,39 +184,41 @@ get_header(); ?>
 				<h3 class="fp-creator-hub-label">TOP RESOURCES</h3>
 				
 				<div class="fp-creator-hub-list">
-					<a href="#" class="fp-creator-hub-item">
+					<?php
+					$creator_hub_args = array(
+						'post_type'      => 'post',
+						'posts_per_page' => 3,
+						'category_name'  => 'creator-hub',
+					);
+					$creator_hub_query = new WP_Query( $creator_hub_args );
+					
+					if ( $creator_hub_query->have_posts() ) :
+						while ( $creator_hub_query->have_posts() ) : $creator_hub_query->the_post();
+					?>
+					<a href="<?php echo esc_url( get_permalink() ); ?>" class="fp-creator-hub-item">
 						<div class="fp-creator-hub-item-left">
 							<svg class="fp-creator-hub-arrow-icon" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<ellipse cx="23" cy="16" rx="22" ry="15" stroke="black" stroke-width="1"/>
 								<path d="M12 16H34M34 16L27 10M34 16L27 22" stroke="black" stroke-width="1" stroke-linecap="round"/>
 							</svg>
-							<span class="fp-creator-hub-item-title">Best Practices for Pitching & Landing Paid Sponsorships</span>
+							<span class="fp-creator-hub-item-title"><?php the_title(); ?></span>
 						</div>
 						<span class="fp-creator-hub-read-more">READ MORE &rarr;</span>
 					</a>
-					<a href="#" class="fp-creator-hub-item">
-						<div class="fp-creator-hub-item-left">
-							<svg class="fp-creator-hub-arrow-icon" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<ellipse cx="23" cy="16" rx="22" ry="15" stroke="black" stroke-width="1"/>
-								<path d="M12 16H34M34 16L27 10M34 16L27 22" stroke="black" stroke-width="1" stroke-linecap="round"/>
-							</svg>
-							<span class="fp-creator-hub-item-title">15 Questions to Ask an Influencer Management Agency Before Signing a Contract</span>
-						</div>
-						<span class="fp-creator-hub-read-more">READ MORE &rarr;</span>
-					</a>
-					<a href="#" class="fp-creator-hub-item">
-						<div class="fp-creator-hub-item-left">
-							<svg class="fp-creator-hub-arrow-icon" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<ellipse cx="23" cy="16" rx="22" ry="15" stroke="black" stroke-width="1"/>
-								<path d="M12 16H34M34 16L27 10M34 16L27 22" stroke="black" stroke-width="1" stroke-linecap="round"/>
-							</svg>
-							<span class="fp-creator-hub-item-title">I Quit My Teaching Job...Here's What Happened Next</span>
-						</div>
-						<span class="fp-creator-hub-read-more">READ MORE &rarr;</span>
-					</a>
+					<?php
+						endwhile;
+						wp_reset_postdata();
+					else :
+					?>
+						<p>No posts found in the "Creator Hub" category.</p>
+					<?php endif; ?>
 				</div>
                 <div class="fp-creator-hub-see-more-wrapper">
-				    <a href="#" class="fp-creator-hub-see-more">SEE MORE ON THE CREATOR HUB&rarr;</a>
+					<?php
+					$creator_hub_cat = get_category_by_slug( 'creator-hub' );
+					$creator_hub_link = $creator_hub_cat ? get_category_link( $creator_hub_cat->term_id ) : '#';
+					?>
+				    <a href="<?php echo esc_url( $creator_hub_link ); ?>" class="fp-creator-hub-see-more">SEE MORE ON THE CREATOR HUB&rarr;</a>
                 </div>
 			</div>
 		</div>

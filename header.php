@@ -230,8 +230,8 @@ body, html {
 
 	<!-- Mobile Drawer -->
 	<div id="mobile-drawer" class="mobile-drawer" style="position: fixed; top: 0; left: 0; width: 300px; max-width: 85vw; height: 100%; background-color: var(--color-bg); z-index: 101; transform: translateX(-100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column;">
-		<div style="padding: 1.5rem var(--spacing-sm); border-bottom: 1px solid var(--color-border); display: flex; align-items: center;">
-			<span id="close-drawer" style="font-size: 1.8rem; cursor: pointer; user-select: none; width: 30px; text-align: center;">
+		<div style="padding: 1.5rem var(--spacing-sm); display: flex; align-items: center;">
+			<span id="close-drawer" style="display: none; font-size: 1.8rem; cursor: pointer; user-select: none; width: 30px; text-align: center;">
 				✕
 			</span>
 		</div>

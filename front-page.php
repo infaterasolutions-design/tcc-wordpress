@@ -536,7 +536,7 @@ get_header(); ?>
 			<p class="figma-ig-desc">Everyday Outfits and Style Inspiration</p>
 			<div class="figma-ig-buttons">
 				<a href="#" class="figma-ig-btn">SHOP DAILY LOOKS HERE</a>
-				<a href="#" class="figma-ig-btn">FOLLOW ON INSTAGRAM</a>
+				<a href="https://www.instagram.com/closetinfoclub/" target="_blank" rel="noopener noreferrer" class="figma-ig-btn">FOLLOW ON INSTAGRAM</a>
 			</div>
 		</div>
 		<div class="figma-ig-grid plugin-container">

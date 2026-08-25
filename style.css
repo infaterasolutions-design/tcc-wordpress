@@ -1771,7 +1771,7 @@ img {
   .fp-elsewhere-col1 picture {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3; /* Reduced length further (landscape proportion) */
+    aspect-ratio: 16 / 10; /* Drastically reduced length (40% shorter) */
     overflow: hidden;
   }
   .fp-elsewhere-col1 picture img {
@@ -1807,7 +1807,7 @@ img {
   .fp-elsewhere-col2-img-wrapper picture {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3; /* Reduced length further (landscape proportion) */
+    aspect-ratio: 16 / 10; /* Drastically reduced length (40% shorter) */
     overflow: hidden;
   }
   .fp-elsewhere-col2-img-wrapper picture img {

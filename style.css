@@ -3408,7 +3408,7 @@ html, body { max-width: 100%; position: relative; }
     text-transform: uppercase;
     color: #000000;
     text-decoration: none;
-    align-self: center;
+    align-self: flex-end; /* Align right on PC */
 }
 
 /* ==========================================================================
@@ -3684,6 +3684,10 @@ html, body { max-width: 100%; position: relative; }
     .fp-latest-card {
         max-width: 300px;
         margin: 0 auto;
+    }
+    
+    .fp-latest-view-more {
+        align-self: center; /* Keep centered on mobile */
     }
 }
 

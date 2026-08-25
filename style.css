@@ -1760,6 +1760,7 @@ img {
   .fp-elsewhere-col1 {
     display: block;
     width: 61.66%; 
+    height: auto !important; /* Kills the 546px desktop height override */
     padding-top: 5.55vw; 
     position: relative;
     margin-top: 0;
@@ -1771,7 +1772,8 @@ img {
   .fp-elsewhere-col1 picture {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 10; /* Drastically reduced length (40% shorter) */
+    height: auto !important; /* Kills the 526px desktop height override */
+    aspect-ratio: 221.99 / 307.4; /* Exact Figma proportion */
     overflow: hidden;
   }
   .fp-elsewhere-col1 picture img {
@@ -1798,6 +1800,7 @@ img {
   .fp-elsewhere-col2-img-wrapper {
     display: block;
     width: 100%;
+    height: auto !important; /* Kills the 408px desktop height override */
     border-width: 2.66vw 0 2.66vw 2.66vw; 
     border-style: solid;
     border-color: #FFFFFF;
@@ -1807,7 +1810,8 @@ img {
   .fp-elsewhere-col2-img-wrapper picture {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 10; /* Drastically reduced length (40% shorter) */
+    height: auto !important; /* Kills the 368px desktop height override */
+    aspect-ratio: 149.4 / 203.57; /* Exact Figma proportion */
     overflow: hidden;
   }
   .fp-elsewhere-col2-img-wrapper picture img {

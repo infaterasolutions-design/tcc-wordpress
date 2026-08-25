@@ -1728,70 +1728,78 @@ img {
 /* Mobile Layout - Stacked */
 @media (max-width: 900px) {
   .fp-elsewhere-section {
-    padding: 10vw 0;
+    padding: 3rem 1rem;
     overflow: hidden;
-  }
-  .fp-elsewhere-section::-webkit-scrollbar {
-    display: none;
   }
   .fp-elsewhere-container {
     transform: none;
-    width: 100vw;
-    min-width: auto;
-    max-width: none;
-    margin-bottom: 0;
-    gap: 1.66vw;
-    flex-direction: row;
-    align-items: flex-start;
+    width: 100%;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    height: auto;
   }
-  .fp-elsewhere-col1 { width: 31.66vw; left: 0; top: 0; height: auto; }
-  .fp-elsewhere-col2 { width: 24.16vw; left: -5.83vw; top: 5vw; height: auto; }
-  .fp-elsewhere-col3 { width: 26.66vw; left: -10.83vw; top: 10vw; height: auto; }
-  .fp-elsewhere-col4 { width: 32.08vw; left: -11.66vw; top: 6.66vw; height: auto; }
   
-  .fp-elsewhere-col1 picture, .fp-elsewhere-col4 picture {
+  /* Hide the 3rd and 4th columns and handle on mobile */
+  .fp-elsewhere-col3, 
+  .fp-elsewhere-col4, 
+  .fp-elsewhere-handle {
+    display: none !important;
+  }
+  
+  /* Col 1: Clothes Rack */
+  .fp-elsewhere-col1 {
+    display: block;
+    width: 70%;
+    position: relative;
+    top: 40px;
+    left: 0;
+    z-index: 1;
+    height: auto;
+  }
+  .fp-elsewhere-col1 picture, 
+  .fp-elsewhere-col1 picture img {
     width: 100%;
     height: auto;
-    aspect-ratio: 380 / 473;
+    display: block;
+    aspect-ratio: auto;
+  }
+  
+  /* Col 2: Striped Sweater */
+  .fp-elsewhere-col2 {
+    display: block;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: auto;
+    z-index: 2;
+    height: auto;
   }
   .fp-elsewhere-col2-img-wrapper {
-    width: 100%;
-    height: auto;
-    border-width: 1.66vw 0px 1.66vw 1.66vw;
     display: block;
+    width: 100%;
+    border: 10px solid #fff; /* Thick white border to overlap gracefully */
     box-sizing: border-box;
   }
-  .fp-elsewhere-col2-img-wrapper picture {
+  .fp-elsewhere-col2-img-wrapper picture,
+  .fp-elsewhere-col2-img-wrapper picture img {
     width: 100%;
     height: auto;
-    aspect-ratio: 270 / 368;
-  }
-  .fp-elsewhere-col3-inner {
-    width: 100%;
-    height: auto;
-    border-width: 1.66vw;
     display: block;
-    box-sizing: border-box;
+    aspect-ratio: auto;
   }
-  .fp-elsewhere-col3-inner picture {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-  }
+  
+  /* "elsewhere" text */
   .fp-elsewhere-text {
-    font-size: 10vw;
-    top: -0.41vw;
-    left: 24.58vw;
+    font-size: 3.5rem;
+    top: -15px;
+    right: 5%;
+    left: auto;
+    z-index: 3;
     transform: none;
     width: auto;
-  }
-  .fp-elsewhere-handle {
-    font-size: 2vw;
-    padding: 1vw 1.5vw;
-    top: 26.66vw;
-    line-height: normal;
-    margin-top: 1vw;
-    left: 0;
+    line-height: 1;
   }
 }
 .figma-trending-container {

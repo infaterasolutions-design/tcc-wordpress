@@ -1173,13 +1173,16 @@ function tcc_add_custom_pinterest_hover_script() {
         ?>
         <script>
         window.addEventListener('load', function() {
-            const images = document.querySelectorAll('.entry-content img, .post-content img, .tcc-post-content img');
+            const images = document.querySelectorAll('.entry-content img, .post-content img, .tcc-post-content img, .article-hero-image');
             const pageUrl = encodeURIComponent(window.location.href);
             const pageTitle = encodeURIComponent(document.title);
             
             images.forEach(img => {
-                // Ignore small icons/emojis (Wait until 'load' so width is accurate)
-                if (img.width < 200 || img.height < 200) return;
+                // Ignore small icons/emojis. Fallback to HTML attributes if lazy-loaded and unrendered.
+                const w = img.clientWidth || img.naturalWidth || parseInt(img.getAttribute('width') || 0);
+                const h = img.clientHeight || img.naturalHeight || parseInt(img.getAttribute('height') || 0);
+                if (w > 0 && w < 200) return;
+                if (h > 0 && h < 100) return;
                 
                 // Prevent double wrapping
                 if (img.parentElement.classList.contains('tcc-pin-wrapper')) return;

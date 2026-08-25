@@ -1771,7 +1771,7 @@ img {
   .fp-elsewhere-col1 picture {
     display: block;
     width: 100%;
-    aspect-ratio: 221.99 / 307.4; /* Exact Figma proportion */
+    aspect-ratio: 4 / 5; /* Standard portrait as requested */
     overflow: hidden;
   }
   .fp-elsewhere-col1 picture img {
@@ -1807,7 +1807,7 @@ img {
   .fp-elsewhere-col2-img-wrapper picture {
     display: block;
     width: 100%;
-    aspect-ratio: 149.4 / 203.57; /* Exact Figma proportion */
+    aspect-ratio: 4 / 5; /* Standard portrait as requested */
     overflow: hidden;
   }
   .fp-elsewhere-col2-img-wrapper picture img {
@@ -1819,8 +1819,9 @@ img {
   
   /* "elsewhere" text */
   .fp-elsewhere-text {
+    position: absolute; /* Fixes the bug where text squished the flex items */
     font-size: 13vw;
-    top: -2vw;
+    top: 2vw; /* Overlap nicely */
     left: 45%;
     right: auto;
     width: 55%;

@@ -1168,7 +1168,7 @@ add_action( 'save_post_shoppable_video', 'tcc_save_shoppable_video' );
 function tcc_add_pinterest_hover_script() {
     // Only load on single blog posts, and specifically EXCLUDE the 'wardrobe' category
     if ( is_single() && get_post_type() === 'post' && ! in_category( 'wardrobe' ) ) {
-        echo '<script async defer src="//assets.pinterest.com/js/pinit.js" data-pin-hover="true"></script>';
+        echo '<script async defer src="//assets.pinterest.com/js/pinit.js" data-pin-hover="true" data-pin-tall="true"></script>';
     }
 }
 add_action( 'wp_footer', 'tcc_add_pinterest_hover_script' );

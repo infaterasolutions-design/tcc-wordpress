@@ -1736,7 +1736,7 @@ img {
     width: 100%;
     position: relative;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
     margin: 0 auto;
     height: auto;
@@ -1753,10 +1753,10 @@ img {
   /* Col 1: Left Image */
   .fp-elsewhere-col1 {
     display: block;
-    width: 61.6%;
-    padding-top: 5.5vw;
+    width: 48%; /* Roughly half, leaving a gap */
+    padding-top: 0;
     position: relative;
-    margin-top: 0;
+    margin-top: 15vw; /* Push down to stagger */
     top: 0;
     left: 0;
     z-index: 1;
@@ -1765,15 +1765,17 @@ img {
   .fp-elsewhere-col1 picture, 
   .fp-elsewhere-col1 picture img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
+    aspect-ratio: 3 / 4; /* Force a tall portrait shape */
+    object-fit: cover; /* Crop the native landscape image */
   }
   
   /* Col 2: Right Image Wrapper */
   .fp-elsewhere-col2 {
     display: block;
-    width: 44.1%;
-    margin-left: -5.7%;
+    width: 48%; /* Roughly half, leaving a gap */
+    margin-left: 0; /* No overlap */
     position: relative;
     top: 0;
     right: 0;
@@ -1784,26 +1786,27 @@ img {
   .fp-elsewhere-col2-img-wrapper {
     display: block;
     width: 100%;
-    border: 2.6vw solid #FFFFFF;
-    border-right: none;
-    background-color: #FFFFFF;
+    border: none; /* No white border in this design */
+    background-color: transparent;
     box-sizing: border-box;
   }
   .fp-elsewhere-col2-img-wrapper picture,
   .fp-elsewhere-col2-img-wrapper picture img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
+    aspect-ratio: 3 / 4; /* Force a tall portrait shape */
+    object-fit: cover;
   }
   
   /* "elsewhere" text */
   .fp-elsewhere-text {
     font-size: 14vw;
-    top: -2vw;
-    left: 45vw;
-    right: auto;
-    width: 55vw;
-    text-align: center;
+    top: -4vw;
+    left: auto;
+    right: 0;
+    width: 48%; /* Match right column width */
+    text-align: center; /* Center it precisely over right column */
     z-index: 3;
     transform: none;
     line-height: 1;

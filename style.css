@@ -4769,8 +4769,9 @@ html, body { max-width: 100%; position: relative; }
     position: absolute;
     top: 15px;
     left: 15px;
-    background-color: #E60023;
-    color: #fff;
+    background-color: rgba(255, 255, 255, 0.85); /* Translucent light background */
+    backdrop-filter: blur(4px); /* Frosted glass effect */
+    color: #111; /* Dark text and icon */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -4785,11 +4786,11 @@ html, body { max-width: 100%; position: relative; }
     transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.2s ease;
     z-index: 10;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 .tcc-pin-btn:hover {
-    background-color: #ad081b;
-    color: #fff;
+    background-color: rgba(255, 255, 255, 1); /* Solid white on hover */
+    color: #000;
 }
 .tcc-pin-btn svg {
     width: 16px;

@@ -1765,10 +1765,8 @@ img {
   .fp-elsewhere-col1 picture, 
   .fp-elsewhere-col1 picture img {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: block;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
   }
   
   /* Col 2: Right Image Wrapper */
@@ -1794,10 +1792,8 @@ img {
   .fp-elsewhere-col2-img-wrapper picture,
   .fp-elsewhere-col2-img-wrapper picture img {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: block;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
   }
   
   /* "elsewhere" text */

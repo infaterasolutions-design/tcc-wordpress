@@ -1772,8 +1772,10 @@ img {
   .fp-elsewhere-col1 picture, 
   .fp-elsewhere-col1 picture img {
     width: 100%;
-    height: auto; /* Restore native image proportions */
+    height: 100%;
     display: block;
+    aspect-ratio: 4 / 5; /* Shorter portrait height instead of extreme Figma height */
+    object-fit: cover;
   }
   
   /* Col 2: Right Container */
@@ -1790,11 +1792,11 @@ img {
     flex-shrink: 0;
   }
   
-  /* Col 2: Inner Relative Wrapper (Overlaps Col 1 while staying in flow) */
+  /* Col 2: Inner Absolute Wrapper (Overlaps Col 1) */
   .fp-elsewhere-col2-img-wrapper {
-    position: relative;
+    position: absolute;
     top: 0;
-    margin-left: -15.2%; /* -20.99px / 138.01px */
+    left: -15.2%; /* -20.99px / 138.01px */
     width: 115.2%; /* 159px / 138.01px */
     border-width: 2.66vw 0 2.66vw 2.66vw; /* 9.6px / 360px */
     border-style: solid;
@@ -1806,8 +1808,10 @@ img {
   .fp-elsewhere-col2-img-wrapper picture,
   .fp-elsewhere-col2-img-wrapper picture img {
     width: 100%;
-    height: auto; /* Restore native image proportions */
+    height: 100%;
     display: block;
+    aspect-ratio: 4 / 5; /* Shorter portrait height instead of extreme Figma height */
+    object-fit: cover;
   }
   
   /* "elsewhere" text */

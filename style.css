@@ -1733,7 +1733,8 @@ img {
   }
   .fp-elsewhere-container {
     transform: none;
-    width: 100%;
+    width: 80%; /* Scale down the entire layout so it doesn't look overwhelmingly tall/large */
+    max-width: 340px;
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -1771,14 +1772,14 @@ img {
   .fp-elsewhere-col1 picture {
     display: block;
     width: 100%;
-    /* Removed aspect-ratio to prevent tall cropping */
+    aspect-ratio: 221.99 / 307.4; /* Restore exact Figma proportion */
     overflow: hidden;
   }
   .fp-elsewhere-col1 picture img {
     display: block;
     width: 100%;
-    height: auto; /* Let image determine its natural height */
-    /* Removed object-fit: cover */
+    height: 100%;
+    object-fit: cover; /* Prevents stretching/distortion */
   }
   
   /* Col 2: Right Container (Pure flexbox overlap) */
@@ -1807,21 +1808,21 @@ img {
   .fp-elsewhere-col2-img-wrapper picture {
     display: block;
     width: 100%;
-    /* Removed aspect-ratio to prevent tall cropping */
+    aspect-ratio: 149.4 / 203.57; /* Restore exact Figma proportion */
     overflow: hidden;
   }
   .fp-elsewhere-col2-img-wrapper picture img {
     display: block;
     width: 100%;
-    height: auto; /* Let image determine its natural height */
-    /* Removed object-fit: cover */
+    height: 100%;
+    object-fit: cover; /* Prevents stretching/distortion */
   }
   
   /* "elsewhere" text */
   .fp-elsewhere-text {
-    position: absolute; /* Fixes the bug where text squished the flex items */
-    font-size: 13vw;
-    top: 2vw; /* Overlap nicely */
+    position: absolute;
+    font-size: 11vw; /* Scale down slightly to match smaller container */
+    top: 2vw;
     left: 45%;
     right: auto;
     width: 55%;

@@ -1172,13 +1172,13 @@ function tcc_add_custom_pinterest_hover_script() {
     if ( is_single() && get_post_type() === 'post' && ! in_category( 'wardrobe' ) ) {
         ?>
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('load', function() {
             const images = document.querySelectorAll('.entry-content img, .post-content img, .tcc-post-content img');
             const pageUrl = encodeURIComponent(window.location.href);
             const pageTitle = encodeURIComponent(document.title);
             
             images.forEach(img => {
-                // Ignore small icons/emojis
+                // Ignore small icons/emojis (Wait until 'load' so width is accurate)
                 if (img.width < 200 || img.height < 200) return;
                 
                 // Prevent double wrapping

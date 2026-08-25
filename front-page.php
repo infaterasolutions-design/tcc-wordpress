@@ -395,10 +395,11 @@ get_header(); ?>
 							$img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&q=80&w=400';
 							$video_url = get_post_meta(get_the_ID(), '_tcc_video_url', true);
 							$shopping_links = get_post_meta(get_the_ID(), '_tcc_video_products', true);
+							$direct_shop_url = get_post_meta(get_the_ID(), '_tcc_direct_shop_url', true);
 					?>
 					<div class="figma-smv-slide">
 						<!-- Video Thumbnail -->
-						<div class="figma-smv-thumb tcc-smv-trigger" style="cursor: pointer;" data-video="<?php echo esc_url($video_url); ?>">
+						<div class="figma-smv-thumb tcc-smv-trigger" style="cursor: pointer;" data-video="<?php echo esc_url($video_url); ?>" data-direct-url="<?php echo esc_url($direct_shop_url); ?>">
 							<picture>
 								<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img)); ?>" type="image/avif">
 								<img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>" loading="lazy" />
@@ -418,9 +419,15 @@ get_header(); ?>
 						
 						<!-- Shop Now Button -->
 						<div class="figma-smv-shop-links" style="display:none;"><?php echo do_shortcode($shopping_links); ?></div>
-						<a href="#" class="figma-smv-shop-btn text-sans tcc-smv-shop-trigger">
-							SHOP NOW
-						</a>
+						<?php if ( ! empty( $direct_shop_url ) ) : ?>
+							<a href="<?php echo esc_url( $direct_shop_url ); ?>" target="_blank" rel="nofollow noopener" class="figma-smv-shop-btn text-sans">
+								SHOP NOW
+							</a>
+						<?php else : ?>
+							<a href="#" class="figma-smv-shop-btn text-sans tcc-smv-shop-trigger">
+								SHOP NOW
+							</a>
+						<?php endif; ?>
 					</div>
 					<?php 
 						endwhile;
@@ -547,12 +554,18 @@ get_header(); ?>
 					const slide = trigger.closest('.figma-smv-slide');
 					if (!slide) return;
 
-					// 1. Get Shopping Links
+					// 1. Get Shopping Links & Direct URL
 					const shopLinksHtml = slide.querySelector('.figma-smv-shop-links').innerHTML;
-					productsContainer.innerHTML = shopLinksHtml;
-
-					// 2. Get Video URL from the thumb trigger
 					const thumb = slide.querySelector('.tcc-smv-trigger');
+					let directUrl = thumb ? thumb.getAttribute('data-direct-url') : '';
+					
+					if (shopLinksHtml.trim() !== '') {
+						productsContainer.innerHTML = shopLinksHtml;
+					} else if (directUrl) {
+						productsContainer.innerHTML = `<a href="${directUrl}" target="_blank" rel="nofollow noopener" style="display:block; text-align:center; background:#000; color:#fff; padding:15px 25px; text-decoration:none; font-family:'Inter', sans-serif; font-weight:600; font-size:14px; letter-spacing:1px; text-transform:uppercase; margin-top:20px;">SHOP THIS LOOK</a>`;
+					} else {
+						productsContainer.innerHTML = '';
+					}
 					let videoUrl = thumb ? thumb.getAttribute('data-video') : '';
 					if (!videoUrl) return;
 

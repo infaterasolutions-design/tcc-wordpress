@@ -1118,15 +1118,23 @@ function tcc_shoppable_video_html( $post ) {
     wp_nonce_field( 'tcc_save_shoppable_video', 'tcc_shoppable_video_nonce' );
     $video_url = get_post_meta( $post->ID, '_tcc_video_url', true );
     $shopping_links = get_post_meta( $post->ID, '_tcc_video_products', true );
+    $direct_shop_url = get_post_meta( $post->ID, '_tcc_direct_shop_url', true );
     ?>
     <p>
         <label for="tcc_video_url"><strong>Video URL (Instagram, TikTok, or direct .mp4):</strong></label><br>
         <input type="text" id="tcc_video_url" name="tcc_video_url" value="<?php echo esc_attr( $video_url ); ?>" style="width:100%; max-width:600px; margin-top:5px;" />
     </p>
+    <hr style="margin:20px 0;">
+    <p>
+        <label for="tcc_direct_shop_url"><strong>Direct Shop Link (LTK, Amazon, etc.):</strong></label><br>
+        <input type="url" id="tcc_direct_shop_url" name="tcc_direct_shop_url" value="<?php echo esc_attr( $direct_shop_url ); ?>" style="width:100%; max-width:600px; margin-top:5px;" />
+        <br><small>If you paste a URL here, the "Shop Now" button will link straight to it (no shortcodes needed!).</small>
+    </p>
+    <p><strong>- OR -</strong></p>
     <p>
         <label for="tcc_video_products"><strong>Shopping Products (Shortcodes):</strong></label><br>
         <textarea id="tcc_video_products" name="tcc_video_products" rows="5" style="width:100%; max-width:600px; margin-top:5px;"><?php echo esc_textarea( $shopping_links ); ?></textarea>
-        <br><small>Paste your [shop_product] shortcodes here.</small>
+        <br><small>Paste your [shop_product] shortcodes here to show a grid of products inside the video popup.</small>
     </p>
     <?php
 }
@@ -1145,8 +1153,10 @@ function tcc_save_shoppable_video( $post_id ) {
     if ( isset( $_POST['tcc_video_url'] ) ) {
         update_post_meta( $post_id, '_tcc_video_url', sanitize_text_field( $_POST['tcc_video_url'] ) );
     }
+    if ( isset( $_POST['tcc_direct_shop_url'] ) ) {
+        update_post_meta( $post_id, '_tcc_direct_shop_url', esc_url_raw( $_POST['tcc_direct_shop_url'] ) );
+    }
     if ( isset( $_POST['tcc_video_products'] ) ) {
-        // Allow shortcodes, so don't completely strip tags
         update_post_meta( $post_id, '_tcc_video_products', wp_kses_post( $_POST['tcc_video_products'] ) );
     }
 }

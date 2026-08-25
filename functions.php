@@ -1162,13 +1162,55 @@ function tcc_save_shoppable_video( $post_id ) {
 }
 add_action( 'save_post_shoppable_video', 'tcc_save_shoppable_video' );
 
+
+
 /**
- * Pinterest Hover Save Button on Blog Posts
+ * Custom Pinterest Hover Save Button (Smooth CSS version)
  */
-function tcc_add_pinterest_hover_script() {
+function tcc_add_custom_pinterest_hover_script() {
     // Only load on single blog posts, and specifically EXCLUDE the 'wardrobe' category
     if ( is_single() && get_post_type() === 'post' && ! in_category( 'wardrobe' ) ) {
-        echo '<script async defer src="//assets.pinterest.com/js/pinit.js" data-pin-hover="true" data-pin-tall="true"></script>';
+        ?>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.entry-content img, .post-content img, .tcc-post-content img');
+            const pageUrl = encodeURIComponent(window.location.href);
+            const pageTitle = encodeURIComponent(document.title);
+            
+            images.forEach(img => {
+                // Ignore small icons/emojis
+                if (img.width < 200 || img.height < 200) return;
+                
+                // Prevent double wrapping
+                if (img.parentElement.classList.contains('tcc-pin-wrapper')) return;
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'tcc-pin-wrapper';
+                
+                // Copy some layout styles from the image to the wrapper to prevent layout shift
+                wrapper.style.cssFloat = img.style.cssFloat || getComputedStyle(img).float;
+                wrapper.style.display = (getComputedStyle(img).display === 'inline' || getComputedStyle(img).display === 'inline-block') ? 'inline-block' : 'block';
+                wrapper.style.margin = getComputedStyle(img).margin;
+                img.style.margin = '0'; // Reset margin on image so wrapper handles it
+
+                const mediaUrl = encodeURIComponent(img.src);
+                const desc = encodeURIComponent(img.alt || document.title);
+                const pinUrl = `https://pinterest.com/pin/create/button/?url=${pageUrl}&media=${mediaUrl}&description=${desc}`;
+
+                const btn = document.createElement('a');
+                btn.href = pinUrl;
+                btn.target = '_blank';
+                btn.rel = 'nofollow noopener';
+                btn.className = 'tcc-pin-btn';
+                btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.183 0 7.437 2.983 7.437 6.961 0 4.155-2.617 7.502-6.255 7.502-1.22 0-2.368-.634-2.763-1.385l-.754 2.873c-.273 1.042-1.011 2.346-1.507 3.141 1.144.335 2.35.513 3.593.513 6.62 0 11.986-5.367 11.986-11.988C24.004 5.367 18.638 0 12.017 0z"/></svg> Save`;
+
+                img.parentNode.insertBefore(wrapper, img);
+                wrapper.appendChild(img);
+                wrapper.appendChild(btn);
+            });
+        });
+        </script>
+        <?php
     }
 }
-add_action( 'wp_footer', 'tcc_add_pinterest_hover_script' );
+add_action( 'wp_footer', 'tcc_add_custom_pinterest_hover_script', 99 );

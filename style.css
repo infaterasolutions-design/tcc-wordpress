@@ -4756,3 +4756,47 @@ html, body { max-width: 100%; position: relative; }
         padding: 20px;
     }
 }
+
+/* ==========================================================================
+   CUSTOM PINTEREST HOVER BUTTON
+   ========================================================================== */
+.tcc-pin-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+.tcc-pin-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #E60023;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 24px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.2s ease;
+    z-index: 10;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.tcc-pin-btn:hover {
+    background-color: #ad081b;
+    color: #fff;
+}
+.tcc-pin-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+.tcc-pin-wrapper:hover .tcc-pin-btn {
+    opacity: 1;
+    visibility: visible;
+}

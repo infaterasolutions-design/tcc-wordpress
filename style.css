@@ -1735,7 +1735,9 @@ img {
     transform: none;
     width: 100%;
     position: relative;
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     margin: 0 auto;
     height: auto;
   }
@@ -1747,12 +1749,13 @@ img {
     display: none !important;
   }
   
-  /* Col 1: Clothes Rack */
+  /* Col 1: Left Image (Pushed down) */
   .fp-elsewhere-col1 {
     display: block;
-    width: 70%;
+    width: 47%;
     position: relative;
-    top: 40px;
+    margin-top: 80px; /* Push down to create the staggered look */
+    top: 0;
     left: 0;
     z-index: 1;
     height: auto;
@@ -1765,21 +1768,21 @@ img {
     aspect-ratio: auto;
   }
   
-  /* Col 2: Striped Sweater */
+  /* Col 2: Right Image (Starts at top) */
   .fp-elsewhere-col2 {
     display: block;
-    width: 50%;
-    position: absolute;
-    right: 0;
+    width: 47%;
+    position: relative;
     top: 0;
-    left: auto;
+    right: 0;
+    left: 0;
     z-index: 2;
     height: auto;
   }
   .fp-elsewhere-col2-img-wrapper {
     display: block;
     width: 100%;
-    border: 10px solid #fff; /* Thick white border to overlap gracefully */
+    border: none; /* No border in this design */
     box-sizing: border-box;
   }
   .fp-elsewhere-col2-img-wrapper picture,
@@ -1790,15 +1793,16 @@ img {
     aspect-ratio: auto;
   }
   
-  /* "elsewhere" text */
+  /* "elsewhere" text centered over right image */
   .fp-elsewhere-text {
     font-size: 3.5rem;
-    top: -15px;
-    right: 5%;
+    top: 20px; /* Overlap the top of the right image */
+    right: 0; /* Align with right edge of container */
     left: auto;
+    width: 47%; /* Match width of right column */
+    text-align: center; /* Center precisely over the right image */
     z-index: 3;
     transform: none;
-    width: auto;
     line-height: 1;
   }
 }

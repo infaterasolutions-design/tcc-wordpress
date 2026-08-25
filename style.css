@@ -4788,7 +4788,7 @@ html, body { max-width: 100%; position: relative; }
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 .tcc-pin-btn:hover {
-    background-color: #ad081b; /* Darker red on hover */
+    background-color: #E60023; /* Solid red */
     color: #fff;
 }
 .tcc-pin-btn svg {

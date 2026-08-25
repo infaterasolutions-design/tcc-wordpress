@@ -1736,7 +1736,7 @@ img {
     width: 100%;
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     margin: 0 auto;
     height: auto;
@@ -1749,16 +1749,18 @@ img {
     display: none !important;
   }
   
-  /* Col 1: Left Image (Pushed down) */
+  /* Col 1: Left Image (Fashion Jackson) */
   .fp-elsewhere-col1 {
     display: block;
-    width: 47%;
+    width: 61.66%;
+    padding-top: 5.55vw;
     position: relative;
-    margin-top: 80px; /* Push down to create the staggered look */
+    margin-top: 0;
     top: 0;
     left: 0;
     z-index: 1;
     height: auto;
+    flex-shrink: 0;
   }
   .fp-elsewhere-col1 picture, 
   .fp-elsewhere-col1 picture img {
@@ -1768,21 +1770,25 @@ img {
     aspect-ratio: auto;
   }
   
-  /* Col 2: Right Image (Starts at top) */
+  /* Col 2: Right Image (Section) */
   .fp-elsewhere-col2 {
     display: block;
-    width: 47%;
+    width: 44.16%;
+    margin-left: -5.82%;
     position: relative;
     top: 0;
     right: 0;
     left: 0;
     z-index: 2;
     height: auto;
+    flex-shrink: 0;
   }
   .fp-elsewhere-col2-img-wrapper {
     display: block;
     width: 100%;
-    border: none; /* No border in this design */
+    border-width: 2.66vw 0 2.66vw 2.66vw;
+    border-style: solid;
+    border-color: #FFFFFF;
     box-sizing: border-box;
   }
   .fp-elsewhere-col2-img-wrapper picture,
@@ -1793,17 +1799,17 @@ img {
     aspect-ratio: auto;
   }
   
-  /* "elsewhere" text centered over right image */
+  /* "elsewhere" text */
   .fp-elsewhere-text {
-    font-size: 3.5rem;
-    top: 20px; /* Overlap the top of the right image */
-    right: 0; /* Align with right edge of container */
+    font-size: 20vw;
+    top: 3vw;
+    right: 5vw;
     left: auto;
-    width: 47%; /* Match width of right column */
-    text-align: center; /* Center precisely over the right image */
+    width: auto;
+    text-align: right;
     z-index: 3;
     transform: none;
-    line-height: 1;
+    line-height: 0.5;
   }
 }
 .figma-trending-container {

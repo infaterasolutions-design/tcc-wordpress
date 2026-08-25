@@ -1744,6 +1744,7 @@ img {
   
   /* Hide the 3rd and 4th columns and handle on mobile */
   .fp-elsewhere-col3, 
+  .fp-elsewhere-col3-inner,
   .fp-elsewhere-col4, 
   .fp-elsewhere-handle {
     display: none !important;
@@ -1752,8 +1753,8 @@ img {
   /* Col 1: Left Image */
   .fp-elsewhere-col1 {
     display: block;
-    width: 61.66%; /* 221.99px / 360px */
-    padding-top: 5.55vw; /* 20px / 360px */
+    width: 61.6%;
+    padding-top: 5.5vw;
     position: relative;
     margin-top: 0;
     top: 0;
@@ -1764,17 +1765,17 @@ img {
   .fp-elsewhere-col1 picture, 
   .fp-elsewhere-col1 picture img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
-    aspect-ratio: 221.99 / 307.4; /* Exact Figma aspect ratio */
+    aspect-ratio: 3 / 4;
     object-fit: cover;
   }
   
   /* Col 2: Right Image Wrapper */
   .fp-elsewhere-col2 {
     display: block;
-    width: 44.16%; /* 159px / 360px */
-    margin-left: -5.82%; /* -20.99px / 360px */
+    width: 44.1%;
+    margin-left: -5.7%;
     position: relative;
     top: 0;
     right: 0;
@@ -1785,31 +1786,32 @@ img {
   .fp-elsewhere-col2-img-wrapper {
     display: block;
     width: 100%;
-    border-width: 2.66vw 0 2.66vw 2.66vw; /* 9.6px / 360px */
-    border-style: solid;
-    border-color: #FFFFFF;
+    border: 2.6vw solid #FFFFFF;
+    border-right: none;
+    background-color: #FFFFFF;
     box-sizing: border-box;
   }
   .fp-elsewhere-col2-img-wrapper picture,
   .fp-elsewhere-col2-img-wrapper picture img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
-    aspect-ratio: 149.4 / 203.57; /* Exact Figma aspect ratio */
+    aspect-ratio: 3 / 4;
     object-fit: cover;
   }
   
   /* "elsewhere" text */
   .fp-elsewhere-text {
-    font-size: 20vw; /* 72px / 360px */
-    top: 2vw; /* Adjust to overlap nicely */
-    left: 45vw; /* Start over the left edge of right image */
+    font-size: 14vw;
+    top: -2vw;
+    left: 45vw;
     right: auto;
-    width: auto;
-    text-align: left;
+    width: 55vw;
+    text-align: center;
     z-index: 3;
     transform: none;
-    line-height: 0.5;
+    line-height: 1;
+    white-space: nowrap;
   }
 }
 .figma-trending-container {

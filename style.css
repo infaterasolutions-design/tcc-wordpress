@@ -1786,14 +1786,15 @@ img {
   /* Col 2: Right Container (Pure flexbox overlap) */
   .fp-elsewhere-col2 {
     display: block;
-    width: 44.16%; 
-    margin-left: -5.82%; 
+    width: 44.16%; /* Takes up remaining space + overlap */
+    margin-left: -5.82%; /* Pulls left to overlap Col 1 */
     position: relative;
     top: 0;
     right: 0;
     left: auto;
     z-index: 2;
     flex-shrink: 0;
+    align-self: center; /* Shifts the image down with equal top and bottom margin! */
   }
   
   /* Col 2: Inner Wrapper (Borders and Image) */

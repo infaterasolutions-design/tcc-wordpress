@@ -193,6 +193,20 @@ function tcc_register_post_types() {
 		)
 	);
 
+	// Shoppable Videos CPT
+	register_post_type( 'shoppable_video',
+		array(
+			'labels' => array(
+				'name'          => __( 'Shoppable Videos', 'tcc' ),
+				'singular_name' => __( 'Shoppable Video', 'tcc' )
+			),
+			'public'      => true,
+			'has_archive' => true,
+			'supports'    => array( 'title', 'thumbnail' ), // Only title and thumbnail needed
+			'menu_icon'   => 'dashicons-video-alt3',
+		)
+	);
+
 	// Custom Taxonomy
 	register_taxonomy(
 		'fashion_category',
@@ -1084,3 +1098,56 @@ function tcc_enqueue_editor_featured_image_script() {
         true
     );
 }
+
+/**
+ * Shoppable Videos Meta Boxes
+ */
+function tcc_shoppable_video_meta_boxes() {
+    add_meta_box(
+        'tcc_shoppable_video_details',
+        'Video Details & Shopping Links',
+        'tcc_shoppable_video_html',
+        'shoppable_video',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'tcc_shoppable_video_meta_boxes' );
+
+function tcc_shoppable_video_html( $post ) {
+    wp_nonce_field( 'tcc_save_shoppable_video', 'tcc_shoppable_video_nonce' );
+    $video_url = get_post_meta( $post->ID, '_tcc_video_url', true );
+    $shopping_links = get_post_meta( $post->ID, '_tcc_video_products', true );
+    ?>
+    <p>
+        <label for="tcc_video_url"><strong>Video URL (Instagram, TikTok, or direct .mp4):</strong></label><br>
+        <input type="text" id="tcc_video_url" name="tcc_video_url" value="<?php echo esc_attr( $video_url ); ?>" style="width:100%; max-width:600px; margin-top:5px;" />
+    </p>
+    <p>
+        <label for="tcc_video_products"><strong>Shopping Products (Shortcodes):</strong></label><br>
+        <textarea id="tcc_video_products" name="tcc_video_products" rows="5" style="width:100%; max-width:600px; margin-top:5px;"><?php echo esc_textarea( $shopping_links ); ?></textarea>
+        <br><small>Paste your [shop_product] shortcodes here.</small>
+    </p>
+    <?php
+}
+
+function tcc_save_shoppable_video( $post_id ) {
+    if ( ! isset( $_POST['tcc_shoppable_video_nonce'] ) || ! wp_verify_nonce( $_POST['tcc_shoppable_video_nonce'], 'tcc_save_shoppable_video' ) ) {
+        return;
+    }
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+
+    if ( isset( $_POST['tcc_video_url'] ) ) {
+        update_post_meta( $post_id, '_tcc_video_url', sanitize_text_field( $_POST['tcc_video_url'] ) );
+    }
+    if ( isset( $_POST['tcc_video_products'] ) ) {
+        // Allow shortcodes, so don't completely strip tags
+        update_post_meta( $post_id, '_tcc_video_products', wp_kses_post( $_POST['tcc_video_products'] ) );
+    }
+}
+add_action( 'save_post_shoppable_video', 'tcc_save_shoppable_video' );

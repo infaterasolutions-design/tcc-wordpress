@@ -4667,3 +4667,92 @@ html, body { max-width: 100%; position: relative; }
 	from { transform: rotate(0deg); }
 	to { transform: rotate(360deg); }
 }
+
+/* ==========================================================================
+   SHOP MY VIDEOS - LIGHTBOX
+   ========================================================================== */
+.tcc-smv-lightbox {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tcc-smv-lightbox-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+}
+.tcc-smv-lightbox-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    height: 80vh;
+    background: #fff;
+    border-radius: 12px;
+    z-index: 2;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.tcc-smv-lightbox-close {
+    position: absolute;
+    top: 15px; right: 20px;
+    background: none; border: none;
+    font-size: 30px; color: #333;
+    cursor: pointer; z-index: 10;
+}
+.tcc-smv-lightbox-layout {
+    display: flex;
+    width: 100%; height: 100%;
+}
+.tcc-smv-lightbox-video {
+    flex: 1.2;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+#tcc-smv-player-container {
+    width: 100%; height: 100%;
+    position: absolute; top:0; left:0;
+}
+.tcc-smv-lightbox-shop {
+    flex: 1;
+    background: #FAF6EE;
+    padding: 40px;
+    overflow-y: auto;
+}
+.tcc-smv-shop-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+.tcc-smv-products-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.tcc-smv-products-grid .tcc-affiliate-carousel-wrap {
+    margin: 0 !important;
+}
+
+@media (max-width: 900px) {
+    .tcc-smv-lightbox-layout {
+        flex-direction: column;
+    }
+    .tcc-smv-lightbox-video {
+        flex: 1;
+        min-height: 50vh;
+    }
+    .tcc-smv-lightbox-shop {
+        flex: 1;
+        padding: 20px;
+    }
+}

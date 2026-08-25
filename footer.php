@@ -77,6 +77,25 @@
 	</div>
 </footer>
 
+<!-- Shoppable Video Lightbox -->
+<div id="tcc-smv-lightbox" class="tcc-smv-lightbox" style="display:none;">
+    <div class="tcc-smv-lightbox-overlay"></div>
+    <div class="tcc-smv-lightbox-content">
+        <button class="tcc-smv-lightbox-close" aria-label="Close">&times;</button>
+        <div class="tcc-smv-lightbox-layout">
+            <!-- Left: Video Player -->
+            <div class="tcc-smv-lightbox-video">
+                <div id="tcc-smv-player-container"></div>
+            </div>
+            <!-- Right: Shop Products -->
+            <div class="tcc-smv-lightbox-shop">
+                <h3 class="tcc-smv-shop-title">Shop this look</h3>
+                <div id="tcc-smv-products-container" class="tcc-smv-products-grid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php wp_footer(); ?>
 </body>
 </html>

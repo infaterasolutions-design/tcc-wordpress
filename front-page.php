@@ -382,15 +382,59 @@ get_header(); ?>
 				<div class="figma-smv-slider" id="figma-smv-slider">
 					
 					<?php 
-					$products = [
-						"Play Room Book Display" => "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&q=80&w=400",
-						"Self-Tan Face Drops" => "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=400",
-						"Diamond Hoops" => "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=400",
-						"Flat Hair Clip" => "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&q=80&w=400",
-						"Dress too low cut?" => "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400"
-					];
+					$args = array(
+						'post_type' => 'shoppable_video',
+						'posts_per_page' => 10,
+						'post_status' => 'publish'
+					);
+					$video_query = new WP_Query($args);
 					
-					foreach($products as $title => $img): 
+					if ( $video_query->have_posts() ) :
+						while ( $video_query->have_posts() ) : $video_query->the_post();
+							$title = get_the_title();
+							$img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&q=80&w=400';
+							$video_url = get_post_meta(get_the_ID(), '_tcc_video_url', true);
+							$shopping_links = get_post_meta(get_the_ID(), '_tcc_video_products', true);
+					?>
+					<div class="figma-smv-slide">
+						<!-- Video Thumbnail -->
+						<div class="figma-smv-thumb tcc-smv-trigger" style="cursor: pointer;" data-video="<?php echo esc_url($video_url); ?>">
+							<picture>
+								<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img)); ?>" type="image/avif">
+								<img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>" loading="lazy" />
+							</picture>
+							<div class="figma-smv-play">
+								<div class="figma-smv-play-circle"></div>
+								<svg class="figma-smv-play-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M8 5V19L19 12L8 5Z" fill="#000000"/>
+								</svg>
+							</div>
+						</div>
+						
+						<!-- Product Title -->
+						<div class="figma-smv-product-title text-sans">
+							<?php echo esc_html($title); ?>
+						</div>
+						
+						<!-- Shop Now Button -->
+						<div class="figma-smv-shop-links" style="display:none;"><?php echo do_shortcode($shopping_links); ?></div>
+						<a href="#" class="figma-smv-shop-btn text-sans tcc-smv-shop-trigger">
+							SHOP NOW
+						</a>
+					</div>
+					<?php 
+						endwhile;
+						wp_reset_postdata();
+					else : 
+						// Fallback dummy data if no videos exist yet
+						$products = [
+							"Play Room Book Display" => "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&q=80&w=400",
+							"Self-Tan Face Drops" => "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=400",
+							"Diamond Hoops" => "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=400",
+							"Flat Hair Clip" => "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&q=80&w=400",
+							"Dress too low cut?" => "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400"
+						];
+						foreach($products as $title => $img): 
 					?>
 					<div class="figma-smv-slide">
 						<!-- Video Thumbnail -->
@@ -417,7 +461,10 @@ get_header(); ?>
 							SHOP NOW
 						</a>
 					</div>
-					<?php endforeach; ?>
+					<?php 
+						endforeach; 
+					endif; 
+					?>
 					
 				</div>
 			</div>
@@ -475,6 +522,64 @@ get_header(); ?>
 				});
 			}
 		}
+
+		// Lightbox Logic for Shoppable Videos
+		const lightbox = document.getElementById('tcc-smv-lightbox');
+		const closeBtn = document.querySelector('.tcc-smv-lightbox-close');
+		const overlay = document.querySelector('.tcc-smv-lightbox-overlay');
+		const playerContainer = document.getElementById('tcc-smv-player-container');
+		const productsContainer = document.getElementById('tcc-smv-products-container');
+
+		function closeLightbox() {
+			lightbox.style.display = 'none';
+			playerContainer.innerHTML = ''; // Stop video playback
+			productsContainer.innerHTML = '';
+		}
+
+		if (lightbox) {
+			closeBtn.addEventListener('click', closeLightbox);
+			overlay.addEventListener('click', closeLightbox);
+
+			const triggers = document.querySelectorAll('.tcc-smv-trigger, .tcc-smv-shop-trigger');
+			triggers.forEach(trigger => {
+				trigger.addEventListener('click', (e) => {
+					e.preventDefault();
+					const slide = trigger.closest('.figma-smv-slide');
+					if (!slide) return;
+
+					// 1. Get Shopping Links
+					const shopLinksHtml = slide.querySelector('.figma-smv-shop-links').innerHTML;
+					productsContainer.innerHTML = shopLinksHtml;
+
+					// 2. Get Video URL from the thumb trigger
+					const thumb = slide.querySelector('.tcc-smv-trigger');
+					let videoUrl = thumb ? thumb.getAttribute('data-video') : '';
+					if (!videoUrl) return;
+
+					videoUrl = videoUrl.trim();
+					let playerHtml = '';
+
+					if (videoUrl.includes('instagram.com')) {
+						// Extract post ID to build embed URL
+						// e.g. https://www.instagram.com/reel/C1XJZ5Iuxui/
+						let embedUrl = videoUrl.replace(/\/$/, '') + '/embed';
+						playerHtml = `<iframe src="${embedUrl}" width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" allowfullscreen="true"></iframe>`;
+					} else if (videoUrl.endsWith('.mp4')) {
+						playerHtml = `<video src="${videoUrl}" width="100%" height="100%" controls autoplay style="object-fit: cover; border-radius: 8px;"></video>`;
+					} else if (videoUrl.includes('tiktok.com')) {
+						// For TikTok, you'd usually use their oEmbed or iframe, simple iframe fallback:
+						playerHtml = `<iframe src="https://www.tiktok.com/embed/v2/${videoUrl.split('/').pop()}" width="100%" height="100%" frameborder="0" allowfullscreen="true" allow="encrypted-media;"></iframe>`;
+					} else {
+						// Generic iframe fallback
+						playerHtml = `<iframe src="${videoUrl}" width="100%" height="100%" frameborder="0" allowfullscreen="true"></iframe>`;
+					}
+
+					playerContainer.innerHTML = playerHtml;
+					lightbox.style.display = 'flex';
+				});
+			});
+		}
+
 	});
 	</script>
 

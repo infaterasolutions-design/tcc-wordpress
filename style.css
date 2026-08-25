@@ -1749,17 +1749,16 @@ img {
     display: none !important;
   }
   
-  /* Col 1: Left Image (Fashion Jackson) */
+  /* Col 1: Left Image */
   .fp-elsewhere-col1 {
     display: block;
-    width: 61.66%;
-    padding-top: 5.55vw;
+    width: 61.66%; /* 221.99px / 360px */
+    padding-top: 5.55vw; /* 20px / 360px */
     position: relative;
     margin-top: 0;
     top: 0;
     left: 0;
     z-index: 1;
-    height: auto;
     flex-shrink: 0;
   }
   .fp-elsewhere-col1 picture, 
@@ -1767,26 +1766,26 @@ img {
     width: 100%;
     height: auto;
     display: block;
-    aspect-ratio: auto;
+    aspect-ratio: 221.99 / 307.4; /* Exact Figma aspect ratio */
+    object-fit: cover;
   }
   
-  /* Col 2: Right Image (Section) */
+  /* Col 2: Right Image Wrapper */
   .fp-elsewhere-col2 {
     display: block;
-    width: 44.16%;
-    margin-left: -5.82%;
+    width: 44.16%; /* 159px / 360px */
+    margin-left: -5.82%; /* -20.99px / 360px */
     position: relative;
     top: 0;
     right: 0;
-    left: 0;
+    left: auto;
     z-index: 2;
-    height: auto;
     flex-shrink: 0;
   }
   .fp-elsewhere-col2-img-wrapper {
     display: block;
     width: 100%;
-    border-width: 2.66vw 0 2.66vw 2.66vw;
+    border-width: 2.66vw 0 2.66vw 2.66vw; /* 9.6px / 360px */
     border-style: solid;
     border-color: #FFFFFF;
     box-sizing: border-box;
@@ -1796,17 +1795,18 @@ img {
     width: 100%;
     height: auto;
     display: block;
-    aspect-ratio: auto;
+    aspect-ratio: 149.4 / 203.57; /* Exact Figma aspect ratio */
+    object-fit: cover;
   }
   
   /* "elsewhere" text */
   .fp-elsewhere-text {
-    font-size: 20vw;
-    top: 3vw;
-    right: 5vw;
-    left: auto;
+    font-size: 20vw; /* 72px / 360px */
+    top: 2vw; /* Adjust to overlap nicely */
+    left: 45vw; /* Start over the left edge of right image */
+    right: auto;
     width: auto;
-    text-align: right;
+    text-align: left;
     z-index: 3;
     transform: none;
     line-height: 0.5;

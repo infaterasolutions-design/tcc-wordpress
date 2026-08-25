@@ -1736,27 +1736,34 @@ img {
     width: 100%;
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     margin: 0 auto;
     height: auto;
   }
   
-  /* Hide the 3rd and 4th columns and handle on mobile */
+  /* Hide the 3rd and 4th columns completely on mobile */
   .fp-elsewhere-col3, 
+  .fp-elsewhere-col3 *,
   .fp-elsewhere-col3-inner,
   .fp-elsewhere-col4, 
+  .fp-elsewhere-col4 *,
   .fp-elsewhere-handle {
     display: none !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
   }
   
-  /* Col 1: Left Image */
+  /* Col 1: Left Image (Fashion Jackson) */
   .fp-elsewhere-col1 {
-    display: block;
-    width: 48%; /* Roughly half, leaving a gap */
-    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    width: 61.66%; /* 221.99px / 360px */
+    padding-top: 5.55vw; /* 20px / 360px */
     position: relative;
-    margin-top: 15vw; /* Push down to stagger */
+    margin-top: 0;
     top: 0;
     left: 0;
     z-index: 1;
@@ -1767,46 +1774,54 @@ img {
     width: 100%;
     height: 100%;
     display: block;
-    aspect-ratio: 3 / 4; /* Force a tall portrait shape */
-    object-fit: cover; /* Crop the native landscape image */
+    aspect-ratio: 221.99 / 307.4; /* Exact Figma height */
+    object-fit: cover;
   }
   
-  /* Col 2: Right Image Wrapper */
+  /* Col 2: Right Container */
   .fp-elsewhere-col2 {
-    display: block;
-    width: 48%; /* Roughly half, leaving a gap */
-    margin-left: 0; /* No overlap */
+    display: flex;
+    flex-direction: column;
+    width: 38.33%; /* 138.01px / 360px */
     position: relative;
+    margin-left: 0;
     top: 0;
     right: 0;
     left: auto;
     z-index: 2;
     flex-shrink: 0;
   }
+  
+  /* Col 2: Inner Absolute Wrapper (Overlaps Col 1) */
   .fp-elsewhere-col2-img-wrapper {
-    display: block;
-    width: 100%;
-    border: none; /* No white border in this design */
-    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: -15.2%; /* -20.99px / 138.01px */
+    width: 115.2%; /* 159px / 138.01px */
+    border-width: 2.66vw 0 2.66vw 2.66vw; /* 9.6px / 360px */
+    border-style: solid;
+    border-color: #FFFFFF;
+    background-color: #FFFFFF;
     box-sizing: border-box;
+    display: block;
   }
   .fp-elsewhere-col2-img-wrapper picture,
   .fp-elsewhere-col2-img-wrapper picture img {
     width: 100%;
     height: 100%;
     display: block;
-    aspect-ratio: 3 / 4; /* Force a tall portrait shape */
+    aspect-ratio: 149.4 / 203.57; /* Exact Figma height */
     object-fit: cover;
   }
   
   /* "elsewhere" text */
   .fp-elsewhere-text {
-    font-size: 14vw;
-    top: -4vw;
-    left: auto;
-    right: 0;
-    width: 48%; /* Match right column width */
-    text-align: center; /* Center it precisely over right column */
+    font-size: 13vw; /* Scaled down slightly from 20vw to fit on screen cleanly */
+    top: -2vw;
+    left: 45%;
+    right: auto;
+    width: 55%;
+    text-align: center;
     z-index: 3;
     transform: none;
     line-height: 1;

@@ -1733,8 +1733,7 @@ img {
   }
   .fp-elsewhere-container {
     transform: none;
-    width: 80%; /* Scale down the entire layout so it doesn't look overwhelmingly tall/large */
-    max-width: 340px;
+    width: 100%; /* Restored back to full width */
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -1760,8 +1759,8 @@ img {
   /* Col 1: Left Image */
   .fp-elsewhere-col1 {
     display: block;
-    width: 61.66%; /* 221.99px / 360px */
-    padding-top: 5.55vw; /* 20px / 360px */
+    width: 61.66%; 
+    padding-top: 5.55vw; 
     position: relative;
     margin-top: 0;
     top: 0;
@@ -1772,21 +1771,21 @@ img {
   .fp-elsewhere-col1 picture {
     display: block;
     width: 100%;
-    aspect-ratio: 221.99 / 307.4; /* Restore exact Figma proportion */
+    aspect-ratio: 1 / 1.1; /* Reduced the length (height) exclusively */
     overflow: hidden;
   }
   .fp-elsewhere-col1 picture img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Prevents stretching/distortion */
+    object-fit: cover; 
   }
   
   /* Col 2: Right Container (Pure flexbox overlap) */
   .fp-elsewhere-col2 {
     display: block;
-    width: 44.16%; /* Takes up remaining space + overlap */
-    margin-left: -5.82%; /* Pulls left to overlap Col 1 */
+    width: 44.16%; 
+    margin-left: -5.82%; 
     position: relative;
     top: 0;
     right: 0;
@@ -1799,7 +1798,7 @@ img {
   .fp-elsewhere-col2-img-wrapper {
     display: block;
     width: 100%;
-    border-width: 2.66vw 0 2.66vw 2.66vw; /* 9.6px / 360px */
+    border-width: 2.66vw 0 2.66vw 2.66vw; 
     border-style: solid;
     border-color: #FFFFFF;
     background-color: #FFFFFF;
@@ -1808,20 +1807,20 @@ img {
   .fp-elsewhere-col2-img-wrapper picture {
     display: block;
     width: 100%;
-    aspect-ratio: 149.4 / 203.57; /* Restore exact Figma proportion */
+    aspect-ratio: 1 / 1.1; /* Reduced the length (height) exclusively */
     overflow: hidden;
   }
   .fp-elsewhere-col2-img-wrapper picture img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Prevents stretching/distortion */
+    object-fit: cover; 
   }
   
   /* "elsewhere" text */
   .fp-elsewhere-text {
     position: absolute;
-    font-size: 11vw; /* Scale down slightly to match smaller container */
+    font-size: 13vw; 
     top: 2vw;
     left: 45%;
     right: auto;

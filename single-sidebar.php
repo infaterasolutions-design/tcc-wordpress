@@ -43,7 +43,7 @@ get_header();
 				if ( ! $is_in_content ) :
 			?>
 				<div style="margin-bottom: 48px;">
-					<?php the_post_thumbnail( 'full', array( 'class' => 'article-hero-image', 'style' => 'margin-bottom: 0;' ) ); ?>
+					<?php the_post_thumbnail( 'full', array( 'class' => 'article-hero-image', 'style' => 'margin-bottom: 0;', 'fetchpriority' => 'high', 'loading' => false ) ); ?>
 					<?php $caption = get_the_post_thumbnail_caption(); ?>
 					<?php if ( $caption ) : ?>
 						<p class="text-sans" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 0.8rem; font-style: italic;">

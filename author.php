@@ -74,6 +74,7 @@ $author_avatar = $author_id ? get_avatar( $author_id, 150, '', $author_name, arr
 			<!-- Pagination -->
 			<div style="margin: 60px 0 80px; text-align: center;">
 				<?php the_posts_pagination( array(
+					'mid_size'  => 2,
 					'prev_text' => '&laquo; Previous',
 					'next_text' => 'Next &raquo;',
 				) ); ?>

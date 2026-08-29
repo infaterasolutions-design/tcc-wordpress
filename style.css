@@ -4800,3 +4800,9 @@ html, body { max-width: 100%; position: relative; }
     opacity: 1;
     visibility: visible;
 }
+
+/* Ensure digits in the main blog post title are full height (lining numbers), excluding wardrobe posts */
+.entry-title.article-title {
+    font-variant-numeric: lining-nums;
+    font-feature-settings: "lnum" 1;
+}

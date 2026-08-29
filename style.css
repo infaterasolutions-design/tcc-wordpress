@@ -4806,3 +4806,65 @@ html, body { max-width: 100%; position: relative; }
     font-variant-numeric: lining-nums;
     font-feature-settings: "lnum" 1;
 }
+
+/* ==========================================================================
+   PAGINATION STYLING
+   ========================================================================== */
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+.pagination {
+    margin: 3rem 0;
+    text-align: center;
+}
+.pagination .nav-links {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.pagination .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 16px;
+    background-color: transparent;
+    color: var(--text-color, #111);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+    border: 1px solid #eaeaea;
+}
+.pagination .page-numbers:hover {
+    background-color: #f7f7f7;
+    border-color: #dcdcdc;
+}
+.pagination .page-numbers.current {
+    background-color: #111;
+    color: #fff;
+    border-color: #111;
+    cursor: default;
+}
+.pagination .page-numbers.dots {
+    background-color: transparent;
+    border: none;
+    color: #888;
+    min-width: 20px;
+    padding: 0;
+}

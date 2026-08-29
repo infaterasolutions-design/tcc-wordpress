@@ -77,7 +77,8 @@ add_action( 'widgets_init', 'tcc_widgets_init' );
  */
 function tcc_scripts() {
 	// Google Fonts (Optimized Payload with Elegant Scripts)
-	wp_enqueue_style( 'tcc-google-fonts-v3', 'https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Qwigley&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka', array(), null );
+	// Disabled render-blocking enqueue; loaded asynchronously in wp_head below.
+	// wp_enqueue_style( 'tcc-google-fonts-v3', 'https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Qwigley&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka', array(), null );
 	
 	// Theme stylesheet
 	wp_enqueue_style( 'tcc-theme-style', get_stylesheet_uri(), array(), time() );
@@ -1288,4 +1289,29 @@ function tcc_crawl_budget_protector() {
     }
 }
 add_action( 'wp_head', 'tcc_crawl_budget_protector', 1 );
+
+/* ==========================================================================
+   SPEED OPTIMIZATIONS (Core Web Vitals)
+   ========================================================================== */
+
+// 1. Asynchronous Google Fonts Loader (Preserves all 14 fonts without blocking page load)
+function tcc_async_google_fonts() {
+    echo "<!-- ASYNC GOOGLE FONTS TO BOOST PAGE SPEED -->\n";
+    echo "<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>\n";
+    echo "<link rel='preload' as='style' href='https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Qwigley&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka'>\n";
+    echo "<link rel='stylesheet' media='print' onload='this.media=\"all\"' href='https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Qwigley&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka'>\n";
+    echo "<noscript><link rel='stylesheet' href='https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Qwigley&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka'></noscript>\n";
+}
+add_action( 'wp_head', 'tcc_async_google_fonts', 2 );
+
+// 2. Defer Non-Critical JavaScript Execution
+function tcc_defer_scripts( $tag, $handle, $src ) {
+    // The handles of scripts we want to defer
+    $defer_scripts = array( 'tcc-main', 'tcc-lightbox' );
+    if ( in_array( $handle, $defer_scripts ) ) {
+        return '<script src="' . esc_url( $src ) . '" defer="defer"></script>' . "\n";
+    }
+    return $tag;
+}
+add_filter( 'script_loader_tag', 'tcc_defer_scripts', 10, 3 );
 

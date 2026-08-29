@@ -1240,3 +1240,52 @@ function tcc_pinterest_button_inline_css() {
 }
 add_action( 'wp_head', 'tcc_pinterest_button_inline_css', 999 );
 
+/* ==========================================================================
+   TECHNICAL SEO SAFEGUARDS
+   ========================================================================== */
+
+// 1. SEO Content Quality Enforcer
+function tcc_seo_content_quality_check() {
+    $screen = get_current_screen();
+    if ( ! $screen || $screen->post_type !== 'post' ) return;
+    
+    global $post;
+    if ( ! $post || $post->post_status !== 'publish' ) return;
+    
+    $word_count = str_word_count( strip_tags( strip_shortcodes( $post->post_content ) ) );
+    
+    if ( $word_count < 500 ) {
+        echo '<div class="notice notice-error is-dismissible" style="border-left-color: #E60023;">';
+        echo '<p><strong>🚨 SEO WARNING:</strong> This post only has ' . $word_count . ' words. Google considers posts under 500 words to be "thin content" and is highly likely to flag it as <em>"Crawled - currently not indexed"</em>. Please add more valuable content to force indexing!</p>';
+        echo '</div>';
+    }
+}
+add_action( 'admin_notices', 'tcc_seo_content_quality_check' );
+
+// 2. Automatic Image SEO (Alt Tag Automator)
+function tcc_add_auto_image_alt_tags( $content ) {
+    global $post;
+    if ( ! $post ) return $content;
+
+    $post_title = esc_attr( $post->post_title );
+    
+    // Replace empty alt attributes: alt="" or alt=''
+    $content = preg_replace('/alt=([\'"])\s*([\'"])/i', 'alt=$1' . $post_title . '$2', $content);
+    
+    // Add alt attribute if missing entirely
+    $content = preg_replace('/<img((?:(?!\balt=)[^>])+?)>/i', '<img$1 alt="' . $post_title . '">', $content);
+    
+    return $content;
+}
+add_filter( 'the_content', 'tcc_add_auto_image_alt_tags', 99 );
+
+// 3. Crawl Budget Protector
+function tcc_crawl_budget_protector() {
+    // If it's a useless page that wastes Google's crawl budget, force noindex
+    if ( is_tag() || is_category() || is_author() || is_date() || is_attachment() || is_search() || is_404() ) {
+        echo '<!-- Crawl Budget Protector: Forcing Noindex on Low-Value Page -->';
+        echo '<meta name="robots" content="noindex, follow" />';
+    }
+}
+add_action( 'wp_head', 'tcc_crawl_budget_protector', 1 );
+

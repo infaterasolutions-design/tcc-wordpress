@@ -1217,3 +1217,26 @@ function tcc_add_custom_pinterest_hover_script() {
     }
 }
 add_action( 'wp_footer', 'tcc_add_custom_pinterest_hover_script', 99 );
+function tcc_pinterest_button_inline_css() {
+    ?>
+    <style>
+    /* INLINE CSS TO BYPASS ANY CACHING PLUGINS */
+    .tcc-pin-wrapper { position: relative; display: inline-block; max-width: 100%; }
+    .tcc-pin-btn {
+        position: absolute; top: 20px; left: 20px;
+        background-color: #E60023 !important;
+        color: #ffffff !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 14px !important; font-weight: 700; padding: 8px 12px; border-radius: 24px;
+        text-decoration: none; display: flex; align-items: center; gap: 6px;
+        opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.2s ease;
+        z-index: 999; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+        border: none !important;
+    }
+    .tcc-pin-btn:hover { background-color: #ad081b !important; color: #ffffff !important; }
+    .tcc-pin-btn svg { width: 16px; height: 16px; fill: currentColor; }
+    .tcc-pin-wrapper:hover .tcc-pin-btn { opacity: 1; visibility: visible; }
+    </style>
+    <?php
+}
+add_action( 'wp_head', 'tcc_pinterest_button_inline_css', 999 );

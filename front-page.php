@@ -37,10 +37,10 @@ get_header(); ?>
 				<!-- Column 1 -->
 				<div class="figma-grid-col col-1">
 					<div class="figma-card card-orange">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/Tcc.jpeg" alt="Orange Outfit">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/Tcc.jpeg" alt="Orange Outfit" fetchpriority="high" loading="eager">
 					</div>
 					<div class="figma-card card-teal">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-cloths.jpeg" alt="Teal Outfit">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-cloths.jpeg" alt="Teal Outfit" fetchpriority="high" loading="eager">
 					</div>
 				</div>
 				<!-- Column 2 -->
@@ -256,7 +256,7 @@ get_header(); ?>
 						<a href="<?php the_permalink(); ?>" class="fp-trending-card">
 							<div class="fp-trending-card-img-wrapper">
 								<?php if ( has_post_thumbnail() ) : ?>
-									<?php the_post_thumbnail( 'large', array('fetchpriority' => 'high', 'loading' => false) ); ?>
+									<?php the_post_thumbnail( 'large' ); ?>
 								<?php else : ?>
 									<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400'; ?>
 									<img src="<?php echo esc_url( $dummy_img ); ?>" alt="Dummy Image" style="width:100%; height:100%; object-fit:cover;">

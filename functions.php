@@ -273,12 +273,12 @@ function tcc_shop_the_post_shortcode( $atts, $content = null ) {
                     } else {
                         foreach( array_merge($images, $images, $images) as $img ) : 
                     ?>
-                    <a href="#" class="shop-post-item" style="scroll-snap-align: start; display: block; flex-shrink: 0; width: 100px; height: 100px; background-color: #f5f5f5; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); border-radius: 4px; overflow: hidden; text-decoration: none;">
+                    <button href="#" class="shop-post-item" style="scroll-snap-align: start; display: block; flex-shrink: 0; width: 100px; height: 100px; background-color: #f5f5f5; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); border-radius: 4px; overflow: hidden; text-decoration: none;">
                         <picture class="tcc-picture-wrapper">
                             <source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img)); ?>" type="image/avif">
                             <img src="<?php echo esc_url($img); ?>" alt="Shop Item" style="width: 100% !important; height: 100% !important; min-height: 100%; max-height: 100%; object-fit: cover; display: block; margin: 0 !important; padding: 0 !important;" />
                         </picture>
-                    </a>
+                    </button>
                     <?php 
                         endforeach; 
                     }
@@ -310,9 +310,9 @@ function tcc_shop_product_shortcode( $atts ) {
     if ( empty($a['image']) ) return '';
     
     return '
-    <a href="' . esc_url($a['link']) . '" target="_blank" rel="nofollow noopener" class="shop-post-item" style="scroll-snap-align: start; display: block; flex-shrink: 0; width: 100px; height: 100px; background-color: #f5f5f5; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); border-radius: 4px; overflow: hidden; text-decoration: none;">
+    <button href="' . esc_url($a['link']) . '" target="_blank" rel="nofollow noopener" class="shop-post-item" style="scroll-snap-align: start; display: block; flex-shrink: 0; width: 100px; height: 100px; background-color: #f5f5f5; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); border-radius: 4px; overflow: hidden; text-decoration: none;">
         <img src="' . esc_url($a['image']) . '" alt="Shop Item" style="width: 100% !important; height: 100% !important; min-height: 100%; max-height: 100%; object-fit: cover; display: block; margin: 0 !important; padding: 0 !important;" />
-    </a>';
+    </button>';
 }
 add_shortcode( 'shop_product', 'tcc_shop_product_shortcode' );
 
@@ -359,9 +359,9 @@ function tcc_affiliate_product_shortcode( $atts ) {
     if ( empty($a['image']) ) return '';
     
     return '
-    <a href="' . esc_url($a['link']) . '" target="_blank" rel="nofollow noopener" class="tcc-affiliate-item" style="height: 240px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+    <button href="' . esc_url($a['link']) . '" target="_blank" rel="nofollow noopener" class="tcc-affiliate-item" style="height: 240px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
         <img src="' . esc_url($a['image']) . '" alt="Affiliate Product" style="max-height: 230px; max-width: 200px; width: auto; height: auto; object-fit: contain; margin: 0; padding: 0;" />
-    </a>';
+    </button>';
 }
 add_shortcode( 'affiliate_product', 'tcc_affiliate_product_shortcode' );
 
@@ -958,7 +958,7 @@ function tcc_auto_inject_toc( $content ) {
                     }
                 ?>
                 <li class="<?php echo esc_attr( $class ); ?>">
-                    <a href="#<?php echo esc_attr( $item['id'] ); ?>"><?php echo esc_html( $item['text'] ); ?></a>
+                    <button href="#<?php echo esc_attr( $item['id'] ); ?>"><?php echo esc_html( $item['text'] ); ?></button>
                 </li>
             <?php endforeach; ?>
         </ul>
@@ -1200,11 +1200,10 @@ function tcc_add_custom_pinterest_hover_script() {
                 const desc = encodeURIComponent(img.alt || document.title);
                 const pinUrl = `https://pinterest.com/pin/create/button/?url=${pageUrl}&media=${mediaUrl}&description=${desc}`;
 
-                const btn = document.createElement('a');
-                btn.href = pinUrl;
-                btn.target = '_blank';
-                btn.rel = 'nofollow noopener';
+                const btn = document.createElement('button');
+                btn.onclick = function() { window.open(pinUrl, '_blank'); };
                 btn.className = 'tcc-pin-btn';
+                btn.setAttribute('data-pin-do', 'none'); // Extra protection
                 btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.183 0 7.437 2.983 7.437 6.961 0 4.155-2.617 7.502-6.255 7.502-1.22 0-2.368-.634-2.763-1.385l-.754 2.873c-.273 1.042-1.011 2.346-1.507 3.141 1.144.335 2.35.513 3.593.513 6.62 0 11.986-5.367 11.986-11.988C24.004 5.367 18.638 0 12.017 0z"/></svg> Save`;
 
                 img.parentNode.insertBefore(wrapper, img);
@@ -1240,3 +1239,4 @@ function tcc_pinterest_button_inline_css() {
     <?php
 }
 add_action( 'wp_head', 'tcc_pinterest_button_inline_css', 999 );
+

@@ -4991,6 +4991,7 @@ html, body { max-width: 100%; position: relative; }
     line-height: 1.35;
     color: #1F1E19;
     margin: 0;
+    font-variant-numeric: lining-nums;
 }
 
 .tcc-inline-read-more .rm-time {

@@ -1370,6 +1370,10 @@ function tcc_read_more_shortcode( $atts ) {
         <div class="rm-posts-container">
             <?php while ( $related->have_posts() ) : $related->the_post(); ?>
                 <a href="<?php the_permalink(); ?>" class="rm-post-link">
+                    <div class="rm-post-info">
+                        <h4 class="rm-title"><?php echo wp_trim_words( get_the_title(), 12, '...' ); ?></h4>
+                        <span class="rm-time"><?php echo tcc_get_reading_time( get_the_ID() ); ?></span>
+                    </div>
                     <div class="rm-thumbnail">
                         <?php 
                         if ( has_post_thumbnail() ) {
@@ -1379,10 +1383,6 @@ function tcc_read_more_shortcode( $atts ) {
                         }
                         ?>
                         <div style="width: 100%; height: 100%; background-image: url('<?php echo esc_url($bg_url); ?>'); background-size: cover; background-position: center; border-radius: 0;"></div>
-                    </div>
-                    <div class="rm-post-info">
-                        <h4 class="rm-title"><?php echo wp_trim_words( get_the_title(), 12, '...' ); ?></h4>
-                        <span class="rm-time"><?php echo tcc_get_reading_time( get_the_ID() ); ?></span>
                     </div>
                 </a>
             <?php endwhile; wp_reset_postdata(); ?>

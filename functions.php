@@ -1371,11 +1371,14 @@ function tcc_read_more_shortcode( $atts ) {
             <?php while ( $related->have_posts() ) : $related->the_post(); ?>
                 <a href="<?php the_permalink(); ?>" class="rm-post-link">
                     <div class="rm-thumbnail">
-                        <?php if ( has_post_thumbnail() ) : ?>
-                            <?php the_post_thumbnail( 'medium', array( 'style' => 'width:100%; height:100%; object-fit:cover;' ) ); ?>
-                        <?php else : ?>
-                            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=112&q=80" style="width:100%; height:100%; object-fit:cover;" alt="Fallback">
-                        <?php endif; ?>
+                        <?php 
+                        if ( has_post_thumbnail() ) {
+                            $bg_url = get_the_post_thumbnail_url( get_the_ID(), 'medium' );
+                        } else {
+                            $bg_url = 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=112&q=80';
+                        }
+                        ?>
+                        <div style="width: 100%; height: 100%; background-image: url('<?php echo esc_url($bg_url); ?>'); background-size: cover; background-position: center; border-radius: 0;"></div>
                     </div>
                     <div class="rm-post-info">
                         <h4 class="rm-title"><?php echo wp_trim_words( get_the_title(), 12, '...' ); ?></h4>

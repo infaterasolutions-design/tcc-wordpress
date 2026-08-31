@@ -33,17 +33,30 @@ document.addEventListener('DOMContentLoaded', function() {
         overlayImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
     }
 
+    let isLightboxOpen = false;
+
     // Function to open lightbox
     function openLightbox(src) {
+        if (isLightboxOpen) return;
+        isLightboxOpen = true;
+
         overlayImg.src = src;
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent scrolling
         scale = 1; pointX = 0; pointY = 0;
         setTransform();
+
+        // Add history state so mobile back button closes lightbox instead of page
+        if (window.history && window.history.pushState) {
+            window.history.pushState({ lightbox: 'open' }, '');
+        }
     }
 
     // Function to close lightbox
-    function closeLightbox() {
+    function closeLightbox(fromPopState = false) {
+        if (!isLightboxOpen) return;
+        isLightboxOpen = false;
+
         overlay.classList.remove('active');
         document.body.style.overflow = '';
         setTimeout(() => { 
@@ -52,7 +65,20 @@ document.addEventListener('DOMContentLoaded', function() {
             overlayImg.style.transform = '';
             overlayImg.style.transition = '';
         }, 300); // clear after transition
+
+        // If the user manually clicked close, remove the pushed state
+        if (!fromPopState && window.history && window.history.state && window.history.state.lightbox === 'open') {
+            window.history.back();
+        }
     }
+
+    // Listen for mobile back button
+    window.addEventListener('popstate', function(e) {
+        if (isLightboxOpen) {
+            // Close lightbox without triggering another history.back()
+            closeLightbox(true);
+        }
+    });
 
     // Attach double click event to all images
     images.forEach(img => {

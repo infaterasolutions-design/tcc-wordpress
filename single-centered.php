@@ -31,8 +31,8 @@ get_header(); ?>
 		</header>
 
 		<!-- FEATURED IMAGE -->
+		<?php if ( has_post_thumbnail() ) : ?>
 		<div class="centered-post-image">
-			<?php if ( has_post_thumbnail() ) : ?>
 				<?php the_post_thumbnail( 'full', array( 'style' => 'width: 100%; height: auto; display: block;' ) ); ?>
 				<?php $caption = get_the_post_thumbnail_caption(); ?>
 				<?php if ( $caption ) : ?>
@@ -40,13 +40,8 @@ get_header(); ?>
 						<?php echo esc_html( $caption ); ?>
 					</p>
 				<?php endif; ?>
-			<?php else : ?>
-					<?php 
-						$dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1200'; 
-						echo tcc_get_picture_tag($dummy_img, 'Featured', '', 'width: 100%; height: auto; display: block;');
-					?>
-			<?php endif; ?>
 		</div>
+		<?php endif; ?>
 
 		<!-- ARTICLE BODY -->
 		<div id="content" class="entry-content post-content content article-content">

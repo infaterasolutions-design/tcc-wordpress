@@ -52,14 +52,6 @@ get_header();
 					<?php endif; ?>
 				</div>
 				<?php endif; // End check for is_in_content ?>
-			<?php else: ?>
-				<!-- Fallback dummy image for wardrobe -->
-				<div style="margin-bottom: 48px;">
-					<?php 
-						$dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1200'; 
-						echo tcc_get_picture_tag($dummy_img, 'Featured', 'article-hero-image', 'margin-bottom: 0;');
-					?>
-				</div>
 			<?php endif; ?>
 			</header>
 

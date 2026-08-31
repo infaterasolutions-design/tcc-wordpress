@@ -959,7 +959,7 @@ function tcc_auto_inject_toc( $content ) {
                     }
                 ?>
                 <li class="<?php echo esc_attr( $class ); ?>">
-                    <button href="#<?php echo esc_attr( $item['id'] ); ?>"><?php echo esc_html( $item['text'] ); ?></button>
+                    <a href="#<?php echo esc_attr( $item['id'] ); ?>"><?php echo esc_html( $item['text'] ); ?></a>
                 </li>
             <?php endforeach; ?>
         </ul>

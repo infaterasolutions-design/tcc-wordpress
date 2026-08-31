@@ -3919,6 +3919,7 @@ html, body { max-width: 100%; position: relative; }
     width: 100%;
     margin-bottom: 4px;
     padding-left: 0;
+    text-align: left !important;
 }
 .article-body .tcc-toc-item:last-child {
     margin-bottom: 0;
@@ -5001,4 +5002,17 @@ html, body { max-width: 100%; position: relative; }
     font-size: 14px;
     line-height: 1.35;
     color: #68645A;
+}
+
+.article-body .tcc-toc-item a {
+    font-family: 'Figtree', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17.1px;
+    line-height: 1.6;
+    color: #131313;
+    text-decoration: none;
+    background: none !important; /* override green highlight */
+    text-align: left !important;
+    display: inline-block;
 }

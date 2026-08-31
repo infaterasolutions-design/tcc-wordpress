@@ -1321,3 +1321,72 @@ function tcc_defer_scripts( $tag, $handle, $src ) {
 }
 add_filter( 'script_loader_tag', 'tcc_defer_scripts', 10, 3 );
 
+/* ==========================================================================
+   INLINE READ MORE SHORTCODE
+   ========================================================================== */
+
+function tcc_get_reading_time( $post_id ) {
+    $content = get_post_field( 'post_content', $post_id );
+    $word_count = str_word_count( strip_tags( strip_shortcodes( $content ) ) );
+    $reading_time = ceil( $word_count / 200 ); // average reading speed 200 wpm
+    if ($reading_time < 1) $reading_time = 1;
+    return $reading_time . ' min read';
+}
+
+function tcc_read_more_shortcode( $atts ) {
+    global $post;
+    
+    // Get the first category of the current post
+    $categories = get_the_category( $post->ID );
+    $category_name = 'Fashion';
+    $category_link = '#';
+    $category_id = 0;
+    
+    if ( ! empty( $categories ) ) {
+        $category_name = esc_html( $categories[0]->name );
+        $category_link = esc_url( get_category_link( $categories[0]->term_id ) );
+        $category_id = $categories[0]->term_id;
+    }
+    
+    // Query 3 related posts
+    $args = array(
+        'cat'            => $category_id,
+        'post__not_in'   => array( $post->ID ),
+        'posts_per_page' => 3,
+        'orderby'        => 'rand'
+    );
+    $related = new WP_Query( $args );
+    
+    if ( ! $related->have_posts() ) {
+        return '';
+    }
+    
+    ob_start();
+    ?>
+    <div class="tcc-inline-read-more">
+        <div class="rm-header">
+            <span class="rm-prefix">Read More on </span><a href="<?php echo $category_link; ?>" class="rm-category"><?php echo $category_name; ?></a>
+        </div>
+        <div class="rm-posts-container">
+            <?php while ( $related->have_posts() ) : $related->the_post(); ?>
+                <a href="<?php the_permalink(); ?>" class="rm-post-link">
+                    <div class="rm-thumbnail">
+                        <?php if ( has_post_thumbnail() ) : ?>
+                            <?php the_post_thumbnail( 'medium', array( 'style' => 'width:100%; height:100%; object-fit:cover;' ) ); ?>
+                        <?php else : ?>
+                            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=112&q=80" style="width:100%; height:100%; object-fit:cover;" alt="Fallback">
+                        <?php endif; ?>
+                    </div>
+                    <div class="rm-post-info">
+                        <h4 class="rm-title"><?php echo wp_trim_words( get_the_title(), 12, '...' ); ?></h4>
+                        <span class="rm-time"><?php echo tcc_get_reading_time( get_the_ID() ); ?></span>
+                    </div>
+                </a>
+            <?php endwhile; wp_reset_postdata(); ?>
+        </div>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'tcc_read_more', 'tcc_read_more_shortcode' );
+

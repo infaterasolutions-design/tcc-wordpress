@@ -4868,3 +4868,119 @@ html, body { max-width: 100%; position: relative; }
     min-width: 20px;
     padding: 0;
 }
+
+/* ==========================================================================
+   INLINE READ MORE SHORTCODE (Newsweek Style)
+   ========================================================================== */
+
+.tcc-inline-read-more {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    border: 0.8px solid #E7E0C9;
+    margin: 2.5rem auto; /* Centered in content */
+    background-color: #fff;
+    clear: both;
+}
+
+.tcc-inline-read-more .rm-header {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 12px 24px;
+    width: 100%;
+    border-bottom: 0.8px solid #E7E0C9;
+}
+
+.tcc-inline-read-more .rm-prefix {
+    font-family: 'Playfair Display', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.35;
+    color: #A6A08E;
+}
+
+.tcc-inline-read-more .rm-category {
+    font-family: 'Playfair Display', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.35;
+    text-decoration: underline;
+    color: #1F1E19;
+    margin-left: 4px;
+}
+
+.tcc-inline-read-more .rm-posts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 24px 24px;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.tcc-inline-read-more .rm-post-link {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    padding-bottom: 16px;
+    gap: 12px;
+    width: 100%;
+    text-decoration: none;
+    border-bottom: 1px solid #E7E0C9;
+    transition: opacity 0.2s ease;
+}
+
+.tcc-inline-read-more .rm-post-link:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.tcc-inline-read-more .rm-post-link:hover {
+    opacity: 0.8;
+}
+
+.tcc-inline-read-more .rm-thumbnail {
+    width: 112px;
+    height: 75px;
+    flex: none;
+    background-color: #f5f5f5;
+}
+
+.tcc-inline-read-more .rm-post-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.tcc-inline-read-more .rm-title {
+    font-family: 'Playfair Display', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.35;
+    color: #1F1E19;
+    margin: 0;
+}
+
+.tcc-inline-read-more .rm-time {
+    font-family: 'Noto Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.35;
+    color: #68645A;
+}

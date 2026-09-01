@@ -1399,3 +1399,11 @@ function tcc_read_more_shortcode( $atts ) {
 }
 add_shortcode( 'tcc_read_more', 'tcc_read_more_shortcode' );
 
+// Force all category outputs in lists/breadcrumbs to be Title Case (fixes ALL CAPS database names)
+add_filter( 'the_category', 'tcc_capitalize_categories' );
+function tcc_capitalize_categories( $thelist ) {
+    return preg_replace_callback( '/>([^<]+)<\/a>/', function( $matches ) {
+        return '>' . ucwords( strtolower( $matches[1] ) ) . '</a>';
+    }, $thelist );
+}
+

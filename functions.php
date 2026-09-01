@@ -1271,10 +1271,16 @@ function tcc_add_auto_image_alt_tags( $content ) {
     $post_title = esc_attr( $post->post_title );
     
     // Replace empty alt attributes: alt="" or alt=''
-    $content = preg_replace('/alt=([\'"])\s*([\'"])/i', 'alt=$1' . $post_title . '$2', $content);
+    $new_content = preg_replace('/alt=([\'"])\s*([\'"])/i', 'alt=$1' . $post_title . '$2', $content);
+    if ( $new_content !== null ) {
+        $content = $new_content;
+    }
     
-    // Add alt attribute if missing entirely
-    $content = preg_replace('/<img((?:(?!\balt=)[^>])+?)>/i', '<img$1 alt="' . $post_title . '">', $content);
+    // Add alt attribute if missing entirely (using a safer regex to prevent backtrack limit crashes)
+    $new_content = preg_replace('/<img(?![^>]*\balt=)([^>]+)>/i', '<img$1 alt="' . $post_title . '">', $content);
+    if ( $new_content !== null ) {
+        $content = $new_content;
+    }
     
     return $content;
 }

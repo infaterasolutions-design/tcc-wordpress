@@ -453,46 +453,6 @@ function tcc_custom_comment_markup($comment, $args, $depth) {
     <?php
 }
 
-/**
- * 1. Performance Bloat Cleanup
- */
-add_action('init', function() {
-    remove_action('wp_head', 'print_emoji_detection_script', 7);
-    remove_action('wp_print_styles', 'print_emoji_styles');
-    remove_action('admin_print_scripts', 'print_emoji_detection_script');
-    remove_action('admin_print_styles', 'print_emoji_styles');
-});
-
-function tcc_remove_gutenberg_bloat() {
-    if (!is_admin_bar_showing()) {
-        wp_deregister_style('dashicons');
-    }
-    
-    $styles = [
-        'wp-block-library',
-        'wp-block-library-theme',
-        'wc-blocks-style',
-        'global-styles',
-        'classic-theme-styles'
-    ];
-    
-    foreach ($styles as $style) {
-        wp_dequeue_style($style);
-        wp_deregister_style($style);
-    }
-}
-// Hook into both enqueue and print at priority 9999 to catch late enqueues
-add_action('wp_enqueue_scripts', 'tcc_remove_gutenberg_bloat', 9999);
-add_action('wp_print_styles', 'tcc_remove_gutenberg_bloat', 9999);
-
-// Remove Global Styles completely
-remove_action('wp_enqueue_scripts', 'wp_enqueue_global_styles');
-remove_action('wp_footer', 'wp_enqueue_global_styles', 1);
-remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
-
-// Disable separate block styles (prevents wp-block-heading-inline-css etc.)
-add_filter('should_load_separate_core_block_assets', '__return_false');
-remove_action('wp_enqueue_scripts', 'wp_common_block_scripts_and_styles');
 
 // Bulletproof body class cleanup: Forcefully strip any remaining elementor template classes
 add_filter('body_class', function($classes) {

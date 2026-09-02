@@ -97,10 +97,5 @@
 </div>
 
 <?php wp_footer(); ?>
-<div style="text-align:center; padding: 20px; background:#000; color:#0f0; font-family:monospace; position:relative; z-index:99999;">
-	Backend Load Time: <?php echo timer_stop(0, 3); ?> seconds. <br>
-	If this says ~1 second but you waited 1 minute, the issue is your browser downloading files.<br>
-	If this says 60+ seconds, the issue is a WordPress background process timing out.
-</div>
 </body>
 </html>

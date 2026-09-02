@@ -277,7 +277,7 @@ function tcc_shop_the_post_shortcode( $atts, $content = null ) {
                     <button href="#" class="shop-post-item" style="scroll-snap-align: start; display: block; flex-shrink: 0; width: 100px; height: 100px; background-color: #f5f5f5; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); border-radius: 4px; overflow: hidden; text-decoration: none;">
                         <picture class="tcc-picture-wrapper">
                             <source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img)); ?>" type="image/avif">
-                            <img src="<?php echo esc_url($img); ?>" alt="Shop Item" style="width: 100% !important; height: 100% !important; min-height: 100%; max-height: 100%; object-fit: cover; display: block; margin: 0 !important; padding: 0 !important;" />
+                            <img src="<?php echo esc_url($img); ?>" alt="Shop Item" loading="lazy" width="100" height="100" style="width: 100% !important; height: 100% !important; min-height: 100%; max-height: 100%; object-fit: cover; display: block; margin: 0 !important; padding: 0 !important;" />
                         </picture>
                     </button>
                     <?php 
@@ -312,7 +312,7 @@ function tcc_shop_product_shortcode( $atts ) {
     
     return '
     <button href="' . esc_url($a['link']) . '" target="_blank" rel="nofollow noopener" class="shop-post-item" style="scroll-snap-align: start; display: block; flex-shrink: 0; width: 100px; height: 100px; background-color: #f5f5f5; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); border-radius: 4px; overflow: hidden; text-decoration: none;">
-        <img src="' . esc_url($a['image']) . '" alt="Shop Item" style="width: 100% !important; height: 100% !important; min-height: 100%; max-height: 100%; object-fit: cover; display: block; margin: 0 !important; padding: 0 !important;" />
+        <img src="' . esc_url($a['image']) . '" alt="Shop Item" loading="lazy" width="100" height="100" style="width: 100% !important; height: 100% !important; min-height: 100%; max-height: 100%; object-fit: cover; display: block; margin: 0 !important; padding: 0 !important;" />
     </button>';
 }
 add_shortcode( 'shop_product', 'tcc_shop_product_shortcode' );
@@ -361,7 +361,7 @@ function tcc_affiliate_product_shortcode( $atts ) {
     
     return '
     <button href="' . esc_url($a['link']) . '" target="_blank" rel="nofollow noopener" class="tcc-affiliate-item" style="height: 240px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
-        <img src="' . esc_url($a['image']) . '" alt="Affiliate Product" style="max-height: 230px; max-width: 200px; width: auto; height: auto; object-fit: contain; margin: 0; padding: 0;" />
+        <img src="' . esc_url($a['image']) . '" alt="Affiliate Product" loading="lazy" width="200" height="230" style="max-height: 230px; max-width: 200px; width: auto; height: auto; object-fit: contain; margin: 0; padding: 0;" />
     </button>';
 }
 add_shortcode( 'affiliate_product', 'tcc_affiliate_product_shortcode' );
@@ -401,10 +401,10 @@ function tcc_image_split_shortcode( $atts ) {
     return '
     <div class="tcc-image-split" style="display: flex; gap: 20px; width: 100%; margin: 3rem 0;">
         <div style="flex: 1; overflow: hidden; border-radius: 4px;">
-            <img src="' . esc_url($a['left']) . '" style="width: 100%; height: 100%; object-fit: cover; display: block; margin: 0;" alt="Left Image" />
+            <img src="' . esc_url($a['left']) . '" alt="Left Image" loading="lazy" width="600" height="800" style="width: 100%; height: 100%; object-fit: cover; display: block; margin: 0;" />
         </div>
         <div style="flex: 1; overflow: hidden; border-radius: 4px;">
-            <img src="' . esc_url($a['right']) . '" style="width: 100%; height: 100%; object-fit: cover; display: block; margin: 0;" alt="Right Image" />
+            <img src="' . esc_url($a['right']) . '" alt="Right Image" loading="lazy" width="600" height="800" style="width: 100%; height: 100%; object-fit: cover; display: block; margin: 0;" />
         </div>
     </div>
     <style>
@@ -1308,11 +1308,11 @@ function tcc_async_google_fonts() {
     echo "window.addEventListener('load', function() {\n";
     echo "  var link = document.createElement('link');\n";
     echo "  link.rel = 'stylesheet';\n";
-    echo "  link.href = 'https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Qwigley&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka';\n";
+    echo "  link.href = 'https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka';\n";
     echo "  document.head.appendChild(link);\n";
     echo "});\n";
     echo "</script>\n";
-    echo "<noscript><link rel='stylesheet' href='https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Qwigley&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka'></noscript>\n";
+    echo "<noscript><link rel='stylesheet' href='https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka'></noscript>\n";
 }
 add_action( 'wp_head', 'tcc_async_google_fonts', 2 );
 

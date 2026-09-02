@@ -1403,7 +1403,7 @@ function tcc_capitalize_categories( $thelist ) {
         return '>' . ucwords( strtolower( $matches[1] ) ) . '</a>';
     }, $thelist );
 }
-}
+
 
 // -----------------------------------------------------------------------------
 // ONE-TIME IMAGE COMPRESSOR (Fixes 5-10 second loading time from huge assets)

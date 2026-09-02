@@ -1402,4 +1402,4 @@ function tcc_capitalize_categories( $thelist ) {
     return preg_replace_callback( '/>([^<]+)<\/a>/', function( $matches ) {
         return '>' . ucwords( strtolower( $matches[1] ) ) . '</a>';
     }, $thelist );
-}');
+}

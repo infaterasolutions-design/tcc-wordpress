@@ -1300,19 +1300,16 @@ add_action( 'wp_head', 'tcc_crawl_budget_protector', 1 );
    SPEED OPTIMIZATIONS (Core Web Vitals)
    ========================================================================== */
 
-// 1. Fully Deferred Google Fonts Loader (Fixes the infinite loading spinner)
+// 1. Optimized Google Fonts Loader (Fixes FOUT / layout shifts)
 function tcc_async_google_fonts() {
-    echo "<!-- FULLY DEFERRED GOOGLE FONTS -->\n";
+    $font_url = 'https://fonts.googleapis.com/css2?display=block&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka';
+    
+    echo "<!-- OPTIMIZED GOOGLE FONTS LOADER -->\n";
+    echo "<link rel='preconnect' href='https://fonts.googleapis.com'>\n";
     echo "<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>\n";
-    echo "<script>\n";
-    echo "window.addEventListener('load', function() {\n";
-    echo "  var link = document.createElement('link');\n";
-    echo "  link.rel = 'stylesheet';\n";
-    echo "  link.href = 'https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka';\n";
-    echo "  document.head.appendChild(link);\n";
-    echo "});\n";
-    echo "</script>\n";
-    echo "<noscript><link rel='stylesheet' href='https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka'></noscript>\n";
+    echo "<link rel='preload' as='style' href='" . esc_url($font_url) . "'>\n";
+    echo "<link rel='stylesheet' media='print' onload=\"this.media='all'\" href='" . esc_url($font_url) . "'>\n";
+    echo "<noscript><link rel='stylesheet' href='" . esc_url($font_url) . "'></noscript>\n";
 }
 add_action( 'wp_head', 'tcc_async_google_fonts', 2 );
 

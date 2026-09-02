@@ -172,10 +172,18 @@ get_header(); ?>
 		<div class="fp-creator-hub-container relative">
 			<!-- Header -->
 			<div class="fp-creator-hub-header">
-				<div class="fp-creator-hub-title-wrapper">
+				<div class="fp-creator-hub-title-wrapper" id="ch-title" style="opacity: 0; transition: opacity 0.5s ease;">
 					<span class="fp-creator-hub-initial">C</span>
 					<span class="fp-creator-hub-title">REATOR HUB</span>
 				</div>
+				<noscript><style>#ch-title { opacity: 1 !important; }</style></noscript>
+				<script>
+					if (document.fonts) {
+						document.fonts.ready.then(function() { document.getElementById('ch-title').style.opacity = '1'; });
+					} else {
+						document.getElementById('ch-title').style.opacity = '1';
+					}
+				</script>
 				<p class="fp-creator-hub-subtitle">I'm leveraging my collective industry experience to help you grow your content creation into a successful brand.</p>
 			</div>
 

@@ -418,48 +418,6 @@ add_shortcode( 'image_split', 'tcc_image_split_shortcode' );
 
 // Custom Comment Markup
 function tcc_custom_comment_markup($comment, $args, $depth) {
-    // omitted for brevity, this just satisfies the replacement chunk
-}
-
-// -----------------------------------------------------------------------------
-// ONE-TIME IMAGE COMPRESSOR (Fixes 5-10 second loading time from huge assets)
-// -----------------------------------------------------------------------------
-function tcc_compress_hero_images_once() {
-    if ( get_option('tcc_hero_images_compressed') ) {
-        return;
-    }
-    
-    $dir = get_template_directory() . '/assets/images';
-    $files = glob($dir . '/*.jpeg');
-    if ( ! $files ) return;
-    
-    foreach ($files as $file) {
-        $image = @imagecreatefromjpeg($file);
-        if ( $image ) {
-            $width = imagesx($image);
-            $height = imagesy($image);
-            
-            // If the image is massive (e.g., direct from camera/Figma export)
-            if ( $width > 800 ) {
-                $new_width = 800;
-                $new_height = (int) floor($height * (800 / $width));
-                $resized = imagecreatetruecolor($new_width, $new_height);
-                
-                // Preserve transparency/colors if needed, though it's JPEG
-                imagecopyresampled($resized, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-                
-                // Overwrite original file with highly compressed Web-ready 75% quality JPEG
-                imagejpeg($resized, $file, 75);
-                imagedestroy($resized);
-            }
-            imagedestroy($image);
-        }
-    }
-    // Mark as done so it never runs again
-    update_option('tcc_hero_images_compressed', 'yes');
-}
-add_action('init', 'tcc_compress_hero_images_once');
-
     ?>
     <li <?php comment_class(empty($args['has_children']) ? '' : 'parent'); ?> id="comment-<?php comment_ID() ?>" style="margin-bottom: 2.5rem;">
         <div class="tcc-comment-body" style="display: flex; gap: 1.5rem;">

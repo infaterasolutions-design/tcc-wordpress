@@ -1374,53 +1374,39 @@ add_action( 'enqueue_block_editor_assets', function() {
 } );
 
 // Make Yoast SEO (Meta Boxes) seamlessly attach to the bottom of the Gutenberg content
-add_action('admin_print_styles', function() {
-    echo '<style>
-        /* Force remove the gray background and borders */
-        .edit-post-layout__metaboxes,
-        .edit-post-meta-boxes-area,
-        .edit-post-meta-boxes-area #poststuff,
-        .edit-post-meta-boxes-area .postbox-container {
-            background-color: transparent !important;
-            background: transparent !important;
-            border: none !important;
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-            box-shadow: none !important;
-        }
+add_action('admin_footer', function() {
+    echo "<script>
+        // Use an observer to constantly watch the DOM for the Meta Boxes section and blend it
+        const observer = new MutationObserver((mutations) => {
+            const headers = document.querySelectorAll('.components-panel__header h2, .edit-post-meta-boxes-area__header h2, .edit-post-meta-boxes-area .components-panel__header');
+            headers.forEach(h => {
+                if (h.innerText && h.innerText.includes('Meta Boxes')) {
+                    const headerWrapper = h.closest('.components-panel__header') || h;
+                    headerWrapper.style.setProperty('display', 'none', 'important');
+                }
+            });
+            
+            // Remove gray backgrounds from wrappers
+            const wrappers = document.querySelectorAll('.edit-post-layout__metaboxes, .edit-post-meta-boxes-area, .edit-post-meta-boxes-area #poststuff, .metabox-location-normal');
+            wrappers.forEach(w => {
+                w.style.setProperty('background-color', 'transparent', 'important');
+                w.style.setProperty('border', 'none', 'important');
+                w.style.setProperty('box-shadow', 'none', 'important');
+                w.style.setProperty('padding-top', '0', 'important');
+            });
+            
+            // Blend Yoast box
+            const yoastBox = document.querySelector('#wpseo_meta');
+            if (yoastBox) {
+                yoastBox.style.setProperty('border', 'none', 'important');
+                yoastBox.style.setProperty('box-shadow', 'none', 'important');
+                yoastBox.style.setProperty('background', '#fff', 'important');
+            }
+        });
         
-        /* Hide the ugly "Meta Boxes" accordion header completely */
-        .edit-post-meta-boxes-area .components-panel__header,
-        .edit-post-layout__metaboxes > .components-panel__header,
-        .edit-post-meta-boxes-area > .edit-post-meta-boxes-area__header {
-            display: none !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-            height: 0 !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-        
-        /* Blend the Yoast box into the white background */
-        .edit-post-meta-boxes-area {
-            max-width: 840px !important;
-            margin: 0 auto !important;
-            padding: 0 16px !important;
-        }
-        .edit-post-meta-boxes-area .postbox {
-            border: none !important;
-            box-shadow: none !important;
-            background: #fff !important;
-            margin-top: -10px !important;
-        }
-        
-        /* Make the Yoast header look cleaner */
-        .edit-post-meta-boxes-area .postbox-header {
-            border-bottom: 1px solid #eee !important;
-            background: #fff !important;
-        }
-    </style>';
-}, 99999);
+        observer.observe(document.body, { childList: true, subtree: true });
+    </script>";
+});
 
 // Forcefully activate Gutenberg plugin for the user
 add_action('admin_init', function() {

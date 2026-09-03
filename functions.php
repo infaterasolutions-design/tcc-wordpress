@@ -37,7 +37,7 @@ function tcc_theme_setup() {
 
 	add_theme_support( 'editor-styles' );
 	add_editor_style( array(
-		'style.css',
+		'editor-style.css',
 		'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka&display=block'
 	) );
 }

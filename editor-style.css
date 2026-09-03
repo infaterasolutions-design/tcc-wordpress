@@ -1,0 +1,40 @@
+/* 
+ * Gutenberg Editor Styles
+ * This ensures the block editor perfectly matches the frontend .article-content styling.
+ */
+
+body, .editor-styles-wrapper, p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #131313;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    color: #131313;
+    font-weight: 700;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.5rem; }
+
+a {
+    color: #131313;
+    text-decoration: underline;
+}
+
+ul, ol {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    border-left: 4px solid #131313;
+    padding-left: 1rem;
+}

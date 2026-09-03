@@ -1356,17 +1356,6 @@ function tcc_read_more_shortcode( $atts ) {
 }
 add_shortcode( 'tcc_read_more', 'tcc_read_more_shortcode' );
 
-// Disable Gutenberg Fullscreen Mode by default to restore WP Admin Sidebar
-add_action( 'enqueue_block_editor_assets', function() {
-    $script = "window.addEventListener('load', function() {
-        const isFullscreenMode = wp.data.select('core/edit-post').isFeatureActive('fullscreenMode');
-        if (isFullscreenMode) {
-            wp.data.dispatch('core/edit-post').toggleFeature('fullscreenMode');
-        }
-    });";
-    wp_add_inline_script( 'wp-edit-post', $script );
-} );
-
 // Force all category outputs in lists/breadcrumbs to be Title Case (fixes ALL CAPS database names)
 add_filter( 'the_category', 'tcc_capitalize_categories' );
 function tcc_capitalize_categories( $thelist ) {

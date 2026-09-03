@@ -139,7 +139,7 @@ get_header(); ?>
 							<?php if ( has_post_thumbnail() ) : ?>
 								<?php the_post_thumbnail( 'large' ); ?>
 							<?php else : ?>
-								<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400'; ?>
+								<?php $dummy_img = tcc_get_fallback_image(get_the_ID()); ?>
 								<picture>
 									<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $dummy_img)); ?>" type="image/avif">
 									<img src="<?php echo esc_url($dummy_img); ?>" alt="Placeholder" />
@@ -266,7 +266,7 @@ get_header(); ?>
 								<?php if ( has_post_thumbnail() ) : ?>
 									<?php the_post_thumbnail( 'large' ); ?>
 								<?php else : ?>
-									<?php $dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400'; ?>
+									<?php $dummy_img = tcc_get_fallback_image(get_the_ID()); ?>
 									<img src="<?php echo esc_url( $dummy_img ); ?>" alt="Dummy Image" style="width:100%; height:100%; object-fit:cover;">
 								<?php endif; ?>
 							</div>
@@ -400,7 +400,7 @@ get_header(); ?>
 					if ( $video_query->have_posts() ) :
 						while ( $video_query->have_posts() ) : $video_query->the_post();
 							$title = get_the_title();
-							$img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : 'https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&q=80&w=400';
+							$img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : tcc_get_fallback_image(get_the_ID());
 							$video_url = get_post_meta(get_the_ID(), '_tcc_video_url', true);
 							$shopping_links = get_post_meta(get_the_ID(), '_tcc_video_products', true);
 							$direct_shop_url = get_post_meta(get_the_ID(), '_tcc_direct_shop_url', true);

@@ -167,7 +167,7 @@ class TCC_Mega_Menu_Walker extends Walker_Nav_Menu {
                 while ($q->have_posts()) {
                     $q->the_post();
                     // Fallback to a placeholder if no thumbnail exists to maintain layout
-                    $img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium_large') : 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400';
+                    $img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium_large') : tcc_get_fallback_image(get_the_ID());
                     $html .= '<a href="'.esc_url(get_permalink()).'" class="tcc-mega-post-card">';
                     $html .= '<div class="tcc-mega-post-img" style="background-image: url('.esc_url($img).');"></div>';
                     $html .= '<h4 class="tcc-mega-post-title text-serif">'.esc_html(get_the_title()).'</h4>';

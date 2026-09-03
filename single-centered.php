@@ -96,7 +96,7 @@ get_header(); ?>
 									<?php if ( has_post_thumbnail() ) : ?>
 										<?php the_post_thumbnail( 'large', array( 'class' => 'post-card-img', 'style' => 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;' ) ); ?>
 									<?php else : ?>
-										<?php echo tcc_get_picture_tag('https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&q=80&w=400', 'Placeholder', 'post-card-img', 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;'); ?>
+										<?php echo tcc_get_picture_tag(tcc_get_fallback_image(get_the_ID()), 'Placeholder', 'post-card-img', 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;'); ?>
 									<?php endif; ?>
 								</div>
 								<span style="font-family: 'Inter', sans-serif; text-transform: uppercase; font-size: 0.65rem; font-weight: bold; color: #888; letter-spacing: 0.1em; margin-bottom: 0.4rem; display: block;">

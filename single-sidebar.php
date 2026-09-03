@@ -133,8 +133,12 @@ get_header();
 							<?php the_post_thumbnail( 'medium', array( 'style' => 'width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 10px;' ) ); ?>
 						<?php else : ?>
 							<?php 
-								$dummy_img = get_post_meta( get_the_ID(), '_tcc_dummy_image', true ) ?: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400'; 
-								echo tcc_get_picture_tag($dummy_img, 'Featured', '', 'width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 10px;');
+								$dummy_img = tcc_get_fallback_image( get_the_ID() ); 
+								if ( $dummy_img ) {
+									echo tcc_get_picture_tag($dummy_img, get_the_title(), '', 'width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 10px;');
+								} else {
+									echo '<div style="width: 100%; aspect-ratio: 3/4; background-color: #f3f4f6; margin-bottom: 10px;"></div>';
+								}
 							?>
 						<?php endif; ?>
 						<h4 class="text-sans" style="font-size: 18px; font-weight: 500; color: #2C2C2C; line-height: 24px; margin: 0; text-align: center; text-transform: capitalize;">

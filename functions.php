@@ -1382,6 +1382,30 @@ add_action( 'enqueue_block_editor_assets', function() {
     wp_add_inline_script( 'wp-edit-post', $script );
 } );
 
+/**
+ * Get a fallback image for posts without a featured image.
+ * It dynamically extracts the first image from the post content so users aren't shown random dummy images.
+ */
+function tcc_get_fallback_image($post_id) {
+    // Check for explicit dummy meta
+    $dummy_img = get_post_meta( $post_id, '_tcc_dummy_image', true );
+    if ( $dummy_img && strpos($dummy_img, 'unsplash.com') === false ) {
+        return $dummy_img; // Only return if it's not a hardcoded unsplash dummy
+    }
+    
+    // Extract first image from post content
+    $post = get_post( $post_id );
+    if ( $post ) {
+        // Find standard img tags or wp:image block src
+        if ( preg_match( '/<img.*?src=["\'](.*?)["\'].*?>/i', $post->post_content, $matches ) && ! empty( $matches[1] ) ) {
+            return $matches[1];
+        }
+    }
+    
+    // Return a transparent 1x1 pixel if absolutely no images exist
+    return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+}
+
 // Forcefully activate Gutenberg plugin for the user
 add_action('admin_init', function() {
     $active_plugins = get_option('active_plugins');

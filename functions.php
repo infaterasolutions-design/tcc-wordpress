@@ -1364,57 +1364,10 @@ add_shortcode( 'tcc_read_more', 'tcc_read_more_shortcode' );
 
 // Forcefully enable Gutenberg Fullscreen Mode to hide the left sidebar & blend Yoast SEO
 // Forcefully enable Gutenberg Fullscreen Mode to hide the left sidebar & blend Yoast SEO
+// Forcefully enable Gutenberg Fullscreen Mode to hide the left sidebar
 add_action( 'enqueue_block_editor_assets', function() {
     $script = "
-        // 1. Inject CSS directly and immediately into the DOM
-        const style = document.createElement('style');
-        style.innerHTML = `
-            /* Hide the Meta Boxes accordion header completely */
-            .components-panel__header,
-            .edit-post-meta-boxes-area .components-panel__header,
-            .edit-post-meta-boxes-area__header,
-            .edit-post-meta-boxes-area > .components-panel__header,
-            .edit-post-layout__metaboxes .components-panel__header {
-                display: none !important;
-                visibility: hidden !important;
-                height: 0 !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                border: none !important;
-            }
-            
-            /* Remove the gray gap between the editor iframe and the metaboxes */
-            .edit-post-layout__metaboxes,
-            .edit-post-meta-boxes-area,
-            .edit-post-meta-boxes-area #poststuff {
-                border-top: none !important;
-                margin-top: -30px !important;
-                padding-top: 0 !important;
-                background: transparent !important;
-                background-color: transparent !important;
-                box-shadow: none !important;
-            }
-            
-            /* Make the Yoast box look like a continuation of the white editor canvas */
-            .edit-post-meta-boxes-area {
-                margin: 0 auto !important;
-                max-width: 840px !important; /* Matches standard Gutenberg content width */
-                padding: 0 16px !important;
-            }
-            
-            #wpseo_meta {
-                background-color: #fff !important;
-                background: #fff !important;
-                border: 1px solid #e2e4e7 !important;
-                border-top: none !important;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
-                border-radius: 0 0 4px 4px !important;
-                margin-top: 0 !important;
-            }
-        `;
-        document.head.appendChild(style);
-
-        // 2. Force Fullscreen Mode safely when DOM is ready
+        // Force Fullscreen Mode safely when DOM is ready
         wp.domReady(function() {
             setTimeout(function() {
                 if (wp && wp.data && wp.data.select('core/edit-post')) {

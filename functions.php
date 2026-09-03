@@ -1374,30 +1374,44 @@ add_action( 'enqueue_block_editor_assets', function() {
 } );
 
 // Make Yoast SEO (Meta Boxes) seamlessly attach to the bottom of the Gutenberg content
-add_action('admin_head', function() {
+add_action('admin_print_styles', function() {
     echo '<style>
-        /* Remove the gray background gap */
-        .edit-post-layout__metaboxes {
-            background-color: #fff !important;
-            border-top: none !important;
-            margin-top: -20px !important;
+        /* Force remove the gray background and borders */
+        .edit-post-layout__metaboxes,
+        .edit-post-meta-boxes-area,
+        .edit-post-meta-boxes-area #poststuff,
+        .edit-post-meta-boxes-area .postbox-container {
+            background-color: transparent !important;
+            background: transparent !important;
+            border: none !important;
+            margin-top: 0 !important;
             padding-top: 0 !important;
+            box-shadow: none !important;
         }
         
-        /* Hide the ugly "Meta Boxes" accordion header */
-        .edit-post-meta-boxes-area > .components-panel__header {
+        /* Hide the ugly "Meta Boxes" accordion header completely */
+        .edit-post-meta-boxes-area .components-panel__header,
+        .edit-post-layout__metaboxes > .components-panel__header,
+        .edit-post-meta-boxes-area > .edit-post-meta-boxes-area__header {
             display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
         
         /* Blend the Yoast box into the white background */
         .edit-post-meta-boxes-area {
             max-width: 840px !important;
             margin: 0 auto !important;
+            padding: 0 16px !important;
         }
         .edit-post-meta-boxes-area .postbox {
             border: none !important;
             box-shadow: none !important;
             background: #fff !important;
+            margin-top: -10px !important;
         }
         
         /* Make the Yoast header look cleaner */
@@ -1406,7 +1420,7 @@ add_action('admin_head', function() {
             background: #fff !important;
         }
     </style>';
-});
+}, 99999);
 
 // Forcefully activate Gutenberg plugin for the user
 add_action('admin_init', function() {

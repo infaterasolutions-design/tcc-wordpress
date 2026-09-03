@@ -1356,6 +1356,14 @@ function tcc_read_more_shortcode( $atts ) {
 }
 add_shortcode( 'tcc_read_more', 'tcc_read_more_shortcode' );
 
+// Add Font Size and Font Family dropdowns to the Classic Editor toolbar
+add_filter( 'mce_buttons', 'tcc_add_tinymce_buttons' );
+function tcc_add_tinymce_buttons( $buttons ) {
+    $buttons[] = 'fontselect';
+    $buttons[] = 'fontsizeselect';
+    return $buttons;
+}
+
 // Force Classic Editor and Hide Left Sidebar for distraction-free writing
 add_filter('use_block_editor_for_post', '__return_false', 10);
 

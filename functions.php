@@ -1356,6 +1356,17 @@ function tcc_read_more_shortcode( $atts ) {
 }
 add_shortcode( 'tcc_read_more', 'tcc_read_more_shortcode' );
 
+// Forcefully enable Gutenberg Fullscreen Mode to hide the left sidebar
+add_action( 'enqueue_block_editor_assets', function() {
+    $script = "window.addEventListener('load', function() {
+        const isFullscreenMode = wp.data.select('core/edit-post').isFeatureActive('fullscreenMode');
+        if (!isFullscreenMode) {
+            wp.data.dispatch('core/edit-post').toggleFeature('fullscreenMode');
+        }
+    });";
+    wp_add_inline_script( 'wp-edit-post', $script );
+} );
+
 // Forcefully activate Gutenberg plugin for the user
 add_action('admin_init', function() {
     $active_plugins = get_option('active_plugins');

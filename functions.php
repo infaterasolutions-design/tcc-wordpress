@@ -1356,25 +1356,14 @@ function tcc_read_more_shortcode( $atts ) {
 }
 add_shortcode( 'tcc_read_more', 'tcc_read_more_shortcode' );
 
-// Add Font Size and Font Family dropdowns to the Classic Editor toolbar
-add_filter( 'mce_buttons', 'tcc_add_tinymce_buttons' );
-function tcc_add_tinymce_buttons( $buttons ) {
-    $buttons[] = 'fontselect';
-    $buttons[] = 'fontsizeselect';
-    return $buttons;
-}
-
-// Force Classic Editor and Hide Left Sidebar for distraction-free writing
-add_filter('use_block_editor_for_post', '__return_false', 10);
-
-add_action('admin_head-post.php', 'tcc_hide_admin_sidebar');
-add_action('admin_head-post-new.php', 'tcc_hide_admin_sidebar');
-function tcc_hide_admin_sidebar() {
-    echo '<style>
-        #adminmenumain { display: none !important; }
-        #wpcontent, #wpfooter { margin-left: 0 !important; }
-    </style>';
-}
+// Forcefully activate Gutenberg plugin for the user
+add_action('admin_init', function() {
+    $active_plugins = get_option('active_plugins');
+    if (is_array($active_plugins) && !in_array('gutenberg/gutenberg.php', $active_plugins)) {
+        $active_plugins[] = 'gutenberg/gutenberg.php';
+        update_option('active_plugins', $active_plugins);
+    }
+});
 
 // Force all category outputs in lists/breadcrumbs to be Title Case (fixes ALL CAPS database names)
 add_filter( 'the_category', 'tcc_capitalize_categories' );

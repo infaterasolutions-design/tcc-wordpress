@@ -1373,6 +1373,41 @@ add_action( 'enqueue_block_editor_assets', function() {
     wp_add_inline_script( 'wp-edit-post', $script );
 } );
 
+// Make Yoast SEO (Meta Boxes) seamlessly attach to the bottom of the Gutenberg content
+add_action('admin_head', function() {
+    echo '<style>
+        /* Remove the gray background gap */
+        .edit-post-layout__metaboxes {
+            background-color: #fff !important;
+            border-top: none !important;
+            margin-top: -20px !important;
+            padding-top: 0 !important;
+        }
+        
+        /* Hide the ugly "Meta Boxes" accordion header */
+        .edit-post-meta-boxes-area > .components-panel__header {
+            display: none !important;
+        }
+        
+        /* Blend the Yoast box into the white background */
+        .edit-post-meta-boxes-area {
+            max-width: 840px !important;
+            margin: 0 auto !important;
+        }
+        .edit-post-meta-boxes-area .postbox {
+            border: none !important;
+            box-shadow: none !important;
+            background: #fff !important;
+        }
+        
+        /* Make the Yoast header look cleaner */
+        .edit-post-meta-boxes-area .postbox-header {
+            border-bottom: 1px solid #eee !important;
+            background: #fff !important;
+        }
+    </style>';
+});
+
 // Forcefully activate Gutenberg plugin for the user
 add_action('admin_init', function() {
     $active_plugins = get_option('active_plugins');

@@ -1437,31 +1437,42 @@ function tcc_clean_automation_html( $data, $postarr ) {
 
     $content = wp_unslash($data['post_content']);
 
-    // 1. Strip out empty paragraphs (e.g., <p></p>, <p>&nbsp;</p>, <p><br></p>)
-    $content = preg_replace('/<p[^>]*>(\s|&nbsp;|<br\s*\/?>)*<\/p>/i', '', $content);
+    // 1. Google Docs uses hidden <span> tags and &#160; (non-breaking spaces). 
+    // Strip empty spans first so the paragraph becomes empty.
+    $content = preg_replace('/<span[^>]*>(\s|&nbsp;|&#160;|<br\s*\/?>)*<\/span>/i', '', $content);
 
-    // 2. Remove multiple consecutive <br> tags (more than 1) which create huge gaps below images
+    // 2. Strip out empty paragraphs (e.g., <p></p>, <p>&nbsp;</p>, <p>&#160;</p>, <p><br></p>)
+    $content = preg_replace('/<p[^>]*>(\s|&nbsp;|&#160;|<br\s*\/?>)*<\/p>/i', '', $content);
+
+    // 3. Remove multiple consecutive <br> tags (more than 1) which create huge gaps below images
     $content = preg_replace('/(<br\s*\/?>\s*){2,}/i', '<br>', $content);
 
-    // 3. Condense excessive newlines (3 or more) down to standard double newlines
+    // 4. Condense excessive newlines (3 or more) down to standard double newlines
     $content = preg_replace("/[\r\n]{3,}/", "\n\n", $content);
     
-    // 4. Remove stray non-breaking spaces on empty lines (common Google Sheets artifact)
-    $content = preg_replace("/^(&nbsp;|\s)+$/m", "", $content);
+    // 5. Remove stray non-breaking spaces on empty lines
+    $content = preg_replace("/^(&nbsp;|&#160;|\s)+$/m", "", $content);
 
-    // 5. Google Docs/Sheets export image widths in EMUs (millions of pixels) which breaks Gutenberg.
-    // We strip all width, height, and inline style attributes from images so they size naturally.
-    while (preg_match('/<img[^>]+?(?:width|height|style)=["\']/i', $content)) {
-        $content = preg_replace('/(<img[^>]+?)\s+(?:width|height|style)=["\'][^"\']*["\']/i', '$1', $content);
-    }
+    // 6. BULLETPROOF IMAGE SCRUBBER: Google Docs/Sheets exports astronomical width values (EMUs).
+    // We completely strip EVERY attribute from the <img> tag except 'src' and 'alt'.
+    $content = preg_replace_callback('/<img([^>]+)>/i', function($matches) {
+        $attrs = $matches[1];
+        $new_attrs = '';
+        if (preg_match('/src=["\']([^"\']+)["\']/i', $attrs, $src_match)) {
+            $new_attrs .= ' src="' . $src_match[1] . '"';
+        }
+        if (preg_match('/alt=["\']([^"\']*)["\']/i', $attrs, $alt_match)) {
+            $new_attrs .= ' alt="' . $alt_match[1] . '"';
+        }
+        return '<img' . $new_attrs . '>';
+    }, $content);
 
-    // 6. Aggressively strip ANY line breaks (<br>) or spaces that immediately follow an image tag.
-    // This explicitly fixes the "massive gap after image" issue during Gutenberg block conversion.
-    $content = preg_replace('/(<img[^>]+>)(?:\s|&nbsp;|<br\s*\/?>)+/i', '$1', $content);
+    // 7. Aggressively strip ANY line breaks (<br>) or spaces that immediately follow an image tag.
+    $content = preg_replace('/(<img[^>]+>)(?:\s|&nbsp;|&#160;|<br\s*\/?>)+/i', '$1', $content);
 
-    // 7. Strip <br> tags that are sitting at the very end or beginning of a paragraph
+    // 8. Strip <br> tags that are sitting at the very end or beginning of a paragraph
     $content = preg_replace('/(<br\s*\/?>\s*)+<\/p>/i', '</p>', $content);
-    $content = preg_replace('/<p>\s*(<br\s*\/?>\s*)+/i', '<p>', $content);
+    $content = preg_replace('/<p[^>]*>\s*(<br\s*\/?>\s*)+/i', '<p>', $content);
 
     // Update and return the sanitized content (must be re-slashed for WordPress DB)
     $data['post_content'] = wp_slash(trim($content));

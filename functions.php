@@ -1444,6 +1444,7 @@ function tcc_clean_automation_html_dom( $data, $postarr ) {
     $xpath = new DOMXPath($dom);
     
     // 1. Strip ALL attributes from <img> tags except 'src' and 'alt'
+    // Also UNWRAP images from any empty <p> or <span> tags and convert them to proper Gutenberg <figure> blocks
     $imgs = $xpath->query('//img');
     foreach ($imgs as $img) {
         $src = $img->getAttribute('src');
@@ -1455,6 +1456,29 @@ function tcc_clean_automation_html_dom( $data, $postarr ) {
         
         if ($src) $img->setAttribute('src', $src);
         if ($alt) $img->setAttribute('alt', $alt);
+        
+        // UNWRAP: Pull the image out of any <span> or <p> tags that don't contain actual text
+        $parent = $img->parentNode;
+        while ($parent && in_array(strtolower($parent->nodeName), ['span', 'p', 'a'])) {
+            $textContent = trim(str_replace(["\xc2\xa0", "&nbsp;", "&#160;"], '', $parent->textContent));
+            if ($textContent === '') {
+                $grandparent = $parent->parentNode;
+                if ($grandparent) {
+                    $grandparent->insertBefore($img, $parent);
+                }
+            } else {
+                break; // Parent contains real text, leave it as an inline image
+            }
+            $parent = $img->parentNode;
+        }
+        
+        // WRAP: If the image is now at the root level, wrap it in a standard Gutenberg figure block
+        if ($img->parentNode && strtolower($img->parentNode->nodeName) === 'div') {
+            $figure = $dom->createElement('figure');
+            $figure->setAttribute('class', 'wp-block-image');
+            $img->parentNode->insertBefore($figure, $img);
+            $figure->appendChild($img);
+        }
     }
     
     // 2. Strip 'style' and 'class' from any <span> or <p> tags that wrap images

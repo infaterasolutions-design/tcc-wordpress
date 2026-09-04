@@ -1449,6 +1449,12 @@ function tcc_clean_automation_html( $data, $postarr ) {
     // 4. Remove stray non-breaking spaces on empty lines (common Google Sheets artifact)
     $content = preg_replace("/^(&nbsp;|\s)+$/m", "", $content);
 
+    // 5. Google Docs/Sheets export image widths in EMUs (millions of pixels) which breaks Gutenberg.
+    // We strip all width, height, and inline style attributes from images so they size naturally.
+    while (preg_match('/<img[^>]+?(?:width|height|style)=["\']/i', $content)) {
+        $content = preg_replace('/(<img[^>]+?)\s+(?:width|height|style)=["\'][^"\']*["\']/i', '$1', $content);
+    }
+
     // Update and return the sanitized content
     $data['post_content'] = trim($content);
 

@@ -1435,7 +1435,7 @@ function tcc_clean_automation_html( $data, $postarr ) {
         return $data;
     }
 
-    $content = $data['post_content'];
+    $content = wp_unslash($data['post_content']);
 
     // 1. Strip out empty paragraphs (e.g., <p></p>, <p>&nbsp;</p>, <p><br></p>)
     $content = preg_replace('/<p[^>]*>(\s|&nbsp;|<br\s*\/?>)*<\/p>/i', '', $content);
@@ -1463,8 +1463,8 @@ function tcc_clean_automation_html( $data, $postarr ) {
     $content = preg_replace('/(<br\s*\/?>\s*)+<\/p>/i', '</p>', $content);
     $content = preg_replace('/<p>\s*(<br\s*\/?>\s*)+/i', '<p>', $content);
 
-    // Update and return the sanitized content
-    $data['post_content'] = trim($content);
+    // Update and return the sanitized content (must be re-slashed for WordPress DB)
+    $data['post_content'] = wp_slash(trim($content));
 
     return $data;
 }

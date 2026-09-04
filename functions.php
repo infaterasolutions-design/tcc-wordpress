@@ -1502,3 +1502,23 @@ function tcc_clean_automation_html_dom( $data, $postarr ) {
     $data['post_content'] = wp_slash($clean_content);
     return $data;
 }
+
+/**
+ * Fix overflowing image widths in the Gutenberg editor.
+ * Since we stripped the hardcoded widths from Google Docs, high-resolution images
+ * will default to their native sizes. This forces all images in the editor to stay
+ * within the boundaries of the text column (max-width: 100%), matching the frontend.
+ */
+add_action( 'enqueue_block_editor_assets', 'tcc_editor_responsive_images' );
+function tcc_editor_responsive_images() {
+    $custom_css = "
+        .edit-post-visual-editor img,
+        .block-editor-block-list__block img,
+        .wp-block-image img,
+        .wp-block-freeform img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+    ";
+    wp_add_inline_style( 'wp-block-library', $custom_css );
+}

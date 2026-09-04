@@ -1455,6 +1455,14 @@ function tcc_clean_automation_html( $data, $postarr ) {
         $content = preg_replace('/(<img[^>]+?)\s+(?:width|height|style)=["\'][^"\']*["\']/i', '$1', $content);
     }
 
+    // 6. Aggressively strip ANY line breaks (<br>) or spaces that immediately follow an image tag.
+    // This explicitly fixes the "massive gap after image" issue during Gutenberg block conversion.
+    $content = preg_replace('/(<img[^>]+>)(?:\s|&nbsp;|<br\s*\/?>)+/i', '$1', $content);
+
+    // 7. Strip <br> tags that are sitting at the very end or beginning of a paragraph
+    $content = preg_replace('/(<br\s*\/?>\s*)+<\/p>/i', '</p>', $content);
+    $content = preg_replace('/<p>\s*(<br\s*\/?>\s*)+/i', '<p>', $content);
+
     // Update and return the sanitized content
     $data['post_content'] = trim($content);
 

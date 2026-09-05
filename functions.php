@@ -11,7 +11,9 @@ if ( ! defined( 'TCC_VERSION' ) ) {
  * Sets up theme defaults and registers support for various WordPress features.
  */
 function tcc_theme_setup() {
+	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
+    
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'custom-logo', array( 'height' => 100, 'width' => 400, 'flex-height' => true, 'flex-width' => true ) );
 	add_theme_support( 'post-thumbnails' );

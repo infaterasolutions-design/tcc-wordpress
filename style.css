@@ -5003,6 +5003,8 @@ html, body { max-width: 100%; position: relative; }
     margin: 0 !important;
     padding: 0 !important;
     text-align: left !important;
+    font-variant-numeric: lining-nums !important;
+    font-feature-settings: "lnum" 1 !important;
     display: -webkit-box !important;
     -webkit-line-clamp: 2 !important;
     -webkit-box-orient: vertical !important;

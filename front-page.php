@@ -669,7 +669,7 @@ get_header(); ?>
             <style>
                 /* Force Smash Balloon into a flawless seamless 6-column grid */
                 #sb_instagram { padding: 0 !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
-                #sb_instagram #sbi_images { display: flex !important; flex-wrap: nowrap !important; gap: 0 !important; padding: 0 !important; margin: 0 !important; width: 100% !important; }
+                #sb_instagram #sbi_images { display: flex !important; flex-wrap: nowrap !important; gap: 1px !important; background-color: #ffffff !important; padding: 0 !important; margin: 0 !important; width: 100% !important; }
                 #sb_instagram .sbi_item { padding: 0 !important; margin: 0 !important; flex: 1 1 16.666% !important; max-width: 16.666% !important; border: none !important; }
                 #sb_instagram .sbi_item img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
                 #sb_instagram .sbi_load_btn, #sb_instagram .sbi_follow_btn { display: none !important; }

@@ -2799,7 +2799,6 @@ html, body { max-width: 100%; position: relative; }
 .figma-ig-section {
   width: 100%;
   position: relative;
-  border-top: 1px solid #d4cfc3;
 }
 .figma-ig-header {
   background: #F4F1EC;

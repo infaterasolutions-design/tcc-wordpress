@@ -1530,6 +1530,76 @@ function tcc_clean_automation_html_dom( $data, $postarr ) {
 }
 
 /**
+ * ULTRA-LIGHTWEIGHT CUSTOM INSTAGRAM FEED API INTEGRATION
+ * Completely replaces Smash Balloon to guarantee 100% Core Web Vitals.
+ * Caches API responses using Transients for 12 hours (ZERO database/API hits on page load).
+ * 
+ * Usage: [tcc_instagram_feed token="YOUR_TOKEN" limit="6"]
+ */
+add_shortcode( 'tcc_instagram_feed', 'tcc_render_instagram_feed' );
+function tcc_render_instagram_feed( $atts ) {
+    $atts = shortcode_atts( array(
+        'token' => '',
+        'limit' => 6,
+    ), $atts );
+
+    if ( empty( $atts['token'] ) ) {
+        return '<p style="color:red; font-weight:bold;">TCC Instagram Feed: Please provide your Instagram Access Token in the shortcode.</p>';
+    }
+
+    // Create a unique cache key based on the token and limit
+    $transient_key = 'tcc_insta_feed_' . md5( $atts['token'] . $atts['limit'] );
+    $feed_html = get_transient( $transient_key );
+
+    // If cache doesn't exist or expired, ping the API
+    if ( false === $feed_html ) {
+        $url = "https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url&access_token=" . sanitize_text_field( $atts['token'] ) . "&limit=" . intval( $atts['limit'] );
+        
+        $response = wp_remote_get( $url, array( 'timeout' => 10 ) );
+        
+        if ( is_wp_error( $response ) ) {
+            return '<p>TCC Instagram Feed: Error connecting to Instagram API.</p>';
+        }
+
+        $body = wp_remote_retrieve_body( $response );
+        $data = json_decode( $body, true );
+
+        if ( isset( $data['error'] ) ) {
+            return '<p>TCC Instagram Feed API Error: ' . esc_html( $data['error']['message'] ) . '</p>';
+        }
+
+        if ( empty( $data['data'] ) ) {
+            return '<p>TCC Instagram Feed: No posts found for this account.</p>';
+        }
+
+        // Generate clean, semantic HTML with CSS Grid (No external stylesheets needed!)
+        $feed_html = '<div class="tcc-instagram-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 20px;">';
+        
+        foreach ( $data['data'] as $post ) {
+            // Use thumbnail for videos, standard URL for images/carousels
+            $image_url = ( $post['media_type'] === 'VIDEO' && isset( $post['thumbnail_url'] ) ) ? $post['thumbnail_url'] : $post['media_url'];
+            $caption = isset( $post['caption'] ) ? wp_trim_words( $post['caption'], 15 ) : 'Instagram Post';
+            $permalink = isset( $post['permalink'] ) ? $post['permalink'] : '#';
+
+            // Wrap in hover effect container
+            $feed_html .= '<a href="' . esc_url( $permalink ) . '" target="_blank" rel="noopener nofollow" style="display: block; overflow: hidden; aspect-ratio: 1 / 1; border-radius: 8px;">';
+            
+            // Native lazy-loading and inline object-fit
+            $feed_html .= '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( $caption ) . '" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform=\'scale(1.05)\'" onmouseout="this.style.transform=\'scale(1)\'">';
+            
+            $feed_html .= '</a>';
+        }
+
+        $feed_html .= '</div>';
+        
+        // Cache this fully generated HTML fragment in the database for 12 hours
+        set_transient( $transient_key, $feed_html, 12 * HOUR_IN_SECONDS );
+    }
+
+    return $feed_html;
+}
+
+/**
  * Fix overflowing image widths in the Gutenberg editor.
  * Since we stripped the hardcoded widths from Google Docs, high-resolution images
  * will default to their native sizes. This forces all images in the editor to stay

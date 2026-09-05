@@ -73,7 +73,7 @@ get_header();
 			if ( $related_query->have_posts() ) :
 			?>
 			<div class="tcc-related-posts" style="margin: 60px 0; border-top: 1px solid #eaeaea; padding-top: 40px;">
-				<h3 style="font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 30px; text-align: center;">You Might Also Love</h3>
+				<h3 style="font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 30px; text-align: center; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1;">You Might Also Love</h3>
 				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
 					<?php while ( $related_query->have_posts() ) : $related_query->the_post(); ?>
 						<a href="<?php the_permalink(); ?>" style="text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
@@ -82,7 +82,7 @@ get_header();
 									<?php the_post_thumbnail('medium', array('style' => 'width: 100%; height: 100%; object-fit: cover;')); ?>
 								</div>
 							<?php endif; ?>
-							<h4 style="font-family: 'Playfair Display', serif; font-size: 18px; line-height: 1.3; margin: 0 0 8px;"><?php the_title(); ?></h4>
+							<h4 style="font-family: 'Playfair Display', serif; font-size: 18px; line-height: 1.3; margin: 0 0 8px; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1;"><?php the_title(); ?></h4>
 							<span style="font-family: 'Inter', sans-serif; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px;"><?php echo get_the_date(); ?></span>
 						</a>
 					<?php endwhile; wp_reset_postdata(); ?>
@@ -115,7 +115,7 @@ get_header();
 			</div>
 
 			<div style="padding: 1rem 0; width: 100%; max-width: 290px; margin: 0 auto;">
-				<h3 style="font-family: 'Playfair Display', serif; font-size: 30px; margin-bottom: 1.5rem; margin-top: 0; text-align: center; font-weight: 400;">Popular Posts</h3>
+				<h3 style="font-family: 'Playfair Display', serif; font-size: 30px; margin-bottom: 1.5rem; margin-top: 0; text-align: center; font-weight: 400; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1;">Popular Posts</h3>
 				<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
 					<?php
 					// Query popular posts

@@ -5003,6 +5003,11 @@ html, body { max-width: 100%; position: relative; }
     margin: 0 !important;
     padding: 0 !important;
     text-align: left !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
 }
 
 .tcc-inline-read-more .rm-time {

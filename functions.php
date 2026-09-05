@@ -80,6 +80,11 @@ function tcc_theme_setup() {
 		'editor-style.css',
 		'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Sacramento&family=Allura&family=Herr+Von+Muellerhoff&family=Antic+Didone&family=Adamina&family=Marcellus&family=Public+Sans:wght@600&family=Poppins:wght@400&family=Bodoni+Moda:wght@400&family=Vidaloka&display=block'
 	) );
+    
+    // Hotfix: Disable LiteSpeed lazy loading because it breaks masonry grid layouts on mobile
+    if ( class_exists( 'LiteSpeed\Core' ) ) {
+        update_option( 'litespeed.conf.optm.lazy', false );
+    }
 }
 add_action( 'after_setup_theme', 'tcc_theme_setup' );
 

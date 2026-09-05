@@ -3331,7 +3331,7 @@ html, body { max-width: 100%; position: relative; }
     grid-template-columns: repeat(2, 1fr);
     column-gap: 100px;
     row-gap: 100px;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 }
 
 .fp-latest-card {
@@ -3400,15 +3400,23 @@ html, body { max-width: 100%; position: relative; }
 }
 
 .fp-latest-view-more {
-    font-family: 'Editors Note Light Italic', 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
     line-height: 25px;
-    letter-spacing: 1.4px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: #000000;
     text-decoration: none;
-    align-self: flex-end; /* Align right on PC */
+    align-self: center; /* Center perfectly on PC and mobile */
+    margin-top: 0;
+    border-bottom: 1px solid #000;
+    padding-bottom: 4px;
+    transition: all 0.3s ease;
+}
+.fp-latest-view-more:hover {
+    color: #666;
+    border-color: #666;
 }
 
 /* ==========================================================================
@@ -3687,7 +3695,8 @@ html, body { max-width: 100%; position: relative; }
     }
     
     .fp-latest-view-more {
-        align-self: center; /* Keep centered on mobile */
+        align-self: center;
+        margin-top: 20px;
     }
 }
 

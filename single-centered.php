@@ -71,7 +71,7 @@ get_header(); ?>
 
 		<!-- RELATED POSTS SECTION -->
 		<div style="max-width: 1240px; margin: 4rem auto 0; padding: 0 2rem;">
-			<h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 3rem;">
+			<h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 3rem; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1;">
 				You Might Also Like
 			</h2>
 			<div class="related-grid">
@@ -102,7 +102,7 @@ get_header(); ?>
 								<span style="font-family: 'Inter', sans-serif; text-transform: uppercase; font-size: 0.65rem; font-weight: bold; color: #888; letter-spacing: 0.1em; margin-bottom: 0.4rem; display: block;">
 									<?php $cat = get_the_category(); if($cat) echo esc_html($cat[0]->name); ?>
 								</span>
-								<h4 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 800; line-height: 1.3; color: #000; margin: 0;">
+								<h4 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 800; line-height: 1.3; color: #000; margin: 0; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1;">
 									<a href="<?php the_permalink(); ?>" style="color: inherit; text-decoration: none;"><?php the_title(); ?></a>
 								</h4>
 								<span style="font-family: 'Inter', sans-serif; font-size: 0.6rem; color: #888; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.5rem; display: block;">

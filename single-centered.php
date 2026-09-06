@@ -31,17 +31,10 @@ get_header(); ?>
 		</header>
 
 		<!-- FEATURED IMAGE -->
-		<?php if ( has_post_thumbnail() ) : ?>
-		<div class="centered-post-image">
-				<?php the_post_thumbnail( 'full', array( 'style' => 'width: 100%; height: auto; display: block;' ) ); ?>
-				<?php $caption = get_the_post_thumbnail_caption(); ?>
-				<?php if ( $caption ) : ?>
-					<p style="font-family: 'Inter', sans-serif; text-align: center; font-size: 0.85rem; color: #666; margin-top: 0.8rem; font-style: italic;">
-						<?php echo esc_html( $caption ); ?>
-					</p>
-				<?php endif; ?>
-		</div>
-		<?php endif; ?>
+		<?php 
+		// We no longer automatically inject the featured image here.
+		// The featured image will only display if it is manually inserted inside the WordPress post editor.
+		?>
 
 		<!-- ARTICLE BODY -->
 		<div id="content" class="entry-content post-content content article-content">

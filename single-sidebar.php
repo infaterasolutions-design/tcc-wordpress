@@ -84,7 +84,7 @@ get_header();
 				'category__in'   => wp_get_post_categories( get_queried_object_id() ),
 				'posts_per_page' => 3,
 				'post__not_in'   => array( get_queried_object_id() ),
-				'orderby'        => 'rand' // Random ensures all 139 hidden posts eventually get front-page exposure to Googlebot
+				'orderby'        => 'date' // Changed from rand to prevent severe database crashes and long load times
 			);
 			$related_query = new WP_Query( $related_args );
 			if ( $related_query->have_posts() ) :

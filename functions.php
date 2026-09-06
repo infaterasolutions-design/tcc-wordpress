@@ -1367,7 +1367,7 @@ function tcc_read_more_shortcode( $atts ) {
         'cat'            => $category_id,
         'post__not_in'   => array( $post->ID ),
         'posts_per_page' => 3,
-        'orderby'        => 'rand'
+        'orderby'        => 'date'
     );
     $related = new WP_Query( $args );
     

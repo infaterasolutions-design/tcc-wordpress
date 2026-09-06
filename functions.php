@@ -104,6 +104,12 @@ function tcc_optimize_heartbeat() {
 add_filter( 'xmlrpc_enabled', '__return_false' );
 
 /**
+ * Performance: Stop WP-Cron Loopback on Page Load
+ * This prevents the endless 1-minute loading spinner in Microsoft Edge by stopping WordPress from holding the HTTP connection open for background tasks.
+ */
+remove_action( 'init', 'wp_cron' );
+
+/**
  * Register widget area.
  */
 function tcc_widgets_init() {

@@ -89,6 +89,21 @@ function tcc_theme_setup() {
 add_action( 'after_setup_theme', 'tcc_theme_setup' );
 
 /**
+ * Performance Optimization: Disable Heartbeat on Frontend & Limit in Admin
+ * This completely stops admin-ajax.php from spiking CPU usage intermittently and slowing down page loads.
+ */
+add_action( 'init', 'tcc_optimize_heartbeat', 1 );
+function tcc_optimize_heartbeat() {
+    wp_deregister_script('heartbeat');
+}
+
+/**
+ * Performance & Security: Disable XML-RPC
+ * Prevents botnets from spamming xmlrpc.php, which is a massive cause of sudden server CPU spikes and random slow page loads.
+ */
+add_filter( 'xmlrpc_enabled', '__return_false' );
+
+/**
  * Register widget area.
  */
 function tcc_widgets_init() {

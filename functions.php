@@ -1384,7 +1384,8 @@ function tcc_read_more_shortcode( $atts ) {
     }
     
     // INTERNAL LINKING FOR SEO: Optimized Pseudo-Random Query
-    $transient_key = 'tcc_readmore_' . $post->ID;
+    // Changed transient key to bypass the corrupted WP_Query object trapped in the database
+    $transient_key = 'tcc_rm_ids_' . $post->ID;
     $related_post_ids = get_transient( $transient_key );
     
     if ( false === $related_post_ids ) {

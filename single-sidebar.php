@@ -82,7 +82,8 @@ get_header();
 			// Fetches random related posts but caches them for 4 hours to prevent MySQL crashes.
 			// This ensures Googlebot discovers all 15 daily articles without melting the server.
 			$category_ids = wp_get_post_categories( get_queried_object_id() );
-			$transient_key = 'tcc_related_' . get_queried_object_id();
+			// Changed transient key to bypass the corrupted WP_Query object trapped in the database
+			$transient_key = 'tcc_rel_ids_' . get_queried_object_id();
 			$related_post_ids = get_transient( $transient_key );
 			
 			if ( false === $related_post_ids ) {

@@ -78,6 +78,7 @@ get_header();
 				</div>
 			</article>
 			
+			<?php
 			// INTERNAL LINKING FOR SEO: Optimized Pseudo-Random Query
 			// Fetches random related posts but caches them for 4 hours to prevent MySQL crashes.
 			// This ensures Googlebot discovers all 15 daily articles without melting the server.

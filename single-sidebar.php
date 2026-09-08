@@ -78,15 +78,26 @@ get_header();
 				</div>
 			</article>
 			
-			<!-- INTERNAL LINKING FOR SEO (Forces Google to crawl unindexed pages) -->
-			<?php
-			$related_args = array(
-				'category__in'   => wp_get_post_categories( get_queried_object_id() ),
-				'posts_per_page' => 3,
-				'post__not_in'   => array( get_queried_object_id() ),
-				'orderby'        => 'date' // Changed from rand to prevent severe database crashes and long load times
-			);
-			$related_query = new WP_Query( $related_args );
+			// INTERNAL LINKING FOR SEO: Optimized Pseudo-Random Query
+			// Fetches random related posts but caches them for 4 hours to prevent MySQL crashes.
+			// This ensures Googlebot discovers all 15 daily articles without melting the server.
+			$category_ids = wp_get_post_categories( get_queried_object_id() );
+			$transient_key = 'tcc_related_' . get_queried_object_id();
+			$related_query = get_transient( $transient_key );
+			
+			if ( false === $related_query ) {
+				$related_args = array(
+					'category__in'   => $category_ids,
+					'posts_per_page' => 3,
+					'post__not_in'   => array( get_queried_object_id() ),
+					'orderby'        => 'rand', // Random is safe here because the result is cached
+					'no_found_rows'  => true, // Speeds up query by skipping pagination count
+				);
+				$related_query = new WP_Query( $related_args );
+				// Cache the query results for 4 hours
+				set_transient( $transient_key, $related_query, 4 * HOUR_IN_SECONDS );
+			}
+			
 			if ( $related_query->have_posts() ) :
 			?>
 			<div class="tcc-related-posts" style="margin: 60px 0; border-top: 1px solid #eaeaea; padding-top: 40px;">

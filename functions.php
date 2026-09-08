@@ -1320,8 +1320,8 @@ add_filter( 'the_content', 'tcc_add_auto_image_alt_tags', 99 );
 
 // 3. Crawl Budget Protector
 function tcc_crawl_budget_protector() {
-    // If it's a useless page that wastes Google's crawl budget, force noindex
-    if ( is_tag() || is_category() || is_author() || is_date() || is_attachment() || is_search() || is_404() ) {
+    // Force noindex on low-value pages, but EXCLUDE categories so Googlebot can use them to find new daily articles!
+    if ( is_tag() || is_author() || is_date() || is_attachment() || is_search() || is_404() ) {
         echo '<!-- Crawl Budget Protector: Forcing Noindex on Low-Value Page -->';
         echo '<meta name="robots" content="noindex, follow" />';
     }
@@ -1383,14 +1383,21 @@ function tcc_read_more_shortcode( $atts ) {
         $category_id = $categories[0]->term_id;
     }
     
-    // Query 3 related posts
-    $args = array(
-        'cat'            => $category_id,
-        'post__not_in'   => array( $post->ID ),
-        'posts_per_page' => 3,
-        'orderby'        => 'date'
-    );
-    $related = new WP_Query( $args );
+    // INTERNAL LINKING FOR SEO: Optimized Pseudo-Random Query
+    $transient_key = 'tcc_readmore_' . $post->ID;
+    $related = get_transient( $transient_key );
+    
+    if ( false === $related ) {
+        $args = array(
+            'cat'            => $category_id,
+            'post__not_in'   => array( $post->ID ),
+            'posts_per_page' => 3,
+            'orderby'        => 'rand', // Safe because of transient caching
+            'no_found_rows'  => true
+        );
+        $related = new WP_Query( $args );
+        set_transient( $transient_key, $related, 4 * HOUR_IN_SECONDS );
+    }
     
     if ( ! $related->have_posts() ) {
         return '';

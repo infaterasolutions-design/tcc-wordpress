@@ -1385,21 +1385,33 @@ function tcc_read_more_shortcode( $atts ) {
     
     // INTERNAL LINKING FOR SEO: Optimized Pseudo-Random Query
     $transient_key = 'tcc_readmore_' . $post->ID;
-    $related = get_transient( $transient_key );
+    $related_post_ids = get_transient( $transient_key );
     
-    if ( false === $related ) {
+    if ( false === $related_post_ids ) {
         $args = array(
             'cat'            => $category_id,
             'post__not_in'   => array( $post->ID ),
             'posts_per_page' => 3,
             'orderby'        => 'rand', // Safe because of transient caching
-            'no_found_rows'  => true
+            'no_found_rows'  => true,
+            'fields'         => 'ids' // Only fetch IDs to save memory and allow safe serialization
         );
-        $related = new WP_Query( $args );
-        set_transient( $transient_key, $related, 4 * HOUR_IN_SECONDS );
+        $fetch_query = new WP_Query( $args );
+        $related_post_ids = $fetch_query->posts;
+        set_transient( $transient_key, $related_post_ids, 4 * HOUR_IN_SECONDS );
     }
     
-    if ( ! $related->have_posts() ) {
+    $related = false;
+    if ( ! empty( $related_post_ids ) ) {
+        $related = new WP_Query( array(
+            'post__in' => $related_post_ids,
+            'orderby' => 'post__in',
+            'posts_per_page' => 3,
+            'no_found_rows' => true
+        ) );
+    }
+    
+    if ( ! $related || ! $related->have_posts() ) {
         return '';
     }
     

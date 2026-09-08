@@ -83,22 +83,34 @@ get_header();
 			// This ensures Googlebot discovers all 15 daily articles without melting the server.
 			$category_ids = wp_get_post_categories( get_queried_object_id() );
 			$transient_key = 'tcc_related_' . get_queried_object_id();
-			$related_query = get_transient( $transient_key );
+			$related_post_ids = get_transient( $transient_key );
 			
-			if ( false === $related_query ) {
+			if ( false === $related_post_ids ) {
 				$related_args = array(
 					'category__in'   => $category_ids,
 					'posts_per_page' => 3,
 					'post__not_in'   => array( get_queried_object_id() ),
 					'orderby'        => 'rand', // Random is safe here because the result is cached
 					'no_found_rows'  => true, // Speeds up query by skipping pagination count
+                    'fields'         => 'ids', // Only fetch IDs to save memory and allow safe serialization
 				);
-				$related_query = new WP_Query( $related_args );
+				$fetch_query = new WP_Query( $related_args );
+                $related_post_ids = $fetch_query->posts;
 				// Cache the query results for 4 hours
-				set_transient( $transient_key, $related_query, 4 * HOUR_IN_SECONDS );
+				set_transient( $transient_key, $related_post_ids, 4 * HOUR_IN_SECONDS );
 			}
 			
-			if ( $related_query->have_posts() ) :
+            $related_query = false;
+            if ( ! empty( $related_post_ids ) ) {
+                $related_query = new WP_Query( array(
+                    'post__in' => $related_post_ids,
+                    'orderby' => 'post__in',
+                    'posts_per_page' => 3,
+                    'no_found_rows' => true
+                ) );
+            }
+			
+			if ( $related_query && $related_query->have_posts() ) :
 			?>
 			<div class="tcc-related-posts" style="margin: 60px 0; border-top: 1px solid #eaeaea; padding-top: 40px;">
 				<h3 style="font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 30px; text-align: center; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1;">You Might Also Love</h3>

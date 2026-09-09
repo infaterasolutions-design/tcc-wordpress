@@ -32,44 +32,7 @@ get_header();
 				<p class="article-intro"><?php echo get_the_excerpt(); ?></p>
 			<?php endif; ?>
 
-			<!-- Hero Image -->
-			<?php 
-			$thumbnail_id = get_post_thumbnail_id();
-			$content = get_the_content();
-			
-			$is_in_content = false;
-			if ( $thumbnail_id ) {
-			    // 1. Check for Gutenberg block class (original method)
-			    if ( strpos( $content, 'wp-image-' . $thumbnail_id ) !== false ) {
-			        $is_in_content = true;
-			    } else {
-			        // 2. Smarter fallback: Check if the actual image filename exists in the post content
-			        $thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), 'full' );
-			        if ( $thumbnail_url ) {
-			            $filename = basename( parse_url( $thumbnail_url, PHP_URL_PATH ) );
-			            // Strip WordPress size suffixes (e.g., -1024x768) just in case
-			            $base_filename = preg_replace('/-\d+x\d+(?=\.[a-z]+$)/i', '', $filename);
-			            if ( !empty($base_filename) && strpos( $content, $base_filename ) !== false ) {
-			                $is_in_content = true;
-			            }
-			        }
-			    }
-			}
-			
-			if ( has_post_thumbnail() ) : 
-				if ( ! $is_in_content ) :
-			?>
-				<div style="margin-bottom: 48px;">
-					<?php the_post_thumbnail( 'full', array( 'class' => 'article-hero-image', 'style' => 'margin-bottom: 0;', 'fetchpriority' => 'high' ) ); ?>
-					<?php $caption = get_the_post_thumbnail_caption(); ?>
-					<?php if ( $caption ) : ?>
-						<p class="text-sans" style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 0.8rem; font-style: italic;">
-							<?php echo esc_html( $caption ); ?>
-						</p>
-					<?php endif; ?>
-				</div>
-				<?php endif; // End check for is_in_content ?>
-			<?php endif; ?>
+			<!-- Hero Image Disabled: User manually inserts images into content -->
 			</header>
 
 				<!-- Article Body -->

@@ -68,7 +68,7 @@ global $wp_query;
 				<h1 class="script-title">
 					<?php echo esc_html( strtolower( $cat_title ) ); ?>
 				</h1>
-				<div class="filter-tags">
+				<div class="filter-tags" style="display: none;">
 					<button class="filter-tag active">ALL</button>
 					<button class="filter-tag">OUTFITS</button>
 					<button class="filter-tag">STYLE TIPS</button>

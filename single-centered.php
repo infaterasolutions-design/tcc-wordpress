@@ -38,7 +38,7 @@ get_header(); ?>
 			</div>
 
 			<!-- Tags & Share -->
-			<div style="margin-top: 4rem; padding-bottom: 2rem; border-bottom: 1px solid #d4cfc3; display: flex; justify-content: space-between; align-items: center;">
+			<div style="margin-top: 4rem; padding-bottom: 2rem; border-bottom: 1px solid #d4cfc3; display: none; justify-content: space-between; align-items: center;">
 				<div style="font-family: 'Inter', sans-serif; display: flex; gap: 0.5rem; font-size: 0.7rem; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase;">
 					<span style="color: #888;">TAGS:</span>
 					<?php 

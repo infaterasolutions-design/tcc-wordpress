@@ -101,7 +101,7 @@ get_header(); ?>
 						while ( $my_query->have_posts() ) {
 							$my_query->the_post();
 							?>
-							<div style="display: flex; flex-direction: column; width: 100%;">
+							<a href="<?php the_permalink(); ?>" style="display: flex; flex-direction: column; width: 100%; text-decoration: none; color: inherit;">
 								<div style="width: 100%; padding-bottom: 125%; margin-bottom: 1rem; background-color: #e5e5e5; position: relative; overflow: hidden;" class="post-card-img-container">
 									<?php if ( has_post_thumbnail() ) : ?>
 										<?php the_post_thumbnail( 'large', array( 'class' => 'post-card-img', 'style' => 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;' ) ); ?>
@@ -113,12 +113,12 @@ get_header(); ?>
 									<?php $cat = get_the_category(); if($cat) echo esc_html($cat[0]->name); ?>
 								</span>
 								<h4 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 800; line-height: 1.3; color: #000; margin: 0; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1;">
-									<a href="<?php the_permalink(); ?>" style="color: inherit; text-decoration: none;"><?php the_title(); ?></a>
+									<?php the_title(); ?>
 								</h4>
 								<span style="font-family: 'Inter', sans-serif; font-size: 0.6rem; color: #888; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.5rem; display: block;">
 									<?php echo get_the_date(); ?>
 								</span>
-							</div>
+							</a>
 							<?php
 						}
 					}

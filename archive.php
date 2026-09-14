@@ -84,7 +84,7 @@ global $wp_query;
 									<span style="font-family: 'Inter', sans-serif; font-size: 9px; letter-spacing: 1.51px; color: #605C5C; text-transform: uppercase; display: block; margin-bottom: 8px;">
 										<?php echo get_the_date(); ?>
 									</span>
-									<h2 class="text-serif" style="font-size: 20px; line-height: 25px; letter-spacing: 0.17px; color: #000; margin: 0;">
+									<h2 class="text-serif" style="font-size: 20px; line-height: 25px; letter-spacing: 0.17px; color: #000; margin: 0; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1;">
 										<?php the_title(); ?>
 									</h2>
 								</div>

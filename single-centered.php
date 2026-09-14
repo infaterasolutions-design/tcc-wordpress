@@ -90,17 +90,36 @@ get_header(); ?>
 				if ( $categories ) {
 					$category_ids = array();
 					foreach( $categories as $individual_category ) $category_ids[] = $individual_category->term_id;
-					$args = array(
-						'category__in'     => $category_ids,
-						'post__not_in'     => array( $post->ID ),
-						'posts_per_page'   => 3,
-						'ignore_sticky_posts' => 1
-					);
-					$my_query = new wp_query( $args );
-					if ( $my_query->have_posts() ) {
-						while ( $my_query->have_posts() ) {
-							$my_query->the_post();
-							?>
+					
+					$transient_key = 'tcc_centered_related_' . $post->ID;
+					$related_post_ids = get_transient( $transient_key );
+					
+					if ( false === $related_post_ids ) {
+						$args = array(
+							'category__in'     => $category_ids,
+							'post__not_in'     => array( $post->ID ),
+							'posts_per_page'   => 3,
+							'ignore_sticky_posts' => 1,
+							'no_found_rows'    => true,
+							'fields'           => 'ids'
+						);
+						$fetch_query = new WP_Query( $args );
+						$related_post_ids = $fetch_query->posts;
+						set_transient( $transient_key, $related_post_ids, 4 * HOUR_IN_SECONDS );
+					}
+					
+					if ( ! empty( $related_post_ids ) ) {
+						$my_query = new WP_Query( array(
+							'post__in'       => $related_post_ids,
+							'orderby'        => 'post__in',
+							'posts_per_page' => 3,
+							'no_found_rows'  => true
+						) );
+						
+						if ( $my_query->have_posts() ) {
+							while ( $my_query->have_posts() ) {
+								$my_query->the_post();
+								?>
 							<a href="<?php the_permalink(); ?>" style="display: flex; flex-direction: column; width: 100%; text-decoration: none; color: inherit;">
 								<div style="width: 100%; padding-bottom: 125%; margin-bottom: 1rem; background-color: #e5e5e5; position: relative; overflow: hidden;" class="post-card-img-container">
 									<?php if ( has_post_thumbnail() ) : ?>
@@ -120,10 +139,11 @@ get_header(); ?>
 								</span>
 							</a>
 							<?php
-						}
-					}
-					wp_reset_query();
-				}
+						} // End while
+					} // End if have_posts
+					wp_reset_postdata();
+				} // End if !empty related_post_ids
+				} // End if categories
 				?>
 			</div>
 		</div>

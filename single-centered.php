@@ -59,7 +59,7 @@ get_header(); ?>
 		</article>
 
 		<!-- RELATED POSTS SECTION -->
-		<div style="max-width: 1240px; margin: 4rem auto 0; padding: 0 2rem;">
+		<div style="max-width: 1240px; margin: 4rem auto 6rem; padding: 0 2rem;">
 			<h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; text-align: center; margin-bottom: 3rem; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1;">
 				You Might Also Like
 			</h2>

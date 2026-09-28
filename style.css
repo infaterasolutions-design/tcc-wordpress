@@ -2530,8 +2530,8 @@ html, body { max-width: 100%; position: relative; }
     .tcc-mega-panel { display: none !important; }
 }
 @keyframes megaPanelFadeIn {
-    from { opacity: 0; transform: translate(-50%, -5px); }
-    to { opacity: 1; transform: translate(-50%, 0); }
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 @keyframes megaGroupFadeIn {
     from { opacity: 0; transform: translateY(-5px); }

@@ -16,7 +16,7 @@ get_header(); ?>
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
-		background-image: url('<?php echo get_template_directory_uri(); ?>/assets/hero-bg-desktop-highres-green.png');
+		background-image: url('/wp-content/themes/tcc-theme/assets/hero-bg-desktop-highres-green.png');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
@@ -88,7 +88,7 @@ get_header(); ?>
 			display: flex; 
 			width: 100%; 
 			min-height: 550px;
-			background-image: url('<?php echo get_template_directory_uri(); ?>/assets/hero-bg-mobile-sunglasses.png');
+			background-image: url('/wp-content/themes/tcc-theme/assets/hero-bg-mobile-sunglasses.png');
 			background-size: cover;
 			background-position: 50% 20%;
 			background-repeat: no-repeat;
@@ -395,7 +395,7 @@ get_header(); ?>
 	.capsule-promo-section {
 		margin: 0;
 		background-color: #2F4436;
-		background-image: url('<?php echo get_template_directory_uri(); ?>/assets/capsule-bg-highres.png');
+		background-image: url('/wp-content/themes/tcc-theme/assets/capsule-bg-highres.png');
 		background-size: cover;
 		background-position: center;
 		display: flex;

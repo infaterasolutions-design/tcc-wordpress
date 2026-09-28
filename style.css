@@ -3676,7 +3676,7 @@ html, body { max-width: 100%; position: relative; }
         transform-origin: center;
         position: static;
         text-align: center;
-        font-size: 36px;
+        font-size: 24px;
         line-height: 1.2;
     }
     .fp-latest-grid {

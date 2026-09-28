@@ -391,8 +391,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            var shouldBeScrolled = window.scrollY > 80;
             var isScrolled = header.classList.contains('is-scrolled');
+            // Hysteresis: Require scrolling past 120px to shrink, and back above 40px to expand.
+            // This prevents the page height shift from causing an infinite bounce/flicker loop ("dipper" effect).
+            var shouldBeScrolled = isScrolled ? window.scrollY > 40 : window.scrollY > 120;
             
             if (shouldBeScrolled !== isScrolled) {
                 // FLIP animation for smooth sliding

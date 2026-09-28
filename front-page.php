@@ -815,6 +815,10 @@ get_header(); ?>
                         max-width: 25% !important; 
                         scroll-snap-align: start !important; 
                     } 
+                    #sb_instagram .sbi_playbtn {
+                        width: 24px !important;
+                        height: 24px !important;
+                    }
                 }
             </style>
 			<?php echo do_shortcode('[instagram-feed num=6 cols=6 disablemobile=true showheader=false showbutton=false showfollow=false showcaption=false]'); ?>

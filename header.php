@@ -79,6 +79,7 @@ body, html {
 	display: grid;
 	grid-template-areas: 
 		"logo actions"
+		"separator separator"
 		"menu search";
 	grid-template-columns: auto 1fr;
 	align-items: center;
@@ -86,12 +87,20 @@ body, html {
 	transition: all 0.3s ease;
 }
 
-/* Default State (2 rows) */
-.header-logo { grid-area: logo; padding-bottom: 12px; display: flex; align-items: center; }
-.header-actions { grid-area: actions; display: flex; align-items: center; justify-content: flex-end; gap: 30px; padding-bottom: 12px; }
+.header-separator {
+	grid-area: separator;
+	height: 1px;
+	background-color: var(--color-border);
+	width: 100%;
+	margin: 12px 0;
+}
 
-.header-menu { grid-area: menu; border-top: 1px solid var(--color-border); padding-top: 12px; }
-.header-search { grid-area: search; border-top: 1px solid var(--color-border); padding-top: 12px; display: flex; align-items: center; justify-content: flex-end; gap: 8px; cursor: pointer; color: #666; font-family: 'Inter', sans-serif; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; }
+/* Default State (2 rows) */
+.header-logo { grid-area: logo; display: flex; align-items: center; }
+.header-actions { grid-area: actions; display: flex; align-items: center; justify-content: flex-end; gap: 30px; }
+
+.header-menu { grid-area: menu; }
+.header-search { grid-area: search; display: flex; align-items: center; justify-content: flex-end; gap: 8px; cursor: pointer; color: #666; font-family: 'Inter', sans-serif; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; }
 .header-search:hover { color: #000; }
 
 .header-mobile-icons { display: none; }
@@ -107,11 +116,11 @@ body, html {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.header-main.is-scrolled .header-actions {
+.header-main.is-scrolled .header-actions,
+.header-main.is-scrolled .header-separator {
 	display: none;
 }
 .header-main.is-scrolled .header-logo {
-	padding-bottom: 0;
 	margin-right: 45px; /* Space between logo and menu */
 }
 .header-main.is-scrolled .header-menu,
@@ -186,11 +195,11 @@ body, html {
 		grid-template-areas: "logo mobileicons" !important;
 		grid-template-columns: 1fr auto !important;
 	}
-	.header-actions, .header-menu, .header-search { display: none !important; }
+	.header-actions, .header-menu, .header-search, .header-separator { display: none !important; }
 	.header-mobile-icons,
 	.header-main.is-scrolled .header-mobile-icons { grid-area: mobileicons; display: flex !important; align-items: center; gap: 15px; }
 	.header-logo,
-	.header-main.is-scrolled .header-logo { padding-bottom: 0 !important; margin-right: 0 !important; }
+	.header-main.is-scrolled .header-logo { margin-right: 0 !important; }
     
     .site-logo img.custom-logo { max-height: 35px !important; width: auto !important; }
     .header-logo-tcc { font-size: 1.5rem !important; }
@@ -257,6 +266,9 @@ body, html {
 					</a>
 				</div>
 			</div>
+
+			<!-- Separator Line -->
+			<div class="header-separator"></div>
 
 			<!-- Menu -->
 			<div class="header-menu">

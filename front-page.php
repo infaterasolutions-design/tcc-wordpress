@@ -151,7 +151,7 @@ get_header(); ?>
 	</style>
 	
 	<!-- Desktop Hero (Pink background with dynamic text) -->
-	<section class="tcc-custom-hero-banner" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/hero-bg-desktop-highres-green.png') !important; background-color: #F8E7E0;">
+	<section class="tcc-custom-hero-banner" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1920') !important; background-color: #F8E7E0;">
 		<div class="hero-text-overlay">
 			<span class="hero-kicker">Outfit Ideas for Real Life</span>
 			<h1 class="hero-main-title">
@@ -169,7 +169,7 @@ get_header(); ?>
 	</section>
 
 	<!-- Mobile Hero (Green background with dynamic text) -->
-	<section class="tcc-mobile-hero-banner" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/hero-bg-mobile-sunglasses.png') !important; background-color: #2F4436;">
+	<section class="tcc-mobile-hero-banner" style="background-image: url('/wp-content/themes/tcc-theme/assets/bg2.png') !important; background-color: #2F4436;">
 		<div class="mobile-hero-text-overlay">
 			<span class="mobile-hero-kicker">From Closet to Confidence</span>
 			<h1 class="mobile-hero-main-title">
@@ -492,7 +492,7 @@ get_header(); ?>
 	</style>
 
 	<!-- Capsule Wardrobe Promo Banner -->
-	<section class="capsule-promo-section" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/capsule-bg-highres.png') !important; background-color: #2F4436;">
+	<section class="capsule-promo-section" style="background-image: url('/wp-content/themes/tcc-theme/assets/bg3.png') !important; background-color: #2F4436;">
 		<div class="capsule-promo-image" id="capsule-image-placeholder">
 			<!-- Background image will be applied here once provided -->
 		</div>

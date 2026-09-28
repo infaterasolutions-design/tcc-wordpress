@@ -3837,10 +3837,10 @@ html, body { max-width: 100%; position: relative; }
         margin: 0 auto;
     }
     .fp-creator-hub-initial {
-        font-size: 60px;
+        font-size: 80px;
     }
     .fp-creator-hub-title {
-        font-size: 24px;
+        font-size: 30px;
     }
     .fp-creator-hub-label {
         display: none;
@@ -3859,7 +3859,7 @@ html, body { max-width: 100%; position: relative; }
         text-align: center;
     }
     .fp-creator-hub-item-title {
-        font-size: 20px;
+        font-size: 26px;
         text-align: center;
     }
     .fp-creator-hub-read-more {

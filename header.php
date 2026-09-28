@@ -183,7 +183,7 @@ body, html {
 
 <div class="site-wrapper">
 	<header class="header-main">
-		<div class="header-inner">
+		<div class="header-inner container">
 		
 			<div class="header-logo">
 				<?php if ( has_custom_logo() ) : ?>

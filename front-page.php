@@ -745,19 +745,37 @@ get_header(); ?>
                 /* Force Smash Balloon into a flawless seamless 6-column grid */
                 #sb_instagram { padding: 0 !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
                 #sb_instagram #sbi_images { display: flex !important; flex-wrap: nowrap !important; gap: 1px !important; background-color: #ffffff !important; padding: 0 !important; margin: 0 !important; width: 100% !important; }
-                                                #sb_instagram .sbi_item { padding: 0 !important; margin: 0 !important; flex: 1 1 16.666% !important; max-width: 16.666% !important; border: none !important; position: relative !important; }
-                #sb_instagram .sbi_photo { position: relative !important; display: block !important; width: 100% !important; height: 100% !important; }
-                #sb_instagram .sbi_item img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
-                #sb_instagram .sbi_load_btn, #sb_instagram .sbi_follow_btn { display: none !important; }
+                                                                #sb_instagram .sbi_item { padding: 0 !important; margin: 0 !important; flex: 1 1 16.666% !important; max-width: 16.666% !important; border: none !important; }
+                
+                /* Bulletproof Grid Centering Strategy */
+                #sb_instagram .sbi_item, 
+                #sb_instagram .sbi_photo_wrap, 
+                #sb_instagram .sbi_photo { 
+                    display: grid !important; 
+                    place-items: center !important; 
+                    width: 100% !important; 
+                    height: 100% !important; 
+                    position: relative !important;
+                }
+                #sb_instagram .sbi_item > *, 
+                #sb_instagram .sbi_photo_wrap > *, 
+                #sb_instagram .sbi_photo > * {
+                    grid-area: 1 / 1 !important;
+                }
+                #sb_instagram .sbi_item img { 
+                    width: 100% !important; 
+                    height: 100% !important; 
+                    object-fit: cover !important; 
+                    grid-area: 1 / 1 !important;
+                }
+                #sb_instagram .sbi_load_btn, #sb_instagram .sbi_follow_btn, #sb_instagram .sbi_info, #sb_instagram .sbi_caption { display: none !important; }
                 
                 /* Fix Play Button Position */
                 #sb_instagram .sbi_playbtn {
-                    position: absolute !important;
-                    top: 50% !important;
-                    left: 50% !important;
-                    right: auto !important;
-                    bottom: auto !important;
-                    transform: translate(-50%, -50%) !important;
+                    grid-area: 1 / 1 !important;
+                    position: relative !important; 
+                    top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
+                    transform: none !important;
                     margin: 0 !important;
                     width: 48px !important;
                     height: 48px !important;
@@ -773,6 +791,7 @@ get_header(); ?>
                     width: 24px !important;
                     height: 24px !important;
                     fill: #ffffff !important;
+                    margin: 0 !important;
                 }
                 
                 /* Mobile: 4 items visible, horizontal swiping slider */
@@ -798,6 +817,7 @@ get_header(); ?>
 </main>
 
 <?php get_footer(); ?>
+
 
 
 

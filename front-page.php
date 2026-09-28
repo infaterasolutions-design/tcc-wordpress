@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * The template for displaying the front page
  */
@@ -88,7 +88,7 @@ get_header(); ?>
 			display: flex; 
 			width: 100%; 
 			min-height: 550px;
-			background-image: url('<?php echo get_template_directory_uri(); ?>/assets/hero-bg-mobile-sunglasses.jpg');
+			background-image: url('<?php echo get_template_directory_uri(); ?>/assets/hero-bg-mobile-sunglasses.png');
 			background-size: cover;
 			background-position: 50% 20%;
 			background-repeat: no-repeat;

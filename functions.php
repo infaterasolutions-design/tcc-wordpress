@@ -1340,8 +1340,7 @@ function tcc_async_google_fonts() {
     echo "<link rel='preconnect' href='https://fonts.googleapis.com'>\n";
     echo "<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>\n";
     echo "<link rel='preload' as='style' href='" . esc_url($font_url) . "'>\n";
-    echo "<link rel='stylesheet' media='print' onload=\"this.media='all'\" href='" . esc_url($font_url) . "'>\n";
-    echo "<noscript><link rel='stylesheet' href='" . esc_url($font_url) . "'></noscript>\n";
+    echo "<link rel='stylesheet' media='all' href='" . esc_url($font_url) . "'>\n";
 }
 add_action( 'wp_head', 'tcc_async_google_fonts', 2 );
 

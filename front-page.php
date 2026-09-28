@@ -151,7 +151,7 @@ get_header(); ?>
 	</style>
 	
 	<!-- Desktop Hero (Pink background with dynamic text) -->
-	<section class="tcc-custom-hero-banner" style="background-image: url('/bg1.png') !important; background-color: #F8E7E0;">
+	<section class="tcc-custom-hero-banner" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/bg1.png') !important; background-color: #F8E7E0;">
 		<div class="hero-text-overlay">
 			<span class="hero-kicker">Outfit Ideas for Real Life</span>
 			<h1 class="hero-main-title">
@@ -169,7 +169,7 @@ get_header(); ?>
 	</section>
 
 	<!-- Mobile Hero (Green background with dynamic text) -->
-	<section class="tcc-mobile-hero-banner" style="background-image: url('/bg2.png') !important; background-color: #2F4436;">
+	<section class="tcc-mobile-hero-banner" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/bg2.png') !important; background-color: #2F4436;">
 		<div class="mobile-hero-text-overlay">
 			<span class="mobile-hero-kicker">From Closet to Confidence</span>
 			<h1 class="mobile-hero-main-title">
@@ -492,7 +492,7 @@ get_header(); ?>
 	</style>
 
 	<!-- Capsule Wardrobe Promo Banner -->
-	<section class="capsule-promo-section" style="background-image: url('/bg3.png') !important; background-color: #2F4436;">
+	<section class="capsule-promo-section" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/bg3.png') !important; background-color: #2F4436;">
 		<div class="capsule-promo-image" id="capsule-image-placeholder">
 			<!-- Background image will be applied here once provided -->
 		</div>

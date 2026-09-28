@@ -565,9 +565,8 @@ get_header(); ?>
 								<img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>" loading="lazy" />
 							</picture>
 							<div class="figma-smv-play">
-								<div class="figma-smv-play-circle"></div>
 								<svg class="figma-smv-play-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M8 5V19L19 12L8 5Z" fill="#000000"/>
+									<path d="M18.8 10.2C19.9 10.8 19.9 12.4 18.8 13.0L7.4 19.6C6.3 20.2 4.9 19.4 4.9 18.2L4.9 5.0C4.9 3.8 6.3 3.0 7.4 3.6L18.8 10.2Z" fill="white"/>
 								</svg>
 							</div>
 						</div>
@@ -611,9 +610,8 @@ get_header(); ?>
 								<img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>" loading="lazy" />
 							</picture>
 							<div class="figma-smv-play">
-								<div class="figma-smv-play-circle"></div>
 								<svg class="figma-smv-play-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M8 5V19L19 12L8 5Z" fill="#000000"/>
+									<path d="M18.8 10.2C19.9 10.8 19.9 12.4 18.8 13.0L7.4 19.6C6.3 20.2 4.9 19.4 4.9 18.2L4.9 5.0C4.9 3.8 6.3 3.0 7.4 3.6L18.8 10.2Z" fill="white"/>
 								</svg>
 							</div>
 						</div>

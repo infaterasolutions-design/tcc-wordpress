@@ -745,7 +745,8 @@ get_header(); ?>
                 /* Force Smash Balloon into a flawless seamless 6-column grid */
                 #sb_instagram { padding: 0 !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
                 #sb_instagram #sbi_images { display: flex !important; flex-wrap: nowrap !important; gap: 1px !important; background-color: #ffffff !important; padding: 0 !important; margin: 0 !important; width: 100% !important; }
-                                #sb_instagram .sbi_item { padding: 0 !important; margin: 0 !important; flex: 1 1 16.666% !important; max-width: 16.666% !important; border: none !important; position: relative !important; }
+                                                #sb_instagram .sbi_item { padding: 0 !important; margin: 0 !important; flex: 1 1 16.666% !important; max-width: 16.666% !important; border: none !important; position: relative !important; }
+                #sb_instagram .sbi_photo { position: relative !important; display: block !important; width: 100% !important; height: 100% !important; }
                 #sb_instagram .sbi_item img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
                 #sb_instagram .sbi_load_btn, #sb_instagram .sbi_follow_btn { display: none !important; }
                 
@@ -754,6 +755,8 @@ get_header(); ?>
                     position: absolute !important;
                     top: 50% !important;
                     left: 50% !important;
+                    right: auto !important;
+                    bottom: auto !important;
                     transform: translate(-50%, -50%) !important;
                     margin: 0 !important;
                     width: 48px !important;
@@ -795,5 +798,6 @@ get_header(); ?>
 </main>
 
 <?php get_footer(); ?>
+
 
 

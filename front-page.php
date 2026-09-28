@@ -784,19 +784,19 @@ get_header(); ?>
                     bottom: auto !important;
                     transform: translate(-50%, -50%) !important;
                     margin: 0 !important;
-                    width: 48px !important;
-                    height: 48px !important;
+                    width: 44px !important;
+                    height: 44px !important;
                     display: flex !important;
                     align-items: center !important;
                     justify-content: center !important;
-                    background: rgba(0, 0, 0, 0.4) !important;
-                    border-radius: 50% !important;
-                    padding: 12px !important;
+                    background: transparent !important;
+                    padding: 0 !important;
                     z-index: 10 !important;
+                    filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.25)) !important;
                 }
                 #sb_instagram .sbi_playbtn svg {
-                    width: 24px !important;
-                    height: 24px !important;
+                    width: 100% !important;
+                    height: 100% !important;
                     fill: #ffffff !important;
                     margin: 0 !important;
                 }

@@ -114,30 +114,38 @@ get_header(); ?>
 		}
 		.mobile-hero-main-title {
 			font-family: 'Playfair Display', serif;
-			font-size: 52px;
+			font-size: 42px;
 			line-height: 1.1;
 			color: #fff; 
 			margin: 0 0 15px 0;
-			font-weight: 500;
+			font-weight: 400;
+		}
+		.mobile-hero-main-title span {
+			font-family: 'Georgia Script', cursive;
+			font-style: italic;
+			color: #E2AD9A;
+			font-size: 58px;
+			display: block;
+			margin-top: -5px;
 		}
 		.mobile-hero-desc {
 			font-family: 'Inter', sans-serif;
-			font-size: 15px;
+			font-size: 14px;
 			line-height: 1.5;
 			color: #fff; 
 			margin: 0 0 25px 0;
-			max-width: 320px;
+			max-width: 300px;
 		}
 		.mobile-hero-btn-link {
 			display: inline-block;
 			background-color: #C76B69; 
 			color: #fff;
 			font-family: 'Inter', sans-serif;
-			font-size: 14px;
+			font-size: 13px;
 			font-weight: 500;
 			text-transform: uppercase;
 			letter-spacing: 0.05em;
-			padding: 14px 30px;
+			padding: 12px 28px;
 			border-radius: 30px;
 			text-decoration: none;
 			transition: background-color 0.3s ease;
@@ -145,7 +153,8 @@ get_header(); ?>
 	}
 	@media (max-width: 480px) {
 		.tcc-mobile-hero-banner { min-height: 500px; background-position: 60% 20%; }
-		.mobile-hero-main-title { font-size: 46px; }
+		.mobile-hero-main-title { font-size: 38px; }
+		.mobile-hero-main-title span { font-size: 50px; }
 		.mobile-hero-text-overlay { padding: 30px 20px; }
 	}
 	</style>
@@ -175,7 +184,7 @@ get_header(); ?>
 			<h1 class="mobile-hero-main-title">
 				Outfits<br>
 				That Fit<br>
-				Your Life
+				<span>Your Life</span>
 			</h1>
 			<p class="mobile-hero-desc">
 				Practical outfit ideas, trend guides and<br/> closet planning tips for everyday style.

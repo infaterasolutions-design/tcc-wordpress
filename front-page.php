@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * The template for displaying the front page
  */
@@ -7,113 +7,164 @@ get_header(); ?>
 
 <main class="fp-hero-main">
 
-	<!-- Stitch Hero Section (Desktop & Mobile) -->
-	<section class="figma-hero-section">
-		<!-- Desktop Hero Layout -->
-		<div class="figma-hero-desktop hidden-mobile">
-			<!-- Header Row -->
-			<div class="figma-hero-header">
-				<div class="figma-hero-learn">
-					<svg class="figma-hero-circle-text" viewBox="0 0 100 100">
-						<path d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" id="circlePath"></path>
-						<text><textPath href="#circlePath" startOffset="0%">LEARN MORE ABOUT US • </textPath></text>
-					</svg>
-					<button class="figma-hero-play-btn">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-					</button>
-				</div>
-				
-				<h1 class="figma-hero-title">Elevate Your Style With<br/>Bold Fashion</h1>
-				
-				<div class="figma-hero-avatars">
-					<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Avatar 1">
-					<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" alt="Avatar 2">
-					<div class="figma-hero-avatar-more">+</div>
-				</div>
-			</div>
+	<!-- Hero Section -->
+	<style>
+	.tcc-custom-hero-banner {
+		position: relative;
+		width: 100%;
+		min-height: 600px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		background-image: url('<?php echo get_template_directory_uri(); ?>/assets/hero-bg-desktop-highres-green.png');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		overflow: hidden;
+	}
+	.hero-text-overlay {
+		max-width: 550px;
+		text-align: left;
+		padding: 40px;
+		margin-left: 18%; /* Shift right to avoid the plant/mirror */
+	}
+	.hero-kicker {
+		font-family: 'Inter', sans-serif;
+		font-size: 14px;
+		font-weight: 600;
+		letter-spacing: 0.15em;
+		color: #DDA89A; 
+		text-transform: uppercase;
+		margin-bottom: 15px;
+		display: block;
+	}
+	.hero-main-title {
+		font-family: 'Playfair Display', serif;
+		font-size: 76px;
+		line-height: 1.1;
+		color: #fff;
+		margin: 0 0 20px 0;
+		font-weight: 500;
+	}
+	.hero-main-title span {
+		color: #DDA89A;
+	}
+	.hero-desc {
+		font-family: 'Inter', sans-serif;
+		font-size: 17px;
+		line-height: 1.6;
+		color: #fff;
+		margin: 0 0 35px 0;
+		max-width: 450px;
+	}
+	.hero-btn-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		background-color: #C76B69;
+		color: #fff;
+		font-family: 'Inter', sans-serif;
+		font-size: 14px;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		padding: 16px 36px;
+		border-radius: 40px;
+		text-decoration: none;
+		transition: background-color 0.3s ease;
+	}
+	.hero-btn-link:hover {
+		background-color: #9d4d52;
+		color: #fff;
+	}
+	.tcc-mobile-hero-banner { display: none; }
 
-			<!-- Masonry Grid Row -->
-			<div class="figma-hero-grid">
-				<!-- Column 1 -->
-				<div class="figma-grid-col col-1">
-					<div class="figma-card card-orange">
-						<picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/Tcc.avif" type="image/avif"><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/Tcc.webp" type="image/webp"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/Tcc.jpeg" alt="Orange Outfit" fetchpriority="high" loading="eager"></picture>
-					</div>
-					<div class="figma-card card-teal">
-						<picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-cloths.avif" type="image/avif"><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-cloths.webp" type="image/webp"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-cloths.jpeg" alt="Teal Outfit" loading="lazy"></picture>
-					</div>
-				</div>
-				<!-- Column 2 -->
-				<div class="figma-grid-col col-2">
-					<div class="figma-card card-green">
-						<div class="notch-mask"></div>
-						<picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/outfit-tcc.avif" type="image/avif"><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/outfit-tcc.webp" type="image/webp"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/outfit-tcc.jpeg" alt="Green Coat" loading="lazy"></picture>
-					</div>
-				</div>
-				<!-- Column 3 -->
-				<div class="figma-grid-col col-3">
-					<div class="figma-hero-flower-icon">
-						<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F4A261" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-					</div>
-					<div class="figma-card card-yellow">
-						<picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-outfit.avif" type="image/avif"><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-outfit.webp" type="image/webp"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-outfit.jpeg" alt="Yellow Outfit" loading="lazy"></picture>
-					</div>
-					<button class="figma-hero-explore-btn">
-						Explore Collections <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
-					</button>
-				</div>
-				<!-- Column 4 -->
-				<div class="figma-grid-col col-4">
-					<div class="figma-card card-blue">
-						<div class="notch-mask"></div>
-						<picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-fashionable.avif" type="image/avif"><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-fashionable.webp" type="image/webp"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-fashionable.jpeg" alt="Blue Outfit" loading="lazy"></picture>
-					</div>
-				</div>
-				<!-- Column 5 -->
-				<div class="figma-grid-col col-5">
-					<div class="figma-card card-red-glasses">
-						<picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-winter.avif" type="image/avif"><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-winter.webp" type="image/webp"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-winter.jpeg" alt="Red Glasses" loading="lazy"></picture>
-					</div>
-					<div class="figma-card card-dark-green">
-						<picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-spring.avif" type="image/avif"><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-spring.webp" type="image/webp"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-spring.jpeg" alt="Dark Green Suit" loading="lazy"></picture>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Mobile Hero Layout (Carousel) -->
-		<div class="figma-hero-mobile hidden-desktop">
-			<div class="figma-mobile-header">
-				<div class="figma-mobile-learn">
-					<svg class="figma-hero-circle-text" viewBox="0 0 100 100">
-						<path d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" id="circlePathMob"></path>
-						<text><textPath href="#circlePathMob" startOffset="0%">LEARN MORE ABOUT US • </textPath></text>
-					</svg>
-					<button class="figma-hero-play-btn">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-					</button>
-				</div>
-				<h1 class="figma-mobile-title">Elevate Your Style With<br/>Bold Fashion</h1>
-				<div class="figma-mobile-avatars">
-					<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Avatar 1">
-					<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" alt="Avatar 2">
-					<div class="figma-mobile-avatar-more">+</div>
-				</div>
-			</div>
-			
-			<div class="figma-mobile-carousel">
-				<div class="figma-carousel-card card-orange"><picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/Tcc.avif" type="image/avif"><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/Tcc.webp" type="image/webp"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/Tcc.jpeg" alt="Orange Outfit" fetchpriority="high" loading="eager"></picture></div>
-				<div class="figma-carousel-card card-green"><picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/outfit-tcc.avif" type="image/avif"><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/outfit-tcc.webp" type="image/webp"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/outfit-tcc.jpeg" alt="Green Coat" loading="lazy"></picture></div>
-				<div class="figma-carousel-card card-blue"><picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-fashionable.avif" type="image/avif"><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-fashionable.webp" type="image/webp"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-fashionable.jpeg" alt="Blue Outfit" loading="lazy"></picture></div>
-				<div class="figma-carousel-card card-red-glasses"><picture><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-winter.avif" type="image/avif"><source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-winter.webp" type="image/webp"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/tcc-winter.jpeg" alt="Red Glasses" loading="lazy"></picture></div>
-			</div>
-			
-			<div class="figma-mobile-cta">
-				<button class="figma-hero-explore-btn">
-					Explore Collections <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
-				</button>
-			</div>
-			
+	@media (max-width: 1024px) {
+		.hero-main-title { font-size: 56px; }
+	}
+	@media (max-width: 768px) {
+		.tcc-custom-hero-banner { display: none; }
+		.tcc-mobile-hero-banner { 
+			display: flex; 
+			width: 100%; 
+			min-height: 550px;
+			background-image: url('<?php echo get_template_directory_uri(); ?>/assets/hero-bg-mobile-sunglasses.jpg');
+			background-size: cover;
+			background-position: 50% 20%;
+			background-repeat: no-repeat;
+			position: relative;
+			align-items: center;
+			justify-content: flex-start;
+		}
+		.mobile-hero-text-overlay {
+			padding: 40px 30px;
+			text-align: left;
+			width: 100%;
+			max-width: 90%;
+		}
+		.mobile-hero-kicker {
+			font-family: 'Inter', sans-serif;
+			font-size: 13px;
+			font-weight: 600;
+			letter-spacing: 0.1em;
+			color: #DDA89A; 
+			text-transform: uppercase;
+			margin-bottom: 12px;
+			display: block;
+		}
+		.mobile-hero-main-title {
+			font-family: 'Playfair Display', serif;
+			font-size: 52px;
+			line-height: 1.1;
+			color: #fff; 
+			margin: 0 0 15px 0;
+			font-weight: 500;
+		}
+		.mobile-hero-desc {
+			font-family: 'Inter', sans-serif;
+			font-size: 15px;
+			line-height: 1.5;
+			color: #fff; 
+			margin: 0 0 25px 0;
+			max-width: 320px;
+		}
+		.mobile-hero-btn-link {
+			display: inline-block;
+			background-color: #C76B69; 
+			color: #fff;
+			font-family: 'Inter', sans-serif;
+			font-size: 14px;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			padding: 14px 30px;
+			border-radius: 30px;
+			text-decoration: none;
+			transition: background-color 0.3s ease;
+		}
+	}
+	@media (max-width: 480px) {
+		.tcc-mobile-hero-banner { min-height: 500px; background-position: 60% 20%; }
+		.mobile-hero-main-title { font-size: 46px; }
+		.mobile-hero-text-overlay { padding: 30px 20px; }
+	}
+	</style>
+	
+	<!-- Desktop Hero (Pink background with dynamic text) -->
+	<section class="tcc-custom-hero-banner">
+		<div class="hero-text-overlay">
+			<span class="hero-kicker">Outfit Ideas for Real Life</span>
+			<h1 class="hero-main-title">
+				Build a<br>
+				Wardrobe<br>
+				<span>You'll Love</span>
+			</h1>
+			<p class="hero-desc">
+				Easy outfit ideas, seasonal style guides and closet planning tips to help you look and feel your best â€” every day.
+			</p>
+			<a href="<?php echo esc_url( home_url( '/category/wardrobe/' ) ); ?>" class="hero-btn-link">
+				Explore Outfit Ideas &rarr;
+			</a>
 		</div>
 	</section>
 
@@ -340,25 +391,99 @@ get_header(); ?>
 	</section>
 
 
-	<!-- Subscribe (Figma Redesign) -->
-	<section class="figma-newsletter-section">
-		<div class="figma-newsletter-container">
-			<div class="figma-newsletter-label">NEWSLETTER</div>
-			<h2 class="figma-newsletter-title">Elevate your inbox</h2>
-			<div class="figma-newsletter-subtitle">subscribe to the newsletter</div>
-			<p class="figma-newsletter-desc">Join the wit & whimsy newsletter community and you'll instantly get Meghan's Guide to New York City plus even more exclusive content.</p>
-			
-			<form id="tcc-newsletter-form" class="figma-newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '<div style=\'padding: 1rem; text-align: center; color: #4CAF50; font-family: var(--font-sans); font-weight: 600; width: 100%;\'>✓ You\'re on the list!</div>';">
-				<div class="figma-input-wrapper">
-					<input type="text" placeholder="First name" required class="figma-newsletter-input" />
-				</div>
-				<div class="figma-input-wrapper">
-					<input type="email" placeholder="Email address" required class="figma-newsletter-input" />
-				</div>
-				<div class="figma-btn-wrapper">
-					<button type="submit" class="figma-newsletter-btn">SUBSCRIBE</button>
-				</div>
-			</form>
+	<style>
+	.capsule-promo-section {
+		margin: 0;
+		background-color: #2F4436;
+		background-image: url('<?php echo get_template_directory_uri(); ?>/assets/capsule-bg-highres.png');
+		background-size: cover;
+		background-position: center;
+		display: flex;
+		overflow: hidden;
+		min-height: 450px;
+		width: 100%;
+	}
+
+	.capsule-promo-image {
+		display: none;
+	}
+
+	.capsule-promo-content {
+		width: 50%;
+		margin-left: auto;
+		padding: 60px 50px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+	}
+
+	.capsule-promo-title {
+		font-family: 'Playfair Display', serif;
+		font-size: 52px;
+		line-height: 1.15;
+		color: #fff;
+		margin: 0 0 15px 0;
+		font-weight: 500;
+	}
+
+	.capsule-promo-desc {
+		font-family: 'Inter', sans-serif;
+		font-size: 18px;
+		color: #eaeaea;
+		margin: 0 0 35px 0;
+	}
+
+	.capsule-promo-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		background-color: #F1D4D0; /* Light pink from mockup */
+		color: #8C433D; /* Dark brownish text */
+		font-family: 'Inter', sans-serif;
+		font-size: 14px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		padding: 16px 36px;
+		border-radius: 40px;
+		text-decoration: none;
+		transition: opacity 0.3s ease;
+	}
+	.capsule-promo-btn:hover {
+		opacity: 0.85;
+		color: #8C433D;
+	}
+	@media (max-width: 768px) {
+		.capsule-promo-section {
+			flex-direction: row;
+			margin: 0;
+			border-radius: 0;
+			min-height: 250px;
+		}
+		.capsule-promo-content {
+			width: 60%;
+			margin-left: auto;
+			padding: 20px 15px;
+			align-items: flex-start;
+		}
+		.capsule-promo-title { font-size: 26px; margin-bottom: 8px; line-height: 1.1; }
+		.capsule-promo-desc { font-size: 13px; margin-bottom: 15px; line-height: 1.3; }
+		.capsule-promo-btn { padding: 10px 18px; font-size: 11px; }
+	}
+	</style>
+
+	<!-- Capsule Wardrobe Promo Banner -->
+	<section class="capsule-promo-section">
+		<div class="capsule-promo-image" id="capsule-image-placeholder">
+			<!-- Background image will be applied here once provided -->
+		</div>
+		<div class="capsule-promo-content">
+			<h2 class="capsule-promo-title">Build a<br>Capsule Wardrobe</h2>
+			<p class="capsule-promo-desc">Simple pieces. Endless outfits.</p>
+			<a href="<?php echo esc_url( home_url( '/category/wardrobe/' ) ); ?>" class="capsule-promo-btn">
+				Learn More &rarr;
+			</a>
 		</div>
 	</section>
 
@@ -369,7 +494,7 @@ get_header(); ?>
 			<!-- Left: Title -->
 			<div class="figma-smv-left">
 				<div class="figma-smv-title-wrapper">
-					<h2 class="figma-smv-heading">SHOP<br/>MY<br/>VIDEOS</h2>
+					<h2 class="figma-smv-heading">SHOP MY VIDEOS</h2>
 					<div class="figma-smv-nav-arrows">
 						<div class="figma-smv-nav-arrow" id="smv-prev">
 							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -604,56 +729,6 @@ get_header(); ?>
 	});
 	</script>
 
-	<!-- Elsewhere Section -->
-	<section class="fp-elsewhere-section">
-		<div class="fp-elsewhere-container">
-			
-			<!-- Column 1 -->
-			<a href="#" class="fp-elsewhere-col1">
-				<?php $img1 = "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&q=80&w=400"; ?>
-				<picture class="w-full">
-					<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img1)); ?>" type="image/avif">
-					<img src="<?php echo esc_url($img1); ?>" alt="Clothes rack" loading="lazy" />
-				</picture>
-			</a>
-
-			<div class="fp-elsewhere-text">elsewhere</div>
-			
-			<!-- Column 2 -->
-			<div class="fp-elsewhere-col2">
-				<a href="#" class="fp-elsewhere-col2-img-wrapper">
-					<?php $img2 = "https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?auto=format&fit=crop&q=80&w=400"; ?>
-					<picture class="w-full">
-						<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img2)); ?>" type="image/avif">
-						<img src="<?php echo esc_url($img2); ?>" alt="Striped sweater" loading="lazy" />
-					</picture>
-				</a>
-			</div>
-
-			<!-- Column 3 -->
-			<div class="fp-elsewhere-col3">
-				<a href="#" class="fp-elsewhere-col3-inner">
-					<?php $img3 = "https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&q=80&w=400"; ?>
-					<picture class="w-full">
-						<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img3)); ?>" type="image/avif">
-						<img src="<?php echo esc_url($img3); ?>" alt="Bag and drink" loading="lazy" />
-					</picture>
-				</a>
-				<a href="https://instagram.com/THECOMBOCLOSET" class="fp-elsewhere-handle" target="_blank">@THECOMBOCLOSET</a>
-			</div>
-
-			<!-- Column 4 -->
-			<a href="#" class="fp-elsewhere-col4">
-				<?php $img4 = "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400"; ?>
-				<picture class="w-full">
-					<source srcset="<?php echo esc_url(str_replace('auto=format', 'fm=avif', $img4)); ?>" type="image/avif">
-					<img src="<?php echo esc_url($img4); ?>" alt="Woman walking" loading="lazy" />
-				</picture>
-			</a>
-
-		</div>
-	</section>
-
 	<!-- Instagram Section (Figma Redesign) -->
 	<section class="figma-ig-section">
 		<div class="figma-ig-header">
@@ -697,3 +772,4 @@ get_header(); ?>
 </main>
 
 <?php get_footer(); ?>
+

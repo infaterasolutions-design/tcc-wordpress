@@ -129,16 +129,28 @@ body, html {
 	padding: 0;
 }
 .desktop-nav a {
-	font-family: 'Inter', sans-serif;
-	font-size: 13px;
-	letter-spacing: 0.15em;
-	font-weight: 500;
-	color: #6b7280;
-	text-transform: uppercase;
+	font-family: 'Playfair Display', serif;
+	font-size: 17px;
+	letter-spacing: 0;
+	font-weight: 400;
+	color: #000;
+	text-transform: none;
 	text-decoration: none;
 	transition: color 0.2s ease;
 }
-.desktop-nav a:hover { color: #000; }
+.desktop-nav > li > a {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.25s ease, color 0.25s ease;
+}
+.desktop-nav > li > a:hover,
+.desktop-nav > li.tcc-mega-menu-parent:hover > a,
+.desktop-nav > li.tcc-mega-menu-parent:focus-within > a {
+    text-decoration-color: #000;
+    color: #000;
+}
 
 /* Subscribe Button */
 .header-subscribe {

@@ -772,7 +772,7 @@ get_header(); ?>
                 #sb_instagram #sbi_images { display: flex !important; flex-wrap: nowrap !important; gap: 1px !important; background-color: #ffffff !important; padding: 0 !important; margin: 0 !important; width: 100% !important; }
                 #sb_instagram .sbi_item { position: relative !important; padding: 0 !important; margin: 0 !important; flex: 1 1 16.666% !important; max-width: 16.666% !important; border: none !important; }
                 #sb_instagram .sbi_photo { position: relative !important; display: block !important; width: 100% !important; }
-                #sb_instagram .sbi_item img { width: 100% !important; height: 100% !important; object-fit: cover !important; position: absolute !important; top: 0; left: 0; }
+                #sb_instagram .sbi_item img { width: 100% !important; height: auto !important; object-fit: cover !important; display: block !important; }
                 #sb_instagram .sbi_load_btn, #sb_instagram .sbi_follow_btn { display: none !important; }
                 
                 /* Fix Play Button Position */

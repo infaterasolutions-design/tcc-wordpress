@@ -114,7 +114,7 @@ get_header(); ?>
 		}
 		.mobile-hero-main-title {
 			font-family: 'Playfair Display', serif;
-			font-size: 42px;
+			font-size: 30px;
 			line-height: 1.1;
 			color: #fff; 
 			margin: 0 0 15px 0;
@@ -153,8 +153,8 @@ get_header(); ?>
 	}
 	@media (max-width: 480px) {
 		.tcc-mobile-hero-banner { min-height: 500px; background-position: 60% 20%; }
-		.mobile-hero-main-title { font-size: 38px; }
-		.mobile-hero-main-title span { font-size: 50px; }
+		.mobile-hero-main-title { font-size: 30px; }
+		.mobile-hero-main-title span { font-size: 40px; }
 		.mobile-hero-text-overlay { padding: 30px 20px; }
 	}
 	</style>
@@ -494,8 +494,8 @@ get_header(); ?>
 			padding: 20px 15px;
 			align-items: flex-start;
 		}
-		.capsule-promo-title { font-size: 26px; margin-bottom: 8px; line-height: 1.1; }
-		.capsule-promo-desc { font-size: 13px; margin-bottom: 15px; line-height: 1.3; }
+		.capsule-promo-title { font-size: 24px; margin-bottom: 8px; line-height: 1.1; }
+		.capsule-promo-desc { font-size: 14px; margin-bottom: 15px; line-height: 1.3; }
 		.capsule-promo-btn { padding: 10px 18px; font-size: 11px; }
 	}
 	</style>

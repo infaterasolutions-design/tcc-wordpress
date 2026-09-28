@@ -376,12 +376,55 @@ body, html {
 // Sticky Header Grid Shift on Scroll
 document.addEventListener('DOMContentLoaded', function() {
     var header = document.querySelector('.header-main');
+    var menu = document.querySelector('.header-menu');
+    var search = document.querySelector('.header-search');
+    
     if(header) {
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 80) {
-                header.classList.add('is-scrolled');
-            } else {
-                header.classList.remove('is-scrolled');
+            if (window.innerWidth <= 1200) {
+                // On mobile, just toggle class, no flip needed
+                if (window.scrollY > 80) {
+                    header.classList.add('is-scrolled');
+                } else {
+                    header.classList.remove('is-scrolled');
+                }
+                return;
+            }
+            
+            var shouldBeScrolled = window.scrollY > 80;
+            var isScrolled = header.classList.contains('is-scrolled');
+            
+            if (shouldBeScrolled !== isScrolled) {
+                // FLIP animation for smooth sliding
+                var mFirst = menu.getBoundingClientRect();
+                var sFirst = search.getBoundingClientRect();
+                
+                if (shouldBeScrolled) {
+                    header.classList.add('is-scrolled');
+                } else {
+                    header.classList.remove('is-scrolled');
+                }
+                
+                var mLast = menu.getBoundingClientRect();
+                var sLast = search.getBoundingClientRect();
+                
+                var mDx = mFirst.left - mLast.left;
+                var mDy = mFirst.top - mLast.top;
+                var sDx = sFirst.left - sLast.left;
+                var sDy = sFirst.top - sLast.top;
+                
+                menu.style.transition = 'none';
+                menu.style.transform = `translate(${mDx}px, ${mDy}px)`;
+                search.style.transition = 'none';
+                search.style.transform = `translate(${sDx}px, ${sDy}px)`;
+                
+                // Force reflow
+                menu.offsetHeight;
+                
+                menu.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                menu.style.transform = 'translate(0, 0)';
+                search.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                search.style.transform = 'translate(0, 0)';
             }
         });
     }

@@ -1728,12 +1728,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	tccLightbox.addEventListener('click', function() {
 		tccLightbox.classList.remove('active');
+		if (history.state && history.state.lightboxOpen) {
+			history.back();
+		}
 	});
 
 	window.openTccLightbox = function(src) {
 		tccLightbox.querySelector('img').src = src;
 		tccLightbox.classList.add('active');
+		history.pushState({ lightboxOpen: true }, '', '');
 	};
+
+	window.addEventListener('popstate', function(e) {
+		if (tccLightbox.classList.contains('active')) {
+			tccLightbox.classList.remove('active');
+		}
+	});
 
 	// Transform WP Gallery into Peek Carousel
 	const galleries = document.querySelectorAll('.figma-post-content .wp-block-gallery');

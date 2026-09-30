@@ -5037,3 +5037,10 @@ html, body { max-width: 100%; position: relative; }
     text-align: left !important;
     display: inline-block;
 }
+
+/* Fix Playfair Display Old-Style Numerals */
+.wf-card-title { font-variant-numeric: lining-nums; }
+
+
+.fp-latest-title, .fp-trending-item-title, .fp-creator-hub-title, .capsule-promo-title { font-variant-numeric: lining-nums; }
+

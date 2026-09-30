@@ -3238,7 +3238,7 @@ html, body { max-width: 100%; position: relative; }
         width: 100% !important;
     }
     .figma-smv-product-title {
-        margin-bottom: 24px !important;
+        margin-bottom: 10px !important;
         min-height: 34px;
     }
 

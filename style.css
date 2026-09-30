@@ -3225,8 +3225,6 @@ html, body { max-width: 100%; position: relative; }
     .figma-smv-slide {
         width: calc(50% - 7.5px) !important;
         flex: 0 0 calc(50% - 7.5px) !important;
-        display: flex;
-        flex-direction: column;
     }
     .figma-smv-thumb {
         width: 100% !important;
@@ -3240,10 +3238,7 @@ html, body { max-width: 100%; position: relative; }
         width: 100% !important;
     }
     .figma-smv-product-title {
-        margin-bottom: 15px !important;
-    }
-    .figma-smv-shop-btn {
-        margin-top: auto !important;
+        margin-bottom: 12px !important;
     }
 
     /* Instagram */

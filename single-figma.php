@@ -535,7 +535,7 @@ body, html {
 	display: none !important;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1240px) {
 	.figma-layout-grid {
 		grid-template-columns: 240px minmax(auto, 640px);
 		justify-content: center;

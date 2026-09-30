@@ -2424,6 +2424,10 @@ html, body { max-width: 100%; position: relative; }
     border-radius: 12px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
+.header-main.is-scrolled .tcc-mega-panel {
+    left: 50%;
+    transform: translateX(-50%);
+}
 .desktop-nav-container ul li.tcc-mega-menu-parent:hover .tcc-mega-panel,
 .desktop-nav-container ul li.tcc-mega-menu-parent:focus-within .tcc-mega-panel,
 .tcc-mega-panel.is-open {

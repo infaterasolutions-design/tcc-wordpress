@@ -5044,3 +5044,7 @@ html, body { max-width: 100%; position: relative; }
 
 .fp-latest-title, .fp-trending-item-title, .fp-creator-hub-title, .capsule-promo-title { font-variant-numeric: lining-nums; }
 
+
+/* Fix Playfair Display Old-Style Numerals globally across all new blog components */
+h1, h2, h3, h4, h5, h6, .figma-post-title, .figma-post-content h2, .figma-post-content h3, .figma-post-content h4, .tcc-inline-newsletter-title, .figma-guide-box-title, .tcc-toc-title, .tcc-author-name, .wf-related-title, .tcc-comments-section h2, .comment-reply-title { font-variant-numeric: lining-nums !important; }
+

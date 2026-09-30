@@ -2428,6 +2428,15 @@ html, body { max-width: 100%; position: relative; }
     left: 50%;
     transform: translateX(-50%);
 }
+.header-main.is-scrolled .desktop-nav-container ul li.tcc-mega-menu-parent:hover .tcc-mega-panel,
+.header-main.is-scrolled .desktop-nav-container ul li.tcc-mega-menu-parent:focus-within .tcc-mega-panel,
+.header-main.is-scrolled .tcc-mega-panel.is-open {
+    animation: megaPanelFadeInCenter 0.2s ease;
+}
+@keyframes megaPanelFadeInCenter {
+    from { opacity: 0; transform: translate(-50%, -4px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
 .desktop-nav-container ul li.tcc-mega-menu-parent:hover .tcc-mega-panel,
 .desktop-nav-container ul li.tcc-mega-menu-parent:focus-within .tcc-mega-panel,
 .tcc-mega-panel.is-open {

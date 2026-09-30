@@ -185,6 +185,8 @@ function tcc_load_more_posts() {
 	$page = isset( $_POST['page'] ) ? intval( $_POST['page'] ) : 1;
 	$category = isset( $_POST['category'] ) ? sanitize_text_field( wp_unslash( $_POST['category'] ) ) : '';
 
+	$layout = isset( $_POST['layout'] ) ? sanitize_text_field( wp_unslash( $_POST['layout'] ) ) : 'card';
+
 	$args = array(
 		'post_type'      => 'post',
 		'post_status'    => 'publish',
@@ -197,7 +199,11 @@ function tcc_load_more_posts() {
 	if ( $query->have_posts() ) {
 		while ( $query->have_posts() ) {
 			$query->the_post();
-			get_template_part( 'template-parts/content', 'card' );
+			if ( $layout === 'wf-card' ) {
+				get_template_part( 'template-parts/content', 'wf-card' );
+			} else {
+				get_template_part( 'template-parts/content', 'card' );
+			}
 		}
 	}
 

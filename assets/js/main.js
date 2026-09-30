@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const maxPage = parseInt(loadMoreBtn.getAttribute('data-max'));
             
             if (savedHtml && savedPage) {
-                const grid = document.querySelector('.bottom-grid');
+                const grid = document.querySelector('.bottom-grid, .wf-grid');
                 if (grid) {
                     grid.innerHTML = savedHtml;
                     loadMoreBtn.setAttribute('data-page', savedPage);
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             data.append('page', currentPage + 1);
             data.append('category', category);
             data.append('nonce', tcc_ajax.nonce);
+            data.append('layout', document.querySelector('.wf-grid') ? 'wf-card' : 'card');
 
             fetch(tcc_ajax.url, {
                 method: 'POST',
@@ -49,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(html => {
                 if (html.trim() !== '') {
                     // Append HTML to grid
-                    const grid = document.querySelector('.bottom-grid');
+                    const grid = document.querySelector('.bottom-grid, .wf-grid');
                     grid.insertAdjacentHTML('beforeend', html);
                     
                     currentPage++;

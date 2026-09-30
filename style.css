@@ -3838,6 +3838,12 @@ html, body { max-width: 100%; position: relative; }
     }
     .fp-creator-hub-initial {
         font-size: 80px;
+        padding-left: 20px;
+        margin-left: -20px;
+        padding-top: 20px;
+        margin-top: -20px;
+        padding-bottom: 20px;
+        margin-bottom: -20px;
     }
     .fp-creator-hub-title {
         font-size: 30px;

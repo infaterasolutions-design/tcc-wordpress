@@ -152,17 +152,19 @@ body, html {
 /* Grid container for perfectly centered content */
 .figma-layout-grid {
 	display: grid;
-	grid-template-columns: 280px minmax(auto, 680px) 280px;
-	justify-content: center;
-	gap: 60px;
+	grid-template-columns: 240px minmax(auto, 680px) 240px;
+	justify-content: space-between;
+	gap: 40px;
 	width: 100%;
+	max-width: 1240px;
+	margin: 0 auto;
 	align-items: start;
 }
 
 /* Left Sidebar */
 .figma-sidebar {
-	width: 280px;
-	justify-self: end;
+	width: 100%;
+	justify-self: start;
 	position: sticky;
 	top: 120px; /* Accounts for sticky header height */
 	margin-top: 400px; 
@@ -176,8 +178,8 @@ body, html {
 
 /* Right Sidebar */
 .figma-right-sidebar {
-	width: 300px;
-	justify-self: start;
+	width: 100%;
+	justify-self: end;
 	margin-top: 400px;
 	display: flex;
 	flex-direction: column;
@@ -534,7 +536,7 @@ body, html {
 
 @media (max-width: 1440px) {
 	.figma-layout-grid {
-		grid-template-columns: 280px minmax(auto, 680px);
+		grid-template-columns: 240px minmax(auto, 680px);
 		justify-content: center;
 	}
 	.figma-right-sidebar {

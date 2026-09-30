@@ -570,6 +570,7 @@ body, html {
 }
 /* Figma Image Layout */
 .figma-post-content .wp-block-image {
+	margin-top: 30px !important;
 	margin-bottom: 5px !important;
 }
 .figma-post-content .wp-block-image figure {
@@ -580,9 +581,11 @@ body, html {
 }
 .figma-post-content .wp-block-image img {
 	display: block;
-	width: 100%;
+	width: 100% !important;
+	max-width: 100% !important;
 	height: auto;
 	border-radius: 12px;
+	margin: 0 !important;
 }
 .figma-pin-btn {
 	position: absolute;

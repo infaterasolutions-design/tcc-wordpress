@@ -986,7 +986,7 @@ body, html {
 
 
 					<!-- Content -->
-					<div class="figma-post-content" id="figma-post-content">
+					<div class="figma-post-content tiptap-content" id="figma-post-content">
 						
 
 						<?php the_content(); ?>

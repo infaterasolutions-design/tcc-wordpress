@@ -3231,7 +3231,7 @@ html, body { max-width: 100%; position: relative; }
         height: auto !important;
         aspect-ratio: 9/16;
         margin-left: 0 !important;
-        margin-bottom: 15px !important;
+        margin-bottom: 8px !important;
     }
     .figma-smv-product-title, .figma-smv-shop-btn {
         margin-left: 0 !important;

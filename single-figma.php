@@ -937,7 +937,7 @@ body, html {
 	<div class="figma-layout-grid">
 
 		<!-- Left Sidebar -->
-		<aside class="figma-sidebar" id="figma-sidebar">
+		<aside class="figma-sidebar sidebar widget-area" id="figma-sidebar">
 			<div class="figma-guide-box">
 				<div class="figma-guide-box-pre">THIS POST IS PART OF:</div>
 				<div class="figma-guide-box-title">The Ultimate Guide To Wedding Hairstyles</div>
@@ -993,7 +993,7 @@ body, html {
 
 
 					<!-- Content -->
-					<div class="figma-post-content tiptap-content" id="figma-post-content">
+					<div class="figma-post-content tiptap-content entry-content post-content article-body" id="figma-post-content">
 						
 
 						<?php the_content(); ?>
@@ -1306,7 +1306,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			</main>
 			
 			<!-- Right Sidebar (Newsletter & Ads) -->
-			<aside class="figma-right-sidebar">
+			<aside class="figma-right-sidebar sidebar widget-area" id="secondary">
 				<div class="tcc-newsletter-widget">
 					<div class="tcc-newsletter-title">Join The Newsletter</div>
 					<div class="tcc-newsletter-desc">Get weekly decluttering tips straight to your inbox.</div>

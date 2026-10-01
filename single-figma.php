@@ -168,7 +168,6 @@ body, html {
 	justify-self: start;
 	position: sticky;
 	top: 120px; /* Accounts for sticky header height */
-	margin-top: 400px; 
 	max-height: calc(100vh - 140px); /* Ensures it never goes off bottom of screen */
 	overflow-y: auto;
 	scrollbar-width: none; /* Firefox */
@@ -181,7 +180,6 @@ body, html {
 .figma-right-sidebar {
 	width: 100%;
 	justify-self: end;
-	margin-top: 400px;
 	display: flex;
 	flex-direction: column;
 	position: sticky;
@@ -1595,25 +1593,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	let rightSidebarUnstuck = false;
 	
 	if (contentDiv) {
-		if (sidebar) {
-			sidebar.style.opacity = '0';
-			sidebar.style.transition = 'opacity 0.4s ease';
-		}
-		if (rightSidebar) {
-			rightSidebar.style.opacity = '0';
-			rightSidebar.style.transition = 'opacity 0.4s ease, position 0s';
-		}
-		
-		window.addEventListener('scroll', function() {
-			const contentTop = contentDiv.getBoundingClientRect().top;
-			if (contentTop < 200) {
-				if (sidebar) sidebar.style.opacity = '1';
-				if (rightSidebar) rightSidebar.style.opacity = '1';
-			} else {
-				if (sidebar) sidebar.style.opacity = '0';
-				if (rightSidebar) rightSidebar.style.opacity = '0';
-			}
-		});
+		// Sidebars are now visible from the top
 	}
 
 	// Inject inline newsletter banner after the 3rd heading in the content

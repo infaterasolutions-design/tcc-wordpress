@@ -587,11 +587,15 @@ body, html {
 	border-radius: 12px;
 	margin: 0 !important;
 }
+.figma-post-content .tcc-pin-btn,
+.figma-post-content .tcc-pin-wrapper .tcc-pin-btn {
+	display: none !important;
+}
 .figma-pin-btn {
 	position: absolute;
 	top: 15px;
 	right: 15px;
-	background-color: #E60023;
+	background-color: #E60023 !important;
 	color: #fff !important;
 	font-family: 'Inter', sans-serif;
 	font-size: 16px;

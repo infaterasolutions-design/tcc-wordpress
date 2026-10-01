@@ -596,6 +596,7 @@ body, html {
 	top: 15px;
 	right: 15px;
 	background-color: #E60023 !important;
+	background-image: none !important;
 	color: #fff !important;
 	font-family: 'Inter', sans-serif;
 	font-size: 16px;

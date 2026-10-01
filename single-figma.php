@@ -1272,6 +1272,56 @@ $author_avatar = get_avatar_url($author_id, ['size' => 120]);
 	</div>
 </div>
 
+<?php 
+// Fetches random related posts but caches them for 4 hours to prevent MySQL crashes.
+$category_ids = wp_get_post_categories( get_queried_object_id() );
+$transient_key = 'tcc_rel_ids_' . get_queried_object_id();
+$related_post_ids = get_transient( $transient_key );
+
+if ( false === $related_post_ids ) {
+    $related_args = array(
+        'category__in'   => $category_ids,
+        'posts_per_page' => 3,
+        'post__not_in'   => array( get_queried_object_id() ),
+        'orderby'        => 'rand',
+        'no_found_rows'  => true,
+        'fields'         => 'ids',
+    );
+    $fetch_query = new WP_Query( $related_args );
+    $related_post_ids = $fetch_query->posts;
+    set_transient( $transient_key, $related_post_ids, 4 * HOUR_IN_SECONDS );
+}
+
+$related_query = false;
+if ( ! empty( $related_post_ids ) ) {
+    $related_query = new WP_Query( array(
+        'post__in' => $related_post_ids,
+        'orderby' => 'post__in',
+        'posts_per_page' => 3,
+        'no_found_rows' => true
+    ) );
+}
+
+if ( $related_query && $related_query->have_posts() ) :
+?>
+<div class="tcc-related-posts" style="margin: 60px 0; border-top: 1px solid #eaeaea; padding-top: 40px;">
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 30px; text-align: center; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1;">You Might Also Love</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+        <?php while ( $related_query->have_posts() ) : $related_query->the_post(); ?>
+            <a href="<?php the_permalink(); ?>" style="text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+                <?php if ( has_post_thumbnail() ) : ?>
+                    <div style="width: 100%; aspect-ratio: 4/5; overflow: hidden; border-radius: 8px; margin-bottom: 16px;">
+                        <?php the_post_thumbnail('medium', array('style' => 'width: 100%; height: 100%; object-fit: cover;')); ?>
+                    </div>
+                <?php endif; ?>
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 18px; line-height: 1.3; margin: 0 0 8px; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1;"><?php the_title(); ?></h4>
+                <span style="font-family: 'Inter', sans-serif; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px;"><?php echo get_the_date(); ?></span>
+            </a>
+        <?php endwhile; wp_reset_postdata(); ?>
+    </div>
+</div>
+<?php endif; ?>
+
 <div class="tcc-comments-toggle" id="tcc-comments-toggle">
 	<span class="text">SHOW COMMENTS</span>
 	<span class="icon">+</span>

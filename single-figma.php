@@ -1611,18 +1611,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				if (rightSidebar) rightSidebar.style.opacity = '1';
 			} else {
 				if (sidebar) sidebar.style.opacity = '0';
-				if (rightSidebar && !rightSidebarUnstuck) rightSidebar.style.opacity = '0';
-			}
-			
-			// Unstick right sidebar after user scrolls past 3rd heading
-			if (rightSidebar && !rightSidebarUnstuck && postHeadings.length >= 3) {
-				const thirdHeading = postHeadings[2];
-				const thirdHeadingRect = thirdHeading.getBoundingClientRect();
-				if (thirdHeadingRect.top < 200) {
-					rightSidebar.style.position = 'relative';
-					rightSidebar.style.top = 'auto';
-					rightSidebarUnstuck = true;
-				}
+				if (rightSidebar) rightSidebar.style.opacity = '0';
 			}
 		});
 	}

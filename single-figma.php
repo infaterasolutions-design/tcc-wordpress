@@ -143,7 +143,7 @@ body, html {
 .figma-post-wrapper {
 	background-color: #E6E8E3;
 	min-height: 100vh;
-	padding: 40px 20px 80px 20px;
+	padding: 40px 20px 30px 20px;
 	display: flex;
 	justify-content: center;
 	font-family: 'Inter', sans-serif;
@@ -1031,7 +1031,7 @@ body, html {
 }
 .tcc-comments-toggle {
 	max-width: 680px;
-	margin: 60px auto 0 auto;
+	margin: 20px auto 0 auto;
 	padding: 20px 10px;
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;

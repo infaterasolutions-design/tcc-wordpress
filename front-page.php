@@ -123,7 +123,7 @@ get_header(); ?>
 		.mobile-hero-main-title span {
 			font-family: 'Georgia Script', cursive;
 			font-style: italic;
-			color: #E2AD9A;
+			color: #ffffff;
 			font-size: 64px;
 			display: block;
 			margin-top: -5px;

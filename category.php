@@ -21,8 +21,8 @@ global $wp_query;
 }
 .wf-category-header {
     text-align: left;
-    padding: 60px 40px 40px;
-    max-width: 1240px; margin: 0 auto;
+    padding: 60px 60px 40px;
+    max-width: 100%;
 }
 .wf-category-title {
     font-family: 'Playfair Display', serif;
@@ -33,10 +33,10 @@ global $wp_query;
 }
 .wf-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    max-width: 1240px; margin: 0 auto;
-    padding: 0 40px;
+    max-width: 100%;
+    padding: 0 60px;
 }
 .wf-card {
     background: #fff;

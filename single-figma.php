@@ -448,6 +448,13 @@ body, html {
 .figma-post-meta strong {
 	font-weight: 600;
 }
+.figma-post-meta a {
+	color: inherit;
+	text-decoration: none;
+}
+.figma-post-meta a:hover {
+	text-decoration: underline;
+}
 
 /* Disclosure */
 .figma-post-disclosure {
@@ -984,7 +991,7 @@ body, html {
 
 					<!-- Meta -->
 					<div class="figma-post-meta">
-						<span>By <strong><?php the_author(); ?></strong></span> 
+						<span>By <strong><?php the_author_posts_link(); ?></strong></span> 
 						<span>|</span> 
 						<span><?php echo get_the_date(); ?></span>
 					</div>

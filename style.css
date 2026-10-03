@@ -3434,8 +3434,11 @@ html, body { max-width: 100%; position: relative; }
 .fp-trending-section {
     background-color: #d8ded0;
     width: 100%;
-    margin-top: 0;
+    padding: 60px 0;
+    margin-top: 40px;
+    margin-bottom: 40px;
     border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
 }
 
 .fp-trending-container {

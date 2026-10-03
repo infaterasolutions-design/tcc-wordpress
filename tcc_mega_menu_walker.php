@@ -144,8 +144,10 @@ class TCC_Mega_Menu_Walker extends Walker_Nav_Menu {
             
             $label = '';
             
-            // 2. Fallback to parent category if no posts
-            if (!$q->have_posts()) {
+            if ($q->have_posts()) {
+                $label = '<div class="tcc-mega-label text-sans uppercase">Latest in ' . esc_html($name) . '</div>';
+            } else {
+                // 2. Fallback to parent category if no posts
                 $parent_slug = sanitize_title($key);
                 $q = new WP_Query([
                     'category_name' => $parent_slug,

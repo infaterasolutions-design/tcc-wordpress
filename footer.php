@@ -55,7 +55,7 @@
 			<h3 class="newsletter-title">Elevate your inbox</h3>
 			<p class="newsletter-desc">Join the tcc newsletter community to receive exclusive content.</p>
 			<!-- Reusing the newsletter form logic -->
-			<form class="modal-newsletter-form" action="#" method="post">
+			<form class="newsletter-form" action="#" method="post">
 				<input type="text" placeholder="First name" required />
 				<input type="email" placeholder="Email address" required />
 				<button type="submit">SUBSCRIBE</button>

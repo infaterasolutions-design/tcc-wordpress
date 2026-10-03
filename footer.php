@@ -155,5 +155,55 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+
+<!-- Subscribe Modal -->
+<div id="tcc-subscribe-modal" style="display: none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center;">
+	<!-- Overlay -->
+	<div style="position: absolute; inset: 0; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(4px); cursor: pointer;" onclick="closeSubscribeModal()"></div>
+	
+	<!-- Modal Content -->
+	<div style="position: relative; background: #fff; width: 90%; max-width: 800px; display: flex; border-radius: 12px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); z-index: 10000;">
+		
+		<!-- Close Button -->
+		<button onclick="closeSubscribeModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #000; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; z-index: 2;">&times;</button>
+		
+		<!-- Left: Image (Hidden on small screens) -->
+		<div class="modal-img-col" style="flex: 1; background: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800') center/cover no-repeat; min-height: 400px;"></div>
+		
+		<!-- Right: Form -->
+		<div class="modal-form-col" style="flex: 1; padding: 50px 40px; display: flex; flex-direction: column; justify-content: center;">
+			<h2 style="font-family: 'Playfair Display', serif; font-size: 32px; font-style: italic; margin: 0 0 10px 0; color: #000;">Elevate your inbox</h2>
+			<p style="font-family: 'Inter', sans-serif; font-size: 14px; color: #555; margin-bottom: 25px; line-height: 1.5;">Join the TCC newsletter community to receive exclusive style tips, early access, and curated outfit inspiration.</p>
+			
+			<form class="newsletter-form" action="#" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+				<input type="text" placeholder="First name" required style="width: 100%; border: 1px solid #ccc; padding: 12px 15px; font-family: 'Inter', sans-serif; font-size: 14px; border-radius: 4px;" />
+				<input type="email" placeholder="Email address" required style="width: 100%; border: 1px solid #ccc; padding: 12px 15px; font-family: 'Inter', sans-serif; font-size: 14px; border-radius: 4px;" />
+				<button type="submit" style="background-color: #000; color: #fff; border: none; padding: 15px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; border-radius: 4px; transition: background 0.2s;">Subscribe</button>
+			</form>
+			<p style="font-family: 'Inter', sans-serif; font-size: 11px; color: #999; margin-top: 15px; text-align: center;">We respect your privacy. Unsubscribe at any time.</p>
+		</div>
+	</div>
+</div>
+
+<style>
+@media (max-width: 768px) {
+	.modal-img-col { display: none !important; }
+	.modal-form-col { padding: 40px 25px !important; text-align: center; }
+}
+</style>
+
+<script>
+function openSubscribeModal(e) {
+	if(e) e.preventDefault();
+	document.getElementById('tcc-subscribe-modal').style.display = 'flex';
+	document.body.style.overflow = 'hidden';
+}
+function closeSubscribeModal() {
+	document.getElementById('tcc-subscribe-modal').style.display = 'none';
+	document.body.style.overflow = '';
+}
+</script>
+
+
 </body>
 </html>

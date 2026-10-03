@@ -4,15 +4,15 @@
  */
 get_header(); ?>
 
-<main id="main" class="site-main" style="background-color: #faf9f6; min-height: 100vh; padding-top: 60px;">
+<main id="main" class="site-main" style="background-color: #faf9f6; min-height: 100vh; padding-top: 20px;">
 	
 	<!-- Clean Typography Header -->
-	<section style="text-align: center; padding: 2rem 20px 1rem 20px;">
+	<section style="text-align: center; padding: 1rem 20px 0.5rem 20px;">
 		<h1 style="font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5rem); font-weight: 400; font-style: italic; color: #000; margin: 0;">Get in Touch</h1>
 		<div style="width: 60px; height: 1px; background-color: #EC9277; margin: 1.5rem auto 0 auto;"></div>
 	</section>
 
-	<div style="max-width: 1100px; margin: 0 auto; padding: 1rem 20px 4rem 20px;" class="contact-layout">
+	<div style="max-width: 1100px; margin: 0 auto; padding: 0 20px 4rem 20px;" class="contact-layout">
 		
 		<style>
 			.contact-layout {

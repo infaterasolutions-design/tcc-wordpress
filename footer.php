@@ -55,7 +55,7 @@
 			<h3 class="newsletter-title">Elevate your inbox</h3>
 			<p class="newsletter-desc">Join the tcc newsletter community to receive exclusive content.</p>
 			<!-- Reusing the newsletter form logic -->
-			<form class="newsletter-form" action="#" method="post">
+			<form class="modal-newsletter-form" action="#" method="post">
 				<input type="text" placeholder="First name" required />
 				<input type="email" placeholder="Email address" required />
 				<button type="submit">SUBSCRIBE</button>
@@ -180,13 +180,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		</div>
 		
 		<!-- Right: Form -->
-		<div class="modal-form-col" style="flex: 1; padding: 50px 40px; display: flex; flex-direction: column; justify-content: center;">
+		<div class="modal-form-col" style="flex: 1; padding: 50px 40px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
 			<h2 style="font-family: 'Playfair Display', serif; font-size: 32px; font-style: italic; margin: 0 0 10px 0; color: #000;">Elevate your inbox</h2>
 			<p style="font-family: 'Inter', sans-serif; font-size: 14px; color: #555; margin-bottom: 25px; line-height: 1.5;">Join the TCC newsletter community to receive exclusive style tips, early access, and curated outfit inspiration.</p>
 			
-			<form class="newsletter-form" action="#" method="post" style="display: flex; flex-direction: column; gap: 15px;">
-				<input type="text" placeholder="First name" required style="width: 100%; border: 1px solid #ccc; padding: 12px 15px; font-family: 'Inter', sans-serif; font-size: 14px; border-radius: 4px;" />
-				<input type="email" placeholder="Email address" required style="width: 100%; border: 1px solid #ccc; padding: 12px 15px; font-family: 'Inter', sans-serif; font-size: 14px; border-radius: 4px;" />
+			<form class="modal-newsletter-form" action="#" method="post" style="display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 320px;">
+				<input type="text" placeholder="First name" required style="width: 100%; border: 1px solid #ccc; padding: 12px 15px; font-family: 'Inter', sans-serif; font-size: 14px; border-radius: 4px; text-align: center;" />
+				<input type="email" placeholder="Email address" required style="width: 100%; border: 1px solid #ccc; padding: 12px 15px; font-family: 'Inter', sans-serif; font-size: 14px; border-radius: 4px; text-align: center;" />
 				<button type="submit" style="background-color: #000; color: #fff; border: none; padding: 15px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; border-radius: 4px; transition: background 0.2s;">Subscribe</button>
 			</form>
 			<p style="font-family: 'Inter', sans-serif; font-size: 11px; color: #999; margin-top: 15px; text-align: center;">We respect your privacy. Unsubscribe at any time.</p>

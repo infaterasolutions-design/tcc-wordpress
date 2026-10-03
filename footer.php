@@ -168,7 +168,16 @@ document.addEventListener('DOMContentLoaded', function() {
 		<button onclick="closeSubscribeModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #000; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; z-index: 2;">&times;</button>
 		
 		<!-- Left: Image (Hidden on small screens) -->
-		<div class="modal-img-col" style="flex: 1; background: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800') center/cover no-repeat; min-height: 400px;"></div>
+		<div class="modal-img-col" style="flex: 1; background-image: url('<?php echo get_template_directory_uri(); ?>/assets/bg2.png'); background-color: #2F4436; background-size: cover; background-position: center; min-height: 400px; display: flex; align-items: center; padding: 30px;">
+			<div style="text-align: left; width: 100%;">
+				<span style="font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #DDA89A; text-transform: uppercase; margin-bottom: 12px; display: block;">From Closet to Confidence</span>
+				<div style="font-family: 'Playfair Display', serif; font-size: 32px; line-height: 1.1; color: #fff; margin: 0 0 15px 0; font-weight: 400;">
+					Outfits<br>
+					That Fit<br>
+					<span style="font-family: 'Georgia Script', cursive; font-style: italic; color: #ffffff; font-size: 48px; display: block; margin-top: -5px;">Your Life</span>
+				</div>
+			</div>
+		</div>
 		
 		<!-- Right: Form -->
 		<div class="modal-form-col" style="flex: 1; padding: 50px 40px; display: flex; flex-direction: column; justify-content: center;">

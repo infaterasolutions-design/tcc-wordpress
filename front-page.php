@@ -80,7 +80,7 @@ get_header(); ?>
 	.tcc-mobile-hero-banner { display: none; }
 
 	@media (max-width: 1024px) {
-		.hero-main-title { font-size: 56px; }
+		.hero-main-title { font-size: 64px; }
 	}
 	@media (max-width: 768px) {
 		.tcc-custom-hero-banner { display: none; }
@@ -114,7 +114,7 @@ get_header(); ?>
 		}
 		.mobile-hero-main-title {
 			font-family: 'Playfair Display', serif;
-			font-size: 30px;
+			font-size: 42px;
 			line-height: 1.1;
 			color: #fff; 
 			margin: 0 0 15px 0;
@@ -124,7 +124,7 @@ get_header(); ?>
 			font-family: 'Georgia Script', cursive;
 			font-style: italic;
 			color: #E2AD9A;
-			font-size: 58px;
+			font-size: 64px;
 			display: block;
 			margin-top: -5px;
 		}
@@ -153,8 +153,8 @@ get_header(); ?>
 	}
 	@media (max-width: 480px) {
 		.tcc-mobile-hero-banner { min-height: 500px; background-position: 60% 20%; }
-		.mobile-hero-main-title { font-size: 30px; }
-		.mobile-hero-main-title span { font-size: 40px; }
+		.mobile-hero-main-title { font-size: 42px; }
+		.mobile-hero-main-title span { font-size: 52px; }
 		.mobile-hero-text-overlay { padding: 30px 20px; }
 	}
 	</style>
@@ -180,14 +180,14 @@ get_header(); ?>
 	<!-- Mobile Hero (Green background with dynamic text) -->
 	<section class="tcc-mobile-hero-banner" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/bg2.png') !important; background-color: #2F4436;">
 		<div class="mobile-hero-text-overlay">
-			<span class="mobile-hero-kicker">From Closet to Confidence</span>
+			<span class="mobile-hero-kicker">Outfit Ideas for Real Life</span>
 			<h1 class="mobile-hero-main-title">
-				Outfits<br>
-				That Fit<br>
-				<span>Your Life</span>
+				Build a<br>
+				Wardrobe<br>
+				<span>You'll Love</span>
 			</h1>
 			<p class="mobile-hero-desc">
-				Practical outfit ideas, trend guides and<br/> closet planning tips for everyday style.
+				Easy outfit ideas, seasonal style guides and closet planning tips to help you look and feel your best – every day.
 			</p>
 			<a href="<?php echo esc_url( home_url( '/category/wardrobe/' ) ); ?>" class="mobile-hero-btn-link">
 				Explore Now &rarr;

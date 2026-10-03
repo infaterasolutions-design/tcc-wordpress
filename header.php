@@ -194,6 +194,8 @@ body, html {
 	.header-main.is-scrolled .header-inner {
 		grid-template-areas: "logo mobileicons" !important;
 		grid-template-columns: 1fr auto !important;
+		padding-top: 15px !important;
+		padding-bottom: 15px !important;
 	}
 	.header-actions, .header-menu, .header-search, .header-separator { display: none !important; }
 	.header-mobile-icons,
@@ -337,7 +339,7 @@ body, html {
 			</span>
 		</div>
 		
-		<div style="padding: 50px 2rem 2rem 2rem; display: flex; flex-direction: column; gap: 2rem; overflow-y: auto;">
+		<div style="padding: 90px 2rem 2rem 2rem; display: flex; flex-direction: column; gap: 2rem; overflow-y: auto;">
 			<?php
 			wp_nav_menu( array(
 				'theme_location'  => 'primary',

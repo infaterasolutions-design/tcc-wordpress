@@ -169,7 +169,7 @@ get_header(); ?>
 				<span>You'll Love</span>
 			</h1>
 			<p class="hero-desc">
-				Easy outfit ideas, seasonal style guides and closet planning tips to help you look and feel your best â€” every day.
+				Practical outfit ideas, trend guides and<br/> closet planning tips for everyday style.
 			</p>
 			<a href="<?php echo esc_url( home_url( '/category/wardrobe/' ) ); ?>" class="hero-btn-link">
 				Explore Outfit Ideas &rarr;
@@ -180,14 +180,14 @@ get_header(); ?>
 	<!-- Mobile Hero (Green background with dynamic text) -->
 	<section class="tcc-mobile-hero-banner" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/bg2.png') !important; background-color: #2F4436;">
 		<div class="mobile-hero-text-overlay">
-			<span class="mobile-hero-kicker">Outfit Ideas for Real Life</span>
+			<span class="mobile-hero-kicker">From Closet to Confidence</span>
 			<h1 class="mobile-hero-main-title">
-				Build a<br>
-				Wardrobe<br>
-				<span>You'll Love</span>
+				Outfits<br>
+				That Fit<br>
+				<span>Your Life</span>
 			</h1>
 			<p class="mobile-hero-desc">
-				Easy outfit ideas, seasonal style guides and closet planning tips to help you look and feel your best – every day.
+				Practical outfit ideas, trend guides and<br/> closet planning tips for everyday style.
 			</p>
 			<a href="<?php echo esc_url( home_url( '/category/wardrobe/' ) ); ?>" class="mobile-hero-btn-link">
 				Explore Now &rarr;

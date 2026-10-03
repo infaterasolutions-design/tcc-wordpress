@@ -206,11 +206,32 @@ function openSubscribeModal(e) {
 	if(e) e.preventDefault();
 	document.getElementById('tcc-subscribe-modal').style.display = 'flex';
 	document.body.style.overflow = 'hidden';
+	
+	// Add a dummy state to history so the back button can be intercepted
+	if (window.location.hash !== '#subscribe') {
+		window.history.pushState({ modalOpen: true }, '', window.location.pathname + window.location.search + '#subscribe');
+	}
 }
-function closeSubscribeModal() {
+
+function closeSubscribeModal(fromPopState = false) {
 	document.getElementById('tcc-subscribe-modal').style.display = 'none';
 	document.body.style.overflow = '';
+	
+	// If closed manually via X or overlay, and we have the hash, go back to clear it
+	if (!fromPopState && window.location.hash === '#subscribe') {
+		window.history.back();
+	}
 }
+
+window.addEventListener('popstate', function(e) {
+	// If the hash is gone, it means the user pressed the back button
+	if (window.location.hash !== '#subscribe') {
+		var modal = document.getElementById('tcc-subscribe-modal');
+		if (modal && modal.style.display === 'flex') {
+			closeSubscribeModal(true);
+		}
+	}
+});
 </script>
 
 

@@ -1472,7 +1472,7 @@ document.addEventListener('DOMContentLoaded', function() {
             while ( $related_query->have_posts() ) : $related_query->the_post();
             
             // Dynamic count logic
-            $raw_content  = get_post_field(\'post_content\', get_the_ID());
+            $raw_content = get_post_field('post_content', get_the_ID());
             $img_count = substr_count(strtolower($raw_content), '<img');
             if ($img_count == 0) $img_count = 1; // Fallback to 1 for thumbnail
             

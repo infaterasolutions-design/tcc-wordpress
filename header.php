@@ -353,6 +353,15 @@ body, html {
 			
 			<div class="flex" style="flex-direction: column; gap: 1.5rem;">
 				
+								<!-- Mobile Subscribe -->
+				<a href="#" class="flex items-center text-sans uppercase" style="gap: 10px; color: #000; text-decoration: none; font-size: 1rem;">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+						<polyline points="22,6 12,13 2,6"></polyline>
+					</svg>
+					SUBSCRIBE
+				</a>
+				
 				<div class="flex justify-center" style="gap: 1.5rem; color: #000; cursor: pointer; margin-top: 1rem;">
 					<!-- Social SVG Icons -->
 					<a href="https://www.instagram.com/thecombocloset/" target="_blank" rel="noopener noreferrer" style="color: inherit;">

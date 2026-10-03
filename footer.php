@@ -123,7 +123,7 @@
 }
 @media (max-width: 768px) {
     #tcc-floating-to-top {
-        bottom: 90px;
+        bottom: 160px;
         right: 20px;
         width: 40px;
         height: 40px;

@@ -1,48 +1,53 @@
-<?php
+﻿<?php
 /**
  * Template Name: Contact Page
  */
 get_header(); ?>
 
-<main id="main" class="site-main" style="background-color: #faf9f6; min-height: 100vh;">
+<main id="main" class="site-main" style="background-color: #faf9f6; min-height: 100vh; padding-top: 100px;">
 	
-	<!-- Hero Section -->
-	<section style="position: relative; width: 100vw; max-width: 100%; height: 60vh; min-height: 400px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 4rem;">
-		<!-- Background Image -->
-		<?php 
-			$hero_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'full') : 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=2000';
-			echo tcc_get_picture_tag($hero_img, 'Contact', '', 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;');
-		?>
-		<!-- Overlay -->
-		<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 2;"></div>
-		
-		<!-- Text -->
-		<div style="position: relative; z-index: 3; text-align: center;">
-			<h1 class="text-script" style="font-size: clamp(4rem, 12vw, 150px); color: #fff; line-height: 0.8; font-weight: 300; text-shadow: 0 4px 20px rgba(0,0,0,0.2); transform: rotate(-5deg);">get in touch</h1>
-		</div>
+	<!-- Clean Typography Header -->
+	<section style="text-align: center; padding: 4rem 20px 2rem 20px;">
+		<h1 style="font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5rem); font-weight: 400; font-style: italic; color: #000; margin: 0;">Get in Touch</h1>
+		<div style="width: 60px; height: 1px; background-color: #EC9277; margin: 1.5rem auto 0 auto;"></div>
 	</section>
 
-	<div style="max-width: 1240px; margin: 0 auto; padding: 0 20px 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;" class="contact-grid">
+	<div style="max-width: 1100px; margin: 0 auto; padding: 2rem 20px 6rem 20px;" class="contact-layout">
 		
 		<style>
-			@media(max-width: 900px) {
-				.contact-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+			.contact-layout {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 4rem;
+				align-items: start;
 			}
+			
+			.contact-info-col { padding-right: 2rem; }
+			.contact-form-col { background: #fff; padding: 4rem 3rem; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border-radius: 8px; }
+
+			@media(max-width: 900px) {
+				.contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+				.contact-info-col { padding-right: 0; text-align: center; }
+				.contact-info-col .social-links { justify-content: center; }
+				.contact-form-col { padding: 2rem 1.5rem; }
+			}
+			
 			.contact-form-group {
 				position: relative;
-				margin-bottom: 2rem;
+				margin-bottom: 2.5rem;
 			}
 			.contact-form-input {
 				width: 100%;
 				background: transparent;
 				border: none;
-				border-bottom: 1px solid #000;
+				border-bottom: 1px solid #ccc;
 				padding: 10px 0;
 				font-family: 'Inter', sans-serif;
-				font-size: 0.85rem;
+				font-size: 0.95rem;
 				color: #000;
 				outline: none;
 				transition: border-color 0.3s ease;
+				border-radius: 0;
 			}
 			.contact-form-input:focus {
 				border-bottom-color: #EC9277;
@@ -61,23 +66,26 @@ get_header(); ?>
 			}
 			.contact-form-input:focus ~ .contact-form-label,
 			.contact-form-input:not(:placeholder-shown) ~ .contact-form-label {
-				top: -15px;
-				font-size: 0.65rem;
+				top: -18px;
+				font-size: 0.7rem;
 				color: #000;
 			}
 			.contact-submit-btn {
 				background: #000;
 				color: #fff;
 				border: none;
-				padding: 1rem 2.5rem;
+				padding: 1rem 0;
+				width: 100%;
 				font-family: 'Inter', sans-serif;
-				font-size: 0.75rem;
+				font-size: 0.85rem;
 				letter-spacing: 0.15em;
 				text-transform: uppercase;
 				cursor: pointer;
 				transition: background 0.3s ease;
 				position: relative;
 				overflow: hidden;
+				border-radius: 4px;
+				font-weight: 600;
 			}
 			.contact-submit-btn:hover {
 				background: #EC9277;
@@ -130,11 +138,11 @@ get_header(); ?>
 		</style>
 
 		<!-- Left Column: Info -->
-		<div style="padding-right: 2rem;">
-			<h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem;">
-				Hello there!
+		<div class="contact-info-col">
+			<h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; color: #000;">
+				We'd love to hear from you.
 			</h2>
-			<div style="font-family: 'Inter', sans-serif; font-size: 1rem; line-height: 1.8; color: #444; margin-bottom: 3rem;">
+			<div style="font-family: 'Inter', sans-serif; font-size: 1rem; line-height: 1.8; color: #555; margin-bottom: 3rem;">
 				<?php 
 					if ( have_posts() ) {
 						while ( have_posts() ) {
@@ -143,32 +151,31 @@ get_header(); ?>
 							if (!empty(trim(strip_tags($content)))) {
 								the_content();
 							} else {
-								echo "<p>We would love to hear from you! Whether you have a question about styling, a business inquiry, or just want to say hi, feel free to drop a message using the form.</p>";
+								echo "<p>Whether you have a question about styling, a business inquiry, or just want to say hi, feel free to drop a message using the form. We try our best to respond within 48 hours.</p>";
 							}
 						}
 					}
 				?>
 			</div>
 			
-			<div style="margin-bottom: 2rem;">
-				<h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: #000; margin-bottom: 0.5rem; font-weight: bold;">Email</h4>
-				<a href="mailto:thecombocloset111@gmail.com" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #EC9277; text-decoration: none;">
+			<div style="margin-bottom: 2.5rem;">
+				<h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: #888; margin-bottom: 0.5rem; font-weight: 600;">Direct Email</h4>
+				<a href="mailto:thecombocloset111@gmail.com" style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: #000; text-decoration: none; font-weight: 500;">
 					thecombocloset111@gmail.com
 				</a>
 			</div>
 			
 			<div>
-				<h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: #000; margin-bottom: 1rem; font-weight: bold;">Follow</h4>
-				<div style="display: flex; gap: 1rem; color: #000;">
-					<a href="#" style="color: inherit;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-					<a href="#" style="color: inherit;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5 2.8 12 3 12c.5.1 1.1.2 1.6.1C2 10 2 6 2 6c.6.3 1.2.5 1.9.5C2 5 3 2 4 1c2.6 3.1 6.5 5.1 10.7 5.3.1-2.4 1.9-4.3 4.3-4.3 1.2 0 2.3.5 3.1 1.3 1 .2 1.9-.2 2.9-.8-.3 1-1 1.8-1.9 2.5z"></path></svg></a>
-					<a href="#" style="color: inherit;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="10" x2="12" y2="22"></line><path d="M12 10a4 4 0 0 0-4 4c0 1.5.8 2.5 1 3l1-4a4 4 0 0 1 4-4 4 4 0 0 1 4 4 4 4 0 0 1-8 0"></path><circle cx="12" cy="12" r="10"></circle></svg></a>
+				<h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: #888; margin-bottom: 1rem; font-weight: 600;">Follow</h4>
+				<div class="social-links" style="display: flex; gap: 1.5rem; color: #000; align-items: center;">
+					<a href="https://www.instagram.com/thecombocloset/" target="_blank" style="color: inherit; transition: color 0.2s;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+					<a href="https://www.pinterest.com/" target="_blank" style="color: inherit; transition: color 0.2s;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="10" x2="12" y2="22"></line><path d="M12 10a4 4 0 0 0-4 4c0 1.5.8 2.5 1 3l1-4a4 4 0 0 1 4-4 4 4 0 0 1 4 4 4 4 0 0 1-8 0"></path><circle cx="12" cy="12" r="10"></circle></svg></a>
 				</div>
 			</div>
 		</div>
 
 		<!-- Right Column: Form -->
-		<div style="background: #fff; padding: 3rem; box-shadow: 0 10px 40px rgba(0,0,0,0.03);">
+		<div class="contact-form-col">
 			
 			<div id="contact-success" class="success-msg">
 				Thank you! Your message has been sent successfully. We will be in touch soon.
@@ -191,7 +198,7 @@ get_header(); ?>
 					<label for="contact_subject" class="contact-form-label">Subject</label>
 				</div>
 				<div class="contact-form-group">
-					<textarea id="contact_message" name="message" class="contact-form-input" style="min-height: 120px; resize: vertical;" placeholder=" " required></textarea>
+					<textarea id="contact_message" name="message" class="contact-form-input" style="min-height: 100px; resize: vertical;" placeholder=" " required></textarea>
 					<label for="contact_message" class="contact-form-label">Message *</label>
 				</div>
 				<button type="submit" id="contact_submit" class="contact-submit-btn">

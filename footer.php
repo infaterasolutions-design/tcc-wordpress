@@ -95,7 +95,7 @@
 /* Back to Top Button */
 #tcc-floating-to-top {
     position: fixed;
-    bottom: 100px;
+    bottom: 170px;
     right: 30px;
     width: 45px;
     height: 45px;

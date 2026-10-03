@@ -1748,3 +1748,58 @@ function tcc_editor_responsive_images() {
     ";
     wp_add_inline_style( 'wp-block-library', $custom_css );
 }
+
+
+/* ==========================================================================
+   SUBSCRIBER POST TYPE & AJAX HANDLER
+   ========================================================================== */
+function tcc_register_subscribers_cpt() {
+    $args = array(
+        'labels' => array(
+            'name' => 'Subscribers',
+            'singular_name' => 'Subscriber',
+            'menu_name' => 'Subscribers',
+            'all_items' => 'All Subscribers',
+        ),
+        'public' => false,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_icon' => 'dashicons-email',
+        'supports' => array('title', 'custom-fields'),
+        'capability_type' => 'post',
+        'hierarchical' => false,
+    );
+    register_post_type('tcc_subscriber', $args);
+}
+add_action('init', 'tcc_register_subscribers_cpt');
+
+function tcc_handle_subscription() {
+    $email = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
+    $first_name = isset($_POST['first_name']) ? sanitize_text_field($_POST['first_name']) : '';
+
+    if (!is_email($email)) {
+        wp_send_json_error('Invalid email address.');
+    }
+
+    // Check if email already exists
+    $existing = get_page_by_title($email, OBJECT, 'tcc_subscriber');
+    if ($existing) {
+        wp_send_json_success('You are already subscribed!');
+    }
+
+    $post_id = wp_insert_post(array(
+        'post_title' => $email,
+        'post_type' => 'tcc_subscriber',
+        'post_status' => 'publish',
+    ));
+
+    if (!is_wp_error($post_id)) {
+        update_post_meta($post_id, 'first_name', $first_name);
+        wp_send_json_success('Thank you for subscribing!');
+    } else {
+        wp_send_json_error('Something went wrong. Please try again.');
+    }
+}
+add_action('wp_ajax_nopriv_tcc_subscribe', 'tcc_handle_subscription');
+add_action('wp_ajax_tcc_subscribe', 'tcc_handle_subscription');
+

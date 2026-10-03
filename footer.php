@@ -235,5 +235,49 @@ window.addEventListener('popstate', function(e) {
 </script>
 
 
+<script>
+var tcc_ajax_url = "<?php echo admin_url('admin-ajax.php'); ?>";
+document.querySelectorAll('.newsletter-form, .modal-newsletter-form').forEach(form => {
+	form.addEventListener('submit', function(e) {
+		e.preventDefault();
+		const btn = form.querySelector('button[type="submit"]');
+		const inputs = form.querySelectorAll('input');
+		const firstName = inputs[0].value;
+		const email = inputs[1].value;
+		
+		const originalText = btn.textContent;
+		btn.textContent = 'Wait...';
+		btn.disabled = true;
+
+		const formData = new FormData();
+		formData.append('action', 'tcc_subscribe');
+		formData.append('first_name', firstName);
+		formData.append('email', email);
+
+		fetch(tcc_ajax_url, {
+			method: 'POST',
+			body: formData
+		})
+		.then(res => res.json())
+		.then(res => {
+			if(res.success) {
+				btn.textContent = 'Subscribed!';
+				btn.style.backgroundColor = '#2F4436';
+				btn.style.color = '#fff';
+				inputs.forEach(i => i.value = '');
+			} else {
+				alert(res.data);
+				btn.textContent = originalText;
+				btn.disabled = false;
+			}
+		})
+		.catch(err => {
+			alert('Network error.');
+			btn.textContent = originalText;
+			btn.disabled = false;
+		});
+	});
+});
+</script>
 </body>
 </html>

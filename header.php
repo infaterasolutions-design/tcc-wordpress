@@ -231,7 +231,7 @@ body, html {
 
 			<!-- Actions (Subscribe + Socials) -->
 			<div class="header-actions">
-				<a href="#" class="header-subscribe">
+				<a href="#tcc-footer" class="header-subscribe">
 					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
 						<polyline points="22,6 12,13 2,6"></polyline>
@@ -355,7 +355,7 @@ body, html {
 				
 								<!-- Mobile Subscribe -->
 				<div class="flex justify-center" style="width: 100%; margin-top: 0.5rem;">
-					<a href="#" class="flex items-center justify-center text-sans uppercase" style="gap: 8px; background-color: #000; color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600; padding: 12px 24px; border: 1px solid #000; transition: background-color 0.3s, color 0.3s;">
+					<a href="#tcc-footer" class="flex items-center justify-center text-sans uppercase" onclick="document.getElementById('hamburger-icon').click();" style="gap: 8px; background-color: #000; color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600; padding: 12px 24px; border: 1px solid #000; transition: background-color 0.3s, color 0.3s;">
 						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
 							<polyline points="22,6 12,13 2,6"></polyline>

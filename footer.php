@@ -1,6 +1,6 @@
 </div> <!-- .site-wrapper -->
 
-<footer class="site-footer figma-footer">
+<footer id="tcc-footer" class="site-footer figma-footer">
 	<div class="figma-footer-main">
 		
 		<!-- Left Column: Links -->

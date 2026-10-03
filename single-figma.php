@@ -991,7 +991,7 @@ body, html {
 
 					<!-- Disclosure -->
 					<div class="figma-post-disclosure">
-						Contains affiliate links. <a href="#">Read our disclosure policy.</a>
+						Contains affiliate links. <a href="<?php echo esc_url( home_url( '/privacy-policy-affiliate-disclosure/' ) ); ?>">Read our disclosure policy.</a>
 					</div>
 
 

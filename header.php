@@ -339,7 +339,7 @@ body, html {
 			</span>
 		</div>
 		
-		<div style="padding: 90px 2rem 2rem 2rem; display: flex; flex-direction: column; gap: 2rem; overflow-y: auto;">
+		<div style="padding: 70px 2rem 2rem 2rem; display: flex; flex-direction: column; gap: 2rem; overflow-y: auto;">
 			<?php
 			wp_nav_menu( array(
 				'theme_location'  => 'primary',

@@ -1101,9 +1101,14 @@ add_action('init', function() {
             $user = get_user_by('slug', $slug);
             
             global $wp_query;
+            $paged = 1;
+            if (preg_match('#/page/([0-9]+)#', $_SERVER['REQUEST_URI'], $page_matches)) {
+                $paged = intval($page_matches[1]);
+            }
             $args = array(
                 'author_name' => $slug,
                 'post_type' => 'any',
+                'paged' => $paged,
                 'posts_per_page' => get_option('posts_per_page'),
             );
             $wp_query = new WP_Query($args);

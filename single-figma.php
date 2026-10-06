@@ -156,7 +156,7 @@ body, html {
 	justify-content: space-between;
 	gap: 40px;
 	width: 100%;
-	max-width: 1240px;
+	max-width: 1360px;
 	padding: 0 1rem;
 	margin: 0 auto;
 	align-items: start;
@@ -540,7 +540,7 @@ body, html {
 	display: none !important;
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1360px) {
 	.figma-layout-grid {
 		grid-template-columns: 240px minmax(auto, 680px);
 		justify-content: center;

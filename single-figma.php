@@ -152,7 +152,7 @@ body, html {
 /* Grid container for perfectly centered content */
 .figma-layout-grid {
 	display: grid;
-	grid-template-columns: 280px minmax(auto, 640px) 280px;
+	grid-template-columns: 240px minmax(auto, 640px) 240px;
 	justify-content: space-between;
 	gap: 40px;
 	width: 100%;
@@ -542,7 +542,7 @@ body, html {
 
 @media (max-width: 1240px) {
 	.figma-layout-grid {
-		grid-template-columns: 280px minmax(auto, 640px);
+		grid-template-columns: 240px minmax(auto, 640px);
 		justify-content: center;
 	}
 	.figma-right-sidebar {

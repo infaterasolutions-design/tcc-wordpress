@@ -152,11 +152,11 @@ body, html {
 /* Grid container for perfectly centered content */
 .figma-layout-grid {
 	display: grid;
-	grid-template-columns: 285px minmax(auto, 680px) 285px;
+	grid-template-columns: 295px minmax(auto, 680px) 295px;
 	justify-content: space-between;
 	gap: 40px;
 	width: 100%;
-	max-width: 1360px;
+	max-width: 1380px;
 	padding: 0 1rem;
 	margin: 0 auto;
 	align-items: start;
@@ -540,9 +540,9 @@ body, html {
 	display: none !important;
 }
 
-@media (max-width: 1360px) {
+@media (max-width: 1380px) {
 	.figma-layout-grid {
-		grid-template-columns: 285px minmax(auto, 680px);
+		grid-template-columns: 295px minmax(auto, 680px);
 		justify-content: center;
 	}
 	.figma-right-sidebar {

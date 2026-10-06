@@ -152,7 +152,7 @@ body, html {
 /* Grid container for perfectly centered content */
 .figma-layout-grid {
 	display: grid;
-	grid-template-columns: 240px minmax(auto, 640px) 240px;
+	grid-template-columns: 240px minmax(auto, 680px) 240px;
 	justify-content: space-between;
 	gap: 40px;
 	width: 100%;
@@ -406,7 +406,7 @@ body, html {
 .figma-post-container {
 	grid-column: 2;
 	width: 100%;
-	max-width: 640px; 
+	max-width: 680px; 
 }
 
 /* Breadcrumb */
@@ -542,7 +542,7 @@ body, html {
 
 @media (max-width: 1240px) {
 	.figma-layout-grid {
-		grid-template-columns: 240px minmax(auto, 640px);
+		grid-template-columns: 240px minmax(auto, 680px);
 		justify-content: center;
 	}
 	.figma-right-sidebar {
@@ -1037,13 +1037,13 @@ body, html {
 <!-- COMMENTS SECTION -->
 <style>
 .tcc-comments-section {
-	max-width: 640px;
+	max-width: 680px;
 	margin: 20px auto 60px auto;
 	padding: 0 20px;
 	display: none; /* Hidden by default */
 }
 .tcc-comments-toggle {
-	max-width: 640px;
+	max-width: 680px;
 	margin: 20px auto 0 auto;
 	padding: 20px 10px;
 	border-top: 1px solid #ddd;
@@ -1213,7 +1213,7 @@ body, html {
 <style>
 /* Author Box */
 .tcc-author-box {
-	max-width: 640px;
+	max-width: 680px;
 	margin: 50px auto 0 auto;
 	display: flex;
 	gap: 30px;

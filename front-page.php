@@ -206,7 +206,7 @@ get_header(); ?>
 				$latest_args = array(
 					'post_type'      => 'post',
 					'posts_per_page' => 4,
-					'category_name'  => 'wardrobe',
+					// Removed 'category_name' => 'wardrobe' to allow ALL new posts to appear on homepage for SEO indexing
 				);
 				$latest_query = new WP_Query( $latest_args );
 				if ( $latest_query->have_posts() ) :
